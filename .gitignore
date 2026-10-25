@@ -14,3 +14,4 @@ results_scm*.json
 results_protocell*.json
 results_mf*.json
 bench_scm*.log
+s3*.json
