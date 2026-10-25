@@ -26,3 +26,7 @@ In stage 1c `engine3` stopped improving after 64k runs. Three variants test two 
 python bench1b.py --device xpu --surrogate es --budget 256000 --reps 5 --n-test 8000 --gt-seeds 128 \
   --methods sobol_1seed,engine4_anneal,engine4_soft,engine4_both --out results_1d.json
 ```
+
+## Faster map-maker (`--fast`)
+
+Training the map-maker, not simulating, dominated engine time (about 8.5 min per repetition vs 1 min for baselines). On the B70 each training step is bound by kernel-launch overhead, not arithmetic, so the five bootstrap networks are now trained as one batched network (`surrogate.fit_es_multi`), and all checkpoints of a run are scored by one batched fit. Same early-stopping rule per member; only the random draws differ. Add `--fast` (with `--surrogate es`).

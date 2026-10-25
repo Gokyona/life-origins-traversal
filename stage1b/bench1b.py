@@ -21,6 +21,8 @@ import surrogate
 EVAL_FIT = lambda x, s, n, seed: surrogate.fit(x, s, n, seed=seed)
 ACQ_FIT = lambda x, s, n, seed: surrogate.fit(x, s, n, seed=seed, bootstrap=True)
 
+FAST = False  # --fast: train each ensemble / all checkpoints as one batched network (surrogate.fit_es_multi)
+
 CHECKPOINTS = [2000, 4000, 8000, 16000, 32000, 64000, 128000, 256000]
 
 
@@ -117,8 +119,13 @@ def m_engine3(sim, budget, rep, device, explore=0.3, n_init=2048, ens=5, pool_bi
         x = torch.tensor(np.concatenate(xs), device=device)
         s = torch.tensor(np.concatenate(ss), device=device)
         n = torch.ones_like(s)
-        preds = torch.stack([surrogate.predict(ACQ_FIT(x, s, n, rep * 100 + rounds * 10 + e), pool_t)
-                             for e in range(ens)])
+        if FAST:
+            preds = surrogate.predict_multi(surrogate.fit_es_multi(
+                x, s, n, [len(x)] * ens, seed=rep * 100 + rounds * 10, hidden=128, max_steps=3000,
+                bootstrap=True), pool_t)
+        else:
+            preds = torch.stack([surrogate.predict(ACQ_FIT(x, s, n, rep * 100 + rounds * 10 + e), pool_t)
+                                 for e in range(ens)])
         score = preds.std(0).cpu().numpy()
         score[used] = -1.0
         m = batch - len(idx_seq)
@@ -138,6 +145,22 @@ def evaluate(x, s, n, test_x, test_p, hard, device, budget, rep):
     cum = np.cumsum(n)
     tq = torch.tensor(test_x, device=device)
     curve = []
+    if FAST:
+        ks = []
+        for c in CHECKPOINTS:
+            if c > budget:
+                break
+            k = int(np.searchsorted(cum, c, side="right"))
+            if k >= 10:
+                ks.append(k)
+        ens = surrogate.fit_es_multi(torch.tensor(x, device=device), torch.tensor(s, device=device),
+                                     torch.tensor(n, device=device), ks, seed=7 + rep, hidden=256,
+                                     max_steps=10000)
+        p_all = surrogate.predict_multi(ens, tq).cpu().numpy()
+        for k, p in zip(ks, p_all):
+            ok = (p > 0.5) == (test_p > 0.5)
+            curve.append((int(cum[k - 1]), float(ok.mean()), float(ok[hard].mean())))
+        return curve
     for c in CHECKPOINTS:
         if c > budget:
             break
@@ -163,8 +186,14 @@ def main():
     ap.add_argument("--methods", default="random_1seed,sobol_1seed,sobol_8seed,engine3,engine3_explore50")
     ap.add_argument("--surrogate", choices=["fixed", "es"], default="fixed",
                     help="fixed: 600-step fits (stage 1b); es: early-stopping fits (stage 1c)")
+    ap.add_argument("--fast", action="store_true",
+                    help="batched ensemble training (requires --surrogate es); same rule, different random draws")
     ap.add_argument("--out", default="results_1b.json")
     a = ap.parse_args()
+    if a.fast:
+        global FAST
+        FAST = True
+        assert a.surrogate == "es", "--fast implements the early-stopping map-maker only"
     if a.surrogate == "es":
         global EVAL_FIT, ACQ_FIT
         EVAL_FIT = lambda x, s, n, seed: surrogate.fit_es(x, s, n, seed=seed, hidden=256, max_steps=10000)
@@ -189,7 +218,7 @@ def main():
         "engine4_soft": lambda sim, r: m_engine3(sim, a.budget, r, dev, soft=True),
         "engine4_both": lambda sim, r: m_engine3(sim, a.budget, r, dev, anneal_from=32000, soft=True),
     }
-    res = {"surrogate": a.surrogate, "device": str(dev), "budget": a.budget, "reps": a.reps, "n_test": a.n_test, "gt_seeds": a.gt_seeds,
+    res = {"surrogate": a.surrogate, "fast": a.fast, "device": str(dev), "budget": a.budget, "reps": a.reps, "n_test": a.n_test, "gt_seeds": a.gt_seeds,
            "life_fraction": float(np.mean(test_p > 0.5)), "hard": int(hard.sum()), "methods": {}}
     for name in a.methods.split(","):
         res["methods"][name] = []
