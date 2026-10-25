@@ -33,4 +33,4 @@ With a 90% target the boxes grow to 25% (L1), 10.8% (L2) and 2.1% (L3) of the sp
 
 ## Raw data
 
-`s3b.json` and `s3b.log` (full greedy step sequences) are on the benchmark machine and will be added with the search code.
+Search code: [stage3/s3b_box.py](../stage3/s3b_box.py); corner check: [stage3/corner_check.py](../stage3/corner_check.py). `s3b.json` and `s3b.log` (full greedy step sequences) are on the benchmark machine and will be uploaded with the other raw results.

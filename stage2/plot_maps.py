@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt  # noqa: E402
 LOG_AXES = {"S", "mu", "food", "km"}
 LABELS = {"S": "division size S", "sigma": "parasite advantage σ", "mu": "mutation rate μ", "K": "gene types K",
           "d": "degradation d", "food": "food", "km": "membrane synthesis km", "dm": "membrane turnover dm",
-          "z1": "distractor z1", "z2": "distractor z2", "eta": "heritable variation η"}
+          "z1": "distractor z1", "z2": "distractor z2", "eta": "heritable variation η", "lk": "leak lk"}
 COLORS = {"L1": "#4C78A8", "L2": "#F58518", "L3": "#54A24B", "L4": "#B279A2"}
 
 
