@@ -56,14 +56,15 @@ python bench.py --budget 128000 --reps 5 --n-test 4000 --gt-seeds 128 --out resu
 ## Roadmap
 
 - [x] Stage 0 — minimal stochastic model with a built-in error threshold, an origin event and a distractor dimension
-- [ ] Stage 1 — prove (or refute) that ordered testing beats random search on a problem with brute-force ground truth
+- [x] Stage 1, first benchmark — ordered engine did not beat random search (see results)
+- [ ] Stage 1b — revised boundary refinement, stronger surrogate, harder benchmark
 - [ ] Stage 2 — spatial protocell model (membranes, growth, division) and a full condition map
 - [ ] Stage 3 — knockout experiments, minimal sufficient conditions, cross-check on an independent model
 - [ ] Volunteer computing — hand out non-overlapping Sobol index ranges as work units so anyone can contribute GPU time
 
-## Honest early findings
+## Results so far
 
-On a small CPU pilot run, the first engine (several seeds per condition) did **not** beat random search: repeating seeds on the same condition is wasteful, while one seed per condition plus smoothing across neighbouring conditions works better. A revised engine following that lesson is slightly ahead on the hardest (stochastic) conditions. A full benchmark on an Intel Arc Pro B70 is running; results will be posted under `results/`.
+**Stage 1 benchmark (Intel Arc Pro B70, 5 repetitions, 128k runs):** the ordered engine did **not** beat random search on this test problem. Sobol ordering with one seed per condition was the best or near-best method at every budget; the boundary-refinement engine was the worst from 4k runs up. Full tables and analysis: [results/stage1_benchmark_b70.md](results/stage1_benchmark_b70.md). The next step is to fix boundary refinement and build a harder benchmark.
 
 ## Contributing
 
