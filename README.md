@@ -59,6 +59,8 @@ python bench.py --budget 128000 --reps 5 --n-test 4000 --gt-seeds 128 --out resu
 - [x] Stage 1, first benchmark — ordered engine did not beat random search (see results)
 - [x] Stage 1b — revised refinement beats random search on a harder benchmark (see results)
 - [x] Stage 1c — confirmed with a fair map-maker: same accuracy with about 8× fewer simulations (see results)
+- [x] Stage 1d — engine made 4× faster; soft selection becomes the default; late plateau remains (see results)
+- [ ] Stage 1e — test the engine on an established model: Kauffman autocatalytic sets (RAF, Hordijk & Steel)
 - [ ] Stage 2 — spatial protocell model (membranes, growth, division) and a full condition map
 - [ ] Stage 3 — knockout experiments, minimal sufficient conditions, cross-check on an independent model
 - [ ] Volunteer computing — hand out non-overlapping Sobol index ranges as work units so anyone can contribute GPU time
@@ -70,6 +72,7 @@ python bench.py --budget 128000 --reps 5 --n-test 4000 --gt-seeds 128 --out resu
 | 1 | 6 conditions, kNN map-maker | **Negative:** the ordered engine did not beat random search; its refinement step chased intrinsically random regions | [stage1_benchmark_b70.md](results/stage1_benchmark_b70.md) |
 | 1b | 10 conditions, shared neural map-maker, disagreement-driven refinement | **First positive result:** +1.5 points overall and +8 to +12 points on hard conditions vs random and Sobol, from 4k runs on (5 repetitions). Caveat: baselines plateau, so the map-maker was limiting them; corrected in 1c | [stage1b_benchmark_b70.md](results/stage1b_benchmark_b70.md) |
 | 1c | same as 1b, map-maker trained with early stopping (fair to all methods) | **Confirmed, smaller effect:** the engine reaches with 32k runs the accuracy the best baseline needs 256k for (0.989 / 0.947 all / hard), about **8× fewer simulations**; at 256k the methods nearly tie. Corrects the size of the 1b gap | [stage1c_benchmark_b70.md](results/stage1c_benchmark_b70.md) |
+| 1d | same as 1c; batched map-maker training; late-round variants | **Engine 4× faster** (about 2 min per repetition). Soft selection (sample by disagreement²) is best: hard set 0.874 vs 0.849 at 8k and the most stable at 256k (0.960 ± 0.002). All engines plateau near 0.96 after 64k | [stage1d_benchmark_b70.md](results/stage1d_benchmark_b70.md) |
 
 ## Contributing
 
