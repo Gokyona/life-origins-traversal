@@ -7,3 +7,5 @@ results_1c*.json
 results_1d*.json
 bench_1c*.log
 bench_1d*.log
+results_raf*.json
+bench_raf*.log
