@@ -67,6 +67,9 @@ BURST = 2.0      # a cell lyses when its content exceeds BURST * capacity
 HOMEO_LO, HOMEO_HI = 0.25, 1.5
 LYSIS_MAX = 0.1
 K_MAX = 3
+# fidelity levels for multi-fidelity search: (cell slots, steps); G_MIN scales with
+# steps so the required division *rate* is the same at every fidelity
+FIDELITY = {1: (CELLS, STEPS), 0: (32, 300)}
 
 
 def decode(u):
@@ -93,9 +96,14 @@ def _growth(X, active, Kf):
 
 
 @torch.no_grad()
-def simulate(u, generator=None, level=None, return_stats=False):
-    """One population per row of u in [0,1]^10. Returns bool [N] (detector level LEVEL)."""
+def simulate(u, generator=None, level=None, return_stats=False, fidelity=1):
+    """One population per row of u in [0,1]^10. Returns bool [N] (detector level LEVEL).
+
+    fidelity 1 is the reference model; fidelity 0 is a cheap screen with fewer
+    cell slots and steps (see FIDELITY)."""
     level = level or LEVEL
+    CELLS, STEPS = FIDELITY[fidelity]
+    g_min = G_MIN * STEPS / FIDELITY[1][1]
     dev = u.device
     B = u.shape[0]
     S, sigma, mu, K, d, food, km, dm = decode(u)
@@ -176,7 +184,7 @@ def simulate(u, generator=None, level=None, return_stats=False):
     ratio = torch.where(functional, X.sum(-1) / M.clamp(min=1.0), torch.zeros_like(M)).sum(1) / nf.clamp(min=1)
     lysis_frac = lys2 / div2.clamp(min=1)
     l1 = functional.any(1)
-    l2 = (frac_alive >= 0.5) & (gens >= G_MIN)
+    l2 = (frac_alive >= 0.5) & (gens >= g_min)
     l3 = l2 & (ratio >= HOMEO_LO) & (ratio <= HOMEO_HI) & (lysis_frac < LYSIS_MAX)
     out = {1: l1, 2: l2}.get(level, l3)
     if return_stats:
