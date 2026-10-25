@@ -4,6 +4,7 @@
 
 > Status: early research (stage 0/1). Code, results and write-ups are published here as they are produced, including negative results.
 
+
 ## The idea
 
 Most origin-of-life simulations pick one set of conditions, run for a long time, and hope that self-replicating, self-sustaining chemistry appears. If it does not, someone guesses a new set of conditions and tries again. This wastes compute on hopeless conditions, silently re-tests equivalent ones, and never tells us *where* life is possible.
