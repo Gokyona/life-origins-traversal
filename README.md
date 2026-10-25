@@ -65,6 +65,10 @@ python bench.py --budget 128000 --reps 5 --n-test 4000 --gt-seeds 128 --out resu
 - [ ] Stage 3 — knockout experiments, minimal sufficient conditions, cross-check on an independent model
 - [ ] Volunteer computing — hand out non-overlapping Sobol index ranges as work units so anyone can contribute GPU time
 
+## Paper
+
+**[COMPASS: ordered, non-repeating mapping of the conditions for life in stochastic origin-of-life models](paper/COMPASS_stage1.md)** (stage 1 report, 25 October 2026). The engine design, all benchmarks so far, and a check against the known threshold for autocatalytic sets.
+
 ## Results so far
 
 | stage | problem | outcome | report |
