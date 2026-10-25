@@ -71,7 +71,7 @@ Numbers read off the maps (other conditions at the 2b reference), compared with 
 
 ## What the maps show
 
-**Mutation rate × division size** ([figure](figures_2e/slice_mu_x_S.png)). The tolerable mutation rate rises as cells get smaller: at L3, about 0.007 for S = 512, about 0.03 for S = 64, and about 0.2 for S ≈ 12–20. Below S ≈ 10 it falls again (about 0.1 at S = 8), because cells that small lose gene types when they divide. There is an optimal cell size. This is the central trade-off of the stochastic corrector model (Szathmáry & Demeter 1987); here it is not imposed but emerges from the simulations, and the map puts numbers on it.
+**Mutation rate × division size** ([figure](figures_2e/slice_mu_x_S.png)). The tolerable mutation rate rises as cells get smaller: at L3, about 0.007 for S = 512, about 0.08 for S = 64, and about 0.25 for S ≈ 12–18. Below S ≈ 10 it falls again (about 0.12 at S = 8), because cells that small lose gene types when they divide. There is an optimal cell size. This is the central trade-off of the stochastic corrector model (Szathmáry & Demeter 1987); here it is not imposed but emerges from the simulations, and the map puts numbers on it.
 
 ![mu x S](figures_2e/slice_mu_x_S.png)
 
