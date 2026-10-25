@@ -9,3 +9,11 @@ Follows the negative stage 1 result ([results/stage1_benchmark_b70.md](../result
 ```bash
 python bench1b.py --budget 256000 --reps 5 --n-test 8000 --gt-seeds 128 --out results_1b.json
 ```
+
+## Stage 1c re-check
+
+Stage 1b's baselines did not improve with more data, because the 600-step fit underfits large datasets. `--surrogate es` replaces both the evaluation map-maker and the engine's ensemble with early-stopping fits (training length set by held-out loss; 256 hidden units for evaluation, 128 for the engine's ensemble):
+
+```bash
+python bench1b.py --surrogate es --budget 256000 --reps 5 --n-test 8000 --gt-seeds 128 --out results_1c.json
+```

@@ -17,6 +17,10 @@ from scipy.stats import qmc
 import model10 as model
 import surrogate
 
+# map-maker settings; --surrogate es switches both to early-stopping fits (stage 1c)
+EVAL_FIT = lambda x, s, n, seed: surrogate.fit(x, s, n, seed=seed)
+ACQ_FIT = lambda x, s, n, seed: surrogate.fit(x, s, n, seed=seed, bootstrap=True)
+
 CHECKPOINTS = [2000, 4000, 8000, 16000, 32000, 64000, 128000, 256000]
 
 
@@ -106,7 +110,7 @@ def m_engine3(sim, budget, rep, device, explore=0.3, n_init=2048, ens=5, pool_bi
         x = torch.tensor(np.concatenate(xs), device=device)
         s = torch.tensor(np.concatenate(ss), device=device)
         n = torch.ones_like(s)
-        preds = torch.stack([surrogate.predict(surrogate.fit(x, s, n, seed=rep * 100 + rounds * 10 + e, bootstrap=True), pool_t)
+        preds = torch.stack([surrogate.predict(ACQ_FIT(x, s, n, rep * 100 + rounds * 10 + e), pool_t)
                              for e in range(ens)])
         score = preds.std(0).cpu().numpy()
         score[used] = -1.0
@@ -128,8 +132,8 @@ def evaluate(x, s, n, test_x, test_p, hard, device, budget, rep):
         k = int(np.searchsorted(cum, c, side="right"))
         if k < 10:
             continue
-        net = surrogate.fit(torch.tensor(x[:k], device=device), torch.tensor(s[:k], device=device),
-                            torch.tensor(n[:k], device=device), seed=7 + rep)
+        net = EVAL_FIT(torch.tensor(x[:k], device=device), torch.tensor(s[:k], device=device),
+                       torch.tensor(n[:k], device=device), 7 + rep)
         p = surrogate.predict(net, tq).cpu().numpy()
         ok = (p > 0.5) == (test_p > 0.5)
         curve.append((int(cum[k - 1]), float(ok.mean()), float(ok[hard].mean())))
@@ -145,8 +149,15 @@ def main():
     ap.add_argument("--gt-seeds", type=int, default=128)
     ap.add_argument("--chunk", type=int, default=1 << 20, help="max simulations per GPU batch")
     ap.add_argument("--methods", default="random_1seed,sobol_1seed,sobol_8seed,engine3,engine3_explore50")
+    ap.add_argument("--surrogate", choices=["fixed", "es"], default="fixed",
+                    help="fixed: 600-step fits (stage 1b); es: early-stopping fits (stage 1c)")
     ap.add_argument("--out", default="results_1b.json")
     a = ap.parse_args()
+    if a.surrogate == "es":
+        global EVAL_FIT, ACQ_FIT
+        EVAL_FIT = lambda x, s, n, seed: surrogate.fit_es(x, s, n, seed=seed, hidden=256, max_steps=10000)
+        ACQ_FIT = lambda x, s, n, seed: surrogate.fit_es(x, s, n, seed=seed, hidden=128, max_steps=3000,
+                                                         bootstrap=True)
     dev = pick_device(a.device)
     print("device:", dev, flush=True)
 
@@ -163,7 +174,7 @@ def main():
         "engine3": lambda sim, r: m_engine3(sim, a.budget, r, dev),
         "engine3_explore50": lambda sim, r: m_engine3(sim, a.budget, r, dev, explore=0.5),
     }
-    res = {"device": str(dev), "budget": a.budget, "reps": a.reps, "n_test": a.n_test, "gt_seeds": a.gt_seeds,
+    res = {"surrogate": a.surrogate, "device": str(dev), "budget": a.budget, "reps": a.reps, "n_test": a.n_test, "gt_seeds": a.gt_seeds,
            "life_fraction": float(np.mean(test_p > 0.5)), "hard": int(hard.sum()), "methods": {}}
     for name in a.methods.split(","):
         res["methods"][name] = []
