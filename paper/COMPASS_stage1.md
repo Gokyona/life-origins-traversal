@@ -193,7 +193,7 @@ python bench_raf.py --device xpu --surrogate es --fast --budget 64000 --reps 5 -
   --methods random_1seed,sobol_1seed,engine3,engine4_soft --out results_raf.json
 ```
 
-The threshold analysis of Section 5.4.3 (`threshold_check.py`) will be added to `stage1e_raf/`.
+The threshold analysis of Section 5.4.3: `python stage1e_raf/threshold_check.py --device xpu` (defaults: 3 repetitions, budgets up to 32k, 400 direct runs per grid point).
 
 ## Acknowledgements
 

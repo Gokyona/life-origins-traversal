@@ -9,3 +9,4 @@ bench_1c*.log
 bench_1d*.log
 results_raf*.json
 bench_raf*.log
+threshold_check*.json
