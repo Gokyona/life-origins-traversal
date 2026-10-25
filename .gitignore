@@ -3,5 +3,5 @@ __pycache__/
 smoke*.json
 results_1b*.json
 bench_1b*.log
-results_1c*.json
+results_1c* / results_1d*.json
 bench_1c*.log

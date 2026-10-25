@@ -17,3 +17,12 @@ Stage 1b's baselines did not improve with more data, because the 600-step fit un
 ```bash
 python bench1b.py --surrogate es --budget 256000 --reps 5 --n-test 8000 --gt-seeds 128 --out results_1c.json
 ```
+
+## Stage 1d: late-round fix
+
+In stage 1c `engine3` stopped improving after 64k runs. Three variants test two fixes: `engine4_anneal` raises the explore share linearly from 30% (at 32k runs) to 70% (at the full budget); `engine4_soft` draws refinement points with probability proportional to disagreement squared instead of taking the strict top; `engine4_both` combines them.
+
+```bash
+python bench1b.py --device xpu --surrogate es --budget 256000 --reps 5 --n-test 8000 --gt-seeds 128 \
+  --methods sobol_1seed,engine4_anneal,engine4_soft,engine4_both --out results_1d.json
+```

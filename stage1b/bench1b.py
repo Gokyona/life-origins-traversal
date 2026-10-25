@@ -68,7 +68,11 @@ def m_points(sim, budget, rep, seeds, sobol):
     return x, y.sum(1).astype(np.float32), np.full(k, seeds, np.float32), {}
 
 
-def m_engine3(sim, budget, rep, device, explore=0.3, n_init=2048, ens=5, pool_bits=19):
+def m_engine3(sim, budget, rep, device, explore=0.3, n_init=2048, ens=5, pool_bits=19,
+              anneal_from=None, explore_end=0.7, soft=False):
+    # stage 1d: anneal_from = runs after which the explore share rises linearly to explore_end;
+    # soft = draw refinement points with probability ~ disagreement^2 instead of strict top-k
+    rng = np.random.default_rng(3000 + rep)
     sob = qmc.Sobol(d=model.DIM, scramble=True, seed=1000 + rep)
     pool = sob.random(1 << pool_bits).astype(np.float32)
     used = np.zeros(len(pool), bool)
@@ -104,7 +108,10 @@ def m_engine3(sim, budget, rep, device, explore=0.3, n_init=2048, ens=5, pool_bi
     while sum(len(a) for a in xs) < budget and nxt < len(pool):
         total = sum(len(a) for a in xs)
         batch = min(max(1024, total // 3), budget - total)
-        n_exp = int(batch * explore)
+        frac = explore
+        if anneal_from is not None and total > anneal_from:
+            frac = explore + (explore_end - explore) * min(1.0, (total - anneal_from) / max(1, budget - anneal_from))
+        n_exp = int(batch * frac)
         idx_seq = take_seq(n_exp)
         used[idx_seq] = True
         x = torch.tensor(np.concatenate(xs), device=device)
@@ -114,7 +121,12 @@ def m_engine3(sim, budget, rep, device, explore=0.3, n_init=2048, ens=5, pool_bi
                              for e in range(ens)])
         score = preds.std(0).cpu().numpy()
         score[used] = -1.0
-        idx_act = np.argsort(-score)[:batch - len(idx_seq)]
+        m = batch - len(idx_seq)
+        if soft:
+            w = np.where(score > 0, score, 0.0) ** 2
+            idx_act = rng.choice(len(pool), size=min(m, int((w > 0).sum())), replace=False, p=w / w.sum())
+        else:
+            idx_act = np.argsort(-score)[:m]
         test(np.concatenate([idx_seq, idx_act]))
         rounds += 1
     x = np.concatenate(xs)[:budget]
@@ -173,6 +185,9 @@ def main():
         "sobol_8seed": lambda sim, r: m_points(sim, a.budget, r, 8, True),
         "engine3": lambda sim, r: m_engine3(sim, a.budget, r, dev),
         "engine3_explore50": lambda sim, r: m_engine3(sim, a.budget, r, dev, explore=0.5),
+        "engine4_anneal": lambda sim, r: m_engine3(sim, a.budget, r, dev, anneal_from=32000),
+        "engine4_soft": lambda sim, r: m_engine3(sim, a.budget, r, dev, soft=True),
+        "engine4_both": lambda sim, r: m_engine3(sim, a.budget, r, dev, anneal_from=32000, soft=True),
     }
     res = {"surrogate": a.surrogate, "device": str(dev), "budget": a.budget, "reps": a.reps, "n_test": a.n_test, "gt_seeds": a.gt_seeds,
            "life_fraction": float(np.mean(test_p > 0.5)), "hard": int(hard.sum()), "methods": {}}
