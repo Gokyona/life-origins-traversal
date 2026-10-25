@@ -11,4 +11,5 @@ results_raf*.json
 bench_raf*.log
 threshold_check*.json
 results_scm*.json
+results_protocell*.json
 bench_scm*.log
