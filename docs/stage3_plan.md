@@ -18,7 +18,8 @@ Two extensions support these questions: a spatial version of the model (local co
 - *no compartments*: all molecules in one large well-mixed pool (one cell of the whole population size);
 - *no random sharing*: division splits every molecule type exactly in half (removes the chance variation the stochastic corrector relies on);
 - *no selection between cells*: the daughter replaces a random cell regardless of whether cells are alive or growing;
-- *no membrane coupling*: division by content size as in 2a (the L3 coupling switched off).
+- *no membrane coupling*: division by content size as in 2a (the L3 coupling switched off);
+- *simplifications*: no degradation or membrane turnover (d = dm = 0), and a single gene type (K = 1), to see which losses the population must cope with.
 Output: life fraction per level for each variant, and maps showing where life is lost or gained. Expected: no compartments and no random sharing should remove protection against parasites (life only at σ ≈ 1 or μ ≈ 0); the test is whether the maps show this.
 
 **3b. Minimal sufficient conditions.** From the stage 2 maps, and confirmed by direct simulation:
@@ -30,7 +31,7 @@ Output: a short, checkable statement per level, for example "L3 is guaranteed if
 
 **3c. Darwinian evolution (L4).** Give every gene copy a heritable quality q (for example its copying speed or catalytic efficiency) that mutates by small random steps at copying. Over a long run, test whether mean q in functional cells rises beyond what drift alone produces (compare against a control run in which selection on q is switched off). L4 = L3 plus a significant adaptive increase in q. Map L4 with COMPASS. This also tests where heredity is accurate enough for selection to act, which connects to the critical mutation rate found in stage 2.
 
-**3d. Spatial version.** Cells on a two-dimensional grid; a daughter replaces a neighbour instead of a random cell; optionally molecules leak between neighbours. Compare well-mixed and spatial maps (compare Hogeweg & Takeuchi 2003). Simulations will cost more, so this is also where multi-fidelity screening (stage 2d) gets a second chance.
+**3d. Cross-check on an independent model: spatial version.** Cells on a two-dimensional grid; a daughter replaces a neighbour instead of a random cell; optionally molecules leak between neighbours. Compare well-mixed and spatial maps (compare Hogeweg & Takeuchi 2003). The main purpose is to test whether the conclusions of 3a–3c still hold in an independently built model, so that they are not an artefact of one design. An alternative independent model is a protocell whose metabolism is the stage 1e RAF network. Simulations will cost more, so this is also where multi-fidelity screening (stage 2d) gets a second chance.
 
 **3e. Engine.** A joint map for nested levels that enforces L3 ⊂ L2 ⊂ L1 (removes the 0.4% inconsistency seen in stage 2), and a comparison of COMPASS with one standard active-learning method (BALD or level-set estimation) on the stage 2 benchmarks.
 

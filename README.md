@@ -63,7 +63,6 @@ python bench.py --budget 128000 --reps 5 --n-test 4000 --gt-seeds 128 --out resu
 - [x] Stage 1e — the engine on an established model (Kauffman autocatalytic sets, RAF): about 2× fewer simulations (see results)
 - [x] Stage 2 — dividing protocells: stochastic corrector population, membrane coupling, multi-fidelity test, maps for life-detector levels L1–L3 ([plan](docs/stage2_plan.md), [paper](paper/COMPASS_stage2.md))
 - [ ] Stage 3 — necessary mechanisms (knockouts), minimal sufficient conditions, Darwinian evolution (L4), spatial structure ([plan](docs/stage3_plan.md))
-- [ ] Stage 3 — knockout experiments, minimal sufficient conditions, cross-check on an independent model
 - [ ] Volunteer computing — hand out non-overlapping Sobol index ranges as work units so anyone can contribute GPU time
 
 ## Paper
