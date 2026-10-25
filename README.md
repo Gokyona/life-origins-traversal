@@ -57,14 +57,18 @@ python bench.py --budget 128000 --reps 5 --n-test 4000 --gt-seeds 128 --out resu
 
 - [x] Stage 0 — minimal stochastic model with a built-in error threshold, an origin event and a distractor dimension
 - [x] Stage 1, first benchmark — ordered engine did not beat random search (see results)
-- [ ] Stage 1b — revised boundary refinement, stronger surrogate, harder benchmark
+- [x] Stage 1b — revised refinement beats random search on a harder benchmark (see results)
+- [ ] Stage 1c — confirm with a map-maker that scales with data
 - [ ] Stage 2 — spatial protocell model (membranes, growth, division) and a full condition map
 - [ ] Stage 3 — knockout experiments, minimal sufficient conditions, cross-check on an independent model
 - [ ] Volunteer computing — hand out non-overlapping Sobol index ranges as work units so anyone can contribute GPU time
 
 ## Results so far
 
-**Stage 1 benchmark (Intel Arc Pro B70, 5 repetitions, 128k runs):** the ordered engine did **not** beat random search on this test problem. Sobol ordering with one seed per condition was the best or near-best method at every budget; the boundary-refinement engine was the worst from 4k runs up. Full tables and analysis: [results/stage1_benchmark_b70.md](results/stage1_benchmark_b70.md). The next step is to fix boundary refinement and build a harder benchmark.
+| stage | problem | outcome | report |
+|---|---|---|---|
+| 1 | 6 conditions, kNN map-maker | **Negative:** the ordered engine did not beat random search; its refinement step chased intrinsically random regions | [stage1_benchmark_b70.md](results/stage1_benchmark_b70.md) |
+| 1b | 10 conditions, shared neural map-maker, disagreement-driven refinement | **First positive result:** +1.5 points overall and +8 to +12 points on hard conditions vs random and Sobol, from 4k runs on (5 repetitions). Caveat: baselines plateau, so the map-maker may be limiting them; being re-checked | [stage1b_benchmark_b70.md](results/stage1b_benchmark_b70.md) |
 
 ## Contributing
 
