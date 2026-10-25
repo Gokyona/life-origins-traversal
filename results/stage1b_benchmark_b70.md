@@ -2,6 +2,8 @@
 
 **Date:** 2026-10-25 · **Device:** Intel Arc Pro B70 32 GB (PyTorch XPU, ~90 W, 2800 MHz) · **Wall time:** 24 min · **Code:** [`stage1b/`](../stage1b) at commit `6bb7cd6`
 
+> **Update (stage 1c):** the caveat below was confirmed. With a fair, early-stopping map-maker, all methods improve a lot and the engine's advantage becomes "same accuracy with about 8× fewer simulations" rather than a permanent gap. See [stage1c_benchmark_b70.md](stage1c_benchmark_b70.md).
+
 ## Bottom line
 
 **First positive result, with one caveat to check.** On a harder 10-condition problem, the revised engine (`engine3`) beats random search and Sobol sampling at every budget from 4,000 runs upward: about **+1.5 points on all conditions** and **+8 to +12 points on the hard, stochastic conditions**, with small spread across 5 repetitions. The caveat: the baselines barely improve between 2,000 and 256,000 runs, which suggests the shared map-maker, not the data, is limiting them. The advantage is real under this map-maker; whether it survives a map-maker that keeps learning from more data is the next test.
