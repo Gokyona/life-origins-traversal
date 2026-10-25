@@ -61,7 +61,7 @@ python bench.py --budget 128000 --reps 5 --n-test 4000 --gt-seeds 128 --out resu
 - [x] Stage 1c — confirmed with a fair map-maker: same accuracy with about 8× fewer simulations (see results)
 - [x] Stage 1d — engine made 4× faster; soft selection becomes the default; late plateau remains (see results)
 - [x] Stage 1e — the engine on an established model (Kauffman autocatalytic sets, RAF): about 2× fewer simulations (see results)
-- [ ] Stage 2 — spatial protocell model (membranes, growth, division) and a full condition map
+- [ ] Stage 2 — dividing protocells (stochastic corrector population, then membrane coupling and space); maps for life-detector levels L1–L3 ([plan](docs/stage2_plan.md))
 - [ ] Stage 3 — knockout experiments, minimal sufficient conditions, cross-check on an independent model
 - [ ] Volunteer computing — hand out non-overlapping Sobol index ranges as work units so anyone can contribute GPU time
 
