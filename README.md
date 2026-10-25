@@ -61,13 +61,16 @@ python bench.py --budget 128000 --reps 5 --n-test 4000 --gt-seeds 128 --out resu
 - [x] Stage 1c — confirmed with a fair map-maker: same accuracy with about 8× fewer simulations (see results)
 - [x] Stage 1d — engine made 4× faster; soft selection becomes the default; late plateau remains (see results)
 - [x] Stage 1e — the engine on an established model (Kauffman autocatalytic sets, RAF): about 2× fewer simulations (see results)
-- [ ] Stage 2 — dividing protocells (stochastic corrector population, then membrane coupling and space); maps for life-detector levels L1–L3 ([plan](docs/stage2_plan.md))
+- [x] Stage 2 — dividing protocells: stochastic corrector population, membrane coupling, multi-fidelity test, maps for life-detector levels L1–L3 ([plan](docs/stage2_plan.md), [paper](paper/COMPASS_stage2.md))
+- [ ] Stage 3 — minimal sufficient conditions (knockouts), spatial structure, Darwinian evolution (L4)
 - [ ] Stage 3 — knockout experiments, minimal sufficient conditions, cross-check on an independent model
 - [ ] Volunteer computing — hand out non-overlapping Sobol index ranges as work units so anyone can contribute GPU time
 
 ## Paper
 
-**[COMPASS: ordered, non-repeating mapping of the conditions for life in stochastic origin-of-life models](paper/COMPASS_stage1.md)** (stage 1 report, 25 October 2026). The engine design, all benchmarks so far, and a check against the known threshold for autocatalytic sets.
+**[COMPASS: ordered, non-repeating mapping of the conditions for life in stochastic origin-of-life models](paper/COMPASS_stage1.md)** (stage 1 report, 25 October 2026). The engine design, the stage 1 benchmarks, and a check against the known threshold for autocatalytic sets.
+
+**[Mapping the conditions for dividing protocells with COMPASS](paper/COMPASS_stage2.md)** (stage 2 report, 25 October 2026). Protocell populations after the stochastic corrector and chemoton ideas, COMPASS benchmarks (about 8× and 4× fewer simulations), a partial negative result for multi-fidelity screening, and maps of three levels of life.
 
 ## Results so far
 
