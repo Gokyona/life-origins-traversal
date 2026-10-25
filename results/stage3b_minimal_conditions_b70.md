@@ -27,7 +27,7 @@ With a 90% target the boxes grow to 25% (L1), 10.8% (L2) and 2.1% (L3) of the sp
 ## Findings
 
 1. **Each level adds requirements.** L1 needs low mutation, enough membrane, cells that are not tiny, and moderate degradation. L2 adds enough food (to complete many generations) and at most two gene types. L3 narrows membrane synthesis to a window and division size to a range with an upper limit.
-2. **Parasite advantage never needs to be held.** The region where parasites win (large cells and a large advantage) is small enough to fit within the few percent of each box that may fail; for L3 the upper limit on cell size also keeps it out. Degradation and membrane turnover can also be left free for L2 and L3.
+2. **Parasite advantage never needs to be held.** Every box also holds the mutation rate low (μ ≤ 0.011 for L1, ≤ 0.017 for L2 and L3). Parasites arise only by mutation, so they stay rare and their replication advantage matters little. The direct confirmation points show this: in the corner with large cells and strong parasites (S > 256, σ > 2), life is still found at 91% of points in the L1 box (257 points) and 91% in the L2 box (217 points), only about 4 points below the box averages; the L3 box excludes that corner through its upper limit on cell size. Degradation and membrane turnover can also be left free for L2 and L3.
 3. **The distractors are never chosen**, as expected.
 4. **Sufficient, not unique.** These boxes are one simple description of a region that guarantees life. Life also exists outside them, in regions that a single box cannot describe.
 
