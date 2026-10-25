@@ -6,7 +6,7 @@ Figures (PNG, one per file, in --outdir):
   slice_<x>_x_<y>.png     2D slices (other conditions at the 2b reference), one panel per level
   accuracy.png            COMPASS vs Sobol accuracy curves per level (all and hard)
 """
-import argparse, json, os
+import argparse, json, math, os
 import numpy as np
 import matplotlib
 matplotlib.use("Agg")
@@ -15,8 +15,8 @@ import matplotlib.pyplot as plt  # noqa: E402
 LOG_AXES = {"S", "mu", "food", "km"}
 LABELS = {"S": "division size S", "sigma": "parasite advantage σ", "mu": "mutation rate μ", "K": "gene types K",
           "d": "degradation d", "food": "food", "km": "membrane synthesis km", "dm": "membrane turnover dm",
-          "z1": "distractor z1", "z2": "distractor z2"}
-COLORS = {"L1": "#4C78A8", "L2": "#F58518", "L3": "#54A24B"}
+          "z1": "distractor z1", "z2": "distractor z2", "eta": "heritable variation η"}
+COLORS = {"L1": "#4C78A8", "L2": "#F58518", "L3": "#54A24B", "L4": "#B279A2"}
 
 
 def main():
@@ -26,16 +26,16 @@ def main():
     a = ap.parse_args()
     r = json.load(open(a.json))
     os.makedirs(a.outdir, exist_ok=True)
-    names, levels = r["names"], ["L1", "L2", "L3"]
+    names, levels = r["names"], sorted(r["levels"])
     plt.rcParams.update({"font.size": 10, "figure.dpi": 110})
 
     # importance
     fig, ax = plt.subplots(figsize=(8, 3.6))
-    w = 0.27
+    w = 0.8 / len(levels)
     xs = np.arange(len(names))
     for i, L in enumerate(levels):
         v = [r["levels"][L]["importance"][n] for n in names]
-        ax.bar(xs + (i - 1) * w, v, w, label=L, color=COLORS[L])
+        ax.bar(xs + (i - (len(levels) - 1) / 2) * w, v, w, label=L, color=COLORS[L])
     ax.set_xticks(xs, names)
     ax.set_ylabel("accuracy drop when shuffled")
     ax.set_title("Which conditions matter for each life level (permutation importance)")
@@ -47,7 +47,10 @@ def main():
 
     # partial dependence, one figure per level
     for L in levels:
-        fig, axs = plt.subplots(2, 5, figsize=(13, 5), sharey=True)
+        rows = math.ceil(len(names) / 5)
+        fig, axs = plt.subplots(rows, 5, figsize=(13, 2.5 * rows), sharey=True, squeeze=False)
+        for ax in axs.ravel()[len(names):]:
+            ax.axis("off")
         for ax, n in zip(axs.ravel(), names):
             pd_ = r["levels"][L]["partial_dependence"][n]
             ax.plot(pd_["value"], pd_["p"], color=COLORS[L])
@@ -56,16 +59,18 @@ def main():
             ax.set_xlabel(LABELS[n])
             ax.set_ylim(0, 1)
             ax.grid(alpha=0.3)
-        axs[0, 0].set_ylabel(f"P({L})")
-        axs[1, 0].set_ylabel(f"P({L})")
+        for rr in range(rows):
+            axs[rr, 0].set_ylabel(f"P({L})")
         fig.suptitle(f"{L}: partial dependence (averaged over random other conditions)")
         fig.tight_layout()
         fig.savefig(os.path.join(a.outdir, f"pd_{L}.png"))
         plt.close(fig)
 
     # 2D slices
-    for key in r["levels"]["L1"]["slices"]:
-        fig, axs = plt.subplots(1, 3, figsize=(13, 4), constrained_layout=True)
+    for key in r["levels"][levels[0]]["slices"]:
+        fig, axs = plt.subplots(1, len(levels), figsize=(4.3 * len(levels) + 0.8, 4), constrained_layout=True,
+                                squeeze=False)
+        axs = axs[0]
         for ax, L in zip(axs, levels):
             sl = r["levels"][L]["slices"][key]
             X, Y, P = np.array(sl["x_values"]), np.array(sl["y_values"]), np.array(sl["p"])
