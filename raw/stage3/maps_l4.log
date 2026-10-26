@@ -1,0 +1,27 @@
+ground truth 4000 x 64 in 201s: L1 fraction 0.558, L2 fraction 0.338, L3 fraction 0.173, L4 fraction 0.112
+L4 engine4_soft: (32000, 0.97275, 0.8763796909492274) (106s)
+/run/media/bern/Data2T/myClaude/lot-s3/../lot-run/stage1b/bench1b.py:66: UserWarning: The balance properties of Sobol' points require n to be a power of 2.
+  x = qmc.Sobol(d=model.DIM, scramble=True, seed=1000 + rep).random(k).astype(np.float32)
+L4 sobol_1seed: (32000, 0.961, 0.8145695364238411) (37s)
+L4: final map accuracy 0.969; importance km 0.111, mu 0.072, K 0.057, S 0.050, eta 0.045, food 0.044, sigma 0.013, d 0.012, dm 0.011, z2 0.000, z1 -0.000
+
+life fraction (ground truth): {'L1': 0.5585, 'L2': 0.33825, 'L3': 0.1735, 'L4': 0.1115}
+nesting violations (ground truth): {'L2_not_L1': 0.0, 'L3_not_L2': 0.0, 'L4_not_L3': 0.0}
+share of L3 conditions that reach L4: 0.643
+L4 map: COMPASS 32k acc 0.973 / hard 0.876; Sobol 0.961 / 0.815; hard set 453; final map acc 0.969
+read-offs: {
+ "eta_min_L4": 0.020000000000000004,
+ "share_of_L3_reaching_L4_gt": 0.6426512968299711,
+ "S_max_by_sigma": {
+  "1.0": null,
+  "1.2": null,
+  "1.5": 256.00000000000017,
+  "2.0": 181.01933598375612,
+  "2.5": 147.03338943962058,
+  "3.0": 168.89701257893057
+ },
+ "mu_critical": 0.04075011283037232,
+ "food_min": 0.3223425771098948
+}
+
+total 366s

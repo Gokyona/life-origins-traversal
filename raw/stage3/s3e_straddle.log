@@ -1,0 +1,57 @@
+ground truth 4000 x 64 in 154s; life 0.162; hard 107
+/run/media/bern/Data2T/myClaude/lot-s3/../lot-run/stage1b/bench1b.py:66: UserWarning: The balance properties of Sobol' points require n to be a power of 2.
+  x = qmc.Sobol(d=model.DIM, scramble=True, seed=1000 + rep).random(k).astype(np.float32)
+sobol_1seed rep 0: (64000, 0.976, 0.6822429906542056) (61s, method 44s)
+/run/media/bern/Data2T/myClaude/lot-s3/../lot-run/stage1b/bench1b.py:66: UserWarning: The balance properties of Sobol' points require n to be a power of 2.
+  x = qmc.Sobol(d=model.DIM, scramble=True, seed=1000 + rep).random(k).astype(np.float32)
+sobol_1seed rep 1: (64000, 0.97275, 0.6448598130841121) (56s, method 44s)
+sobol_1seed rep 2: (64000, 0.9755, 0.6728971962616822) (57s, method 44s)
+sobol_1seed rep 3: (64000, 0.977, 0.7476635514018691) (56s, method 44s)
+sobol_1seed rep 4: (64000, 0.97825, 0.7476635514018691) (60s, method 44s)
+engine3 rep 0: (64000, 0.985, 0.7570093457943925) (146s, method 129s)
+engine3 rep 1: (64000, 0.98525, 0.7757009345794392) (142s, method 122s)
+engine3 rep 2: (64000, 0.9875, 0.8037383177570093) (141s, method 120s)
+engine3 rep 3: (64000, 0.986, 0.8037383177570093) (144s, method 123s)
+engine3 rep 4: (64000, 0.987, 0.822429906542056) (140s, method 123s)
+engine4_soft rep 0: (64000, 0.98725, 0.8037383177570093) (140s, method 122s)
+engine4_soft rep 1: (64000, 0.9855, 0.7476635514018691) (139s, method 122s)
+engine4_soft rep 2: (64000, 0.9875, 0.7850467289719626) (140s, method 122s)
+engine4_soft rep 3: (64000, 0.9865, 0.8130841121495327) (139s, method 122s)
+engine4_soft rep 4: (64000, 0.98575, 0.7102803738317757) (143s, method 122s)
+straddle rep 0: (64000, 0.98675, 0.7476635514018691) (140s, method 119s)
+straddle rep 1: (64000, 0.986, 0.7476635514018691) (139s, method 123s)
+straddle rep 2: (64000, 0.98675, 0.7757009345794392) (142s, method 121s)
+straddle rep 3: (64000, 0.98675, 0.794392523364486) (143s, method 123s)
+straddle rep 4: (64000, 0.98875, 0.8130841121495327) (141s, method 123s)
+straddle_soft rep 0: (64000, 0.98625, 0.7757009345794392) (140s, method 122s)
+straddle_soft rep 1: (64000, 0.9865, 0.7570093457943925) (143s, method 122s)
+straddle_soft rep 2: (64000, 0.98725, 0.8037383177570093) (139s, method 122s)
+straddle_soft rep 3: (64000, 0.9865, 0.7850467289719626) (144s, method 122s)
+straddle_soft rep 4: (64000, 0.988, 0.8317757009345794) (139s, method 121s)
+
+Accuracy (all), mean ± sd over 5 reps
+| method | 2k | 4k | 8k | 16k | 32k | 64k |
+|---|---|---|---|---|---|---|
+| sobol_1seed | 0.947 ± 0.002 | 0.953 ± 0.002 | 0.955 ± 0.001 | 0.961 ± 0.002 | 0.969 ± 0.002 | 0.976 ± 0.002 |
+| engine3 | 0.946 ± 0.002 | 0.956 ± 0.002 | 0.966 ± 0.001 | 0.975 ± 0.001 | 0.981 ± 0.001 | 0.986 ± 0.001 |
+| engine4_soft | 0.946 ± 0.002 | 0.959 ± 0.002 | 0.964 ± 0.002 | 0.977 ± 0.003 | 0.983 ± 0.001 | 0.987 ± 0.001 |
+| straddle | 0.946 ± 0.002 | 0.957 ± 0.003 | 0.965 ± 0.002 | 0.975 ± 0.001 | 0.983 ± 0.001 | 0.987 ± 0.001 |
+| straddle_soft | 0.946 ± 0.002 | 0.959 ± 0.001 | 0.966 ± 0.002 | 0.976 ± 0.000 | 0.983 ± 0.002 | 0.987 ± 0.001 |
+
+Accuracy (hard), mean ± sd over 5 reps
+| method | 2k | 4k | 8k | 16k | 32k | 64k |
+|---|---|---|---|---|---|---|
+| sobol_1seed | 0.598 ± 0.026 | 0.622 ± 0.051 | 0.598 ± 0.017 | 0.626 ± 0.017 | 0.645 ± 0.031 | 0.699 ± 0.042 |
+| engine3 | 0.574 ± 0.020 | 0.609 ± 0.032 | 0.626 ± 0.025 | 0.675 ± 0.021 | 0.731 ± 0.030 | 0.793 ± 0.023 |
+| engine4_soft | 0.574 ± 0.020 | 0.626 ± 0.013 | 0.624 ± 0.011 | 0.692 ± 0.031 | 0.744 ± 0.017 | 0.772 ± 0.038 |
+| straddle | 0.574 ± 0.020 | 0.641 ± 0.039 | 0.654 ± 0.016 | 0.664 ± 0.026 | 0.736 ± 0.023 | 0.776 ± 0.026 |
+| straddle_soft | 0.574 ± 0.020 | 0.621 ± 0.019 | 0.639 ± 0.039 | 0.677 ± 0.024 | 0.748 ± 0.037 | 0.791 ± 0.025 |
+
+Method seconds per rep (simulation + selection, excluding scoring); engine overhead = method - sobol method
+  sobol_1seed: 44 ± 0 s; overhead vs sobol 0 s
+  engine3: 123 ± 3 s; overhead vs sobol 79 s
+  engine4_soft: 122 ± 0 s; overhead vs sobol 78 s
+  straddle: 122 ± 2 s; overhead vs sobol 78 s
+  straddle_soft: 122 ± 0 s; overhead vs sobol 78 s
+
+total 3269s

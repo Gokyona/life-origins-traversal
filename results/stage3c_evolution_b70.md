@@ -88,4 +88,4 @@ Figures: [accuracy](figures_3c/accuracy.png), [importance](figures_3c/importance
 
 ## Raw data
 
-`maps_l4_compact.json` (in [stage3/](../stage3/)) holds curves, importance, partial dependence and slices. Logs and the full result files are on the benchmark machine and will be uploaded with the other raw results.
+`maps_l4_compact.json` (in [stage3/](../stage3/)) holds curves, importance, partial dependence and slices. Full logs and result files: [raw/stage3/](../raw/stage3/).

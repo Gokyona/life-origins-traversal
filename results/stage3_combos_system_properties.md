@@ -48,4 +48,4 @@ Degradation, membrane turnover, leak and heritable variation hardly matter withi
 
 ## Files
 
-The full table (`combos_sp.csv.gz`, 3.4 MB, one row per combination) and the reduced table with only L3/L4 rows (`combos_sp_L3L4.csv.gz`, 0.5 MB, 81,721 rows) are on the benchmark machine. They will be uploaded with the other raw results.
+The full table (`combos_sp.csv.gz`, 3.4 MB, one row per combination) and the reduced table with only L3/L4 rows (`combos_sp_L3L4.csv.gz`, 0.5 MB, 81,721 rows) are in [raw/stage3/](../raw/stage3/), with the log and the full summary.

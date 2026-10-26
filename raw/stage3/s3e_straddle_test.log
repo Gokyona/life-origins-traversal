@@ -1,0 +1,28 @@
+ground truth 1000 x 32 in 20s; life 0.163; hard 23
+/run/media/bern/Data2T/myClaude/lot-s3/../lot-run/stage1b/bench1b.py:66: UserWarning: The balance properties of Sobol' points require n to be a power of 2.
+  x = qmc.Sobol(d=model.DIM, scramble=True, seed=1000 + rep).random(k).astype(np.float32)
+sobol_1seed rep 0: (8000, 0.962, 0.7391304347826086) (12s)
+engine3 rep 0: (8000, 0.974, 0.782608695652174) (45s)
+engine4_soft rep 0: (8000, 0.97, 0.6956521739130435) (45s)
+straddle rep 0: (8000, 0.965, 0.6521739130434783) (42s)
+straddle_soft rep 0: (8000, 0.971, 0.7391304347826086) (44s)
+
+Accuracy (all), mean ± sd over 1 reps
+| method | 2k | 4k | 8k |
+|---|---|---|---|
+| sobol_1seed | 0.952 ± 0.000 | 0.957 ± 0.000 | 0.962 ± 0.000 |
+| engine3 | 0.948 ± 0.000 | 0.964 ± 0.000 | 0.974 ± 0.000 |
+| engine4_soft | 0.948 ± 0.000 | 0.966 ± 0.000 | 0.970 ± 0.000 |
+| straddle | 0.948 ± 0.000 | 0.962 ± 0.000 | 0.965 ± 0.000 |
+| straddle_soft | 0.948 ± 0.000 | 0.960 ± 0.000 | 0.971 ± 0.000 |
+
+Accuracy (hard), mean ± sd over 1 reps
+| method | 2k | 4k | 8k |
+|---|---|---|---|
+| sobol_1seed | 0.739 ± 0.000 | 0.696 ± 0.000 | 0.739 ± 0.000 |
+| engine3 | 0.652 ± 0.000 | 0.652 ± 0.000 | 0.783 ± 0.000 |
+| engine4_soft | 0.652 ± 0.000 | 0.696 ± 0.000 | 0.696 ± 0.000 |
+| straddle | 0.652 ± 0.000 | 0.739 ± 0.000 | 0.652 ± 0.000 |
+| straddle_soft | 0.652 ± 0.000 | 0.609 ± 0.000 | 0.739 ± 0.000 |
+
+total 209s

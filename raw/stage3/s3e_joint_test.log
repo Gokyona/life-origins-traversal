@@ -1,0 +1,8 @@
+ground truth 2000 x 32 in 53s; life fractions L1 0.580 L2 0.356 L3 0.181 L4 0.115
+/run/media/bern/Data2T/myClaude/lot-s3/s3e_joint.py:123: UserWarning: The balance properties of Sobol' points require n to be a power of 2.
+  x = qmc.Sobol(d=model.DIM, scramble=True, seed=1000 + r).random(max(budgets)).astype(np.float32)
+rep 0 B=8k separate: L1 0.939/0.727 | L2 0.959/0.636 | L3 0.943/0.500 | L4 0.950/0.765 | nesting violations 0.0155 (18s)
+rep 0 B=8k    joint: L1 0.941/0.683 | L2 0.959/0.614 | L3 0.952/0.517 | L4 0.956/0.788 | nesting violations 0.0000 (5s)
+rep 0 B=16k separate: L1 0.948/0.734 | L2 0.958/0.591 | L3 0.951/0.500 | L4 0.959/0.841 | nesting violations 0.0200 (23s)
+rep 0 B=16k    joint: L1 0.948/0.734 | L2 0.957/0.614 | L3 0.953/0.550 | L4 0.959/0.832 | nesting violations 0.0000 (5s)
+total 119s

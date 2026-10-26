@@ -1,0 +1,19 @@
+L1 map from 32000 runs in 125s
+L2 map from 32000 runs in 122s
+L3 map from 32000 runs in 120s
+L4 map from 32000 runs in 108s
+grid: 786432 combinations scored in 475s; nesting breaks between maps: 7466
+spot check: {"n": 2000, "seeds": 16, "highest_level_agreement": 0.8535, "per_level_label_agreement": {"L1": 0.9775, "L2": 0.976, "L3": 0.938, "L4": 0.931}, "by_predicted_highest": {"0": {"n": 400, "same_highest_direct": 0.9675}, "1": {"n": 400, "same_highest_direct": 0.92}, "2": {"n": 400, "same_highest_direct": 0.94}, "3": {"n": 400, "same_highest_direct": 0.63}, "4": {"n": 400, "same_highest_direct": 0.81}}}
+wrote combos_sp.csv.gz: 786432 rows, 3381110 bytes
+wrote combos_sp_L3L4.csv.gz: 81721 rows, 530060 bytes
+{
+ "count_by_highest_level": {
+  "0": 364805,
+  "1": 245154,
+  "2": 94752,
+  "3": 32746,
+  "4": 48975
+ },
+ "nesting_breaks": 7466
+}
+total 525s

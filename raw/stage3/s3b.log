@@ -1,0 +1,129 @@
+
+L1: map from 32000 runs in 113s
+  target 0.95: 16 constraints, volume 0.170, map purity 0.951, direct check: share P>0.5 0.960, mean P 0.958
+       mu in [0.001, 0.1865]  -> purity 0.599
+       km in [0.1609, 30]  -> purity 0.627
+       mu in [0.001, 0.1159]  -> purity 0.662
+       mu in [0.001, 0.07208]  -> purity 0.702
+        S in [11.31, 512]  -> purity 0.727
+       km in [0.2587, 30]  -> purity 0.752
+       mu in [0.001, 0.04481]  -> purity 0.780
+        S in [16, 512]  -> purity 0.805
+       mu in [0.001, 0.02786]  -> purity 0.833
+       km in [0.4162, 30]  -> purity 0.856
+        S in [22.63, 512]  -> purity 0.872
+       mu in [0.001, 0.01732]  -> purity 0.899
+        S in [32, 512]  -> purity 0.913
+       mu in [0.001, 0.01077]  -> purity 0.933
+        d in [0, 0.01833]  -> purity 0.942
+       km in [0.6694, 30]  -> purity 0.951
+    free: sigma, K, food, dm, z1, z2
+  target 0.90: 13 constraints, volume 0.250, map purity 0.913, direct check: share P>0.5 0.914, mean P 0.914
+       mu in [0.001, 0.1865]  -> purity 0.599
+       km in [0.1609, 30]  -> purity 0.627
+       mu in [0.001, 0.1159]  -> purity 0.662
+       mu in [0.001, 0.07208]  -> purity 0.702
+        S in [11.31, 512]  -> purity 0.727
+       km in [0.2587, 30]  -> purity 0.752
+       mu in [0.001, 0.04481]  -> purity 0.780
+        S in [16, 512]  -> purity 0.805
+       mu in [0.001, 0.02786]  -> purity 0.833
+       km in [0.4162, 30]  -> purity 0.856
+        S in [22.63, 512]  -> purity 0.872
+       mu in [0.001, 0.01732]  -> purity 0.899
+        S in [32, 512]  -> purity 0.913
+    free: sigma, K, d, food, dm, z1, z2
+
+L2: map from 32000 runs in 103s
+  target 0.95: 20 constraints, volume 0.069, map purity 0.951, direct check: share P>0.5 0.946, mean P 0.945
+       km in [0.2587, 30]  -> purity 0.370
+       km in [0.4162, 30]  -> purity 0.403
+       mu in [0.001, 0.1865]  -> purity 0.430
+       mu in [0.001, 0.1159]  -> purity 0.462
+       km in [0.6694, 30]  -> purity 0.499
+     food in [0.2806, 1]  -> purity 0.529
+       mu in [0.001, 0.07208]  -> purity 0.559
+        K in [1, 3]  -> purity 0.679
+     food in [0.315, 1]  -> purity 0.702
+       km in [1.077, 30]  -> purity 0.745
+       mu in [0.001, 0.04481]  -> purity 0.773
+     food in [0.3536, 1]  -> purity 0.802
+        S in [11.31, 512]  -> purity 0.819
+       mu in [0.001, 0.02786]  -> purity 0.842
+     food in [0.3969, 1]  -> purity 0.865
+        S in [16, 512]  -> purity 0.878
+       km in [1.732, 30]  -> purity 0.904
+        S in [22.63, 512]  -> purity 0.918
+       mu in [0.001, 0.01732]  -> purity 0.939
+       km in [2.786, 30]  -> purity 0.953
+    free: sigma, d, dm, z1, z2
+  target 0.90: 17 constraints, volume 0.108, map purity 0.904, direct check: share P>0.5 0.914, mean P 0.911
+       km in [0.2587, 30]  -> purity 0.370
+       km in [0.4162, 30]  -> purity 0.403
+       mu in [0.001, 0.1865]  -> purity 0.430
+       mu in [0.001, 0.1159]  -> purity 0.462
+       km in [0.6694, 30]  -> purity 0.499
+     food in [0.2806, 1]  -> purity 0.529
+       mu in [0.001, 0.07208]  -> purity 0.559
+        K in [1, 3]  -> purity 0.679
+     food in [0.315, 1]  -> purity 0.702
+       km in [1.077, 30]  -> purity 0.745
+       mu in [0.001, 0.04481]  -> purity 0.773
+     food in [0.3536, 1]  -> purity 0.802
+        S in [11.31, 512]  -> purity 0.819
+       mu in [0.001, 0.02786]  -> purity 0.842
+     food in [0.3969, 1]  -> purity 0.865
+        S in [16, 512]  -> purity 0.878
+       km in [1.732, 30]  -> purity 0.904
+    free: sigma, d, dm, z1, z2
+
+L3: map from 32000 runs in 98s
+  target 0.95: 19 constraints, volume 0.019, map purity 0.957, direct check: share P>0.5 0.950, mean P 0.949
+       km in [0.4162, 11.59]  -> purity 0.250
+       mu in [0.001, 0.1159]  -> purity 0.294
+     food in [0.315, 1]  -> purity 0.342
+       mu in [0.001, 0.07208]  -> purity 0.364
+     food in [0.3536, 1]  -> purity 0.389
+       mu in [0.001, 0.04481]  -> purity 0.423
+       km in [0.6694, 7.208]  -> purity 0.506
+     food in [0.3969, 1]  -> purity 0.537
+       mu in [0.001, 0.02786]  -> purity 0.570
+     food in [0.4454, 1]  -> purity 0.605
+       mu in [0.001, 0.01732]  -> purity 0.636
+        S in [11.31, 512]  -> purity 0.652
+     food in [0.5, 1]  -> purity 0.683
+       km in [0.6694, 4.481]  -> purity 0.731
+        S in [11.31, 362]  -> purity 0.747
+        K in [1, 3]  -> purity 0.835
+        S in [11.31, 256]  -> purity 0.852
+       km in [1.077, 2.786]  -> purity 0.944
+        S in [11.31, 181]  -> purity 0.957
+    free: sigma, d, dm, z1, z2
+  target 0.90: 18 constraints, volume 0.021, map purity 0.943, direct check: share P>0.5 0.933, mean P 0.934
+       km in [0.4162, 11.59]  -> purity 0.250
+       mu in [0.001, 0.1159]  -> purity 0.294
+     food in [0.315, 1]  -> purity 0.342
+       mu in [0.001, 0.07208]  -> purity 0.364
+     food in [0.3536, 1]  -> purity 0.389
+       mu in [0.001, 0.04481]  -> purity 0.423
+       km in [0.6694, 7.208]  -> purity 0.506
+     food in [0.3969, 1]  -> purity 0.537
+       mu in [0.001, 0.02786]  -> purity 0.570
+     food in [0.4454, 1]  -> purity 0.605
+       mu in [0.001, 0.01732]  -> purity 0.636
+        S in [11.31, 512]  -> purity 0.652
+     food in [0.5, 1]  -> purity 0.683
+       km in [0.6694, 4.481]  -> purity 0.731
+        S in [11.31, 362]  -> purity 0.747
+        K in [1, 3]  -> purity 0.835
+        S in [11.31, 256]  -> purity 0.852
+       km in [1.077, 2.786]  -> purity 0.944
+    free: sigma, d, dm, z1, z2
+
+Between-cell variance of gene-0 fraction among functional cells (mean over 200 populations)
+       reference         None: var 0.05070 (sd 0.2252), P(L3) 1.00, functional 0.97
+       reference  equal_split: var 0.04312 (sd 0.2077), P(L3) 1.00, functional 0.98
+   S=256 sigma=2         None: var 0.01742 (sd 0.1320), P(L3) 0.32, functional 0.24
+   S=256 sigma=2  equal_split: var 0.00121 (sd 0.0348), P(L3) 0.01, functional 0.02
+
+total 480s

@@ -1,0 +1,66 @@
+ground truth 4000 x 64 in 249s: L1 fraction 0.527, L2 fraction 0.223, L3 fraction 0.102, L4 fraction 0.071
+L3 engine4_soft: (32000, 0.98325, 0.72) (117s)
+/run/media/bern/Data2T/myClaude/lot-s3/../lot-run/stage1b/bench1b.py:66: UserWarning: The balance properties of Sobol' points require n to be a power of 2.
+  x = qmc.Sobol(d=model.DIM, scramble=True, seed=1000 + rep).random(k).astype(np.float32)
+L3 sobol_1seed: (32000, 0.96725, 0.64) (39s)
+L3: final map accuracy 0.980; importance km 0.115, S 0.083, K 0.065, mu 0.048, food 0.044, sigma 0.041, d 0.019, lk 0.017, dm 0.012, eta 0.002, z1 -0.001, z2 -0.001
+L4 engine4_soft: (32000, 0.977, 0.7862903225806451) (110s)
+L4 sobol_1seed: (32000, 0.96875, 0.6814516129032258) (38s)
+L4: final map accuracy 0.981; importance km 0.072, S 0.053, K 0.045, mu 0.031, sigma 0.029, food 0.026, eta 0.025, lk 0.009, d 0.005, dm 0.003, z2 0.000, z1 -0.000
+
+life fraction (ground truth): {'L1': 0.52725, 'L2': 0.2225, 'L3': 0.10225, 'L4': 0.07125}
+life fraction with lk < 0.001 (n=401): {'L1': 0.5311720698254364, 'L2': 0.2593516209476309, 'L3': 0.13466334164588528, 'L4': 0.09975062344139651}
+nesting violations (ground truth): {'L2_not_L1': 0.0, 'L3_not_L2': 0.0, 'L4_not_L3': 0.0}
+share of L3 conditions that reach L4: 0.697
+L3 map: COMPASS 32k acc 0.983 / hard 0.720; Sobol 0.967 / 0.640; hard set 100; final map acc 0.980
+L4 map: COMPASS 32k acc 0.977 / hard 0.786; Sobol 0.969 / 0.681; hard set 248; final map acc 0.981
+lk sweep at the reference (400 pops; binomial sd <= 0.025):
+  lk=0.0000: 1.00 1.00 1.00 0.81
+  lk=0.0005: 1.00 1.00 1.00 0.81
+  lk=0.0010: 1.00 1.00 1.00 0.78
+  lk=0.0015: 1.00 1.00 1.00 0.85
+  lk=0.0020: 1.00 1.00 1.00 0.81
+  lk=0.0025: 1.00 1.00 1.00 0.78
+  lk=0.0030: 1.00 1.00 1.00 0.80
+  lk=0.0035: 1.00 1.00 1.00 0.77
+  lk=0.0040: 1.00 1.00 1.00 0.71
+  lk=0.0045: 1.00 1.00 1.00 0.75
+  lk=0.0050: 1.00 1.00 1.00 0.68
+  lk=0.0055: 1.00 1.00 1.00 0.62
+  lk=0.0060: 1.00 0.97 0.97 0.60
+  lk=0.0065: 1.00 0.90 0.90 0.53
+  lk=0.0070: 1.00 0.78 0.78 0.38
+  lk=0.0075: 1.00 0.58 0.58 0.32
+  lk=0.0080: 1.00 0.42 0.42 0.22
+  lk=0.0085: 1.00 0.25 0.25 0.12
+  lk=0.0090: 1.00 0.16 0.16 0.07
+  lk=0.0095: 1.00 0.08 0.08 0.06
+  lk=0.0100: 1.00 0.02 0.02 0.02
+read-offs: {
+ "L3": {
+  "S_max_by_sigma_lk0": {
+   "1.0": null,
+   "1.2": null,
+   "1.5": 337.7940251578612,
+   "2.0": 238.85644583342264,
+   "2.5": 194.01172051333108,
+   "3.0": 168.89701257893057
+  }
+ },
+ "L4": {
+  "S_max_by_sigma_lk0": {
+   "1.0": null,
+   "1.2": 415.87322693439256,
+   "1.5": 194.01172051333108,
+   "2.0": 111.43047210190396,
+   "2.5": 84.44850628946529,
+   "3.0": 73.51669471981027
+  },
+  "lk_crit_direct": 0.007
+ },
+ "L2": {
+  "lk_crit_direct": 0.008
+ }
+}
+
+total 654s

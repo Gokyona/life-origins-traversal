@@ -91,4 +91,4 @@ Bryan, B., Schneider, J., Nichol, R. C., Miller, C. J., Genovese, C. R. & Wasser
 
 ## Raw data
 
-`s3e_joint_results.json` and `s3e_straddle_results.json` (in [stage3/](../stage3/)) hold every repetition. Logs are on the benchmark machine and will be uploaded with the other raw results.
+`s3e_joint_results.json` and `s3e_straddle_results.json` (in [stage3/](../stage3/)) hold every repetition. Logs and the small test runs: [raw/stage3/](../raw/stage3/).

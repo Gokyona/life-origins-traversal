@@ -84,4 +84,4 @@ At the reference, copying and mutation noise alone produce most of the variation
 
 ## Raw data
 
-`s3a.json` and `s3a.log` are on the benchmark machine and will be added.
+`s3a.json` and `s3a.log`: [raw/stage3/](../raw/stage3/).

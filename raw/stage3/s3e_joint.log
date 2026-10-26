@@ -1,0 +1,27 @@
+ground truth 4000 x 64 in 200s; life fractions L1 0.558 L2 0.338 L3 0.173 L4 0.112
+/run/media/bern/Data2T/myClaude/lot-s3/s3e_joint.py:134: UserWarning: The balance properties of Sobol' points require n to be a power of 2.
+  x = qmc.Sobol(d=model.DIM, scramble=True, seed=1000 + r).random(max(budgets)).astype(np.float32)
+sobol rep 0 B=8k separate: L1 0.938/0.710 | L2 0.958/0.585 | L3 0.952/0.628 | L4 0.955/0.790 | nesting violations 0.0103 (17s)
+sobol rep 0 B=8k    joint: L1 0.936/0.678 | L2 0.959/0.636 | L3 0.953/0.600 | L4 0.955/0.779 | nesting violations 0.0000 (4s)
+sobol rep 0 B=16k separate: L1 0.949/0.719 | L2 0.962/0.593 | L3 0.950/0.614 | L4 0.959/0.817 | nesting violations 0.0143 (18s)
+sobol rep 0 B=16k    joint: L1 0.942/0.688 | L2 0.961/0.619 | L3 0.956/0.621 | L4 0.962/0.823 | nesting violations 0.0000 (6s)
+sobol rep 0 B=32k separate: L1 0.952/0.722 | L2 0.966/0.644 | L3 0.964/0.690 | L4 0.963/0.828 | nesting violations 0.0130 (27s)
+sobol rep 0 B=32k    joint: L1 0.954/0.729 | L2 0.971/0.669 | L3 0.966/0.641 | L4 0.964/0.828 | nesting violations 0.0000 (10s)
+/run/media/bern/Data2T/myClaude/lot-s3/s3e_joint.py:134: UserWarning: The balance properties of Sobol' points require n to be a power of 2.
+  x = qmc.Sobol(d=model.DIM, scramble=True, seed=1000 + r).random(max(budgets)).astype(np.float32)
+sobol rep 1 B=8k separate: L1 0.941/0.722 | L2 0.958/0.593 | L3 0.946/0.621 | L4 0.952/0.737 | nesting violations 0.0138 (18s)
+sobol rep 1 B=8k    joint: L1 0.938/0.716 | L2 0.955/0.559 | L3 0.947/0.607 | L4 0.957/0.790 | nesting violations 0.0000 (4s)
+sobol rep 1 B=16k separate: L1 0.948/0.748 | L2 0.963/0.602 | L3 0.949/0.655 | L4 0.959/0.797 | nesting violations 0.0152 (20s)
+sobol rep 1 B=16k    joint: L1 0.946/0.732 | L2 0.961/0.593 | L3 0.956/0.634 | L4 0.962/0.837 | nesting violations 0.0000 (5s)
+sobol rep 1 B=32k separate: L1 0.954/0.735 | L2 0.972/0.644 | L3 0.959/0.703 | L4 0.962/0.808 | nesting violations 0.0145 (29s)
+sobol rep 1 B=32k    joint: L1 0.953/0.726 | L2 0.968/0.712 | L3 0.961/0.703 | L4 0.969/0.859 | nesting violations 0.0000 (8s)
+sobol rep 2 B=8k separate: L1 0.932/0.609 | L2 0.960/0.627 | L3 0.944/0.641 | L4 0.951/0.744 | nesting violations 0.0100 (16s)
+sobol rep 2 B=8k    joint: L1 0.932/0.631 | L2 0.957/0.593 | L3 0.951/0.600 | L4 0.957/0.795 | nesting violations 0.0000 (5s)
+sobol rep 2 B=16k separate: L1 0.947/0.729 | L2 0.963/0.610 | L3 0.954/0.641 | L4 0.958/0.779 | nesting violations 0.0123 (25s)
+sobol rep 2 B=16k    joint: L1 0.947/0.710 | L2 0.965/0.653 | L3 0.956/0.628 | L4 0.965/0.841 | nesting violations 0.0000 (6s)
+sobol rep 2 B=32k separate: L1 0.955/0.748 | L2 0.968/0.678 | L3 0.964/0.697 | L4 0.962/0.821 | nesting violations 0.0143 (35s)
+sobol rep 2 B=32k    joint: L1 0.956/0.770 | L2 0.973/0.686 | L3 0.967/0.683 | L4 0.965/0.821 | nesting violations 0.0000 (12s)
+COMPASS L4 points: 32000 in 94s
+compass_L4 rep 0 B=32k separate: L1 0.946/0.700 | L2 0.978/0.805 | L3 0.967/0.669 | L4 0.968/0.841 | nesting violations 0.0123 (35s)
+compass_L4 rep 0 B=32k    joint: L1 0.946/0.688 | L2 0.972/0.771 | L3 0.974/0.772 | L4 0.971/0.857 | nesting violations 0.0000 (16s)
+total 717s

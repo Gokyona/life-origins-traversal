@@ -100,4 +100,4 @@ Figures: [accuracy](figures_3d/accuracy.png), [importance](figures_3d/importance
 
 ## Raw data
 
-`maps_sp_compact.json` (in [stage3/](../stage3/)) holds curves, importance, partial dependence, slices, the lk sweep and the read-offs. Logs and full result files are on the benchmark machine and will be uploaded with the other raw results.
+`maps_sp_compact.json` (in [stage3/](../stage3/)) holds curves, importance, partial dependence, slices, the lk sweep and the read-offs. Full logs and result files: [raw/stage3/](../raw/stage3/).

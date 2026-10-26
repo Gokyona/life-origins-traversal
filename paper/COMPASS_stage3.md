@@ -189,7 +189,7 @@ Stage 4 replaces the system-level conditions with the 13 environmental variables
 
 ## 6. Reproducibility
 
-Code is in [`stage3/`](../stage3). It imports the stage 2 models from `stage2/` and the stage 1 harness from `stage1b/`. Each stage report lists its commands, run times (Toronto time) and raw numbers. Compact result files are in `stage3/` (`maps_l4_compact.json`, `maps_sp_compact.json`, `combos_sp_summary.json`, `s3e_joint_results.json`, `s3e_straddle_results.json`). Full logs from the benchmark machine will be uploaded with the other raw results.
+Code is in [`stage3/`](../stage3). It imports the stage 2 models from `stage2/` and the stage 1 harness from `stage1b/`. Each stage report lists its commands, run times (Toronto time) and raw numbers. Compact result files are in `stage3/` (`maps_l4_compact.json`, `maps_sp_compact.json`, `combos_sp_summary.json`, `s3e_joint_results.json`, `s3e_straddle_results.json`). Full logs and result files are in [`raw/stage3/`](../raw/stage3).
 
 ## Acknowledgements
 

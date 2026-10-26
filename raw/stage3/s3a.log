@@ -1,0 +1,59 @@
+
+== None: ground truth in 149s
+  L1: life 0.564 gained 0.000 lost 0.000 | COMPASS 16k acc 0.966 hard 0.775 (n=302) (74s)
+  L2: life 0.310 gained 0.000 lost 0.000 | COMPASS 16k acc 0.981 hard 0.663 (n=89) (68s)
+  L3: life 0.162 gained 0.000 lost 0.000 | COMPASS 16k acc 0.979 hard 0.757 (n=107) (67s)
+
+== equal_split: ground truth in 119s
+  L1: life 0.575 gained 0.026 lost 0.015 | COMPASS 16k acc 0.965 hard 0.764 (n=309) (75s)
+  L2: life 0.325 gained 0.026 lost 0.012 | COMPASS 16k acc 0.981 hard 0.688 (n=80) (68s)
+  L3: life 0.167 gained 0.019 lost 0.014 | COMPASS 16k acc 0.971 hard 0.549 (n=102) (69s)
+
+== no_compartments: ground truth in 10s
+  L1: life 0.159 gained 0.039 lost 0.445 | COMPASS 16k acc 0.990 hard 0.840 (n=119) (60s)
+  L2: life 0.092 gained 0.045 lost 0.264 | COMPASS 16k acc 0.988 hard 0.759 (n=79) (56s)
+  L3: undefined for this knockout
+
+== no_selection: ground truth in 127s
+  L1: life 0.538 gained 0.002 lost 0.028 | COMPASS 16k acc 0.962 hard 0.774 (n=359) (68s)
+  L2: life 0.201 gained 0.000 lost 0.109 | COMPASS 16k acc 0.985 hard 0.800 (n=125) (67s)
+  L3: life 0.112 gained 0.000 lost 0.050 | COMPASS 16k acc 0.984 hard 0.753 (n=85) (67s)
+
+== no_coupling: ground truth in 156s
+  L1: life 0.601 gained 0.164 lost 0.127 | COMPASS 16k acc 0.976 hard 0.848 (n=283) (70s)
+  L2: life 0.442 gained 0.232 lost 0.100 | COMPASS 16k acc 0.984 hard 0.867 (n=210) (68s)
+  L3: undefined for this knockout
+
+== no_decay: ground truth in 168s
+  L1: life 0.773 gained 0.219 lost 0.009 | COMPASS 16k acc 0.976 hard 0.786 (n=234) (68s)
+  L2: life 0.463 gained 0.155 lost 0.002 | COMPASS 16k acc 0.983 hard 0.808 (n=146) (73s)
+  L3: life 0.288 gained 0.136 lost 0.009 | COMPASS 16k acc 0.970 hard 0.755 (n=188) (67s)
+
+== K1: ground truth in 151s
+  L1: life 0.783 gained 0.224 lost 0.005 | COMPASS 16k acc 0.977 hard 0.819 (n=265) (66s)
+  L2: life 0.488 gained 0.179 lost 0.001 | COMPASS 16k acc 0.995 hard 0.855 (n=69) (77s)
+  L3: life 0.185 gained 0.070 lost 0.046 | COMPASS 16k acc 0.993 hard 0.817 (n=93) (71s)
+
+Life fraction per level (ground truth, p > 0.5); gained / lost vs baseline in brackets
+| knockout | L1 | L2 | L3 |
+|---|---|---|---|
+| None | 0.564 | 0.310 | 0.162 |
+| equal_split | 0.575 (+0.026 / -0.015) | 0.325 (+0.026 / -0.012) | 0.167 (+0.019 / -0.014) |
+| no_compartments | 0.159 (+0.039 / -0.445) | 0.092 (+0.045 / -0.264) | undefined |
+| no_selection | 0.538 (+0.002 / -0.028) | 0.201 (+0.000 / -0.109) | 0.112 (+0.000 / -0.050) |
+| no_coupling | 0.601 (+0.164 / -0.127) | 0.442 (+0.232 / -0.100) | undefined |
+| no_decay | 0.773 (+0.219 / -0.009) | 0.463 (+0.155 / -0.002) | 0.288 (+0.136 / -0.009) |
+| K1 | 0.783 (+0.224 / -0.005) | 0.488 (+0.179 / -0.001) | 0.185 (+0.070 / -0.046) |
+
+COMPASS map accuracy at the final budget (all / hard)
+| knockout | L1 | L2 | L3 |
+|---|---|---|---|
+| None | 0.966 / 0.775 | 0.981 / 0.663 | 0.979 / 0.757 |
+| equal_split | 0.965 / 0.764 | 0.981 / 0.688 | 0.971 / 0.549 |
+| no_compartments | 0.990 / 0.840 | 0.988 / 0.759 | - |
+| no_selection | 0.962 / 0.774 | 0.985 / 0.800 | 0.984 / 0.753 |
+| no_coupling | 0.976 / 0.848 | 0.984 / 0.867 | - |
+| no_decay | 0.976 / 0.786 | 0.983 / 0.808 | 0.970 / 0.755 |
+| K1 | 0.977 / 0.819 | 0.995 / 0.855 | 0.993 / 0.817 |
+
+total 2180s
