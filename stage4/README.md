@@ -12,7 +12,7 @@ Code for [stage 4](../docs/stage4_plan.md), the bottom-up environment search. Ea
 | `validate4c1.py` | 4c-1 validation tests (a)–(g) | 36ea4eb3b3780aa88889f6e01409f500 |
 | `compare_runs.py` | kill-and-resume test: compares an interrupted and an uninterrupted run | b17c20ac33c740f0f5ca35c7752c93ad |
 | `kill_resume_test.sh` | runs that test | 91f5a7bacc7be48b28e0797e43aa5a32 |
-| `resume_all.sh` | restarts every unfinished job with `--resume` after a power cut (run by hand; starts jobs without a memory scope, so the watchdog was used instead after the 26 Oct power cut) | 07a4a60288e8d15753f63d3ca67e99bb |
+| `resume_all.sh` | after a power cut, (re)starts the watchdog in its memory-limited scope; the watchdog then resumes the queue one job at a time (run by hand; the 4c runs used earlier versions 15b7efa5 and 07a4a602, in git history) | ee47bc0dfdeb25db60872c29dc2264f7 |
 | `watchdog.sh` | restarts a queued job that died or stalled, then starts the next; each job in its own memory-limited scope | c1cf591cb79bc86eb040cf1eee933082 |
 | `report4c1.py` | text report of a 4c-1 map result | fdcf029620071b05e9ee4b0c7f3d40f3 |
 | `sens4c1_hydrolysis.py` | hydrolysis-law sensitivity check (pH and Mg²⁺ floors) | 9aba9c99439f74ed3a7d6b27ade6a436 |
