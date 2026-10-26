@@ -23,7 +23,7 @@ Each range must cover the real settings that origin-of-life scenarios discuss, w
 ## Open items
 
 - Open the primary sea-water reference composition (Millero et al. 2008) to replace the lecture-table values.
-- Find measured ranges of prebiotic feedstock supply where they exist, for example cyanide production in the cyanosulfidic scenario (Patel et al. 2015, volume and pages still to be confirmed).
+- Find measured ranges of prebiotic feedstock supply where they exist, for example cyanide production in the cyanosulfidic scenario (Patel et al. 2015, *Nature Chemistry* 7(4), 301–307, doi:10.1038/nchem.2202; bibliographic record checked 26 October 2026, paper not yet opened, so no supply value is taken from it yet).
 - Find measured residence times for vent channels and hot-spring pools.
 
 ## References
