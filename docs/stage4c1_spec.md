@@ -72,7 +72,17 @@ Per run, the layer records:
 
 The map is a COMPASS joint nested map of E1 and E2 over all of layer A plus the layer C constants of this layer (about 25 dimensions). It uses the dimension handling chosen from the 4a scaling test. The step finishes with a cost measurement per run, importance, partial dependence, and two slices: temperature × cycling and pH × Mg²⁺.
 
-## 6. Cost target
+## 6. Checkpoints and resuming (all stage 4 programs)
+
+The owner requires that a power cut loses at most a few minutes of work, and that computation continues afterwards (26 October 2026).
+
+- **Atomic saves.** Every result file is written to a temporary file and then renamed, so a cut never leaves a half-written file. Finished work is appended as one line per completed batch (JSON Lines) and flushed to disk (fsync).
+- **Checkpoints at least every 5 minutes**, and at the end of every COMPASS round. A checkpoint holds the engine state: points simulated so far and their outcomes, the used-point mask, the round number and the random-generator states.
+- **Resume.** Every script takes `--resume`. On restart it reads the last checkpoint and the result lines, skips finished work, and continues. Seeds are derived from (config, repetition, round, batch), so a resumed run gives the same numbers as an uninterrupted one. A small test checks this: kill a run mid-way, resume it, and compare with an uninterrupted run.
+- **One command to restart everything.** `lot-s4/resume_all.sh` restarts every unfinished job with `--resume`. Starting it automatically at boot is a change to the machine, and needs the owner's approval first.
+- **Off-machine copies.** Finished result files are copied to the repository after each step, so a disk failure on the benchmark machine cannot lose published results.
+
+## 7. Cost target
 
 Batch the runs on the GPU like the Part I models. The target is ≤ 50 ms per run, so that a 100,000-run map takes about 1.5 hours on the B70. If it is much slower, reduce N or the slot count for screening runs (multi-fidelity), and keep full runs for points near the boundary.
 
