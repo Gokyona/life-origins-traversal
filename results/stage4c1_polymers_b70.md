@@ -124,6 +124,31 @@ All other inputs are at or below 0.011. Mineral availability and type, adsorptio
 
 The published numbers are from that rerun. The GPU stayed at 68–78 °C, with no thermal pause.
 
+## Which conclusions follow directly from the assumptions
+
+"Bottom-up" means nothing living is put in, but the chemical rules are. Some conclusions are therefore fixed by those rules, and the simulation only gives them a size. We sort them into three groups:
+- **built in:** the direction was fixed when the rules were written;
+- **partly built in:** the mechanism is derived, but its rank or strength depends on the chosen ranges;
+- **derived:** no rule states it; it appears only when several processes interact.
+
+| conclusion | assumption it mainly comes from | verdict |
+|---|---|---|
+| cold water is better | hydrolysis rises steeply with temperature; condensation has no temperature dependence in this layer | built in |
+| alkaline water is worse, acid water harmless | the Li & Breaker law covers base catalysis only | built in (the acid side is untested) |
+| composition follows the feedstock | two independent chemistries with the same condensation rate | built in |
+| minerals hardly matter | minerals act only through adsorption and protection here, and adsorbed fractions are mostly small in the chosen ranges | built in for this layer |
+| salinity has no effect | salinity enters only through a hydrolysis exponent spread symmetrically over −1 to 1 | built in |
+| available time hardly matters | time compression: pools start in their state after the available time | built in |
+| an energy source is required | monomer synthesis and activation are proportional to the energy terms | built in |
+| the shares 44% (E1) and 16% (E2) | ranges, log-uniform sampling and detector thresholds | built in as absolute numbers |
+| residence time ranks first | washout competing with growth is derived; the rank depends on its five-decade range | partly built in |
+| hot water favours peptide-like chains | the two measured hydrolysis laws | partly built in |
+| cycling helps but does not rescue hot water | lower water activity and faster growth when dry are built in; the size of the effect is derived | partly built in |
+| saturation of thermophoretic concentration at about 100× | interaction with other rate limits | derived |
+| where the E2 boundary lies in residence time × temperature × feedstock × energy | competition of growth, hydrolysis and washout | derived |
+
+The shares of the space should be read only within the model. The layer's main result is where the boundary lies: no single rule shows that. Layer 4c-2 adds an activation energy for condensation and mineral catalysis, to test the first and fourth rows.
+
 ## Limits
 
 - **Hydrolysis outside the measured range.** The Li & Breaker law covers base catalysis only, and Mg²⁺ from 5 to 50 mM. In acid water a different, acid-catalysed path, which the law leaves out, can dominate; below 5 mM Mg²⁺ the law's rate falls towards zero. The map may therefore make nucleotide chains look too stable in acid or Mg-poor water. A sensitivity run put floors on both terms: pH at 5 and the Mg²⁺ term at 5 mM. It used the same 2,000 environments with 8 paired seeds each.
