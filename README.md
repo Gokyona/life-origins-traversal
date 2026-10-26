@@ -74,7 +74,7 @@ Stages 0–3 build COMPASS and test it on a series of increasingly hard model sy
 ### Part II: the environment search (stage 4 on)
 
 - [x] [Review of the condition list](docs/condition_review.md): the original 12 conditions were neither sufficient nor independent; replaced by 13 primary environmental variables (approved 25 October 2026)
-- [ ] Stage 4 — environment → chemistry → life model with only the 13 environmental variables as inputs, sub-models calibrated against experiments, then COMPASS maps ([sketch](docs/stage4_sketch.md))
+- [ ] Stage 4 — environment → chemistry → life model with only the 13 environmental variables as inputs, sub-models calibrated against experiments, then COMPASS maps ([plan](docs/stage4_plan.md), [sketch](docs/stage4_sketch.md))
 - [ ] Volunteer computing — hand out non-overlapping Sobol index ranges as work units so anyone can contribute GPU time
 
 ## Paper
