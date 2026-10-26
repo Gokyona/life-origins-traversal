@@ -23,6 +23,7 @@ Code for [stage 4](../docs/stage4_plan.md), the bottom-up environment search. Ea
 | file | content | md5 |
 |---|---|---|
 | `map4c1_result.json` | 4c-1 map, published version (ground truth rerun with the fixed code) | c6358fc9afd3880542cb7baa93826e62 |
+| `map4c1_result_original.json` | 4c-1 map as first run (first 1,056 ground-truth environments with the code before the Poisson fix) | dd368e1582539a2a49be8072117244e7 |
 | `sens4c1_result.json` | hydrolysis-law sensitivity | ba13573fd9851d25fb32fad1d45e63c8 |
 | `validate4c1_final.json` | validation tests (a)–(f), final detector code | 0d9e71be8f9788d1cbba14ce5de5e8bb |
 | `validate4c1.json` | earlier validation run, includes cost test (g) | 2ee04becd6a7300dba1391298f6da833 |
