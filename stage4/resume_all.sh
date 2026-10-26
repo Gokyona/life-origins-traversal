@@ -8,8 +8,9 @@ PY=${PY:-/home/bern/ComfyUI/venv/bin/python3}
 for cfg in */config.json; do
   d=$(dirname "$cfg")
   [ -f "$d/result.json" ] && continue
-  if pgrep -f "run4c1_map.py --out-dir $d " >/dev/null; then echo "$d: already running"; continue; fi
+  case "$d" in sens4c1*) script=sens4c1_hydrolysis.py ;; *) script=run4c1_map.py ;; esac
+  if pgrep -f "$script --out-dir $d " >/dev/null; then echo "$d: already running"; continue; fi
   args=$($PY -c "import json;c=json.load(open('$cfg'));print(' '.join(f'--{k.replace(\"_\",\"-\")} {v}' for k,v in c.items()))")
-  echo "$(date '+%F %T') resuming $d: $args" | tee -a resume_all.log
-  nohup $PY -u run4c1_map.py --out-dir "$d" $args --resume >> "$d/run.log" 2>&1 &
+  echo "$(date '+%F %T') resuming $d with $script: $args" | tee -a resume_all.log
+  nohup $PY -u $script --out-dir "$d" $args --resume >> "$d/run.log" 2>&1 &
 done

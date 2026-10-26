@@ -241,6 +241,24 @@ def _rate(x):
     return torch.nan_to_num(x, nan=0.0, posinf=1e30).clamp(min=0.0).contiguous()
 
 
+POISSON_EXACT_MAX = 1e4   # above this rate a Poisson draw uses the normal approximation
+POISSON_CAP = 1e7         # larger rates are capped (pools and slots are far smaller anyway)
+
+
+def _poisson(lam, gen, aux):
+    """Poisson draws that stay fast for huge rates: exact up to POISSON_EXACT_MAX, normal
+    approximation (from the auxiliary generator) above, rates capped at POISSON_CAP. A huge
+    rate (initiation can reach 1e30 with extreme concentration factors) made the XPU sampler
+    run for many minutes."""
+    lam = torch.clamp(_rate(lam), max=POISSON_CAP)
+    x = torch.poisson(torch.clamp(lam, max=POISSON_EXACT_MAX), generator=gen)
+    big = lam > POISSON_EXACT_MAX
+    if bool(big.any()):
+        z = torch.randn(lam.shape, device=lam.device, generator=aux)
+        x = torch.where(big, torch.clamp(torch.round(lam + torch.sqrt(lam) * z), min=0.0), x)
+    return x
+
+
 def _mask(nbits):
     one = torch.ones_like(nbits)
     return torch.where(nbits >= 63, torch.full_like(nbits, -1), torch.bitwise_left_shift(one, nbits) - 1)
@@ -259,6 +277,8 @@ def simulate(u, generator, fidelity="screen", record=False, override=None, init=
     """
     dev = u.device
     gen = generator
+    aux = torch.Generator(device=dev)
+    aux.manual_seed(generator.initial_seed() + 7919)
     N, S, n_steps = FIDELITY[fidelity] if isinstance(fidelity, str) else fidelity
     B = u.shape[0]
     R = B * N
@@ -295,9 +315,9 @@ def simulate(u, generator, fidelity="screen", record=False, override=None, init=
     run_of_row = torch.arange(R, device=dev) // N
     # state
     lam0 = f32(pools0)[run_of_row]                                       # [R,2,3]
-    F = torch.poisson(_rate(lam0[:, :, 0]), generator=gen)
-    M = torch.poisson(_rate(lam0[:, :, 1]), generator=gen)
-    Ms = torch.poisson(_rate(lam0[:, :, 2]), generator=gen)
+    F = _poisson(lam0[:, :, 0], gen, aux)
+    M = _poisson(lam0[:, :, 1], gen, aux)
+    Ms = _poisson(lam0[:, :, 2], gen, aux)
     L = torch.zeros(R, S, dtype=torch.int64, device=dev)
     seq = torch.zeros(R, S, dtype=torch.int64, device=dev)
     chem = torch.zeros(R, S, dtype=torch.int64, device=dev)
@@ -345,7 +365,7 @@ def simulate(u, generator, fidelity="screen", record=False, override=None, init=
         # 1. linear monomer network (exact over dt), states F, M, M*, out
         P, J = _expm_pair(_linear_q(E, kact, kdeact, w), dt)
         Pd, Jd = f32(P)[run_of_row], f32(J)[run_of_row]                  # [R,4,4]
-        arrivals = torch.poisson(_rate(f32(p["feed"][:, None] * share * dt[:, None])[run_of_row]), generator=gen)
+        arrivals = _poisson(f32(p["feed"][:, None] * share * dt[:, None])[run_of_row], gen, aux)
         newF = torch.zeros_like(F); newM = torch.zeros_like(M); newMs = torch.zeros_like(Ms)
         for c in range(2):
             tot = torch.zeros(R, 4, device=dev)
@@ -422,7 +442,7 @@ def simulate(u, generator, fidelity="screen", record=False, override=None, init=
         fc = free.sum(1)
         n_right = need.sum(1)
         rate_init = kc * ceffr * gm * (Ms / V) * Ms / 2 * dtr[:, None] * f32(init_f)[run_of_row][:, None]
-        n_init = torch.poisson(_rate(rate_init), generator=gen)
+        n_init = _poisson(rate_init, gen, aux)
         n_init = torch.minimum(n_init, torch.floor(Ms / 2))
         room = torch.clamp(fc - n_right, min=0).float()
         tot_init = n_init.sum(1)
