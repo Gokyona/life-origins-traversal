@@ -68,6 +68,7 @@ Per run, the layer records:
 - the final chain-length histogram;
 - the fraction of sites with any chain ≥ L_min;
 - E1 and E2 as yes/no outcomes.
+- **Composition record** (for the composition map; see the plan, Section 2.3): monomer shares by alphabet type, chain-length histogram, sequence diversity (number of distinct sequences and Shannon entropy per length class), share of chains in adsorbed (mineral) state, and the time at which E1 and E2 were first reached. Later layers add their own fields to the same record.
 
 The map is a COMPASS joint nested map of E1 and E2 over all of layer A plus the layer C constants of this layer (about 25 dimensions). It uses the dimension handling chosen from the 4a scaling test. The step finishes with a cost measurement per run, importance, partial dependence, and two slices: temperature × cycling and pH × Mg²⁺.
 

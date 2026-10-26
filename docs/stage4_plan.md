@@ -8,6 +8,11 @@ Part I built and validated COMPASS on models whose conditions describe the chemi
 
 > **Given a local environment, how likely is it that chemistry there reaches each level of life?**
 
+Stage 4 delivers two maps (owner's request, 26 October 2026):
+
+1. **Environment map:** for every combination of environmental conditions, the probability of reaching each level of life.
+2. **Composition map:** for the environments where life arises, what the first living systems are made of, and how much this varies between runs.
+
 The only inputs are the 13 approved environmental variables (layer A). **Nothing living is put into the model.** Monomers, polymers, catalysts, templates, membranes and cells must all arise in the simulation from simple starting materials. The Part I protocell model is no longer the core of the simulation. It serves only as a reference: where the bottom-up chemistry happens to produce protocells, their behaviour should agree with Part I.
 
 ## 2. Architecture
@@ -64,6 +69,19 @@ All rates come from layer A through the rate laws. No rule says "replicate", "di
 
 The joint nested map of stage 3e handles all seven levels.
 
+### 2.3 Composition record
+
+Because every molecule is simulated, each run also reports what emerged, at almost no extra cost:
+
+- **Monomers:** which alphabet dominates (nucleotide-like, amino-acid-like, mixed) and in what shares.
+- **Polymers:** length distribution, sequence diversity, the share of chains that act as templates or catalysts.
+- **Catalytic network:** whether an autocatalytic set exists, its size, which reactions it covers, and whether minerals take part.
+- **Membranes:** amphiphile chain lengths, vesicle sizes, how much of the population is enclosed.
+- **Order of emergence:** which came first in that run: polymers, catalytic network, templates or membranes ("metabolism first", "replicator first", "compartment first", or together).
+- **Content of the first protocells (L3):** what a typical successful vesicle contains.
+
+The composition map is built from these records. Multi-output maps are trained over layer A in the regions where life arises. The successful environments are then clustered into types (for example "hot, cycling pool type" or "alkaline vent type"), each with its typical composition. Outcomes are stochastic, so each point of the map gives a distribution of compositions, not a single answer. That distribution is itself a result: it separates compositions that are forced by the environment from those that are matters of chance.
+
 ## 3. Ranges of the layer A variables (provisional)
 
 The ranges cover the stated scope: liquid water, carbon chemistry, the surface or sea floor of an Earth-like planet. Stage 5 will drop this scope and look at other solvents and environments, including chemistries not based on carbon. Step 4a fixes them from published sources, and every value is checked against the original source.
@@ -115,7 +133,7 @@ Each law gets a short report giving the law, the parameter sources, the experime
 
 At each layer: measure the cost per simulation, run COMPASS on that layer's levels, and publish a short report.
 
-**4d. Full maps.** COMPASS maps for E1–E3 and L1–L4 over layer A + layer C with the joint nested map. Also: importance of each environmental variable; minimal sufficient environments; environmental knockouts (no cycling, no minerals, no concentration mechanism).
+**4d. Full maps.** COMPASS maps for E1–E3 and L1–L4 over layer A + layer C with the joint nested map. Composition maps over the life regions, with clustering into environment types and the spread of compositions per point. Also: importance of each environmental variable; minimal sufficient environments; environmental knockouts (no cycling, no minerals, no concentration mechanism).
 
 **4e. Real environment classes.** Report the maps for real settings, each defined as a region of layer A from the literature:
 - deep-sea alkaline vents;
@@ -163,7 +181,8 @@ For each, we ask which levels are reachable and which variable limits it.
 
 1. **Depth of the model: fully bottom-up** (owner's choice, 25 October 2026, 23:54). No living structure is put in; everything must emerge.
 2. **Extended ladder E1–E3:** included.
-3. **Order:** layer by layer as in 4c, starting with polymer chemistry, unless the owner prefers to start from a particular scenario.
+3. **Two deliverables:** environment map and composition map (owner's request, 26 October 2026, 00:30).
+4. **Order:** layer by layer as in 4c, starting with polymer chemistry, unless the owner prefers to start from a particular scenario.
 
 ## References
 
