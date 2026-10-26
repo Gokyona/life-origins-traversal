@@ -66,7 +66,7 @@ The joint nested map of stage 3e handles all seven levels.
 
 ## 3. Ranges of the layer A variables (provisional)
 
-The ranges cover the stated scope: liquid water, carbon chemistry, the surface or sea floor of an Earth-like planet. Step 4a fixes them from published sources, and every value is checked against the original source.
+The ranges cover the stated scope: liquid water, carbon chemistry, the surface or sea floor of an Earth-like planet. Stage 5 will drop this scope and look at other solvents and environments, including chemistries not based on carbon. Step 4a fixes them from published sources, and every value is checked against the original source.
 
 | variable | provisional range or encoding |
 |---|---|

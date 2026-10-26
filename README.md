@@ -75,6 +75,7 @@ Stages 0–3 build COMPASS and test it on a series of increasingly hard model sy
 
 - [x] [Review of the condition list](docs/condition_review.md): the original 12 conditions were neither sufficient nor independent; replaced by 13 primary environmental variables (approved 25 October 2026)
 - [ ] Stage 4 — fully bottom-up artificial chemistry (monomers → polymers → catalysts and templates → vesicles → protocells, nothing living put in) driven only by the 13 environmental variables, rate laws calibrated against experiments, then COMPASS maps ([plan](docs/stage4_plan.md), [sketch](docs/stage4_sketch.md))
+- [ ] Stage 5 — beyond the stage 4 scope: other solvents and planetary or cosmic environments, possibly life not based on carbon
 - [ ] Volunteer computing — hand out non-overlapping Sobol index ranges as work units so anyone can contribute GPU time
 
 ## Paper
