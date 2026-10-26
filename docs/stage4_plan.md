@@ -1,6 +1,6 @@
-# Stage 4 plan: which environments give rise to life
+# Stage 4 plan: which environments give rise to life (bottom-up)
 
-**Status:** draft for review, 25 October 2026 · **Part II, first stage** · **Builds on:** [condition review](condition_review.md), [stage 4 sketch](stage4_sketch.md), [stage 3 paper](../paper/COMPASS_stage3.md)
+**Status:** revised 25 October 2026 after the owner chose a fully bottom-up model (decision at 23:54 Toronto time) · **Part II, first stage** · **Builds on:** [condition review](condition_review.md), [stage 4 sketch](stage4_sketch.md), [stage 3 paper](../paper/COMPASS_stage3.md)
 
 ## 1. Goal
 
@@ -8,146 +8,171 @@ Part I built and validated COMPASS on models whose conditions describe the chemi
 
 > **Given a local environment, how likely is it that chemistry there reaches each level of life?**
 
-The only inputs are the 13 approved environmental variables (layer A). Everything else is computed from them, or is an explicitly uncertain constant that is shown on the map.
+The only inputs are the 13 approved environmental variables (layer A). **Nothing living is put into the model.** Monomers, polymers, catalysts, templates, membranes and cells must all arise in the simulation from simple starting materials. The Part I protocell model is no longer the core of the simulation. It serves only as a reference: where the bottom-up chemistry happens to produce protocells, their behaviour should agree with Part I.
 
 ## 2. Architecture
 
 ```
 layer A: 13 environmental variables (inputs, set independently)
-   │   sub-models: known laws with measured parameters, each checked against experiments
+   │   rate laws: known physical chemistry with measured parameters,
+   │   each checked against experiments
    ▼
-layer B: derived chemistry (computed, never set)
-   concentration factor · polymer length distribution · polymerisation/hydrolysis balance ·
-   copying error per position · catalytic probability · vesicle formation and stability ·
-   membrane permeability · degradation rates · effective food supply
+rate constants for every reaction class
+   (activation, polymerisation, hydrolysis, catalysis, templated ligation,
+    amphiphile assembly, permeation, degradation, transport)
    │
    ▼
-life model: gates E1–E3, then the stage 3 protocell simulation for L1–L4
+bottom-up artificial chemistry on the GPU
+   monomers → polymers → catalysts / templates → amphiphile aggregates and vesicles → protocells
+   │
+   ▼
+automatic detector: E1–E3, L1–L4 measured on whatever emerges
    │
    ▼
 COMPASS maps over layer A (+ layer C uncertain constants)
 ```
 
-**Layer C: uncertain constants.** Where a sub-model needs a constant that has no measured value, or a published range, the constant becomes an extra map dimension over that range, instead of being fixed by us. Importance analysis then shows whether the conclusion depends on it. This is the rule that keeps the maps honest.
+**Layer C: uncertain constants.** Where a rate law needs a constant with no measured value, the constant becomes an extra map dimension over a published or argued range, instead of being fixed by us. Importance analysis shows whether a conclusion depends on it.
 
-### 2.1 Extended life ladder
+### 2.1 The simulated chemistry
 
-The stage 3 model starts with vesicles that already contain replicators. Stage 4 adds three earlier gates, so the map also says where chemistry stalls before cells exist:
+The simulation tracks molecules explicitly and stochastically (tau-leap, as in Part I), in many small reaction sites. A site is a pore, a droplet, or a patch of surface, coupled to its neighbours by mixing and flow.
 
-| level | meaning | decided by |
+| species class | what it is in the model | made by | lost by |
+|---|---|---|---|
+| feedstock | small precursors (abstracted by type, not by exact chemistry) | supply (feedstock, flow), UV- or redox-driven synthesis | flow, degradation |
+| activated monomers | monomers of an alphabet of size A (A = 2–4), able to condense | activation (energy from UV, redox or dehydration) | deactivation, hydrolysis |
+| polymers | sequences over the alphabet, explicit up to a maximum length, with length classes beyond | condensation; templated ligation | hydrolysis (rate depends on temperature, pH and water activity) |
+| catalysts | polymers whose sequence catalyses a reaction, assigned at random with a probability that rises with length (RAF-style), and mineral surfaces | arise by chance among polymers | as polymers |
+| templates | polymers that speed up the ligation of their complement, with a sequence-dependent error per position | arise by chance; copying | as polymers |
+| amphiphiles | chains above a length threshold that self-assemble | synthesis from feedstock, or supply | degradation, flow |
+| vesicles | aggregates of amphiphiles above a critical concentration; take up molecules at formation; grow by taking up amphiphiles; divide under shear or cycling | self-assembly | breakdown (ions, pH, temperature) |
+
+All rates come from layer A through the rate laws. No rule says "replicate", "divide when doubled" or "be a cell". Copying is templated ligation, division is a physical effect of growth and shear, and compartments are vesicles that formed by chance around whatever was nearby.
+
+### 2.2 Life ladder, measured on emergent structures
+
+| level | meaning | detector |
 |---|---|---|
-| E1 building blocks | monomers (nucleotides or amino acids, and amphiphiles) are made or supplied, and concentrated above a working threshold | feedstock, UV, redox, concentration mechanisms, dilution, degradation |
-| E2 polymers | chains long enough to carry information or catalyse (length ≥ L_min) form faster than they hydrolyse | polymerisation/hydrolysis balance, temperature, water activity, cycling, minerals |
-| E3 compartments | vesicles form and stay intact | amphiphile concentration, pH, salinity, Mg²⁺, temperature |
-| L1–L4 | as in Part I: self-maintenance, heredity, coupled protocell, Darwinian evolution | the stage 3 protocell simulation, with its parameters computed from layer B |
+| E1 building blocks | activated monomers above a working concentration | concentration time series |
+| E2 polymers | chains of length ≥ L_min form faster than they hydrolyse | length distribution |
+| E3 compartments | vesicles form and persist | vesicle census |
+| L1 self-maintenance | a set of catalysts that collectively catalyse their own formation from feedstock persists (an RAF set in the reaction network actually realised) | RAF detection (Hordijk & Steel) on the active network, plus persistence over turnover times |
+| L2 heredity | sequence information is copied: lineages of sequences persist longer than the molecules carrying them | sequence lineage tracking, against shuffled controls |
+| L3 coupled protocell | vesicles whose contents help them grow and divide, and which pass on that content | correlation of content with vesicle growth and division, across generations of vesicles |
+| L4 Darwinian evolution | a heritable property rises beyond drift | neutral-marker control as in stage 3c (neutral sequence positions as markers) |
 
-The levels stay nested: L1 requires E1–E3. The joint nested map of stage 3e handles all seven levels.
-
-### 2.2 How the protocell parameters are derived
-
-| Part I parameter | derived from (layer B) |
-|---|---|
-| copying error μ | error per position (temperature, Mg²⁺, pH) × template length (E2) |
-| food | effective monomer supply after concentration and dilution |
-| degradation d | hydrolysis and UV damage rates (temperature, pH, UV), plus washout (flow) |
-| leak lk | membrane permeability (membrane composition, temperature, ions) |
-| membrane synthesis km, division size S | amphiphile supply and vesicle size (E3 sub-model) |
-| catalytic support of metabolism | catalytic probability → autocatalytic-set probability (the stage 1e RAF model) |
-| heritable variation η | error rate on the functional part of the template |
-| spatial structure | mixing and geometry (well-mixed vs grid; exchange between cells) |
-| cycles | periodic modulation of rates, as in stage 1b |
-| available time | run length in generations |
-
-Parasite advantage σ and the number of gene types K are not environmental. They stay as layer C dimensions with their Part I ranges.
+The joint nested map of stage 3e handles all seven levels.
 
 ## 3. Ranges of the layer A variables (provisional)
 
-The ranges cover the stated scope: liquid water, carbon chemistry, the surface or sea floor of an Earth-like planet. They will be fixed from published sources in step 4a, and every value will be checked against the original source.
+The ranges cover the stated scope: liquid water, carbon chemistry, the surface or sea floor of an Earth-like planet. Step 4a fixes them from published sources, and every value is checked against the original source.
 
 | variable | provisional range or encoding |
 |---|---|
 | temperature | 0–150 °C (above 100 °C only where pressure keeps water liquid) |
-| pressure | 1–1,000 bar |
+| pressure | 1–1,100 bar (surface to the deepest ocean) |
 | pH | 2–12 |
 | redox | reducing to oxidising, as H₂ availability (log scale) |
 | UV | none to full unshielded surface flux (log scale) |
 | ion composition | salinity 0 to above sea water; Mg²⁺ and Ca²⁺ concentrations (log scale) |
-| feedstock composition and supply | supply rate (log scale) plus composition fractions: nucleotide precursors, amino-acid precursors, amphiphiles |
+| feedstock composition and supply | supply rate (log scale) plus composition fractions: nucleotide-like precursors, amino-acid-like precursors, amphiphile precursors |
 | dilution and flow | residence time (log scale) |
 | mixing and geometry | from well-mixed to pore-confined (Péclet number) |
 | concentration mechanisms | evaporation factor and thermal-gradient factor (log scale) |
 | cycling | amplitude and period of wet–dry and hot–cold cycles |
 | mineral surfaces | catalytic surface availability (log scale) and type (none, clay, metal sulphide) |
-| available time | 1 to 10⁶ years, translated into generations |
+| available time | translated into simulated turnover times |
 
-Some variables need more than one number (cycling, composition, ions), so layer A has about 18–20 dimensions in practice, plus about 5–10 layer C constants. That is about twice the largest dimension COMPASS has handled so far (12), hence the scaling test in 4a.
+In practice that is about 18–20 dimensions, plus about 5–10 layer C constants. This is roughly twice the largest dimension COMPASS has handled so far (12).
 
 ## 4. Steps
 
+The simulator is built in layers. Each layer is validated against known results before the next is added, and each layer gives its own partial map. A partial map is already a result: it shows where chemistry stalls.
+
 **4a. Framework and engine scaling.**
 - Fix the ranges and encodings of layer A from sources.
-- Define the sub-model interfaces and the E1–E3 gates.
-- Test COMPASS at 20–30 dimensions: pad the stage 3 models with distractors and correlated dimensions, and measure the accuracy and saving against Sobol sampling. If the saving collapses, a screening step (importance on a cheap first map, then refinement in the important dimensions) is added before 4d.
+- Test COMPASS at 20–30 dimensions: the stage 2b model padded with distractors and with many weak real dimensions. This test is running.
+- Plan the computational budget. Bottom-up runs will cost seconds to minutes each instead of about 1 ms. That makes COMPASS's saving matter much more, and gives multi-fidelity screening (stage 2d) a real chance: short or small runs as the cheap model.
 
-**4b. Sub-models, each checked against experiments before use.**
-The order goes from clearest experimental data to least:
-1. Vesicle formation and stability (E3): the window in pH, salinity, divalent ions and temperature. Target: high Mg²⁺ breaks fatty-acid vesicles, and citrate protects them while still allowing RNA copying (Adamala & Szostak 2013).
-2. Concentration: thermal gradients in pores concentrate nucleotides more than 10⁸-fold (Baaske et al. 2007); evaporation in wet–dry cycles.
-3. Polymerisation/hydrolysis balance (E2): the length distribution under constant water and under wet–dry cycling. Target: cycles drive polymerisation and encapsulate polymers (Damer & Deamer 2020).
-4. Copying error and rate per position: dependence on temperature and Mg²⁺.
-5. Building-block supply (E1): UV-driven precursor synthesis against UV damage (Patel et al. 2015); the redox-driven supply of the vent scenario (Martin et al. 2008).
-6. Catalytic probability: chain length and mineral surfaces → reactions catalysed per molecule → the RAF probability of stage 1e (Hordijk, Kauffman & Steel 2011).
-Each sub-model gets a short report: the law used, the parameter sources, the experiment reproduced, and what is layer C. A sub-model that cannot reproduce its target is not used.
+**4b. Rate laws (environment → rate constants), each checked against experiments.**
+- **Temperature:** Arrhenius dependence of all rates.
+- **Hydrolysis:** dependence on pH, temperature and water activity.
+- **Wet–dry cycling:** polymerisation and encapsulation under cycling (Damer & Deamer 2020).
+- **Membranes:** vesicle stability in salt, Mg²⁺ and pH. High Mg²⁺ breaks fatty-acid vesicles, and citrate protects them while still allowing RNA copying (Adamala & Szostak 2013).
+- **Concentration:** thermal gradients concentrate molecules (Baaske et al. 2007).
+- **Feedstock:** UV-driven precursor synthesis against UV damage (Patel et al. 2015), and redox-driven supply (Martin et al. 2008).
+- **Catalysis:** catalytic probability against length and minerals.
 
-**4c. Coupled model.**
-Chain layer A → layer B → gates → protocell simulation. Validate it on hand-picked environments: does it behave sensibly in clear cases (for example boiling, strongly oxidising water with no feedstock gives nothing)? Measure the cost per simulation.
+Each law gets a short report giving the law, the parameter sources, the experiment reproduced, and which constants are layer C.
 
-**4d. Maps.**
-- COMPASS maps for E1–E3 and L1–L4 over layer A + layer C, with the joint nested map.
-- Importance of each environmental variable.
-- Minimal sufficient environments: boxes that give each level with 95% probability.
-- Environmental knockouts: no cycling, no minerals, no concentration mechanism.
+**4c. Bottom-up simulator, layer by layer.**
+1. *Polymer chemistry (E1, E2).* Feedstock, activation, condensation, hydrolysis. Validate: length distributions against the analytic equilibrium of reversible polymerisation; longer chains under wet–dry cycling.
+2. *Catalysis (L1).* Random catalytic assignment by sequence. Validate: the emergence of autocatalytic sets near the threshold known from theory (Hordijk, Kauffman & Steel 2011), as in stage 1e, but now within the simulated chemistry.
+3. *Templating (L2).* Templated ligation with errors. Validate: an error threshold for information maintenance (Eigen 1971), and the takeover by short, fast parasites known from experiments and theory.
+4. *Amphiphiles and vesicles (E3).* Self-assembly above a critical concentration, uptake at formation, growth, division by shear or cycling, breakdown by ions. Validate against the membrane rate laws of 4b.
+5. *Coupling (L3, L4).* Nothing new is added; L3 and L4 are only detected. Validate: where protocells emerge, compare their behaviour with Part I, including the compartment and selection effects of stage 3a.
 
-**4e. Real environment classes.**
-Report the maps for real settings, each defined as a region of layer A from the literature: deep-sea alkaline vents, land hot springs with wet–dry pools, shallow lagoons and tidal pools, cold settings (ice, eutectic brines), and mineral pores. The question per class: which levels are reachable, and which variable limits it?
+At each layer: measure the cost per simulation, run COMPASS on that layer's levels, and publish a short report.
+
+**4d. Full maps.** COMPASS maps for E1–E3 and L1–L4 over layer A + layer C with the joint nested map. Also: importance of each environmental variable; minimal sufficient environments; environmental knockouts (no cycling, no minerals, no concentration mechanism).
+
+**4e. Real environment classes.** Report the maps for real settings, each defined as a region of layer A from the literature:
+- deep-sea alkaline vents;
+- land hot springs with wet–dry pools;
+- shallow lagoons and tidal pools;
+- cold settings (ice, eutectic brines);
+- mineral pores.
+
+For each, we ask which levels are reachable and which variable limits it.
 
 **4f. Robustness and paper.**
-- Vary detector thresholds (three settings per level).
-- Check how conclusions depend on layer C.
-- List testable predictions: environments the map calls favourable or impossible that have not been tested in a laboratory.
-- Stage 4 paper; homepage and log.
+- Vary the detector thresholds.
+- Check how much the conclusions depend on layer C.
+- State testable predictions.
+- Write the stage 4 paper and update the homepage and log.
 
 ## 5. Milestones and acceptance
 
 | step | output | accept when |
 |---|---|---|
-| 4a | ranges with sources; interfaces; scaling test | COMPASS still beats Sobol at 20+ dimensions, or a screening step that restores it |
-| 4b | six sub-models with reports | each reproduces its experimental target within stated error |
-| 4c | coupled model | clear cases behave correctly; cost per simulation known |
-| 4d | maps E1–L4 | accuracy on held-out ground truth reported; importance stable across repetitions |
+| 4a | ranges with sources; scaling test; compute plan | COMPASS still beats Sobol at 20+ dimensions, or a screening step restores it |
+| 4b | rate laws with reports | each reproduces its experimental target within stated error |
+| 4c-1 | polymer chemistry, E1–E2 map | analytic length distribution reproduced |
+| 4c-2 | catalysis, L1 map | autocatalytic-set threshold reproduced inside the simulated chemistry |
+| 4c-3 | templating, L2 map | error threshold and parasite takeover reproduced |
+| 4c-4 | vesicles, E3 map | membrane stability window matches 4b |
+| 4c-5 | coupling, L3–L4 detection | emergent protocells behave as in Part I where they appear |
+| 4d | full maps | accuracy on held-out ground truth reported; importance stable across repetitions |
 | 4e | per-class report | each class traced to literature ranges |
 | 4f | paper | references verified; predictions stated |
 
 ## 6. Risks
 
-- **Too many unknown constants.** If layer C dominates importance, the honest result is "the answer depends on X, which has not been measured". That is still a useful result and a pointer for experiments.
-- **Dimension.** See 4a.
-- **The protocell core remains a model assumption.** Stage 4 computes its parameters from the environment, but does not show how the first replicators assemble from polymers. A bottom-up replacement for that step is a candidate for stage 5.
-- **Correlated environments.** Real settings correlate variables. Maps are drawn over the whole space first and then reported per class (4e), so that unlikely combinations do not mislead.
+- **L3 and L4 may never emerge** within feasible run times. The honest result is then a map of how far chemistry gets (E1–L2) under each environment, and of the bottleneck. This is still new information. Part I's results tell us what the missing step would have to achieve.
+- **Cost.** A bottom-up run is orders of magnitude more expensive than a Part I run. Mitigations:
+  - COMPASS's saving, which grows when the boundary is thin;
+  - multi-fidelity screening;
+  - layer-by-layer maps that rule out regions early. For example, where E2 is impossible, L1–L4 need not be simulated;
+  - volunteer computing later.
+- **Abstraction.** Molecules are represented by type and sequence, not by exact chemistry. The rate laws carry the environment's effect. Where a law is uncertain, it becomes layer C.
+- **Too many unknown constants.** If layer C dominates importance, the result is "the answer depends on X, which has not been measured": a pointer for experiments.
+- **Correlated environments.** Maps are drawn over the whole space first and then reported per real class (4e).
 
-## 7. Decisions needed
+## 7. Decisions
 
-1. **Depth of the model.** Hybrid (recommended): sub-models compute layer B from the environment, gates E1–E3, then the validated protocell simulation for L1–L4. The alternative is a full bottom-up artificial chemistry from monomers, which is closer to reality but much slower and may not converge in reasonable time.
-2. **Extended ladder E1–E3.** Add it (recommended), or keep L1–L4 only.
-3. **Order of sub-models.** As listed in 4b (recommended: clearest experiments first), or start with a particular scenario such as alkaline vents or hot springs.
+1. **Depth of the model: fully bottom-up** (owner's choice, 25 October 2026, 23:54). No living structure is put in; everything must emerge.
+2. **Extended ladder E1–E3:** included.
+3. **Order:** layer by layer as in 4c, starting with polymer chemistry, unless the owner prefers to start from a particular scenario.
 
 ## References
 
-All checked on 25 October 2026 for the [condition review](condition_review.md); see the review for links and notes.
+All were checked on 25 October 2026. For Adamala & Szostak, Baaske et al., Damer & Deamer, Martin et al. and Patel et al., the [condition review](condition_review.md) gives links and notes. Eigen and Hordijk et al. were checked for the stage 1 report.
 
 - Adamala, K. & Szostak, J. W. (2013). Nonenzymatic template-directed RNA synthesis inside model protocells. *Science* 342(6162), 1098.
 - Baaske, P. et al. (2007). Extreme accumulation of nucleotides in simulated hydrothermal pore systems. *PNAS* 104(22), 9346–9351.
 - Damer, B. & Deamer, D. (2020). The hot spring hypothesis for an origin of life. *Astrobiology* 20(4), 429–452.
+- Eigen, M. (1971). Selforganization of matter and the evolution of biological macromolecules. *Die Naturwissenschaften* 58(10), 465–522.
 - Hordijk, W., Kauffman, S. A. & Steel, M. (2011). Required levels of catalysis for emergence of autocatalytic sets in models of chemical reaction systems. *International Journal of Molecular Sciences* 12(5), 3085–3101.
 - Martin, W., Baross, J., Kelley, D. & Russell, M. J. (2008). Hydrothermal vents and the origin of life. *Nature Reviews Microbiology* 6, 805–814.
 - Patel, B. et al. (2015). Common origins of RNA, protein and lipid precursors in a cyanosulfidic protometabolism. *Nature Chemistry*. Volume and pages not yet confirmed from the original.
