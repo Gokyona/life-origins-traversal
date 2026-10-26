@@ -55,7 +55,7 @@ Peptide-like bonds hydrolyse far more slowly: the half-life is about 400 years a
 
 ## 4. Validation before any map
 
-1. **Reversible polymerisation without cycling or flow.** At steady state the chain-length distribution must follow the most-probable (Flory) distribution P(L) ∝ p^(L−1), where p is set by the ratio of growth to hydrolysis. Compare the simulated distribution with the analytic one over at least three values of p.
+1. **Steady state without cycling or flow.** With activated monomers held fixed, the simulated chain-length distribution must match the exact mean-field steady state of the same kinetics (growth by monomer addition at rate g, random bond hydrolysis at rate h per bond) over at least three values of g/h. *Correction made during validation (26 October 2026):* the most-probable (Flory) distribution first named here belongs to reversible step-growth, in which chains of any length join. Our growth is monomer addition only, so the Flory form is not the right reference. In this kinetics a steady state exists only for g < 2h; above it, hydrolysis fragments become new growing chains and the chain count grows without bound.
 2. **Arrhenius check.** The simulated hydrolysis of a fixed pool of dimers must reproduce the 10^0.07 per °C slope and the reference rate above.
 3. **Cycling.** At the same mean water activity, wet–dry cycling must lengthen chains compared with constant wet conditions. This is the qualitative result that motivates the hot-spring scenario (Damer & Deamer 2020). We do not fit a number to it.
 4. **Washout.** With τ much shorter than the time needed to grow chains, E2 must fail. With no feedstock, E1 must fail.
