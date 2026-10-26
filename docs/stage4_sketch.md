@@ -1,12 +1,30 @@
 # Stage 4 sketch: from environmental conditions to life
 
-**Status:** early sketch, 25 October 2026. It is not yet a plan, and no runs have been done. Stage 3 will be finished first.
+**Status:** sketch, 25 October 2026. No runs have been done. Stage 3 will be finished first.
+
+**Decision, 25 October 2026:** the inputs of stage 4 are the 13 primary environmental variables listed below ("layer A"), which replace the original list. Copying error rate, catalytic probability, polymerisation/hydrolysis ratio and membrane permeability are no longer inputs; they are derived from layer A ("layer B"). Scope: water as solvent, carbon chemistry, Earth-like planetary surface or sea floor.
+
+| layer A variable | from the original list |
+|---|---|
+| temperature | P2 |
+| pressure | new |
+| pH | new |
+| redox conditions (electron donors and acceptors) | new, split from P1 |
+| ultraviolet radiation (energy and damage) | new, split from P1 |
+| ion composition (salinity, Mg²⁺ and other divalent ions) | new |
+| feedstock composition and supply | P3, P5 and the external part of P9 |
+| dilution and flow | P4 |
+| mixing and geometry (pores, surfaces) | P12 |
+| concentration mechanisms (evaporation, thermal gradients) | new |
+| wet–dry and hot–cold cycling | P11 |
+| mineral surfaces | new |
+| available time | new |
 
 ## Why
 
 The stage 2–3 models start from vesicles that already contain replicators. Their conditions mix two kinds of quantity. Some are environmental (food supply, degradation as a stand-in for dilution, leak as membrane permeability, spatial versus well-mixed). Others are properties of the chemical system itself (division size S, parasite advantage σ, gene types K, error rate μ, membrane synthesis km, heritable variation η). Those maps therefore answer "which chemical systems become alive", not "which environments give rise to life". The second question is the one the project set out to answer.
 
-The original environmental conditions are:
+The original conditions, for reference, were:
 
 | | condition |
 |---|---|
