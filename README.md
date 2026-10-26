@@ -68,7 +68,7 @@ Stages 0–3 build COMPASS and test it on a series of increasingly hard model sy
 - [x] Stage 2 — dividing protocells: stochastic corrector population, membrane coupling, multi-fidelity test, maps for life-detector levels L1–L3 ([plan](docs/stage2_plan.md), [paper](paper/COMPASS_stage2.md))
 - [ ] Stage 3 — analysis tools and cross-checks ([plan](docs/stage3_plan.md))
   - [x] 3a knockouts · [x] 3b minimal sufficient conditions · [x] 3c Darwinian evolution (L4) · [x] 3d independent spatial model
-  - [ ] 3e engine: joint nested map, comparison with a standard active-learning method (runs done, report pending)
+  - [x] 3e engine: joint nested map, comparison with a standard active-learning method (see results)
   - [ ] 3f stage 3 paper
 
 ### Part II: the environment search (stage 4 on)
@@ -100,6 +100,7 @@ Stages 0–3 build COMPASS and test it on a series of increasingly hard model sy
 | 3b | Minimal sufficient conditions: smallest boxes in condition space with ≥ 95% life, confirmed by direct simulation | L1: 4 conditions held (17% of space); L2: 5 (6.9%); L3: 5, with narrow windows for membrane synthesis and cell size (1.9%); parasite advantage never needs holding | [stage3b_minimal_conditions_b70.md](results/stage3b_minimal_conditions_b70.md) |
 | 3c | Darwinian evolution (L4): heritable quality q with 8 neutral markers as an internal drift control; map with COMPASS | L4 in 11% of space, all inside L3 (64% of L3 evolves); needs heritable variation η ≥ 0.02, parasite mutation μ < 0.04 and enough food; less food needs more variation; false positives 1%; COMPASS 0.876 vs Sobol 0.815 on hard points | [stage3c_evolution_b70.md](results/stage3c_evolution_b70.md) |
 | 3d | Cross-check on an independent spatial model (16×8 grid, local replacement, leak between neighbours), 12 conditions | All 3a–3c conclusions hold; with almost no leak L2/L3 regions about a quarter smaller than well-mixed; compartments must be nearly sealed (leak > 0.7–0.8% per step destroys heredity and evolution); under strong parasites the largest cell that still evolves is about halved; COMPASS beats Sobol (L3 errors 1.7% vs 3.3%) | [stage3d_spatial_b70.md](results/stage3d_spatial_b70.md) |
+| 3e | Engine: one joint map for L1–L4 with nesting built in; COMPASS's selection rule against the straddle rule (Bryan et al. 2005) on the 2b model | Joint map: zero contradictions between levels (separate maps 1.1–1.4%), same accuracy, 3× faster training; adopted. Straddle ties with COMPASS at every budget (64k: 0.987 vs 0.987; Sobol 0.976); all active rules need about 4× fewer simulations than Sobol, so COMPASS's value is the whole loop, not its scoring formula | [stage3e_engine_b70.md](results/stage3e_engine_b70.md) |
 | 3 side | List of all 786,432 combinations of a 4-level grid over the spatial model's 10 conditions, scored by the COMPASS maps (system properties, not environmental conditions) | 10% of combinations reach L3/L4; direct check agrees 93–98% per level; most robust evolving systems: small cells, one gene type, low error, weak parasites, plenty of food | [stage3_combos_system_properties.md](results/stage3_combos_system_properties.md) |
 
 ## Contributing
