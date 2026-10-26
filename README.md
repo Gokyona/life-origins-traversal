@@ -2,7 +2,7 @@
 
 **Mapping the conditions under which life can emerge — by ordered, non-repeating traversal of condition space instead of waiting for chance.**
 
-> Status: **Part I (stages 0–3): building and validating the COMPASS engine on test models**, nearly complete. **Part II (stage 4 on): the search over environmental conditions.** Code, results and write-ups are published here as they are produced, including negative results.
+> Status: **Part I (stages 0–3): building and validating the COMPASS engine on test models**, complete ([stage 3 paper](paper/COMPASS_stage3.md)). **Part II (stage 4 on): the search over environmental conditions.** Code, results and write-ups are published here as they are produced, including negative results.
 
 
 ## The idea
@@ -66,10 +66,10 @@ Stages 0–3 build COMPASS and test it on a series of increasingly hard model sy
 - [x] Stage 1d — engine made 4× faster; soft selection becomes the default; late plateau remains (see results)
 - [x] Stage 1e — the engine on an established model (Kauffman autocatalytic sets, RAF): about 2× fewer simulations (see results)
 - [x] Stage 2 — dividing protocells: stochastic corrector population, membrane coupling, multi-fidelity test, maps for life-detector levels L1–L3 ([plan](docs/stage2_plan.md), [paper](paper/COMPASS_stage2.md))
-- [ ] Stage 3 — analysis tools and cross-checks ([plan](docs/stage3_plan.md))
+- [x] Stage 3 — analysis tools and cross-checks ([plan](docs/stage3_plan.md), [paper](paper/COMPASS_stage3.md))
   - [x] 3a knockouts · [x] 3b minimal sufficient conditions · [x] 3c Darwinian evolution (L4) · [x] 3d independent spatial model
   - [x] 3e engine: joint nested map, comparison with a standard active-learning method (see results)
-  - [ ] 3f stage 3 paper
+  - [x] 3f stage 3 paper, closing Part I and stating its limits
 
 ### Part II: the environment search (stage 4 on)
 
@@ -82,6 +82,8 @@ Stages 0–3 build COMPASS and test it on a series of increasingly hard model sy
 **[COMPASS: ordered, non-repeating mapping of the conditions for life in stochastic origin-of-life models](paper/COMPASS_stage1.md)** (stage 1 report, 25 October 2026). The engine design, the stage 1 benchmarks, and a check against the known threshold for autocatalytic sets.
 
 **[Mapping the conditions for dividing protocells with COMPASS](paper/COMPASS_stage2.md)** (stage 2 report, 25 October 2026). Protocell populations after the stochastic corrector and chemoton ideas, COMPASS benchmarks (about 8× and 4× fewer simulations), a partial negative result for multi-fidelity screening, and maps of three levels of life.
+
+**[What protocells need, when they evolve, and what the COMPASS engine can and cannot tell us](paper/COMPASS_stage3.md)** (stage 3 report, closing Part I, 25 October 2026). Necessary mechanisms, minimal sufficient conditions, Darwinian evolution with a neutral-marker drift control, a cross-check on a spatial model, joint nested maps, a comparison with a standard active-learning rule, and the limits of Part I.
 
 ## Results so far
 
