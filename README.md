@@ -2,7 +2,7 @@
 
 **Mapping the conditions under which life can emerge — by ordered, non-repeating traversal of condition space instead of waiting for chance.**
 
-> Status: early research (stage 0/1). Code, results and write-ups are published here as they are produced, including negative results.
+> Status: **Part I (stages 0–3): building and validating the COMPASS engine on test models**, nearly complete. **Part II (stage 4 on): the search over environmental conditions.** Code, results and write-ups are published here as they are produced, including negative results.
 
 
 ## The idea
@@ -17,7 +17,7 @@ Instead of tracing one lucky history, we try to draw the **phase diagram of life
 
 ## Method in brief
 
-1. **Condition space.** Physical parameters (energy flux, temperature, food supply, dilution, catalytic probability, polymerisation/hydrolysis ratio, copying error rate, amphiphile fraction, membrane permeability, environmental cycling, mixing) are reduced to dimensionless groups (e.g. Damköhler number, catalytic density, Eigen error number μL), merging equivalent conditions into one.
+1. **Condition space.** Physical parameters are reduced to dimensionless groups (e.g. Damköhler number, catalytic density, Eigen error number μL), merging equivalent conditions into one. After a [review of the condition list](docs/condition_review.md), stage 4 uses 13 primary environmental variables as inputs (temperature, pressure, pH, redox conditions, ultraviolet radiation, ion composition, feedstock composition and supply, dilution and flow, mixing and geometry, concentration mechanisms, wet–dry and hot–cold cycling, mineral surfaces, available time). Copying error rate, catalytic probability, polymerisation/hydrolysis ratio and membrane permeability are computed from them, not set directly.
 2. **Hard constraints first.** Regions ruled out by thermodynamics or information theory are removed before any simulation.
 3. **Ordered testing rules.**
    - Canonical key + permanent archive: a condition is never simulated twice.
@@ -55,6 +55,10 @@ python bench.py --budget 128000 --reps 5 --n-test 4000 --gt-seeds 128 --out resu
 
 ## Roadmap
 
+### Part I: the engine (stages 0–3)
+
+Stages 0–3 build COMPASS and test it on a series of increasingly hard model systems. The conditions in these models are test conditions: several of them (division size, parasite advantage, gene types) are properties of the chemical system, not of the environment. Their maps validate the engine and the life detector; they do not answer which environments give rise to life.
+
 - [x] Stage 0 — minimal stochastic model with a built-in error threshold, an origin event and a distractor dimension
 - [x] Stage 1, first benchmark — ordered engine did not beat random search (see results)
 - [x] Stage 1b — revised refinement beats random search on a harder benchmark (see results)
@@ -62,7 +66,15 @@ python bench.py --budget 128000 --reps 5 --n-test 4000 --gt-seeds 128 --out resu
 - [x] Stage 1d — engine made 4× faster; soft selection becomes the default; late plateau remains (see results)
 - [x] Stage 1e — the engine on an established model (Kauffman autocatalytic sets, RAF): about 2× fewer simulations (see results)
 - [x] Stage 2 — dividing protocells: stochastic corrector population, membrane coupling, multi-fidelity test, maps for life-detector levels L1–L3 ([plan](docs/stage2_plan.md), [paper](paper/COMPASS_stage2.md))
-- [ ] Stage 3 — necessary mechanisms (knockouts), minimal sufficient conditions, Darwinian evolution (L4), spatial structure ([plan](docs/stage3_plan.md))
+- [ ] Stage 3 — analysis tools and cross-checks ([plan](docs/stage3_plan.md))
+  - [x] 3a knockouts · [x] 3b minimal sufficient conditions · [x] 3c Darwinian evolution (L4) · [x] 3d independent spatial model
+  - [ ] 3e engine: joint nested map, comparison with a standard active-learning method (runs done, report pending)
+  - [ ] 3f stage 3 paper
+
+### Part II: the environment search (stage 4 on)
+
+- [x] [Review of the condition list](docs/condition_review.md): the original 12 conditions were neither sufficient nor independent; replaced by 13 primary environmental variables (approved 25 October 2026)
+- [ ] Stage 4 — environment → chemistry → life model with only the 13 environmental variables as inputs, sub-models calibrated against experiments, then COMPASS maps ([sketch](docs/stage4_sketch.md))
 - [ ] Volunteer computing — hand out non-overlapping Sobol index ranges as work units so anyone can contribute GPU time
 
 ## Paper
@@ -88,6 +100,7 @@ python bench.py --budget 128000 --reps 5 --n-test 4000 --gt-seeds 128 --out resu
 | 3b | Minimal sufficient conditions: smallest boxes in condition space with ≥ 95% life, confirmed by direct simulation | L1: 4 conditions held (17% of space); L2: 5 (6.9%); L3: 5, with narrow windows for membrane synthesis and cell size (1.9%); parasite advantage never needs holding | [stage3b_minimal_conditions_b70.md](results/stage3b_minimal_conditions_b70.md) |
 | 3c | Darwinian evolution (L4): heritable quality q with 8 neutral markers as an internal drift control; map with COMPASS | L4 in 11% of space, all inside L3 (64% of L3 evolves); needs heritable variation η ≥ 0.02, parasite mutation μ < 0.04 and enough food; less food needs more variation; false positives 1%; COMPASS 0.876 vs Sobol 0.815 on hard points | [stage3c_evolution_b70.md](results/stage3c_evolution_b70.md) |
 | 3d | Cross-check on an independent spatial model (16×8 grid, local replacement, leak between neighbours), 12 conditions | All 3a–3c conclusions hold; with almost no leak L2/L3 regions about a quarter smaller than well-mixed; compartments must be nearly sealed (leak > 0.7–0.8% per step destroys heredity and evolution); under strong parasites the largest cell that still evolves is about halved; COMPASS beats Sobol (L3 errors 1.7% vs 3.3%) | [stage3d_spatial_b70.md](results/stage3d_spatial_b70.md) |
+| 3 side | List of all 786,432 combinations of a 4-level grid over the spatial model's 10 conditions, scored by the COMPASS maps (system properties, not environmental conditions) | 10% of combinations reach L3/L4; direct check agrees 93–98% per level; most robust evolving systems: small cells, one gene type, low error, weak parasites, plenty of food | [stage3_combos_system_properties.md](results/stage3_combos_system_properties.md) |
 
 ## Contributing
 
