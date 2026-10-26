@@ -31,6 +31,20 @@ Composition record fields added by this layer:
 - monomer composition of RAF members;
 - the time L1 was first reached, relative to E2.
 
+### 2.1 Changes after the first validation (26 October 2026, 06:30 Toronto time)
+
+The first validation run (all four tests in Section 3 passed) led to four changes:
+
+- **Persistence is judged per reaction, not per species.** The persistent RAF set over a window of checkpoints is the maximal RAF formed by the catalysed reactions (reactants, product and catalyst) that belong to the RAF at every checkpoint of the window. Persistence by species alone failed the shuffled-catalysis control: shuffled catalysis still speeds up the production of short chains in a non-specific way, so species-level sets looked persistent.
+- **"Self-sustaining" compares the RAF products.** Comparing all members misleads, because catalysis uses up its reactants. Two versions are recorded: *L1 strict* (persistent RAF, and its products are more abundant than in the catalysis-off control) and *L1 loose* (persistent RAF only). The map targets L1 strict.
+- **L1 is not nested in E2.** In the validation, persistent self-sustaining sets of short oligomers appeared only where hydrolysis was fast enough to prevent long chains (E2 false). The assumed order E1 → E2 → L1 may therefore not hold. The map links L1 to E1 only, and reports the overlap of L1 and E2 as a result.
+- **Activation energies.** Uncatalysed condensation gets its own activation energy (layer C, 40–120 kJ/mol). The catalysed value is a fraction of it (0.3–1), so catalysis never makes condensation more temperature-sensitive.
+
+Limits of this layer, as built:
+- **Only short oligomers can form RAF sets.** Each sequence is stored explicitly, and with an alphabet of 2 only short sequences occur in more than one copy. Catalysis is therefore evaluated among the most abundant species of each site.
+- **κ saturates.** Above about 10⁴, catalysis is limited by the number of reactant copies available.
+- **No uncatalysed ligation of two chains.** As in 4c-1, chains join only by catalysed ligation.
+
 ## 3. Validation before any map
 
 1. **Known threshold.** In a well-mixed site with constant concentrations, set the catalysis parameters directly. The probability that a RAF exists must rise steeply at about one to two reactions catalysed per molecule. This is the threshold reported by Hordijk, Kauffman & Steel (2011) and reproduced in stage 1e within 2%.
@@ -40,7 +54,7 @@ Composition record fields added by this layer:
 
 ## 4. Map
 
-A joint nested map of E1, E2 and L1 over layer A and the layer C constants of 4c-1 and 4c-2 (about 30 dimensions). It uses COMPASS as validated at that dimension in [4a](../results/stage4a_scaling_b70.md). Because L1 requires E2, simulations stop early where E2 fails, which saves compute in most of the space. Checkpoints and resuming are as in 4c-1, Section 6.
+A joint map of E1, E2 and L1 (E2 and L1 each linked to E1; see Section 2.1) over layer A and the layer C constants of 4c-1 and 4c-2 (about 30 dimensions). It uses COMPASS as validated at that dimension in [4a](../results/stage4a_scaling_b70.md). The catalysis-off control is run only where the main run has a persistent RAF set, which saves compute. Checkpoints and resuming are as in 4c-1, Section 6.
 
 ## 5. What this layer cannot show
 
