@@ -1,6 +1,6 @@
 # Stage 4c-3 specification: template copying and heredity (level L2)
 
-**Status:** draft specification, 26 October 2026 (15:35 Toronto time) · **Plan:** [stage4_plan.md](stage4_plan.md), step 4c-3 · **Builds on:** [4c-1](stage4c1_spec.md) (polymer chemistry), [4c-2](stage4c2_spec.md) (catalysis, L1)
+**Status:** specification, drafted 26 October 2026 (15:35 Toronto time), revised during validation on 26–27 October (see §6) · **Plan:** [stage4_plan.md](stage4_plan.md), step 4c-3 · **Builds on:** [4c-1](stage4c1_spec.md) (polymer chemistry), [4c-2](stage4c2_spec.md) (catalysis, L1)
 
 The third layer adds template-directed copying to the chemistry of 4c-2. Catalysis stays on. The question is whether, and in which environments, sequence information is copied well enough that sequences outlive the molecules that carry them. This is level L2, "heredity". No rule says "replicate": copying is a chemical reaction on a template, with errors, and it needs the two strands to come apart again.
 
@@ -47,3 +47,22 @@ A joint map of E1, E2, L1 and L2 over the 42 dimensions, COMPASS only, ground tr
 ## 5. What this layer cannot show
 
 Copying ability is set by layer C constants, not derived from chemistry. The map therefore says how fast and how accurate copying would have to be, in each environment, for heredity to arise. Whether real prebiotic nucleotides could copy that well is an experimental question; the map's threshold for k_t and ε is the number to compare with experiments. Paired strands are not protected from hydrolysis, and there is no explicit Mg²⁺ or salt effect on duplex stability; both are limits of this layer.
+
+## 6. Revisions made during validation (26–27 October 2026)
+
+Validation showed that several rules in §1–§2, as first written, suppressed heredity by construction or made the detector unreliable. Each change below was made before any map was run. Results are in [stage4c3_validation_b70.md](../results/stage4c3_validation_b70.md).
+
+| # | Rule as drafted | Problem found | Rule now |
+|---|---|---|---|
+| 1 | Copies start at the template without a primer | The first pair is unstable (k_off(1) = k₀), so q(1) ≈ 0 and almost no copy starts | Primed initiation: a 2–3-letter chain from the pool binds and is extended; start rate ∝ n_primer · 2^(−l_p); the primer is consumed. Unprimed starts remain possible |
+| 2 | Copies start at a random position of the template | A full-length copy needs a start at position 0, probability 1/L; no lineage can re-make itself faster than it decays, so heredity is impossible whatever the copy chemistry | Copies start at the template's first letter and run to its end; a primer must be the complement of the template's first l_p letters (the textbook picture of a primer at one end) |
+| 3 | Copying finishes within one time step | Copy time does not depend on length, so the classic advantage of short parasites (a shorter time per copy) is missing | Finite copy time: a template stays busy for l / r hours |
+| 4 | Copies and new chain starts drew on free slots independently | Copying could starve chain initiation, or the reverse | Free slots are shared in proportion to the two rates |
+| 5 | Control: a separate run with random-sequence copying | Not paired with the main run; biased (9/16 false positives with copying off) | The control is a rerun of the same candidate with identical random streams; only the copied letters differ |
+| 6 | Score: share of chain mass at the end whose sequence was present at checkpoint k, best of 8 sampled sites, margin ≥ 0.1 over one control | With copied letters fully random (no information), 15–30% of runs still passed: the best-of-8 statistic is noisy | S is computed over all sites (64 at screening). Strict requires S(main) − max(S(control 1), S(control 2)) ≥ 0.15, with two independent random-copy controls. The margin was calibrated on 2 × 64 null runs (false positives 1/64 and 0/64; smallest margin with ≤ 2/64 is 0.142) |
+| 7 | Turnover time from hydrolysis and washout only | Adsorbed chains are protected from hydrolysis | Turnover time includes adsorption protection (changes the 4c-2 L1 result almost nothing) |
+| 8 | Results reproducible from seeds | Some GPU reductions are not ordered, so runs with heavy copying differed by 0.1–1% between processes | Deterministic GPU algorithms and a fixed tie-break in the choice of abundant sequences; kill and resume is now bit-identical |
+
+**Lineage identity.** Lineages are still keyed on whole sequences. Uncatalysed growth and ligation append letters at the end of a chain, so a faithfully copied chain that later grows counts as a new sequence. This lowers the L2 rate, and it is a stated limitation. Keying on the first k letters was tested and rejected: with a 2-letter alphabet, k ≤ 8 gives too many chance matches (no margin keeps the null false-positive rate ≤ 2/64 at k = 8), and prefixes of k = 10 are never abundant enough to detect anything.
+
+**Cost.** 0.31 s per run for the main simulation and 0.65 s with both controls at screening fidelity on the B70, above the 0.3 s target; a full map (48k runs) takes about 9 hours.
