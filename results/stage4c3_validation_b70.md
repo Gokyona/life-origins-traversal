@@ -21,8 +21,8 @@ Tests at fixed conditions. They run at validation fidelity, on the final code un
 | # | Test | Result | Numbers |
 |---|---|---|---|
 | 1 | Copy fidelity: fixed template, no decay | Pass | Measured error 0.0494 vs ε = 0.05 (z = −1.13); 0 primer mismatches; copy-length distribution vs processivity formula χ² p = 0.98; 15k primed and 14k unprimed starts |
-| 2 | No copying (k_t = 0) | Pass | 0 strict in 16 runs at the box reference |
-| 3 | Random-sequence copying as the main run | Pass | 0 strict in 16; superseded by test 8, which checks the same null with 128 runs |
+| 2 | No copying (k_t = 0) *(earlier code)* | Pass | 0 strict in 16 runs at the box reference; run before the start-rule and statistic revisions, to be repeated with the map's code check |
+| 3 | Random-sequence copying as the main run *(earlier code)* | Pass | 0 strict in 16; superseded by test 8, which checks the same null with 128 runs |
 | 4 | Error threshold, positive control | Pass, with one deviation | See below |
 | 5 | Strand separation | Pass | (a) Below T_m8, no cycling: 99.9% of templates paired, copying stalls (1.4% of tries in the last quarter succeed). (b) Cycling across T_m8: 0.01% paired, 40% succeed. (c) Far above T_m8: copies average 3.0 letters vs 7.8 in (a) |
 | 6 | Power cut: kill and resume | Pass | Bit-identical records, selections, life fractions, composition and accuracy curves (after the determinism fix, spec §6 row 8) |
