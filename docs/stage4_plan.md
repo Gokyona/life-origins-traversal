@@ -135,6 +135,8 @@ At each layer: measure the cost per simulation, run COMPASS on that layer's leve
 
 **4d. Full maps.** COMPASS maps for E1–E3 and L1–L4 over layer A + layer C with the joint nested map. Composition maps over the life regions, with clustering into environment types and the spread of compositions per point. Also: importance of each environmental variable; minimal sufficient environments; environmental knockouts (no cycling, no minerals, no concentration mechanism).
 
+**4d-seq. Environmental sequence (descriptive, no new simulation).** The owner's simplified design for a changing environment (27 October 2026). From each level's map (E1, E2, L1, L2, and later E3, L3, L4), take the ranges of the 13 environmental (layer A) conditions in which that level is reached. Chain the levels in ladder order. Show in a table and a figure how each condition must change from one level to the next, and mark conflicts, where two consecutive levels need ranges that do not overlap. This is a hypothesis read off the maps. Whether the products of one level survive the change of conditions to the next (carry-over) is not simulated in this step; it is stated as an open question. The data are the raw runs of each map (decoded layer-A values and per-level labels) and 3-D views of the trained map surrogates over triplets of conditions ranked by importance.
+
 **4e. Real environment classes.** Report the maps for real settings, each defined as a region of layer A from the literature:
 - deep-sea alkaline vents;
 - land hot springs with wet–dry pools;
@@ -161,6 +163,7 @@ For each, we ask which levels are reachable and which variable limits it.
 | 4c-3 | templating, L2 map | error threshold and parasite takeover reproduced |
 | 4c-4 | vesicles, E3 map | membrane stability window matches 4b |
 | 4c-5 | coupling, L3–L4 detection | emergent protocells behave as in Part I where they appear |
+| 4d-seq | environmental sequence across the levels | every transition drawn from the published maps; conflicts and the untested carry-over stated |
 | 4d | full maps | accuracy on held-out ground truth reported; importance stable across repetitions |
 | 4e | per-class report | each class traced to literature ranges |
 | 4f | paper | references verified; predictions stated |
@@ -183,6 +186,7 @@ For each, we ask which levels are reachable and which variable limits it.
 2. **Extended ladder E1–E3:** included.
 3. **Two deliverables:** environment map and composition map (owner's request, 26 October 2026, 00:30).
 4. **Order:** layer by layer as in 4c, starting with polymer chemistry, unless the owner prefers to start from a particular scenario.
+5. **Changing environment, simplified** (owner's choice, 27 October 2026): the sequence of environments is described from the per-level maps (step 4d-seq) instead of being simulated as a time-varying environment.
 
 ## References
 
