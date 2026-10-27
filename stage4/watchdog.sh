@@ -1,6 +1,7 @@
 #!/bin/bash
 # Watchdog for the queued stage-4c jobs (in order: map4c1, sens4c1, map4c1_gt2, map4c2b, sens4c2,
-# map4c2_focus; the focus map uses the detector settings adopted by sens4c2). map4c2b is the fresh
+# map4c2_focus, map4c3; the focus map uses the detector settings adopted by sens4c2; map4c3 is the
+# full-space 4c-3 map, coordinator decision 26 Oct 2026). map4c2b is the fresh
 # restart of map4c2 (killed by the 2026-10-26 07:07 out-of-memory event; map4c2 is kept as is).
 # Each job runs in its own systemd user scope (lot-<dir>, MemoryMax 24G, swap 2G), outside the
 # Claude app's cgroup. Start the watchdog itself the same way:
@@ -18,7 +19,8 @@ JOBS=("map4c1|run4c1_map.py|--n-test 2000 --gt-seeds 32 --budget 64000 --reps 1"
       "map4c1_gt2|run4c1_map.py|--n-test 2000 --gt-seeds 32 --budget 64000 --reps 1"
       "map4c2b|run4c2_map.py|--n-test 1000 --gt-seeds 16 --budget 32000 --reps 1 --methods engine"
       "sens4c2|sens4c2_detector.py|"
-      "map4c2_focus|run4c2_map.py|--n-test 1000 --gt-seeds 16 --budget 32000 --reps 1 --methods engine --focus --detector sens4c2/result.json")
+      "map4c2_focus|run4c2_map.py|--n-test 1000 --gt-seeds 16 --budget 32000 --reps 1 --methods engine --focus --detector sens4c2/result.json"
+      "map4c3|run4c3_map.py|--n-test 1000 --gt-seeds 16 --budget 32000 --reps 1 --methods engine --batch 1024")
 log() { echo "$(date '+%F %T') watchdog: $*" >> resume_all.log; }
 log "started"
 while true; do
