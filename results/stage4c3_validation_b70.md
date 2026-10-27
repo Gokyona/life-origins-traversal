@@ -1,10 +1,10 @@
 # Stage 4c-3 validation: template copying and heredity (L2)
 
-**Status:** validation finished; the full map has not run yet. This page will become the 4c-3 report once the map is done.
+**Status:** validation finished; first natural heredity found; full-space map done (27 October, 14:19 Toronto); focused map of the heredity region running. This page will become the 4c-3 report.
 **Dates:** 26 October 2026, 16:00 Toronto time, to 27 October 2026, 05:12 · **Hardware:** Intel Arc Pro B70 · **Spec:** [stage4c3_spec.md](../docs/stage4c3_spec.md), with the revisions in its §6
 **Alphabet:** 2 letters (0/1), on purpose. The question is whether the simplest alphabet can give rise to heredity, and where. It is not a simulation of modern 4-letter RNA.
 
-Code and raw JSON will be added with the map results, once the last code change (a memory fix, below) is final.
+Code: [stage4/](../stage4/README.md) (md5-checked copies of the versions that ran). Raw JSON will be added later.
 
 ## Bottom line so far
 
@@ -70,8 +70,45 @@ In the targeted box, copy length and strand separation were mostly solved. The 8
 - The reference has T = 30.7 °C, T_m8 = 35.6 °C, a hot phase of 36.1 °C, a period of 53 h and pH 11.4.
 - That gives about 0.1 full copies per template lifetime.
 
+## Update, 27 October 2026: natural heredity under the final rules
+
+**Targeted scan (box2).** 4,096 environments. Each has T just below T_m8, a hot phase above it, chain lifetime ≥ cycle period, and k_t ≥ 10⁴. 204 were loose and 10 strict at screening fidelity. Eight candidates were rerun 16 times at validation fidelity. Three gave strict heredity in 16 of 16 runs, with copies of about 60 letters and margins of 0.4–0.6:
+
+| Point | pH | T / T_m8 (°C) | Period (h) | ε (per letter) | Long copies per template per lifetime (R) | Status |
+|---|---|---|---|---|---|---|
+| #1558 | 7.96 | 7.6 / 10.2 | 118 | 0.0036 | 0.98 | **stands**: a cold, near-neutral pool |
+| #3709 | 4.57 | 38.7 / 46.3 | 33 | 0.0063 | 1.05 | **stands**: unchanged with a pH floor of 5 for hydrolysis (16/16, margin 0.619) |
+| #813 | 2.68 | 54.2 / 69 | 378 | – | 0.42 | **artifact**: 0/16 with a pH floor of 5 |
+
+- The hydrolysis law (Li & Breaker) has no acid branch, so lifetimes at pH < 5 may be too long. #813 owes its heredity to that gap and is dropped.
+- The reproduction number R separates the classes: 0.4–1.05 at the reproducible points, ≤ 0.05 at points without heredity.
+
+**Copy-length cap.** At #3709, 99.97% of chains sit at the model's length cap of 64 letters, which is a hard limit of the sequence encoding. At #813 the share is 6%. A check with caps of 48 and 32 is queued: it tells whether the cap sets only lineage length or also whether heredity happens.
+
+**Test 9: error threshold at a natural reference.** S is the heredity statistic.
+
+| Point | Reference | ε·L_H = 0.1 | 0.3 | 1 | 3 | Pre-registered verdict |
+|---|---|---|---|---|---|---|
+| #1558 | 16/16, S 0.42 | 0/16, S 0.069 | S 0.002 | S 0 | S 0 | **fail** |
+| #3709 | 15/16, S 0.57 | 2/16, S 0.14 | S 0.004 | S 0 | S 0 | pass |
+
+- #1558 fails the criterion "rate at 0.1 > rate at 3" (0 vs 0) because heredity is already gone at the first grid point.
+- *Post-hoc reading, not a verdict:* the relevant length is the copy length (about 62 letters), not L_H = 6. ε·L_copy is 0.22 and 0.39 at the references, where heredity survives, and about 1 at ε·L_H = 0.1, where it is gone. That is Eigen's threshold ε·L ≈ 1 at both points.
+- A follow-up with a finer grid (ε·L_copy = 0.15–3) and a criterion fixed before running is queued (test 9b).
+
+**Full-space map (map4c3).** 42 dimensions; ground truth 1000 × 16 runs; COMPASS 32,000 runs; 5.6 h.
+
+| Level | Ground-truth fraction | COMPASS accuracy | Top variables |
+|---|---|---|---|
+| E1 | 0.466 | 0.961 | residence time τ, T, Y_UV (C), UV, thermal cycling, H₂, feedstock |
+| E2 | 0.085 | 0.959 | T, τ, feedstock, Y_UV (C), UV, pH |
+| L1 | 0.001 | – | – |
+| L2 (strict) | 0.000 | – | – |
+
+- COMPASS found 77 strict-L2 runs, but **all are short-copy noise**: median copy length 2.4 letters, none ≥ 6. In the full 42-dimensional space, real heredity is too rare for 32,000 samples to hit; it lives in the narrow box2 region. The L1 and L2 maps are therefore uninformative ("no" everywhere).
+- **Detector consequence.** A new level, L2_long = strict L2 and mean copy length ≥ L_H, keeps noise-level copying from counting as heredity. A focused map of the box2 region with L2_long (ground truth 500 × 16, COMPASS 16,000, infeasible environments masked) is running.
+
 ## Still to do
 
-- A targeted scan under the final rules, restricted to environments where chain lifetime ≥ cycle period. The first attempt ran out of GPU memory: the copy step's tensors grow with the number of templates. The fix processes templates in chunks, gives identical results, and is being checked.
-- Then the full map: 42 dimensions, ground truth 1000 × 16, COMPASS 32k, about 9 hours.
-- Then the report with the assumption table.
+- Focused map of the heredity region (L2_long), copy-length-cap check, test 9b.
+- The 4c-3 report with the assumption table.
