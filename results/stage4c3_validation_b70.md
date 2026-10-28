@@ -183,7 +183,19 @@ The two repetitions agree. The summary block in the rep 1 result file repeats th
 - Four of the seven are cold (below 15 °C): #1558, A, rep1_1926 and rep1_9823. Two are near-neutral cold pools (#1558 and rep1_1926).
 - The same pattern holds as for the first five: cycling across T_m8 and long washout-limited lifetimes (τ about 10⁴ h). At rep1_1926, ε gives about 0.1 errors per full copy.
 
+**Importance stability, rep 0 vs rep 1** (impstab4c3.json, md5 17249511). E1 and E2 are refitted per repetition and scored by permutation importance on the ground truth. L2 strict has no ground-truth positives, so each repetition's model is scored by AUC drop on the other repetition's runs.
+
+| Level | Spearman ρ over 42 dimensions | Top-8 overlap | Score, rep 0 / rep 1 |
+|---|---|---|---|
+| E1 | 0.749 (p ≈ 10⁻⁸) | 7 of 8 | accuracy 0.968 / 0.970 |
+| E2 | 0.564 (p ≈ 10⁻⁴) | 6 of 8 | accuracy 0.952 / 0.940 |
+| L2 strict | 0.436 (p 0.004) | 4 of 8 | AUC 0.732 / 0.733 |
+
+- E1: τ, cycle period, pH and T_m8 lead in both repetitions.
+- L2 strict: τ is first in both (0.18 and 0.16), followed by UV, k_UV and T_m8. The tail of the ranking differs between repetitions and is noise.
+- L2_long has only 3 positives per repetition and cannot be fitted.
+- So the leading variables are stable; only the top of the L2 ranking should be read.
+
 ## Still to do
 
 - ~~The 4c-3 report~~ done: [stage4c3_heredity_b70.md](stage4c3_heredity_b70.md).
-- Importance stability: refit the focused map on rep 1 and compare the rankings.
