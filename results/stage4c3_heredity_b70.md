@@ -127,7 +127,7 @@ The criteria were written into the output file before the first run: S non-incre
 - **Paired strands are not protected from hydrolysis**, and there is no explicit Mg²⁺ or salt effect on duplex stability.
 - **Lineages are keyed on whole sequences**, which undercounts heredity when a copied chain later grows.
 - **Two-letter alphabet**, so random sequence matches are frequent; the detector's controls account for this.
-- **Few points.** The L2 maps do not resolve a boundary. Statements about where heredity occurs come from the five confirmed points and the targeted region, not from a classifier. A second COMPASS repetition of the focused map is running to find more points and test importance stability.
+- **Few points.** The L2 maps do not resolve a boundary. Statements about where heredity occurs come from the five confirmed points and the targeted region, not from a classifier. A second COMPASS repetition of the focused map (28 October) found 3 more candidates, of which 2 were confirmed (16/16 each), giving 7 confirmed points in all. See the [validation page](stage4c3_validation_b70.md).
 
 ## References
 

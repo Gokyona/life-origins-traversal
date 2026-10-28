@@ -155,6 +155,35 @@ Cycle periods range from 1 h to 26 days, and temperatures from 8 to 39 °C.
 
 **Caveat: saturated regime.** At the heredity points nearly all copy slots hold chains at the length cap, and R ≈ 1 may be limited by the slot count. Heredity here is maintenance of a saturated population, not growth.
 
+## Update, 28 October 2026 (night): second COMPASS repetition of the focused map
+
+Rep 1 (seed 1001) reuses the rep 0 ground truth and runs 16,000 new COMPASS points in box2. It finished at 23:35 Toronto, with confirmations at 23:48.
+
+| | Rep 0 | Rep 1 |
+|---|---|---|
+| L2_long | 3 | 3 |
+| L2_strict | 26 | 38 |
+| L2 loose | 589 | 599 |
+| L1 strict | 11 | 14 |
+| Infeasible share | 0.296 | 0.299 |
+| Accuracy at 16,000, E1 / E2 | 0.968 / 0.95 | 0.968 / 0.942 |
+
+The two repetitions agree. The summary block in the rep 1 result file repeats the rep 0 counts, because the post-processing read the rep 0 engine file. The rep 1 numbers above come from the rep 1 engine file. Importance stability (a refit on rep 1) is still to do.
+
+**Confirmations (16 new runs each, paired controls):**
+
+| Point | Environment | Strict / 16 | Long / 16 | Margin | Copy length | R | pH floor 5 |
+|---|---|---|---|---|---|---|---|
+| rep1_1926 | T 7.8 °C, T_m8 16.5 °C, period 42 h, pH 6.73, τ 9,860 h, k_t 4.7×10⁴, ε 0.0017 | 16 | 16 | 0.74 | 63.0 | 1.00 | not needed |
+| rep1_9823 | T 5.8 °C, T_m8 12.0 °C, period 224 h, pH 2.58, τ 10,877 h | 16 | 16 | 0.72 | 62.9 | 1.00 | 16/16, margin 0.72 |
+| rep1_6192 | T 45.5 °C, T_m8 51.1 °C, period 54 h, pH 5.6, τ 26,232 h | 5 | 5 | 0.33 | 54.0 | 0.41 | not needed |
+
+- rep1_1926 and rep1_9823 are confirmed. rep1_6192 does not reach 12/16 and is classed as marginal.
+- That makes **7 confirmed L2 points**: #1558, #3709, A, B, C, rep1_1926 and rep1_9823.
+- Four of the seven are cold (below 15 °C): #1558, A, rep1_1926 and rep1_9823. Two are near-neutral cold pools (#1558 and rep1_1926).
+- The same pattern holds as for the first five: cycling across T_m8, washout-limited lifetimes of about 10⁴ h, and errors below about 0.1 per copy at the new points.
+
 ## Still to do
 
-- The 4c-3 report with the assumption table, written as this page's final form.
+- ~~The 4c-3 report~~ done: [stage4c3_heredity_b70.md](stage4c3_heredity_b70.md).
+- Importance stability: refit the focused map on rep 1 and compare the rankings.
