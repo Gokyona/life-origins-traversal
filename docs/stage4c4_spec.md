@@ -119,4 +119,6 @@ This answers whether heredity survives enclosure in general, or only for special
 - Levels as in the full map, plus the joint level E3 strict ∩ L2_long.
 - Every new joint hit is confirmed with 16 runs, as in 4c-3.
 
+**9c. Focused map with membrane constants drawn inside the window (box3 v2).** Masking leaves only about 3.5% of box3 feasible, so its ground truth is thin. In v2, the membrane constants are drawn conditionally on the environment, so that every point lies inside the window: pKa_app uniform within [pH − w_pH, pH + w_pH] intersected with its range, Mg_crit ≥ Mg²⁺, sal_crit ≥ salinity and T_mem ≥ the hot-phase temperature, each uniform (log where the range is log) between that bound and the range maximum. Environments for which no membrane constant can satisfy the window (for example pH < 4) stay masked. The same budgets as 9b apply. The result is a map conditional on a stable membrane, and is reported as such. Added 28 October 2026, before the 9b result.
+
 **Reading.** If 9a and 9b both find no overlap, that is a result: in this model, heredity and stable membranes need conflicting environments. The report will then say which variables conflict. If they overlap, the joint region is the input for 4c-5.
