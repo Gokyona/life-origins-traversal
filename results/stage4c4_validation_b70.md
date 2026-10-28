@@ -103,7 +103,27 @@ Result files (md5): validate4c4.json (v1) fe0bf451, validate4c4_v2.json a6a56fdf
 - Membrane constants that matter, from logistic fits per point: the amphiphile fraction (#3709, #1558), φ₀ and f_rehyd (more enclosure helps at #1558 and C), and pKa_app and γ_T at C. At rep1_1926 nearly every set succeeds, so the fit there is weak.
 - The share of membrane-constant space compatible with each point is small (0.4–18%). Which membrane chemistries are realistic therefore decides much of the answer.
 
+## Focused map box3 (spec §9b)
+
+28 October 2026, 14:55 to 17:31 Toronto time (9,361 s). Result md5 246114b0; confirmations md5 3e414487. Region: the 4c-3 box2 heredity region, restricted to the membrane stability window and an amphiphile fraction ≥ 0.1. Points outside are masked and not simulated.
+
+| | Runs | Masked | E1 | E2 | L2 strict | L2_long | E3 strict | **E3 strict ∩ L2_long** |
+|---|---|---|---|---|---|---|---|---|
+| Ground truth 500 × 16 | 8,000 | 97.4% | 190 | 112 | 0 | 0 | 64 | **0** |
+| COMPASS | 16,000 | 85.5% | 2,113 | 1,020 | 9 | 2 | 340 | **2** |
+
+**Confirmations (16 new runs each):**
+
+| Point | Environment | E3 strict | L2_long | Both | Margin | Copy length | Enclosed share of L2 lineage |
+|---|---|---|---|---|---|---|---|
+| **engine12538** | T 4.5 °C, T_m8 13.0 °C, period 63 h, pH 7.58, Mg²⁺ 1.0 mM, salinity 0.74 M, τ 11,178 h; k_t 2.8×10⁴, ε 0.0013 | 16 | 16 | **16** | 0.57 | 61.9 | 1.0 |
+| engine8869 | T 1.7 °C, pH 6.87, period 10 h, τ 88,210 h | 16 | 0 | 0 | 0.07 | 59.3 | – |
+
+- **engine12538 is the first point found by the search itself, not chosen by hand, where heredity and persistent filled vesicles coexist in every run.** Membrane constants there: amphiphile fraction 0.40, CVC₀ 0.20 mM, pKa_app 8.06 ± 1.10, Mg_crit 29 mM, sal_crit 2.76 M, T_mem 41 °C, φ₀ 0.042, f_rehyd 8.4, β 9.7. It is a cold, near-neutral pool, like #1558 and rep1_1926.
+- engine8869 was a single-run fluke for heredity and is not confirmed.
+- Only 2.6% of the region is feasible under masking, so the ground truth is too thin for a map of the joint level. The conditional version (§9c) addresses this.
+
 ## Next
 
-1. Focused map of heredity and membranes together (box3, spec §9b), with confirmations.
+1. Focused map with membrane constants drawn inside the window (box3 v2, spec §9c), with confirmations.
 2. The 4c-4 report.
