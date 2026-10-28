@@ -75,7 +75,9 @@ A joint map of E1, E2, L1, L2_long and E3 (loose and strict) over the 54 dimensi
 - Mansy, S. S. & Szostak, J. W. (2008). Thermostability of model protocell membranes. *Proceedings of the National Academy of Sciences USA* 105(36), 13351–13355. (Checked on 27 October 2026 in PubMed Central PMC2528865: Mg²⁺ tolerance up to 4 mM for the 2:1 MA/GMM mixture; activated nucleotides equilibrate within 30 s at 90 °C; tetranucleotides retained over 1 h.)
 - Zhu, T. F. & Szostak, J. W. (2009). Coupled growth and division of model protocell membranes. *Journal of the American Chemical Society* 131(15), 5705–5713. (Checked on 27 October 2026 in the Szostak lab's reference list and an author-group page; issue from the latter.)
 
-## 8. Implementation choices (27 October 2026, before validation)
+## 8. Implementation choices (27–28 October 2026, before any map)
+
+Rows 8, 10 and 14 were revised on 28 October after the memory pre-flight diagnostics, before any validation result or map.
 
 The spec leaves some details open. The implementation (chem4c4.py) takes the simplest reading. Each choice is listed here so that the validation and the map can be read against it.
 
@@ -88,12 +90,12 @@ The spec leaves some details open. The implementation (chem4c4.py) takes the sim
 | 5 | Duplexes at formation and rehydration | enclosed together (one draw per duplex), as at division |
 | 6 | Several vesicles formed in one step | they enclose disjoint shares of the site, each min(φ₀, 1/n_new) |
 | 7 | Where f_perm acts | it also scales copy extension inside vesicles; copies start (primer binding) outside only; catalysis uses the site's activated monomers |
-| 8 | E3 turnover time | 1 / (1/τ + k_break·[outside window]); the division-limited term is left out |
+| 8 | E3 turnover time and window | turnover = 1 / (1/τ + k_break·[outside window]); the division-limited term is left out. The E3 window is built like the L2 window: the longest run of consecutive checkpoints ending at the last one in which at least half of the sites hold a vesicle at every checkpoint. E3 loose needs this window to span ≥ 5 turnovers; E3 is evaluable if checkpoint 1 to the end spans ≥ 5 turnovers. (A first version used only the last 8 checkpoints, which needs a horizon of 10 τ and made E3 unevaluable at every heredity point.) |
 | 9 | Stability window | a run constant (the hottest phase for T); crossing a bound is tested with a switch time |
 | 10 | Run length with amphiphiles | the same horizon, step count and time step as chem4c3. E3 is judged over that horizon; where it spans fewer than 5 vesicle turnovers, E3 is marked not evaluable, and that share is reported. (A first version extended runs to 10 vesicle turnovers, which lengthened the time step. It was dropped on 28 October before any validation result, so that the vesicle layer changes neither the horizon nor the time step. The memory pre-flight failure at batches 1024 and 512 turned out not to depend on it: the worst-case batch of pure heredity points is template-saturated under the 4c-3 dynamics themselves.) |
 | 11 | Vesicle lineage record | ids, parents, generations and E3 counts are stored; the enclosed lineage sequences per checkpoint are left to 4c-5, to save memory |
 | 12 | Bit-identity guard | per batch: a batch with no amphiphile skips the layer entirely. In mixed batches, runs without amphiphile get different but statistically equivalent random numbers |
 | 13 | Amphiphile amounts | continuous and deterministic (no Poisson noise) |
-| 14 | Cycling | rehydration needs resolved cycling; division by cycling uses 2 switches per period for any cycling depth > 0 |
+| 14 | Cycling | with resolved cycling, rehydration happens at each dry-to-wet switch. Where the time step is longer than half a period (cycle-averaged runs, which include all heredity points), rehydration is applied as an average over the n = dt / period cycles in a step: each outside chain is enclosed in vesicle j with probability 1 − (1 − min(φ_j f_rehyd, 1))ⁿ. This applies to wet–dry cycling only. Division by cycling uses 2 switches per period for any cycling depth > 0. (A first version had no rehydration in cycle-averaged runs. Vesicles then formed in the first steps, before any chains existed, filled all slots and never enclosed anything at the heredity points.) |
 | 15 | Concentration of A in the dry phase | evaporation factor only, without thermophoresis or mineral factors |
 | 16 | f_rehyd and β | linear scales |
