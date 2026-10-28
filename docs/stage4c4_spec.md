@@ -112,6 +112,8 @@ The full map found persistent vesicles (E3) and heredity (L2) separately, never 
 
 This answers whether heredity survives enclosure in general, or only for special membranes.
 
+*Note added before the scan ran:* the window check on the CPU found no window-compatible membrane set at the three acidic points (A, pH 3.83; B, pH 2.64; rep1_9823, pH 2.58). The window needs pH ≥ pKa_app − w_pH ≥ 6 − 2 = 4. The scan therefore runs at the other four points (4 × 256 runs). That the acidic points cannot hold membranes follows from the layer C ranges for pKa_app and w_pH; whether more acid-tolerant amphiphile mixtures exist will be checked against the literature before the report.
+
 **9b. Focused map (box3).** The 4c-3 box2 region (T up to 15 °C below T_m8, hot phase above T_m8, chain lifetime ≥ cycle period, high k_t, strong thermal forcing), further restricted to the membrane stability window and an amphiphile fraction of at least 0.1. Points outside are infeasible and masked, as in box2.
 - Ground truth 500 × 16, COMPASS 16,000, batch 256.
 - Levels as in the full map, plus the joint level E3 strict ∩ L2_long.
