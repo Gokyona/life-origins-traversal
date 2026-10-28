@@ -74,3 +74,26 @@ A joint map of E1, E2, L1, L2_long and E3 (loose and strict) over the 54 dimensi
 - Damer, B. & Deamer, D. (2020). The hot spring hypothesis for an origin of life. *Astrobiology* 20(4), 429–452.
 - Mansy, S. S. & Szostak, J. W. (2008). Thermostability of model protocell membranes. *Proceedings of the National Academy of Sciences USA* 105(36), 13351–13355. (Checked on 27 October 2026 in PubMed Central PMC2528865: Mg²⁺ tolerance up to 4 mM for the 2:1 MA/GMM mixture; activated nucleotides equilibrate within 30 s at 90 °C; tetranucleotides retained over 1 h.)
 - Zhu, T. F. & Szostak, J. W. (2009). Coupled growth and division of model protocell membranes. *Journal of the American Chemical Society* 131(15), 5705–5713. (Checked on 27 October 2026 in the Szostak lab's reference list and an author-group page; issue from the latter.)
+
+## 8. Implementation choices (27 October 2026, before validation)
+
+The spec leaves some details open. The implementation (chem4c4.py) takes the simplest reading. Each choice is listed here so that the validation and the map can be read against it.
+
+| # | Open point | Choice |
+|---|---|---|
+| 1 | Newborn membrane a₀ | 100 amphiphile molecules |
+| 2 | k_break is layer C in §2 but not among the 12 new constants | fixed at 1 /h (geometric middle of its range) |
+| 3 | Uptake rate of non-vesicle membrane by vesicles | k_grow = 10 /h, equal to k_form |
+| 4 | Losses of non-vesicle membrane | washout at 1/τ like free A. Below the CVC, membrane dissolves first from non-vesicle membrane, then from vesicles in proportion; a vesicle below a₀/2 dissolves |
+| 5 | Duplexes at formation and rehydration | enclosed together (one draw per duplex), as at division |
+| 6 | Several vesicles formed in one step | they enclose disjoint shares of the site, each min(φ₀, 1/n_new) |
+| 7 | Where f_perm acts | it also scales copy extension inside vesicles; copies start (primer binding) outside only; catalysis uses the site's activated monomers |
+| 8 | E3 turnover time | 1 / (1/τ + k_break·[outside window]); the division-limited term is left out |
+| 9 | Stability window | a run constant (the hottest phase for T); crossing a bound is tested with a switch time |
+| 10 | Run length with amphiphiles | extended to 10 vesicle turnovers. Where the step budget ends a run first, E3 is marked not evaluable, and that share is reported |
+| 11 | Vesicle lineage record | ids, parents, generations and E3 counts are stored; the enclosed lineage sequences per checkpoint are left to 4c-5, to save memory |
+| 12 | Bit-identity guard | per batch: a batch with no amphiphile skips the layer entirely. In mixed batches, runs without amphiphile get different but statistically equivalent random numbers |
+| 13 | Amphiphile amounts | continuous and deterministic (no Poisson noise) |
+| 14 | Cycling | rehydration needs resolved cycling; division by cycling uses 2 switches per period for any cycling depth > 0 |
+| 15 | Concentration of A in the dry phase | evaporation factor only, without thermophoresis or mineral factors |
+| 16 | f_rehyd and β | linear scales |
