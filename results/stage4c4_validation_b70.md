@@ -65,6 +65,29 @@ Criteria were written into the output file before each test ran.
 
 Result files (md5): validate4c4.json (v1) fe0bf451, validate4c4_v2.json a6a56fdf, check3709_4c4.json f39224ed, with the failed and stopped pre-flight records.
 
+## Full map (54 dimensions)
+
+28 October 2026, 02:09 to 12:33 Toronto time (20,724 s). Ground truth 1000 × 16 runs, COMPASS 32,000 runs, batch 256. Result file md5 30bdb8c5.
+
+| Level | Ground-truth fraction (P > 0.5) | COMPASS runs positive | COMPASS accuracy | 4c-3 full map |
+|---|---|---|---|---|
+| E1 (activated feedstock) | 0.450 | 18,572 | 0.975 | 0.466 |
+| E2 (long chains) | 0.107 | 4,429 | 0.957 | 0.085 |
+| L1 (catalytic network) | 0 | 21 | – | 0.001 |
+| L2 strict (heredity) | 0 | 55 | – | 0 |
+| L2_long | 0 | 1 | – | 0 |
+| E3 loose / strict (persistent vesicles holding chains) | 0.002 / 0.002 | 43 / 41 | – | – |
+| E3 strict ∩ L2_long | 0 | 0 | – | – |
+
+- **Vesicles are rare.** Ground truth has 2 conditions of 1000 with E3, both at 16 of 16 seeds; all their chains are enclosed. Both also have E1 and E2, and neither has L1 or L2.
+- **E3 is never found together with heredity** in the full map: 0 in ground truth and 0 in 32,000 COMPASS runs. In the E3 runs, copying is active but copies are short (median about 2.7 letters).
+- E3 is evaluable (≥ 5 vesicle turnovers) in 69% of ground-truth runs.
+- Importance for E1: τ 0.26, T 0.13, Y_UV 0.10, feedstock 0.10, thermal cycling 0.09, UV 0.09, H₂ 0.07. For E2: τ, T, feedstock, Y_UV, UV, H₂, pH. E3, L1 and L2 are too rare for a classifier; their accuracy only reflects the all-negative baseline.
+- E2 is higher than in 4c-3 (0.107 against 0.085). A paired rerun of the same points without amphiphiles is running to find out whether vesicles cause this.
+
 ## Next
 
-The full 4c-4 map: 54 dimensions, ground truth 1000 × 16, COMPASS 32,000 runs, batch 256, levels E1, E2, L1, L2 strict, L2_long, E3 loose and E3 strict. Started automatically on 28 October after the validation passed.
+1. E2 with and without amphiphiles on the same points.
+2. Membrane scan at the heredity points (spec §9a). The three acidic points (pH < 4) are outside every membrane window, so the scan uses the other four.
+3. Focused map of heredity and membranes together (box3, spec §9b), with confirmations.
+4. The 4c-4 report.
