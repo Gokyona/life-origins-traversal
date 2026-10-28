@@ -181,7 +181,7 @@ The two repetitions agree. The summary block in the rep 1 result file repeats th
 - rep1_1926 and rep1_9823 are confirmed. rep1_6192 does not reach 12/16 and is classed as marginal.
 - That makes **7 confirmed L2 points**: #1558, #3709, A, B, C, rep1_1926 and rep1_9823.
 - Four of the seven are cold (below 15 °C): #1558, A, rep1_1926 and rep1_9823. Two are near-neutral cold pools (#1558 and rep1_1926).
-- The same pattern holds as for the first five: cycling across T_m8, washout-limited lifetimes of about 10⁴ h, and errors below about 0.1 per copy at the new points.
+- The same pattern holds as for the first five: cycling across T_m8 and long washout-limited lifetimes (τ about 10⁴ h). At rep1_1926, ε gives about 0.1 errors per full copy.
 
 ## Still to do
 
