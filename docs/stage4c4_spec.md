@@ -99,3 +99,22 @@ The spec leaves some details open. The implementation (chem4c4.py) takes the sim
 | 14 | Cycling | with resolved cycling, rehydration happens at each dry-to-wet switch. Where the time step is longer than half a period (cycle-averaged runs, which include all heredity points), rehydration is applied as an average over the n = dt / period cycles in a step: each outside chain is enclosed in vesicle j with probability 1 − (1 − min(φ_j f_rehyd, 1))ⁿ. This applies to wet–dry cycling only. Division by cycling uses 2 switches per period for any cycling depth > 0. (A first version had no rehydration in cycle-averaged runs. Vesicles then formed in the first steps, before any chains existed, filled all slots and never enclosed anything at the heredity points.) |
 | 15 | Concentration of A in the dry phase | evaporation factor only, without thermophoresis or mineral factors |
 | 16 | f_rehyd and β | linear scales |
+
+## 9. Focused search for heredity inside vesicles (28 October 2026, before the full map finished)
+
+The full map found persistent vesicles (E3) and heredity (L2) separately, never together. Both are rare in 54 dimensions, so their overlap cannot be judged from it. Two focused steps follow. They are fixed now, before the full map's final result.
+
+**9a. Membrane scan at the confirmed heredity points.** For each of the 7 confirmed L2 points (environment and copying constants fixed), draw 64 sets of the 12 membrane constants uniformly within their layer C ranges, restricted to sets where the point lies inside the stability window (pH, Mg²⁺, salinity, T_mem), with an amphiphile fraction of at least 0.1. Run 4 seeds each with both random-copy controls (7 × 64 × 4 = 1,792 runs). Report per point:
+- the share of window-compatible membrane sets with E3 strict, with L2_long, and with both together;
+- the enclosed share of L2 lineage mass;
+- the margin compared with the same point in chem4c3;
+- which membrane constants separate success from failure (logistic fit).
+
+This answers whether heredity survives enclosure in general, or only for special membranes.
+
+**9b. Focused map (box3).** The 4c-3 box2 region (T up to 15 °C below T_m8, hot phase above T_m8, chain lifetime ≥ cycle period, high k_t, strong thermal forcing), further restricted to the membrane stability window and an amphiphile fraction of at least 0.1. Points outside are infeasible and masked, as in box2.
+- Ground truth 500 × 16, COMPASS 16,000, batch 256.
+- Levels as in the full map, plus the joint level E3 strict ∩ L2_long.
+- Every new joint hit is confirmed with 16 runs, as in 4c-3.
+
+**Reading.** If 9a and 9b both find no overlap, that is a result: in this model, heredity and stable membranes need conflicting environments. The report will then say which variables conflict. If they overlap, the joint region is the input for 4c-5.
