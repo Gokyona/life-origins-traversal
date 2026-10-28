@@ -1,6 +1,6 @@
 # Stage 4c-4 specification: amphiphiles and vesicles (level E3)
 
-**Status:** specification, drafted 27 October 2026, 21:55 Toronto time · **Plan:** [stage4_plan.md](stage4_plan.md), step 4c-4 · **Builds on:** [4c-3](stage4c3_spec.md) (template copying, L2), with all of 4c-1 to 4c-3 unchanged
+**Status:** specification, drafted 27 October 2026, 21:25 Toronto time · **Plan:** [stage4_plan.md](stage4_plan.md), step 4c-4 · **Builds on:** [4c-3](stage4c3_spec.md) (template copying, L2), with all of 4c-1 to 4c-3 unchanged
 
 The fourth layer adds membranes to the chemistry of 4c-3. Amphiphiles come from the feedstock. Above a critical concentration they assemble into vesicles, and the vesicles enclose whatever chains are nearby when they form. They grow by taking up amphiphiles, divide when gentle shear or cycling acts on grown vesicles, and break down where ions, pH or heat destroy membranes. No rule says "be a cell": a vesicle is a physical container, and what it holds is chance.
 
