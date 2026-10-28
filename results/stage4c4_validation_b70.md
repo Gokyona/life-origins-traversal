@@ -83,11 +83,11 @@ Result files (md5): validate4c4.json (v1) fe0bf451, validate4c4_v2.json a6a56fdf
 - **E3 is never found together with heredity** in the full map: 0 in ground truth and 0 in 32,000 COMPASS runs. In the E3 runs, copying is active but copies are short (median about 2.7 letters).
 - E3 is evaluable (≥ 5 vesicle turnovers) in 69% of ground-truth runs.
 - Importance for E1: τ 0.26, T 0.13, Y_UV 0.10, feedstock 0.10, thermal cycling 0.09, UV 0.09, H₂ 0.07. For E2: τ, T, feedstock, Y_UV, UV, H₂, pH. E3, L1 and L2 are too rare for a classifier; their accuracy only reflects the all-negative baseline.
-- E2 is higher than in 4c-3 (0.107 against 0.085). A paired rerun of the same points without amphiphiles is running to find out whether vesicles cause this.
+- E2 is higher than in 4c-3 (0.107 against 0.085). **This is not caused by vesicles.** A paired rerun of all 16,000 ground-truth runs with the same points and seeds but no amphiphiles (e2attr4c4.json, md5 30104396) gives E2 0.1127 without amphiphiles against 0.1056 with them. The 50 runs that reach E2 only with amphiphiles have no vesicles at all. Amphiphiles slightly lower E2, because they take a share of the feedstock. The difference from 4c-3 comes from the point set: the ground-truth points are drawn from the same random stream, but with 54 instead of 42 dimensions, so they are different points.
+- The two ground-truth E3 conditions are both mild (about 21 °C) with pH inside the window of a matching pKa_app (6.5 and 8.6), Mg²⁺ well below Mg_crit, and an amphiphile fraction just above 0.1.
 
 ## Next
 
-1. E2 with and without amphiphiles on the same points.
-2. Membrane scan at the heredity points (spec §9a). The three acidic points (pH < 4) are outside every membrane window, so the scan uses the other four.
-3. Focused map of heredity and membranes together (box3, spec §9b), with confirmations.
-4. The 4c-4 report.
+1. Membrane scan at the heredity points (spec §9a). The three acidic points (pH < 4) are outside every membrane window, so the scan uses the other four.
+2. Focused map of heredity and membranes together (box3, spec §9b), with confirmations.
+3. The 4c-4 report.
