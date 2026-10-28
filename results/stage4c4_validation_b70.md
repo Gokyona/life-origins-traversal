@@ -86,8 +86,24 @@ Result files (md5): validate4c4.json (v1) fe0bf451, validate4c4_v2.json a6a56fdf
 - E2 is higher than in 4c-3 (0.107 against 0.085). **This is not caused by vesicles.** A paired rerun of all 16,000 ground-truth runs with the same points and seeds but no amphiphiles (e2attr4c4.json, md5 30104396) gives E2 0.1127 without amphiphiles against 0.1056 with them. The 50 runs that reach E2 only with amphiphiles have no vesicles at all. Amphiphiles slightly lower E2, because they take a share of the feedstock. The difference from 4c-3 comes from the point set: the ground-truth points are drawn from the same random stream, but with 54 instead of 42 dimensions, so they are different points.
 - The two ground-truth E3 conditions are both mild (about 21 °C) with pH inside the window of a matching pKa_app (6.5 and 8.6), Mg²⁺ well below Mg_crit, and an amphiphile fraction just above 0.1.
 
+## Membrane scan at the heredity points (spec §9a)
+
+28 October 2026, 13:54 to 14:55 Toronto time. Result file scan4c4mem.json, md5 46eed70d. For each heredity point, environment and copying constants are fixed. 64 sets of membrane constants are drawn within their layer C ranges, restricted to sets under which the point lies inside the membrane stability window, with an amphiphile fraction ≥ 0.1. Each set runs with 4 seeds and both random-copy controls. The reference is chem4c3 at the same point, 16 runs with the same seed.
+
+| Point | Share of membrane space compatible | E3 strict | L2_long | Both | Sets with both (≥ 3 of 4 seeds) | Enclosed share of L2 lineage | Margin | chem4c3 reference: L2_long / 16, margin |
+|---|---|---|---|---|---|---|---|---|
+| #3709 (38.7 °C, pH 4.57) | 0.004 | 1.00 | 0.28 | **0.28** | 0.23 | 0.998 | 0.25 | 16, 0.51 |
+| #1558 (7.6 °C, pH 7.96) | 0.18 | 1.00 | 0.64 | **0.64** | 0.59 | 1.000 | 0.28 | 9, 0.25 |
+| C (26.7 °C, pH 4.73) | 0.014 | 1.00 | 0.86 | **0.86** | 0.77 | 1.000 | 0.34 | 14, 0.31 |
+| rep1_1926 (7.8 °C, pH 6.73) | 0.11 | 0.98 | 0.99 | **0.98** | 0.98 | 0.984 | 0.51 | 16, 0.52 |
+
+- **Heredity and persistent vesicles occur together at all four points** where a membrane can be stable. Wherever the membrane window allows it, E3 strict follows almost always, and heredity survives in 28–98% of runs, with essentially all lineage mass inside vesicles and copies of 52–60 letters.
+- **Enclosure costs little at three points.** At C and rep1_1926 the joint rate is close to the rate without membranes. At #1558 the reference reached only 9 of 16 at this seed (16 of 16 at its original seed), so the 64% with membranes is no lower. At #3709, the warmest and most acidic point, enclosure costs a lot (28% against 100%), and a large amphiphile fraction is the main cause of failure there (logistic coefficient −3.3 on standardised constants).
+- **The three acidic points (A, B and rep1_9823, pH < 4) cannot hold any membrane** in this model, because the window needs pH ≥ pKa_app − w_pH ≥ 4. This follows from the layer C ranges, which are already more permissive than measured fatty-acid and alcohol mixtures (vesicles from about pH 6.5; Jordan et al. 2019).
+- Membrane constants that matter, from logistic fits per point: the amphiphile fraction (#3709, #1558), φ₀ and f_rehyd (more enclosure helps at #1558 and C), and pKa_app and γ_T at C. At rep1_1926 nearly every set succeeds, so the fit there is weak.
+- The share of membrane-constant space compatible with each point is small (0.4–18%). Which membrane chemistries are realistic therefore decides much of the answer.
+
 ## Next
 
-1. Membrane scan at the heredity points (spec §9a). The three acidic points (pH < 4) are outside every membrane window, so the scan uses the other four.
-2. Focused map of heredity and membranes together (box3, spec §9b), with confirmations.
-3. The 4c-4 report.
+1. Focused map of heredity and membranes together (box3, spec §9b), with confirmations.
+2. The 4c-4 report.
