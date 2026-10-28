@@ -1,6 +1,6 @@
 # Stage 4c-3 validation: template copying and heredity (L2)
 
-**Status:** validation finished; first natural heredity found; full-space map done (27 October, 14:19 Toronto); focused map of the heredity region running. This page will become the 4c-3 report.
+**Status:** validation finished; first natural heredity found; full-space map done (27 October, 14:19 Toronto); focused map of the heredity region done; 5 confirmed heredity environments (27 October, evening). This page will become the 4c-3 report.
 **Dates:** 26 October 2026, 16:00 Toronto time, to 27 October 2026, 05:12 · **Hardware:** Intel Arc Pro B70 · **Spec:** [stage4c3_spec.md](../docs/stage4c3_spec.md), with the revisions in its §6
 **Alphabet:** 2 letters (0/1), on purpose. The question is whether the simplest alphabet can give rise to heredity, and where. It is not a simulation of modern 4-letter RNA.
 
@@ -108,7 +108,53 @@ In the targeted box, copy length and strand separation were mostly solved. The 8
 - COMPASS found 77 strict-L2 runs, but **all are short-copy noise**: median copy length 2.4 letters, none ≥ 6. In the full 42-dimensional space, real heredity is too rare for 32,000 samples to hit; it lives in the narrow box2 region. The L1 and L2 maps are therefore uninformative ("no" everywhere).
 - **Detector consequence.** A new level, L2_long = strict L2 and mean copy length ≥ L_H, keeps noise-level copying from counting as heredity. A focused map of the box2 region with L2_long (ground truth 500 × 16, COMPASS 16,000, infeasible environments masked) is running.
 
+## Update, 27 October 2026 (evening): focused map, confirmations, cap check, test 9b
+
+**Focused map of the box2 region (map4c3_box2).** Level L2_long = strict L2 and mean copy length ≥ L_H. Environments with chain lifetime < cycle period are masked as infeasible and not simulated. The run had ground truth of 500 × 16 runs, COMPASS of 16,000 runs, and passed a kill-and-resume test and a memory pre-flight first.
+- Ground truth: E1 0.452, E2 0.184, L1 0.002, L2_long 0. 46% of the region is infeasible.
+- COMPASS accuracy at 16,000: E1 0.968, E2 0.95. The L1 and L2 maps stay uninformative because positives are too rare. Importance is led by residence time τ, pH and cycle period.
+- COMPASS found 3 L2_long runs. Ground truth found none, consistent with about 3 long-copy points per 4,096 in the box.
+
+**Confirmation of the 3 new points.** 16 reruns each at validation fidelity, with both copy_random controls, plus a hydrolysis pH floor of 5:
+
+| Point | T / T_m8 (°C) | Period | pH | k_t, ε, L_t | Strict / 16 (as is → pH floor 5) | Margin | Copy length | R |
+|---|---|---|---|---|---|---|---|---|
+| A | 14.2 / 26.2 | 1.14 h | 3.83 | 5.2e4, 0.0017, 10 | 16 → 16 | 0.54 → 0.55 | 62.5 | 0.93 |
+| B | 21.4 / 25.2 | 3.8 h | 2.64 | 1.1e4, 0.0074, 12 | 12 → 12 | 0.33 → 0.30 | 62.4 | 0.98 |
+| C | 26.7 / 37.2 | 633 h | 4.73 | 2.5e4, 0.0013, 5 | 16 → 16 | 0.61 → 0.56 | 62.4 | 0.96 |
+
+- **Why the pH floor barely matters here.** It raises hydrolysis per bond by ×14, ×209 and ×1.8 at A, B and C. Even so, hydrolysis of a 64-mer is only 2e-4 to 8e-4 of the washout rate, because the water is cool or mild. Chain lifetime is set by washout, and the conclusion holds even if hydrolysis were about 100× faster.
+- At #813, by contrast (54 °C), hydrolysis at pH 5 is about 30% of all loss, which explains its collapse.
+- Caveat: pH 2.6 (B) is still an extrapolation of the hydrolysis law.
+
+**Heredity points so far: 5.** #1558, #3709, A, B and C. All have:
+- cycling across the strand melting temperature;
+- chain lifetime set by slow washout (τ = 2×10⁴ – 8×10⁴ h);
+- copy errors below about 0.3 per full copy;
+- R ≈ 1.
+
+Cycle periods range from 1 h to 26 days, and temperatures from 8 to 39 °C.
+
+**Copy-length cap.** The model's cap of 64 letters is a hard limit of the sequence encoding. With caps of 48 and 32, heredity at #1558 and #3709 remains (15–16 of 16 strict), copy length follows the cap, and the margin rises (#3709: 0.61 → 0.74 → 0.86). The cap sets lineage length, not whether heredity happens. Chains sit at the cap in every arm.
+
+**Test 9b: error threshold, criterion fixed before running — PASS at both points.** x = ε·L_copy, with L_copy = 62.
+
+| x | #1558 strict / 16 | #1558 S | #3709 strict / 16 | #3709 S |
+|---|---|---|---|---|
+| 0.15 | 16 | 0.542 | 16 | 0.873 |
+| 0.3 | 16 | 0.381 | 16 | 0.697 |
+| 0.5 | 5 | 0.243 | 16 | 0.497 |
+| 0.7 | 1 | 0.156 | 16 | 0.329 |
+| 1.0 | 0 | 0.096 | 1 | 0.157 |
+| 1.5 | 0 | 0.030 | 0 | 0.050 |
+| 3 | 0 | 0.003 | 0 | 0.005 |
+
+- The criteria: S non-increasing, strict ≥ 12/16 at x ≤ 0.3, and strict ≤ 2/16 at x ≥ 1.5.
+- Heredity is lost between about 0.5 and 1 errors per copy, as Eigen's error threshold predicts.
+- The original test 9 (grid in ε·L_H) stays recorded as a fail at #1558.
+
+**Caveat: saturated regime.** At the heredity points nearly all copy slots hold chains at the length cap, and R ≈ 1 may be limited by the slot count. Heredity here is maintenance of a saturated population, not growth.
+
 ## Still to do
 
-- Focused map of the heredity region (L2_long), copy-length-cap check, test 9b.
-- The 4c-3 report with the assumption table.
+- The 4c-3 report with the assumption table, written as this page's final form.
