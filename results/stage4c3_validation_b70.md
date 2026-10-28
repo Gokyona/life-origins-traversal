@@ -1,6 +1,6 @@
 # Stage 4c-3 validation: template copying and heredity (L2)
 
-**Status:** validation finished; first natural heredity found; full-space map done (27 October, 14:19 Toronto); focused map of the heredity region done; 5 confirmed heredity environments (27 October, evening). This page will become the 4c-3 report.
+**Status:** validation finished; first natural heredity found; full-space map done (27 October, 14:19 Toronto); focused map of the heredity region done; 5 confirmed heredity environments (27 October, evening). The report is [stage4c3_heredity_b70.md](stage4c3_heredity_b70.md); this page keeps the validation details and run log.
 **Dates:** 26 October 2026, 16:00 Toronto time, to 27 October 2026, 05:12 · **Hardware:** Intel Arc Pro B70 · **Spec:** [stage4c3_spec.md](../docs/stage4c3_spec.md), with the revisions in its §6
 **Alphabet:** 2 letters (0/1), on purpose. The question is whether the simplest alphabet can give rise to heredity, and where. It is not a simulation of modern 4-letter RNA.
 
@@ -129,7 +129,7 @@ In the targeted box, copy length and strand separation were mostly solved. The 8
 
 **Heredity points so far: 5.** #1558, #3709, A, B and C. All have:
 - cycling across the strand melting temperature;
-- chain lifetime set by slow washout (τ = 2×10⁴ – 8×10⁴ h);
+- long chain lifetime (L_H-mer turnover 4.5×10³ – 7.5×10⁴ h; at A, B and C set by washout);
 - copy errors below about 0.3 per full copy;
 - R ≈ 1.
 
