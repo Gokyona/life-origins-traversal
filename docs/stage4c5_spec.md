@@ -179,6 +179,15 @@ The detector used in the maps is unchanged.
 - **Criterion, fixed before the GPU run:** the map L4 statistic, unchanged, passes in at least 12 of 16 runs at β = 5 and at most 1 of 16 at β = 0.
 - **Reading:** if test 6c fails because z equalises between founder groups before the window (load is not heritable for long), that is a model finding: heritable variation in vesicle content does not persist, so L4 cannot arise in this model. It will be reported as such.
 
+**Test 6c result (29 October, 05:18): z equalises, so the GPU test was not run.** The CPU calibration used β = 5 only and computed no L4. It tried 4 founders with 16/4, 16/2 and 16/1 templates (the 63-letter templates cannot be longer, with a 64-letter cap). Results:
+- at checkpoint 0 (375 h), the low-load founder families were nearly gone (2–7 vesicles against about 80);
+- the survivors carried the same lineage load per volume as the high-load family (Mann–Whitney p 0.39–0.78);
+- copying refills a vesicle to the same load within a few hundred hours, so differences in content load are not heritable for long.
+
+Applied to the saved test 6 runs, the map L4 statistic gives 3 of 16 at β = 5 and 0 of 16 at β = 0.
+
+**Reading:** in this model, selection among vesicles happens as one fast sweep, in which copying families displace non-copying ones (test 6b detects it). After that, no heritable variation in content remains for selection to act on, because chains have no phenotype beyond their mass. The map L4 statistic, which looks for ongoing selection within the window, therefore cannot find L4 here, and 0 L4 in the maps does not by itself show low power. Sustained Darwinian evolution would need heritable variation that copying does not erase, for example sequence-dependent copying or catalysis. That is a limit of the model, not of the environments.
+
 The spec leaves some details open. The implementation (chem4c5.py) takes the simplest reading:
 
 | # | Open point | Choice |
