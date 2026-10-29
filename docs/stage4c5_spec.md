@@ -172,6 +172,13 @@ The test asked the right question too late. Test 6 stays recorded as failed. **T
 
 The detector used in the maps is unchanged.
 
+**Proposed test 6c: power of the map L4 statistic (29 October, 05:15; runs only if the owner chooses).** Test 6b does not test the statistic the maps use (ρ(w, z) among the vesicles at the window start, against the permutation null). Test 6c does.
+
+- **Fixture:** as in test 4 (#3709 environment and copying constants, hydrolysis and washout on), with 4 founders that all hold the copying template. Two founders hold 16 templates and two hold 4. Every founder copies, so none is excluded at once; the loaded ones grow faster only through β.
+- **Calibration:** on the CPU, the template numbers may be adjusted until z still differs between the two founder groups at the window start. This calibration uses β = 5 runs only and never looks at L4.
+- **Criterion, fixed before the GPU run:** the map L4 statistic, unchanged, passes in at least 12 of 16 runs at β = 5 and at most 1 of 16 at β = 0.
+- **Reading:** if test 6c fails because z equalises between founder groups before the window (load is not heritable for long), that is a model finding: heritable variation in vesicle content does not persist, so L4 cannot arise in this model. It will be reported as such.
+
 The spec leaves some details open. The implementation (chem4c5.py) takes the simplest reading:
 
 | # | Open point | Choice |
