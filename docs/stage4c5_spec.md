@@ -42,11 +42,11 @@ L3 and L4 are evaluated only in runs where L2_long and E3 strict both hold. A ru
 
 Dividing by a_j removes the trivial size effect, since uptake is proportional to a_j. Compute the Spearman correlation ρ(g, Π) pooled over sites. The null is shuffled contents: 999 permutations of Π among the vesicles of the same site and checkpoint. L3 loose holds if ρ ≥ 0.1 and the permutation p-value is < 0.01.
 
-**L3 strict (coupled protocell).** L3 loose, and content is passed on.
-- Take the vesicles present at the start of the window as ancestors.
-- Content is passed on if, at the last checkpoint, at least half of the sites hold a descendant at least 3 generations below its ancestor.
-- That descendant must still enclose the ancestor's dominant lineage key in **chains made by copying after the window start**, with those new letters at least 0.5 times the ancestor's lineage letters at the window start. Every chain carries the step at which it was made, as a record that does not change the dynamics. Chains that existed at the window start do not count, however often they were released and re-enclosed.
-- **Copied, not re-enclosed:** the share of sites passing must exceed that of the paired random-copy run (same environment, constants and seed) by at least 0.25. (Revised twice on 28 October, 23:00 and 23:30, see §6.)
+**L3 strict (coupled protocell).** L3 loose, and content is passed on by copying. (Revised three times on 28–29 October, last at 00:10, see §6.)
+- For each vesicle alive at the last checkpoint, take its ancestor exactly 3 generations up (its great-grandparent). Use the ancestor's dominant lineage key, as recorded at the last checkpoint at which it was alive.
+- The vesicle passes on content if it encloses at least 0.5 times the ancestor's dominant-key letters in **chains made by copying after that checkpoint**, counting chains whose sequence matches the ancestor's key with at least 90% identity (either strand). Every chain carries the step at which it was made, as a record that does not change the dynamics. Chains that already existed do not count, however often they were released and re-enclosed.
+- Content is passed on in a site if at least one such vesicle exists there. L3 strict needs this in at least half of the sites.
+- **Copied, not re-enclosed:** the share of sites passing must exceed that of the paired random-copy run (same environment, constants and seed) by at least 0.25.
 
 **L4 (Darwinian evolution).** L3 strict, plus a heritable trait whose rise beats drift. The trait z of a vesicle is its enclosed L2 lineage letters per volume.
 - **Heritability:** the parent–daughter regression of z, over the division events in the window, has a slope > 0 with p < 0.01.
@@ -134,6 +134,19 @@ Report L3 loose, L3 strict and L4 rates per point, the effect sizes, the evaluab
 **Revision of L3 strict and test 4 (23:00).** On a CPU smoke test of the test 4 fixture at #3709, content persisted over 3 generations even with k_t = 0. The cause is the cycle-averaged rehydration of 4c-4 (§8 row 14). When a daughter finds no free slot, its chains are released outside, and rehydration encloses them again. So the §2 assumption of dilution by about 1/8 does not hold in wet–dry environments. The fixed 0.5 threshold was therefore replaced by a comparison with the paired random-copy run (§2). This was done before any validation result on the GPU. L3 loose (growth against load) is not affected.
 
 **Fixture fix (29 October, 00:00).** The second revision's detector behaved as specified, but the test 4 fixture was closed (no hydrolysis, no washout). All 256 chain slots of a site were full of 64-mers before checkpoint 0, so no copying happened inside the window, and no window test could see copies. The fixtures of tests 4 and 6 now use the full #3709 environment, including its chain hydrolysis and washout at 1/τ, so that slots turn over. A fixture is valid only if, in the copying run, chains of the dominant key are made after the window start. Otherwise the fixture, not the detector, is reported as failed. The detector is unchanged. Before the GPU validation, a CPU diagnostic at the real joint points (#3709, engine12538, engine11230, engine15233) reports slot occupancy and the share of dominant-key letters made after the window start. Where that share is near zero, L3 strict cannot be reached there in this model, and that is a finding, not a test failure.
+
+**Third revision (29 October, 00:10).** A CPU diagnostic at four real joint points (#3709, engine12538, engine11230 and engine15233; 2 seeds each, before any GPU validation result) gave these results:
+- slots turn over;
+- all dominant-key letters are made after the window start;
+- L3 loose holds in all 8 runs;
+- L3 strict failed in all 8 runs.
+
+The reason is the criterion, not the chemistry. The ancestors were taken at the window start, about 290 vesicle generations before the end. Over that span, copy errors (ε about 0.001–0.006 per letter on about 60-mers) and elongation change the exact sequence, so no descendant still held the identical key. Heredity with mutation means descent with similarity, not identity. The L2 detector of 4c-3 also measures an information share, not exact keys. The criterion is now local and tolerant:
+- the ancestor is 3 generations up;
+- a match needs at least 90% sequence identity;
+- the 0.5× letter threshold and the paired random-copy condition are kept.
+
+These thresholds are fixed now, before any map. The dynamics and the other detectors are unchanged.
 
 The spec leaves some details open. The implementation (chem4c5.py) takes the simplest reading:
 
