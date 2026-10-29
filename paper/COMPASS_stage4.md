@@ -14,7 +14,7 @@ Which environments can turn non-living chemistry into something that inherits, e
 
 The model climbs the ladder up to coupled protocells, and each step narrows the environments sharply:
 - activated feedstock appears in about 45% of the space;
-- persistent chains in about 10–16%;
+- persistent chains in about 8.5–16%;
 - self-sustaining catalytic networks only when short chains are highly catalytic (0.3% of a focused region);
 - heredity by template copying in a narrow class of environments (5 confirmed);
 - heredity inside stable vesicles in 4 environments found by the search;
@@ -68,7 +68,7 @@ The simulator was built in five layers. Each layer was validated before the next
 
 Ranges and their sources are in [stage4a_ranges.md](../docs/stage4a_ranges.md). They run from acid springs to alkaline vents and from flowing channels to closed pools.
 
-**Unknown constants (layer C).** Constants that no measurement fixes, such as condensation rate, catalytic probability, copy speed-up, error rate, duplex melting temperature and membrane stability limits, are dimensions of the map with literature-based ranges. Their number grows from 10 (4c-1) to 41 (4c-4).
+**Unknown constants (layer C).** Constants that no measurement fixes, such as condensation rate, catalytic probability, copy speed-up, error rate, duplex melting temperature and membrane stability limits, are dimensions of the map with literature-based ranges. Their number grows from 10 (4c-1) to 35 (4c-4), so the map grows from 29 to 54 dimensions.
 
 **Layers:**
 1. **Polymer chemistry (4c-1).**
@@ -95,13 +95,13 @@ Ranges and their sources are in [stage4a_ranges.md](../docs/stage4a_ranges.md). 
 **COMPASS.**
 - An ensemble of neural classifiers is trained on all runs so far.
 - New environments are drawn from a Sobol sequence and selected where the ensemble disagrees most. Each environment is tested once.
-- At 20–30 dimensions, the engine still needed about 3–4× fewer simulations than Sobol sampling for the same accuracy (stage 4a).
+- At 20–30 dimensions, the engine still needed about 3× fewer simulations than Sobol sampling for the same accuracy (2.8–4.0× depending on the type of added dimension; stage 4a).
 
 **Maps per layer.**
-- **Full map:** 1,000 random environments × 16 seeds as ground truth, and 32,000 COMPASS runs.
-- **Focused maps:** regions chosen from the full map. Environments outside a region's constraints are masked, not simulated. Each has 500 × 16 ground truth and 16,000 COMPASS runs.
+- **Full map:** 1,000 random environments × 16 seeds as ground truth, and 32,000 COMPASS runs (4c-1: 2,000 × 32 ground truth and 64,000 runs each for COMPASS and Sobol sampling).
+- **Focused maps:** regions chosen from the full map. Environments outside a region's constraints are masked, not simulated. Each has 500 × 16 ground truth and 16,000 COMPASS runs (the 4c-2 focused map: 1,000 × 16 and 32,000).
 
-**Confirmation.** Every candidate for a rare level was re-run with 16 new seeds.
+**Confirmation.** From 4c-3 on, every candidate for a rare level was re-run with 16 new seeds. The 4c-2 catalytic networks were not confirmed this way.
 
 **Controls.**
 - L1: a paired run without catalysis.
@@ -112,15 +112,15 @@ Ranges and their sources are in [stage4a_ranges.md](../docs/stage4a_ranges.md). 
 
 ## 4. Validation
 
-All tests were written into the layer's specification before they ran. Every layer also passed a kill-and-resume test, with bit-identical output, and a memory pre-flight at worst-case settings.
+Test criteria were written into the layer's specification before the tests ran; where a test design itself was faulty, the redesign is recorded in the validation report. Every layer passed a kill-and-resume test with bit-identical output (4c-2 through a real power cut), and layers 4c-3 to 4c-5 passed a memory pre-flight at worst-case settings.
 
 | Layer | Tests | Passed | What the tests show | Failures and changes |
 |---|---|---|---|---|
-| 4c-1 polymers | 6 | 6 | Chain lengths match the exact steady state (total-variation distance ≤ 0.003); the hydrolysis law matches its source (slope within 0.2%); wet–dry cycling lengthens chains (mean 3.12 against 2.12 letters at 80 °C); washout or no feed removes chains | none |
+| 4c-1 polymers | 6 | 6 | Chain lengths match the exact steady state (total-variation distance ≤ 0.003); the hydrolysis law matches its source (slope within 0.2%); wet–dry cycling lengthens chains (mean 3.12 against 2.12 letters at 80 °C); washout or no feed removes chains | Test (a) criterion corrected before running, from the Flory distribution to the exact steady state |
 | 4c-2 catalysis | 4 | 4 | The RAF threshold is reproduced: P = 0.5 at 1.05 and 1.27 catalysed reactions per molecule, against 1.06 and 1.25 in stage 1e (Hordijk, Kauffman & Steel 2011). No networks without catalysis (0 of 72) or with catalysis reshuffled each step | 4 changes to the specification after the first validation run, before any map |
-| 4c-3 copying | 9, plus 9b | 8, plus 9b | Measured copy error 0.0494 against ε = 0.05; strand separation needs cycling across T_m8; short parasites take over (short share 0.994); null false positives 1 of 64 and 0 of 64 | **Test 9 failed** at #1558 (error threshold): heredity was already lost at the first grid point. Test 9b, with a finer grid and its criterion fixed before running, passed at both points; heredity is lost near ε·L_copy ≈ 1 (Eigen 1971) |
-| 4c-4 vesicles | 9 | 9 | Without amphiphiles bit-identical to 4c-3; vesicles only inside the stability window; binomial encapsulation and division; filled vesicles gain membrane only with β > 0 | none |
-| 4c-5 coupling | 8, plus 6b | 6, plus 6b | Bit-identical to 4c-4; records consistent over about 200,000 vesicle ids; inheritance 16 of 16 with copying and 0 of 16 without; 0 of 80 false positives at real points | **Test 3 failed** on its effect size: coupling was detected in 16 of 16 runs (p = 0.001 each), but ρ reached the guessed 0.3 in only 3 of 16 (median 0.27). **Test 6 failed**, the L4 positive control (3 of 16): its window opened after selection had finished. Test 6b, fixed before it ran, passed (16 of 16; 1 of 16 false positives) |
+| 4c-3 copying | 9, plus 9b | 8, plus 9b | Measured copy error 0.0494 against ε = 0.05; strand separation needs cycling across T_m8; short parasites take over (short share 0.994); null false positives 1 of 64 and 0 of 64 | Test 4 passed on its main criteria but missed a secondary one (0.083 against 0.073), after two earlier designs failed for reasons of test design. Tests 2 and 3 ran on earlier code. **Test 9 failed** at #1558 (error threshold): heredity was already lost at the first grid point. Test 9b, with a finer grid and its criterion fixed before running, passed at both points; heredity is lost near ε·L_copy ≈ 1 (Eigen 1971) |
+| 4c-4 vesicles | 9 | 9 | Without amphiphiles bit-identical to 4c-3; vesicles only inside the stability window; binomial encapsulation and division; filled vesicles gain membrane only with β > 0 | 3 rules changed after the memory pre-flight, before validation |
+| 4c-5 coupling | 8, plus 6b | 6, plus 6b | Bit-identical to 4c-4; records consistent over about 200,000 vesicle ids; inheritance 16 of 16 with copying and 0 of 16 without; 0 of 80 false positives at real points | The inheritance criterion was revised three times and one fixture fixed, all before any result. **Test 3 failed** on its effect size: coupling was detected in 16 of 16 runs (p = 0.001 each), but ρ reached the guessed 0.3 in only 3 of 16 (median 0.27). **Test 6 failed**, the L4 positive control (3 of 16): its window opened after selection had finished. Test 6b, fixed before it ran, passed (16 of 16; 1 of 16 false positives) |
 
 After the two 4c-5 failures, the stop rule forbade maps. The point study of Section 5.5 was run anyway as a recorded deviation; no 4c-5 map was run.
 
@@ -130,10 +130,10 @@ After the two 4c-5 failures, the stop rule forbade maps. The point study of Sect
 
 | Level | Where it occurs | Source |
 |---|---|---|
-| E1, activated feedstock | 44–45% of environments | 4c-1, 4c-2, 4c-3, 4c-4 full maps |
-| E2, persistent chains | 9.5–16% | 4c-1 (16%), later layers 8.5–10.7% |
-| L1, catalytic network | 0 in the full space; 0.3% of a focused region with highly catalytic short chains | 4c-2 |
-| L2_long, heredity | 0 in the full space; 5 confirmed environments from focused maps, plus 2 from a repetition | 4c-3 |
+| E1, activated feedstock | 44–47% of environments | 4c-1, 4c-2, 4c-3, 4c-4 full maps |
+| E2, persistent chains | 8.5–16% | 4c-1 (16%), later layers 8.5–10.7% |
+| L1, catalytic network | 0 of 16,000 ground-truth runs in the full space (39 COMPASS runs near the boundary); 0.3% of a focused region with highly catalytic short chains | 4c-2 |
+| L2_long, heredity | 0 in the full space; 5 confirmed environments from a targeted scan and a focused map, plus 2 from a repetition | 4c-3 |
 | E3, filled vesicles | 0.2% of the full space | 4c-4 |
 | Heredity inside vesicles | 0 in all ground truth; 4 confirmed environments found by COMPASS | 4c-4 |
 | L3, coupled protocell | at all 10 known coexistence environments, 298 of 435 coexistence runs | 4c-5 |
@@ -143,7 +143,7 @@ Two observations break the expected order:
 - **Catalytic networks do not need long chains.** 69% of L1 runs have no persistent chains of 8 or more, and the networks are made of short oligomers.
 - **Vesicles alone do not bring heredity.** In the full map, the rare filled vesicles carry copies of only about 3 letters.
 
-**On rarity and the search.** At equal numbers of simulated runs, COMPASS found heredity with long copies 4 times and the joint level once, where the ground truth found neither (one-sided p ≈ 0.06). This is suggestive but not significant. Where a level is common enough to compare per run (filled vesicles in a focused map), the rates are equal. The engine's proven advantage remains map accuracy per simulation, shown in Part I, 4a and 4c-1. In 4c-1, the only layer with a matched Sobol baseline, COMPASS needs about 2.4× (E1) and 2.9× (E2) fewer runs to reach 95% of the achievable gain in accuracy over a trivial classifier.
+**On rarity and the search.** At equal numbers of simulated runs, COMPASS found heredity with long copies 4 times and the joint level once, where the ground truth found neither (one-sided p ≈ 0.06). This is suggestive but not significant. Where a level is common enough to compare per run (filled vesicles in a focused map), the rates are equal. The engine's proven advantage remains map accuracy per simulation, shown in Part I, 4a and 4c-1. In 4c-1, the only layer with a matched Sobol baseline, COMPASS reaches Sobol's final accuracy with about 2× (E1) and 1.6× (E2) fewer runs, and 95% of the achievable gain in accuracy over a trivial classifier with about 2.4× and 2.9× fewer runs (analysis of the stored accuracy curves, to be added to the repository).
 
 ### 5.2 The environments at the top
 
@@ -157,10 +157,10 @@ Two observations break the expected order:
 Common features at all four points:
 - the cool phase lies below and the hot phase above T_m8, so duplexes pair, copy and separate once per cycle;
 - molecules live far longer than a cycle;
-- copying makes fewer than about 0.3 errors per 60-letter copy;
+- copying is accurate (about 0.08 errors per copy at engine12538; the 4c-3 heredity points need fewer than about 0.3);
 - inherited lineages are 86–100% enclosed in vesicles.
 
-The 4c-3 heredity environments without membranes are more varied (8–39 °C, pH 2.6–8.0, cycles from 1 h to 26 days). **The hardest step is having heredity and stable membranes in the same place.** Five of the seven confirmed heredity environments are acidic (pH 2.6–4.7): at pH below 4 no membrane in the model can form, and at the other two only 0.4–1.4% of the membrane-constant space allows one.
+The 4c-3 heredity environments without membranes are more varied (6–39 °C, pH 2.6–8.0, cycles from 1 h to 26 days). **The hardest step is having heredity and stable membranes in the same place.** Five of the seven confirmed heredity environments are acidic (pH 2.6–4.7): at pH below 4 no membrane in the model can form, and at the other two only 0.4–1.4% of the membrane-constant space allows one.
 
 ### 5.3 The environmental sequence
 
@@ -174,7 +174,7 @@ So the model needs no change of environment between levels, though it does not r
 ### 5.4 Real settings
 
 [4e](../docs/stage4e_environment_classes.md).
-- **Closest match: a cool, closed-basin lake or pond** with seasonal or multi-day temperature cycles and slow flushing. Carbonate-rich closed-basin lakes (Toner & Catling 2020) match residence time, near-neutral pH and cycling.
+- **Closest match: a cool, closed-basin lake or pond** with seasonal or multi-day temperature cycles and slow flushing. Carbonate-rich closed-basin lakes (Toner & Catling 2020) match residence time, near-neutral to slightly acidic pH and cycling.
 - **Volcanic hot-spring pools** (Damer & Deamer 2020) are too hot for copying in this model, and fresher than the points found.
 - **Alkaline vents** (Kelley et al. 2005; Martin et al. 2008) do not match: no heredity point lies above pH 8, and vent flow implies short residence.
 - **The cold preference agrees in direction with ice** as a medium for RNA replication (Attwater et al. 2010), but the model has no freezing.
@@ -228,7 +228,7 @@ These are statements about the model's chemistry, not about the history of the E
 
 **The L4 ceiling.** The model shows what heredity alone can do inside compartments. Copying families win one fast sweep, as competition between protocells predicts (Chen, Roberts & Szostak 2004). After the sweep, copying refills every vesicle to the same load, so no heritable variation in content remains. Information is kept, but it gives no lasting advantage, because sequence affects nothing but length. This failure is informative. It turns into a prediction that models and experiments can test: protocell populations evolve beyond the first sweep only if sequence affects copying, catalysis or the membrane.
 
-**The role of the search.** COMPASS made a map over up to 54 dimensions feasible on one consumer GPU. It found, and confirmed with new seeds, specific environments for the rarest levels. At equal budget it found long-copy heredity 4 times and the joint level once, where the ground truth found neither (p ≈ 0.06). This advantage in finding rare points is suggestive but not proven. Its proven advantage is map accuracy per simulation, about 2.4–2.9× fewer runs in the one layer with a matched baseline. Much of its apparent advantage in raw hit counts comes from the ground truth's design of 16 seeds per point, not from targeting. The method is the subject of a separate paper.
+**The role of the search.** COMPASS made a map over up to 54 dimensions feasible on one consumer GPU. It found, and confirmed with new seeds, specific environments for the rarest levels. At equal budget it found long-copy heredity 4 times and the joint level once, where the ground truth found neither (p ≈ 0.06). This advantage in finding rare points is suggestive but not proven. Its proven advantage is map accuracy per simulation, about 2.4–2.9× fewer runs to reach 95% of the achievable accuracy gain in the one layer with a matched baseline. Much of its apparent advantage in raw hit counts comes from the ground truth's design of 16 seeds per point, not from targeting. The method is the subject of a separate paper.
 
 ## 8. Limits
 
