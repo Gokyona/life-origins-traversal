@@ -92,7 +92,14 @@
     - COMPASS found and confirmed specific environments;
     - COMPASS's proven advantage is map accuracy per simulation (Part I, 4a, 4c-1), not a proven advantage in finding rare points.
 
-    A pooled equal-budget test over all focused maps (feasible-run counts to be taken from the result files) will be reported as it comes out.
+  - *Pooled equal-budget test (29 October, hitrate4c.json, md5 0deabe99).* COMPASS is truncated to the same number of feasible runs as the ground truth in each map (4c-3 full, box2 rep 0, 4c-4 full, box3, box3 v2; 38,672 feasible runs each).
+    - **L2_long:** COMPASS 4 runs, ground truth 0. If both had the same rate, all 4 hits would fall in COMPASS with probability 1/16, so p ≈ 0.06, one-sided.
+    - **Joint:** 1 against 0.
+    - **E3 strict in box3 v2:** 220 against 208 runs, the same per run.
+    - **L2 strict:** COMPASS hits more distinct points, but most full-map L2 strict hits are noise-level short copies.
+    - The ground truth tests far fewer distinct environments, about 2,400 points against about 38,700 for COMPASS, because it repeats each point with 16 seeds.
+
+    **Wording for the paper:** "At equal budget, COMPASS found heredity with long copies 4 times and the joint level once, where the ground truth found neither (p ≈ 0.06). This is suggestive but not significant. Where a level is common enough to compare (E3 strict), hit rates per run are equal." The proven advantage remains map accuracy per simulation.
 - **Re-check every number in the paper** against the result files (md5 listed in each stage report).
 - **Verify every citation against the original**, especially those not yet opened: Millero et al. 2008 ion values, and Patel et al. 2015.
 - **Upload code and raw data** from the benchmark machine (lot-s4/upload_* folders with MD5SUMS) before submission.
