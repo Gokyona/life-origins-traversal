@@ -171,6 +171,8 @@ The spec leaves some details open. The implementation (chem4c5.py) takes the sim
 | 17 | 9a membrane sets for 5a | the 9a scan stored only per-point summaries, so 5a uses the first 8 window-compatible sets per point (the same 9a draws) and reports each set's joint rate at 16 seeds, instead of preselecting successful sets |
 | 18 | Generation time and membrane at division | generation time = window hours / mean generation gain of the vesicles alive at the window start and the last checkpoint. Membrane at division = the parent's membrane at the checkpoint before the division interval (checkpoint resolution) |
 | 19 | Gate of the paired controls (β = 0, random copy) | the controls are scored **without the L2/E3 gate**, wherever they are evaluable (≥ 30 vesicle-interval pairs, ≥ 3 generations), and their own gate status is reported next to it. A CPU smoke test at reduced fidelity showed that β = 0 can remove the control's own gate; a gated control would then report 0 trivially and test nothing |
+| 19a | Window of a control | the main run's joint window when it has one, otherwise the whole record, so main and control cover the same span |
+| 20 | Confirmations of 5b hits | 16 seeds at the map's fidelity; every distinct point with L3 strict or L4, L4 first, at most 40 points (the number of hits found is reported) |
 
 ## References
 
