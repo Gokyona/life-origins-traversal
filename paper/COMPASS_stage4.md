@@ -1,10 +1,10 @@
 # How far up the ladder of life can environments carry a bottom-up chemistry? An ordered search over 13 environmental variables
 
-**Draft 1, for review** · Gokyona Wahiro (pen name), independent researcher, Toronto · 29 October 2026
+**Draft 2, for review** · Gokyona Wahiro (pen name), independent researcher, Toronto · 29 October 2026
 
 Code and data: <https://github.com/Gokyona/life-origins-traversal> · Text: CC BY 4.0 · Code: MIT · Method: [stage 1](COMPASS_stage1.md), [stage 2](COMPASS_stage2.md), [stage 3](COMPASS_stage3.md) reports · Outline and checks: [stage4_outline.md](stage4_outline.md)
 
-> **Status of this draft.** All numbers come from the stage reports listed in each section. Before submission, every number will be checked again against the result files (md5 sums are given in the reports), and every citation against its original. Places that still need work are marked **[TODO]**.
+> **Status of this draft.** All numbers come from the stage reports listed in each section. Before submission, every number will be checked again against the result files (md5 sums are given in the reports), and every citation against its original. Draft 2 (29 October) adds the literature review, the validation table, the discussion, checked references and the AI-use statement.
 
 ---
 
@@ -37,7 +37,20 @@ We use an extended ladder of seven levels, each scored automatically:
 - **L3:** a coupled protocell. Vesicle growth depends on content, and the content is passed on by copying.
 - **L4:** Darwinian evolution. A heritable vesicle trait rises beyond drift.
 
-**[TODO]** Short review of scenario literature (hot-spring pools, vents, ice, lakes) and of earlier artificial-chemistry maps.
+**Where life could start.** The main scenarios each rest on a physical argument.
+- *Volcanic hot-spring pools* add wet–dry cycling, which drives polymerisation and encapsulates polymers in membranes (Damer & Deamer 2020). Fatty-acid vesicles form in water from such pools (Milshteyn et al. 2018).
+- *Alkaline hydrothermal vents* supply H₂ and natural gradients (Martin et al. 2008). Lost City fluids are 40–90 °C at pH 9–11 (Kelley et al. 2005), and thermal gradients in pores can concentrate nucleotides by more than 10⁸ (Baaske et al. 2007).
+- *Ice* concentrates RNA in the eutectic phase and protects it from hydrolysis, so that a polymerase ribozyme makes longer products (Attwater et al. 2010).
+- *Closed-basin carbonate-rich lakes* can accumulate phosphate to high levels (Toner & Catling 2020).
+
+Each scenario is usually argued for one or two steps at a time. Here we ask how the whole sequence of steps constrains the environment.
+
+**Models of the steps.** Theory gives sharp results for single steps:
+- the error threshold of copying (Eigen 1971);
+- the level of catalysis at which autocatalytic sets appear (Hordijk & Steel 2004; Hordijk, Kauffman & Steel 2011);
+- the trade-off between replicators inside vesicles (Fontanari, Santos & Szathmáry 2006).
+
+These models are defined over system parameters, such as catalytic probability or error rate. Only some of these map to an environment. We keep the same mechanisms but make the environment the input, and treat every parameter that no measurement fixes as an explicit unknown dimension.
 
 ## 2. Model
 
@@ -99,20 +112,17 @@ Ranges and their sources are in [stage4a_ranges.md](../docs/stage4a_ranges.md). 
 
 ## 4. Validation
 
-**[TODO]** One combined table. The key points:
-- **4c-1:** chain length distributions follow the analytic equilibrium of reversible polymerisation; wet–dry cycling lengthens chains.
-- **4c-2:** the RAF threshold of Hordijk, Kauffman & Steel (2011) is reproduced (P = 0.5 at 1.05 and 1.27 catalysed reactions per molecule, against 1.06 and 1.25 in stage 1e). No networks appear without catalysis.
-- **4c-3:**
-  - copy fidelity is as specified;
-  - Eigen's error threshold emerges (heredity lost at 0.5–1 errors per copy);
-  - short parasites take over;
-  - one pre-registered test failed at one of two points (test 9 at #1558); a finer grid, fixed before running, passed.
-- **4c-4:** all nine tests passed. Without amphiphiles the model is bit-identical to 4c-3.
-- **4c-5:**
-  - Six of eight pre-registered tests passed.
-  - **Test 3 failed** on its effect-size threshold: coupling was detected in 16 of 16 runs, but with a median ρ of 0.27 against a guessed 0.3.
-  - **Test 6 failed**, the L4 positive control (3 of 16): its observation window opened after selection had finished. A revised test 6b, fixed before it ran, passed (16 of 16, with 1 of 16 false positives).
-  - The point study of Section 5.5 ran after these failures as a recorded deviation from the stop rule.
+All tests were written into the layer's specification before they ran. Every layer also passed a kill-and-resume test, with bit-identical output, and a memory pre-flight at worst-case settings.
+
+| Layer | Tests | Passed | What the tests show | Failures and changes |
+|---|---|---|---|---|
+| 4c-1 polymers | 6 | 6 | Chain lengths match the exact steady state (total-variation distance ≤ 0.003); the hydrolysis law matches its source (slope within 0.2%); wet–dry cycling lengthens chains (mean 3.12 against 2.12 letters at 80 °C); washout or no feed removes chains | none |
+| 4c-2 catalysis | 4 | 4 | The RAF threshold is reproduced: P = 0.5 at 1.05 and 1.27 catalysed reactions per molecule, against 1.06 and 1.25 in stage 1e (Hordijk, Kauffman & Steel 2011). No networks without catalysis (0 of 72) or with catalysis reshuffled each step | 4 changes to the specification after the first validation run, before any map |
+| 4c-3 copying | 9, plus 9b | 8, plus 9b | Measured copy error 0.0494 against ε = 0.05; strand separation needs cycling across T_m8; short parasites take over (short share 0.994); null false positives 1 of 64 and 0 of 64 | **Test 9 failed** at #1558 (error threshold): heredity was already lost at the first grid point. Test 9b, with a finer grid and its criterion fixed before running, passed at both points; heredity is lost near ε·L_copy ≈ 1 (Eigen 1971) |
+| 4c-4 vesicles | 9 | 9 | Without amphiphiles bit-identical to 4c-3; vesicles only inside the stability window; binomial encapsulation and division; filled vesicles gain membrane only with β > 0 | none |
+| 4c-5 coupling | 8, plus 6b | 6, plus 6b | Bit-identical to 4c-4; records consistent over about 200,000 vesicle ids; inheritance 16 of 16 with copying and 0 of 16 without; 0 of 80 false positives at real points | **Test 3 failed** on its effect size: coupling was detected in 16 of 16 runs (p = 0.001 each), but ρ reached the guessed 0.3 in only 3 of 16 (median 0.27). **Test 6 failed**, the L4 positive control (3 of 16): its window opened after selection had finished. Test 6b, fixed before it ran, passed (16 of 16; 1 of 16 false positives) |
+
+After the two 4c-5 failures, the stop rule forbade maps. The point study of Section 5.5 was run anyway as a recorded deviation; no 4c-5 map was run.
 
 ## 5. Results
 
@@ -133,7 +143,7 @@ Two observations break the expected order:
 - **Catalytic networks do not need long chains.** 69% of L1 runs have no persistent chains of 8 or more, and the networks are made of short oligomers.
 - **Vesicles alone do not bring heredity.** In the full map, the rare filled vesicles carry copies of only about 3 letters.
 
-**On rarity and the search.** At equal numbers of simulated runs, COMPASS found heredity with long copies 4 times and the joint level once, where the ground truth found neither (one-sided p ≈ 0.06). This is suggestive but not significant. Where a level is common enough to compare per run (filled vesicles in a focused map), the rates are equal. The engine's proven advantage remains map accuracy per simulation, shown in Part I and in 4a and 4c-1 (about 2× for E1).
+**On rarity and the search.** At equal numbers of simulated runs, COMPASS found heredity with long copies 4 times and the joint level once, where the ground truth found neither (one-sided p ≈ 0.06). This is suggestive but not significant. Where a level is common enough to compare per run (filled vesicles in a focused map), the rates are equal. The engine's proven advantage remains map accuracy per simulation, shown in Part I, 4a and 4c-1. In 4c-1, the only layer with a matched Sobol baseline, COMPASS needs about 2.4× (E1) and 2.9× (E2) fewer runs to reach 95% of the achievable gain in accuracy over a trivial classifier.
 
 ### 5.2 The environments at the top
 
@@ -210,11 +220,15 @@ At the 10 known coexistence environments (16 seeds per point and membrane set, 6
 
 ## 7. Discussion
 
-**[TODO]** Expand. Points to make:
-- The model favours cool, enclosed, slowly flushed water with long temperature cycles. This lies between the hot-spring and closed-lake scenarios, and away from vents.
-- **The coexistence of heredity and membranes** is a sharper bottleneck than catalysis or heredity alone. This echoes the experimental tension between Mg²⁺-dependent copying and Mg²⁺-sensitive membranes (Adamala & Szostak 2013), which our model only half represents.
-- **The L4 ceiling** is a statement about what heredity alone can do. Copying keeps information, but without a phenotype that information gives no lasting advantage. This gives a testable prediction for both models and experiments: protocell populations evolve beyond the first sweep only if sequence affects copying, catalysis or the membrane.
-- **COMPASS's role.** It made a 54-dimensional bottom-up map feasible on one GPU and found confirmed points for the rarest levels. Its advantage in finding rare points is suggestive but not proven.
+**Which scenario the model favours.** The environments at the top are cool, enclosed, slowly flushed water bodies with temperature cycles of days to weeks. Among the scenarios in Section 1, this is closest to closed-basin lakes (Toner & Catling 2020). It shares cycling with the hot-spring scenario (Damer & Deamer 2020), but in this model hot water above the duplex melting point blocks copying. It points away from vents (Martin et al. 2008): no heredity point lies above pH 8, and through-flow gives residence times far shorter than the years the top points need. The cold preference agrees in direction with ice as a medium for replication (Attwater et al. 2010), by a different mechanism: in the model, cold water lengthens molecular lifetimes, while in ice it is concentration in the eutectic phase.
+
+These are statements about the model's chemistry, not about the history of the Earth. Where the model is too coarse to decide, we say so. The two clearest cases are the salt conflict and the acid-tolerant membranes needed at three of the four top points (Section 5.4).
+
+**The bottleneck is coexistence.** No single step is the hardest. Catalysis needs highly catalytic short chains, and heredity needs cycling across T_m8 and long lifetimes, but each happens in its own region. The sharpest cut comes when heredity and membranes must occur in the same place. Most heredity environments are acidic, where no membrane in the model forms. This echoes an experimental tension: nonenzymatic copying needs Mg²⁺, which breaks fatty-acid membranes unless citrate chelates it (Adamala & Szostak 2013). Our model represents only the membrane side of that tension, because copying does not depend on Mg²⁺. Adding that dependence would most likely narrow the joint window further.
+
+**The L4 ceiling.** The model shows what heredity alone can do inside compartments. Copying families win one fast sweep, as competition between protocells predicts (Chen, Roberts & Szostak 2004). After the sweep, copying refills every vesicle to the same load, so no heritable variation in content remains. Information is kept, but it gives no lasting advantage, because sequence affects nothing but length. This failure is informative. It turns into a prediction that models and experiments can test: protocell populations evolve beyond the first sweep only if sequence affects copying, catalysis or the membrane.
+
+**The role of the search.** COMPASS made a map over up to 54 dimensions feasible on one consumer GPU. It found, and confirmed with new seeds, specific environments for the rarest levels. At equal budget it found long-copy heredity 4 times and the joint level once, where the ground truth found neither (p ≈ 0.06). This advantage in finding rare points is suggestive but not proven. Its proven advantage is map accuracy per simulation, about 2.4–2.9× fewer runs in the one layer with a matched baseline. Much of its apparent advantage in raw hit counts comes from the ground truth's design of 16 seeds per point, not from targeting. The method is the subject of a separate paper.
 
 ## 8. Limits
 
@@ -238,24 +252,33 @@ At the 10 known coexistence environments (16 seeds per point and membrane set, 6
 
 ## References
 
-**[TODO]** Merge from the stage reports; every entry must carry its check note.
-- Adamala & Szostak (2013), *Science* 342, 1098–1100.
-- Attwater et al. (2010), *Nat. Commun.* 1, 76.
-- Chen, Roberts & Szostak (2004), *Science* 305, 1474–1476.
-- Damer & Deamer (2020), *Astrobiology* 20, 429–452.
-- Eigen (1971), *Naturwissenschaften* 58, 465–523 **[check pages]**.
-- Hordijk & Steel (2004), *J. Theor. Biol.* 227, 451–461 **[check]**.
-- Hordijk, Kauffman & Steel (2011), *Int. J. Mol. Sci.* 12, 3085–3101 **[check]**.
-- Jordan et al. (2019), *Nat. Ecol. Evol.* 3, 1705–1714.
-- Kelley et al. (2005), *Science* 307, 1428–1434.
-- Li & Breaker (1999), *JACS* 121, 5364–5372 **[check]**.
-- Mansy & Szostak (2008), *PNAS* 105, 13351–13355.
-- Martin et al. (2008), *Nat. Rev. Microbiol.* 6, 805–814.
-- Milshteyn et al. (2018), *Life* 8, 11.
-- Radzicka & Wolfenden (1996), *JACS* 118, 6105–6109 **[check]**.
-- Toner & Catling (2020), *PNAS*, doi:10.1073/pnas.1916109117 **[volume and pages]**.
-- Zhu & Szostak (2009), *JACS* 131, 5705–5713.
+Each entry was checked against the original or a publisher, library or author record; the date and source of each check are in the stage reports and the [condition review](../docs/condition_review.md).
+
+- Adamala, K. & Szostak, J. W. (2013). Nonenzymatic template-directed RNA synthesis inside model protocells. *Science* 342(6162), 1098–1100.
+- Attwater, J., Wochner, A., Pinheiro, V. B., Coulson, A. & Holliger, P. (2010). Ice as a protocellular medium for RNA replication. *Nature Communications* 1, 76. doi:10.1038/ncomms1076.
+- Baaske, P., Weinert, F. M., Duhr, S., Lemke, K. H., Russell, M. J. & Braun, D. (2007). Extreme accumulation of nucleotides in simulated hydrothermal pore systems. *PNAS* 104(22), 9346–9351.
+- Chen, I. A., Roberts, R. W. & Szostak, J. W. (2004). The emergence of competition between model protocells. *Science* 305(5689), 1474–1476.
+- Damer, B. & Deamer, D. (2020). The hot spring hypothesis for an origin of life. *Astrobiology* 20(4), 429–452.
+- Eigen, M. (1971). Selforganization of matter and the evolution of biological macromolecules. *Die Naturwissenschaften* 58(10), 465–522.
+- Fontanari, J. F., Santos, M. & Szathmáry, E. (2006). Coexistence and error propagation in pre-biotic vesicle models: a group selection approach. *Journal of Theoretical Biology* 239, 247–256.
+- Hordijk, W. & Steel, M. (2004). Detecting autocatalytic, self-sustaining sets in chemical reaction systems. *Journal of Theoretical Biology* 227(4), 451–461.
+- Hordijk, W., Kauffman, S. A. & Steel, M. (2011). Required levels of catalysis for emergence of autocatalytic sets in models of chemical reaction systems. *International Journal of Molecular Sciences* 12(5), 3085–3101.
+- Jordan, S. F., Rammu, H., Zheludev, I. N., Hartley, A. M., Maréchal, A. & Lane, N. (2019). Promotion of protocell self-assembly from mixed amphiphiles at the origin of life. *Nature Ecology & Evolution* 3, 1705–1714. doi:10.1038/s41559-019-1015-y.
+- Kelley, D. S. et al. (2005). A serpentinite-hosted ecosystem: the Lost City hydrothermal field. *Science* 307(5714), 1428–1434.
+- Li, Y. & Breaker, R. R. (1999). Kinetics of RNA degradation by specific base catalysis of transesterification involving the 2′-hydroxyl group. *Journal of the American Chemical Society* 121(23), 5364–5372.
+- Mansy, S. S. & Szostak, J. W. (2008). Thermostability of model protocell membranes. *PNAS* 105(36), 13351–13355.
+- Martin, W., Baross, J., Kelley, D. & Russell, M. J. (2008). Hydrothermal vents and the origin of life. *Nature Reviews Microbiology* 6, 805–814.
+- Milshteyn, D., Damer, B., Havig, J. & Deamer, D. (2018). Amphiphilic compounds assemble into membranous vesicles in hydrothermal hot spring water but not in seawater. *Life* 8(2), 11. doi:10.3390/life8020011.
+- Radzicka, A. & Wolfenden, R. (1996). Rates of uncatalyzed peptide bond hydrolysis in neutral solution and the transition state affinities of proteases. *Journal of the American Chemical Society* 118, 6105–6109. Values as tabulated in Wolfenden & Snider (2001), *Accounts of Chemical Research* 34(12), 938–945.
+- Toner, J. D. & Catling, D. C. (2020). A carbonate-rich lake solution to the phosphate problem of the origin of life. *PNAS* 117(2), 883–888. doi:10.1073/pnas.1916109117. Volume, issue and pages checked on 29 October 2026 in the Virtual Planetary Laboratory publication record.
+- Zhu, T. F. & Szostak, J. W. (2009). Coupled growth and division of model protocell membranes. *Journal of the American Chemical Society* 131(15), 5705–5713.
 
 ## Use of AI
 
-**[TODO]** State how AI assistants were used in the design, coding, analysis and writing, and that the author checked and is responsible for every claim.
+The author used an AI assistant, Claude (Anthropic), throughout this project:
+- **Design:** it proposed and drafted the model layers, the detection criteria and the pre-registered validation tests, which the author reviewed and approved.
+- **Code and runs:** it wrote all simulation and analysis code and ran it on the author's computer, under rules set by the author.
+- **Literature:** it found and checked the sources for the variable ranges and the comparisons.
+- **Writing:** it drafted the stage reports and this paper.
+
+The author chose the research question, the scope and the environmental framing. The author decided the main choices: a fully bottom-up chemistry, a 2-letter alphabet, which steps to run and when to stop. The author reviewed the results and is responsible for every claim. All code, specifications, results and failed tests are public in the repository.
