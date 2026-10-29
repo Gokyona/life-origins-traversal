@@ -12,7 +12,7 @@
    - 13 environmental variables;
    - up to 41 unmeasured constants, kept as explicit unknowns.
 
-   COMPASS finds rare levels that random sampling of the same region does not find. This claim needs an equal-budget check (see "Checks before writing").
+   COMPASS found and confirmed specific environments for levels so rare that random samples of the same regions contained none. A first equal-budget check shows that this does **not** prove COMPASS finds rare points more often than random sampling would (see "Checks before writing"). Its proven advantage is map accuracy per simulation.
 2. **Result: the ladder.** In this model, environments can carry chemistry from activated monomers to coupled protocells (E1 → E2 → L2 → E3 → L3). Each step narrows the set of environments:
 
    | Level | Share of environments where it occurs |
@@ -83,6 +83,16 @@
 ## Checks before writing
 
 - **Equal-budget comparison.** "Random sampling finds none" compares unequal budgets: 8,000 ground-truth runs (500 points × 16 seeds) against 16,000 COMPASS runs. We need an equal-budget statement, including a Poisson bound on the rate the ground truth could have missed, or the claim must be softened.
+  - *First check (29 October), done before writing.* Hits per simulated (feasible) run:
+    - box3 v2: the ground truth has 0 joint hits in about 2,130 feasible runs, so its 95% upper bound is about 1.4 × 10⁻³ per run. COMPASS has 5 in about 6,460, or 7.7 × 10⁻⁴.
+    - box3: 0 in about 210 feasible ground-truth runs, against 2 in about 2,300 for COMPASS.
+
+    COMPASS's hit rate is **inside** the range the ground truth allows, and the ground-truth runs come in groups of 16 seeds per point, which makes its bound even wider. **So the data do not show that COMPASS finds rare levels more often than random sampling would at equal budget.** The paper will say instead:
+    - these levels are rare (below about 10⁻³ per run even in the focused regions);
+    - COMPASS found and confirmed specific environments;
+    - COMPASS's proven advantage is map accuracy per simulation (Part I, 4a, 4c-1), not a proven advantage in finding rare points.
+
+    A pooled equal-budget test over all focused maps (feasible-run counts to be taken from the result files) will be reported as it comes out.
 - **Re-check every number in the paper** against the result files (md5 listed in each stage report).
 - **Verify every citation against the original**, especially those not yet opened: Millero et al. 2008 ion values, and Patel et al. 2015.
 - **Upload code and raw data** from the benchmark machine (lot-s4/upload_* folders with MD5SUMS) before submission.
