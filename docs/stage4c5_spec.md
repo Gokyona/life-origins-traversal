@@ -45,10 +45,8 @@ Dividing by a_j removes the trivial size effect, since uptake is proportional to
 **L3 strict (coupled protocell).** L3 loose, and content is passed on.
 - Take the vesicles present at the start of the window as ancestors.
 - Content is passed on if, at the last checkpoint, at least half of the sites hold a descendant at least 3 generations below its ancestor.
-- That descendant must still enclose the ancestor's dominant lineage key, with enclosed lineage letters at least 0.5 times the ancestor's.
-- **Copied, not re-enclosed:** the share of sites passing must exceed that of the paired random-copy run (same environment, constants and seed) by at least 0.25. In wet–dry environments, rehydration re-encloses released chains, so a lineage can stay in a vesicle family without being copied. In the random-copy run, copying keeps going but produces no copies of the key, so only re-enclosure and the original chains remain. This works like the "above control" condition of L2 strict. (Revised 28 October, 23:00, see §6.)
-
-Dilution without copying would give about 1/8 after 3 divisions. So passing the test needs the lineage to be copied inside the vesicle family.
+- That descendant must still enclose the ancestor's dominant lineage key in **chains made by copying after the window start**, with those new letters at least 0.5 times the ancestor's lineage letters at the window start. Every chain carries the step at which it was made, as a record that does not change the dynamics. Chains that existed at the window start do not count, however often they were released and re-enclosed.
+- **Copied, not re-enclosed:** the share of sites passing must exceed that of the paired random-copy run (same environment, constants and seed) by at least 0.25. (Revised twice on 28 October, 23:00 and 23:30, see §6.)
 
 **L4 (Darwinian evolution).** L3 strict, plus a heritable trait whose rise beats drift. The trait z of a vesicle is its enclosed L2 lineage letters per volume.
 - **Heritability:** the parent–daughter regression of z, over the division events in the window, has a slope > 0 with p < 0.01.
@@ -130,6 +128,8 @@ Report L3 loose, L3 strict and L4 rates per point, the effect sizes, the evaluab
 - **The vesicle constants are layer C ranges.** Where L3 depends on β or the division constants, the result is "it depends on X", which is a pointer for experiments.
 
 ## 6. Implementation choices and revision (28 October 2026, before any GPU result)
+
+**Second revision (23:30).** A CPU smoke test of the first revision showed that the paired comparison does not separate copying from no copying. The original 63-letter templates (16 per vesicle) stay in the vesicle family through rehydration and do not decay within the fixture horizon. So the ancestor's key persists equally in the random-copy run, and the test measured the survival of the original molecules, not copies. The test now counts only chains made by copying after the window start (§2). The paired random-copy condition stays. Under random copy, new chains do not carry the key; with k_t = 0, there are no new chains. This was done before any GPU validation result.
 
 **Revision of L3 strict and test 4 (23:00).** On a CPU smoke test of the test 4 fixture at #3709, content persisted over 3 generations even with k_t = 0. The cause is the cycle-averaged rehydration of 4c-4 (§8 row 14). When a daughter finds no free slot, its chains are released outside, and rehydration encloses them again. So the §2 assumption of dilution by about 1/8 does not hold in wet–dry environments. The fixed 0.5 threshold was therefore replaced by a comparison with the paired random-copy run (§2). This was done before any validation result on the GPU. L3 loose (growth against load) is not affected.
 
