@@ -30,7 +30,7 @@
    - accurate copying (fewer than about 0.3 errors per copy);
    - near-neutral to slightly acidic water (pH 4.4–7.6), with membranes stable there.
 
-   The hardest single step is not catalysis or heredity alone. It is **heredity and stable membranes in the same environment**: half of the heredity environments found are acidic or warm, where membranes in the model cannot form or rarely hold.
+   The hardest single step is not catalysis or heredity alone. It is **heredity and stable membranes in the same environment**: 5 of the 7 confirmed heredity environments are acidic (pH 2.6–4.7). At pH below 4 no membrane in the model can form; at the other two, only 0.4–1.4% of the membrane-constant space allows one.
 4. **Result: the ceiling.** The ladder stops before Darwinian evolution.
    - Selection among vesicles happens as one fast sweep.
    - After it, copying refills every vesicle to the same load, so no heritable variation remains.
