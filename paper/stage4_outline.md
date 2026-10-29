@@ -98,10 +98,10 @@
 - **Upload code and raw data** from the benchmark machine (lot-s4/upload_* folders with MD5SUMS) before submission.
 - **Disclose the use of AI** in the research and writing.
 
-## Venue (to decide with the owner)
+## Venue
 
-The earlier plan was two papers:
-- paper 1, the COMPASS method (Part I), for arXiv and ALIFE 2027;
-- paper 2, Stage 4, for a journal such as *Origins of Life and Evolution of Biospheres*, *Artificial Life* or *Life*.
+**Decided by the owner, 29 October 2026: two papers.**
+- **Paper 1, the COMPASS method:** Part I, plus engine scaling (4a) and engine performance on the bottom-up model. Targets: arXiv and ALIFE 2027.
+- **Paper 2, Stage 4 (this outline):** the environment search. Target: a journal such as *Origins of Life and Evolution of Biospheres*, *Artificial Life* or *Life*.
 
-This outline is paper 2. It can also stand alone, with Part I summarised in the method section.
+Section 5.6 (engine performance) moves to paper 1 and is only summarised here.
