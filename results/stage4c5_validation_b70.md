@@ -1,6 +1,6 @@
 # Stage 4c-5 validation: coupling, L3 and L4 detection (Intel Arc Pro B70)
 
-**Status:** validation done 29 October 2026, 04:00 Toronto time. **6 of 8 pre-registered tests pass; tests 3 and 6 fail.** Under the stop rule (spec §3), no map was started. Test 6b, pre-registered after the diagnosis of test 6, passes. · **Specification:** [stage4c5_spec.md](../docs/stage4c5_spec.md), with the revisions and implementation choices in its §6 · **Code:** chem4c5.py (md5 c747dc68), validate4c5.py (4dc1d04f), kill_resume_4c5.sh (958ac576); kept on the benchmark machine and to be added to [stage4/](../stage4/README.md) · **Data:** validate4c5.json (md5 f80f6e5e)
+**Status:** validation done 29 October 2026, 04:00 Toronto time; report: [stage4c5_coupling_b70.md](stage4c5_coupling_b70.md). **6 of 8 pre-registered tests pass; tests 3 and 6 fail.** Under the stop rule (spec §3), no map was started. Test 6b, pre-registered after the diagnosis of test 6, passes. · **Specification:** [stage4c5_spec.md](../docs/stage4c5_spec.md), with the revisions and implementation choices in its §6 · **Code:** chem4c5.py (md5 c747dc68), validate4c5.py (4dc1d04f), kill_resume_4c5.sh (958ac576); kept on the benchmark machine and to be added to [stage4/](../stage4/README.md) · **Data:** validate4c5.json (md5 f80f6e5e)
 
 ## Before the GPU validation
 
