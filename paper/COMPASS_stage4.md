@@ -228,6 +228,8 @@ These are statements about the model's chemistry, not about the history of the E
 
 **The L4 ceiling.** The model shows what heredity alone can do inside compartments. Copying families win one fast sweep, as competition between protocells predicts (Chen, Roberts & Szostak 2004). After the sweep, copying refills every vesicle to the same load, so no heritable variation in content remains. Information is kept, but it gives no lasting advantage, because sequence affects nothing but length. This failure is informative. It turns into a prediction that models and experiments can test: protocell populations evolve beyond the first sweep only if sequence affects copying, catalysis or the membrane.
 
+A later check, made while building an experimental platform on the same engine, shows a second, technical reason. A template can start at most one copy per time step, with probability 1 − exp(−λ·dt). At the top environments λ·dt is much larger than 1, so every template copies once per step whatever its rate: copy throughput is set by the step size and the number of templates, not by any property of the template. A trait that changes the copy rate could therefore not be selected in this discretisation. The L4 ceiling is thus a joint result of the missing phenotype and of this cap on copy starts. Neither depends on the environment, but the second is a property of the numerical scheme, not of chemistry.
+
 **The role of the search.** COMPASS made a map over up to 54 dimensions feasible on one consumer GPU. It found, and confirmed with new seeds, specific environments for the rarest levels. At equal budget it found long-copy heredity 4 times and the joint level once, where the ground truth found neither (p ≈ 0.06). This advantage in finding rare points is suggestive but not proven. Its proven advantage is map accuracy per simulation, about 2.4–2.9× fewer runs to reach 95% of the achievable accuracy gain in the one layer with a matched baseline. Much of its apparent advantage in raw hit counts comes from the ground truth's design of 16 seeds per point, not from targeting. The method is the subject of a separate paper.
 
 ## 8. Limits
@@ -236,6 +238,7 @@ These are statements about the model's chemistry, not about the history of the E
 - Coarse membrane laws (a stability window and an exponential critical concentration). The salt and acidity conflicts in Section 5.4 depend on them.
 - Copying does not depend on Mg²⁺.
 - Sequences have no phenotype beyond length and mass.
+- Copy starts are capped at one per template per time step, and this cap binds at the top environments (Section 7). Results that depend on copy rates, including the L4 ceiling, may change with a finer step or with several starts per step.
 - The focused regions were chosen from earlier maps. No full joint map over all levels was run, and the extent of the L3 region is not mapped.
 - No time-varying environment was simulated, and carry-over between levels is open.
 - The layer C ranges decide much. Rare-level results are based on few points.
