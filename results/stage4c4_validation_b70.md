@@ -1,6 +1,6 @@
 # Stage 4c-4 validation: amphiphiles and vesicles (Intel Arc Pro B70)
 
-**Status:** validation complete (all tests pass), 28 October 2026, 02:08 (Toronto time) · **Specification:** [stage4c4_spec.md](../docs/stage4c4_spec.md), with the implementation choices in its §8 · **Code:** chem4c4.py (v2, md5 b79360f6), validate4c4.py (765d5e41), check3709_4c4.py (b2a60bdf); kept on the benchmark machine and to be added to [stage4/](../stage4/README.md) · **Data:** result JSONs with md5 sums on the benchmark machine, to be added to the repository
+**Status:** complete, 28 October 2026, 23:19 Toronto time (validation passed 02:08); report: [stage4c4_vesicles_b70.md](stage4c4_vesicles_b70.md) · **Specification:** [stage4c4_spec.md](../docs/stage4c4_spec.md), with the implementation choices in its §8 · **Code:** chem4c4.py (v2, md5 b79360f6), validate4c4.py (765d5e41), check3709_4c4.py (b2a60bdf); kept on the benchmark machine and to be added to [stage4/](../stage4/README.md) · **Data:** result JSONs with md5 sums on the benchmark machine, to be added to the repository
 
 ## Bottom line so far
 
