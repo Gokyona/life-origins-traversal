@@ -168,6 +168,9 @@ The spec leaves some details open. The implementation (chem4c5.py) takes the sim
 | 14 | Chains for the identity test | a host snapshot of enclosed nucleotide-like chains ≥ L_H (site, slot, length, sequence, birth step) at each run's last checkpoint. Identity is measured over the shorter length from position 0; the complement is the bitwise inverse (2-letter alphabet) |
 | 15 | Saved records | records saved for 5b hits also hold the final chains and the parent table, so hits can be re-scored |
 | 16 | Detector speed | permutation nulls computed in one matrix product with the same random draws, detectors run in a pool of 4 processes with a fixed random stream per run, and paired reruns build only the record. Speed change only: all outputs were identical to the loop version on 22 test runs (detector time per run 2.0 s → 0.3 s) |
+| 17 | 9a membrane sets for 5a | the 9a scan stored only per-point summaries, so 5a uses the first 8 window-compatible sets per point (the same 9a draws) and reports each set's joint rate at 16 seeds, instead of preselecting successful sets |
+| 18 | Generation time and membrane at division | generation time = window hours / mean generation gain of the vesicles alive at the window start and the last checkpoint. Membrane at division = the parent's membrane at the checkpoint before the division interval (checkpoint resolution) |
+| 19 | Gate of the paired controls (β = 0, random copy) | the controls are scored **without the L2/E3 gate**, wherever they are evaluable (≥ 30 vesicle-interval pairs, ≥ 3 generations), and their own gate status is reported next to it. A CPU smoke test at reduced fidelity showed that β = 0 can remove the control's own gate; a gated control would then report 0 trivially and test nothing |
 
 ## References
 
