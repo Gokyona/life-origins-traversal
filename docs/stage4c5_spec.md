@@ -46,6 +46,7 @@ Dividing by a_j removes the trivial size effect, since uptake is proportional to
 - Take the vesicles present at the start of the window as ancestors.
 - Content is passed on if, at the last checkpoint, at least half of the sites hold a descendant at least 3 generations below its ancestor.
 - That descendant must still enclose the ancestor's dominant lineage key, with enclosed lineage letters at least 0.5 times the ancestor's.
+- **Copied, not re-enclosed:** the share of sites passing must exceed that of the paired random-copy run (same environment, constants and seed) by at least 0.25. In wet–dry environments, rehydration re-encloses released chains, so a lineage can stay in a vesicle family without being copied. In the random-copy run, copying keeps going but produces no copies of the key, so only re-enclosure and the original chains remain. This works like the "above control" condition of L2 strict. (Revised 28 October, 23:00, see §6.)
 
 Dilution without copying would give about 1/8 after 3 divisions. So passing the test needs the lineage to be copied inside the vesicle family.
 
@@ -82,8 +83,9 @@ The criteria are fixed now, before any result.
    - With β = 5: ρ(g, Π) ≥ 0.3 and p < 0.01 in at least 15 of 16 seeds.
    - With β = 0: L3 loose passes in at most 1 of 16 seeds.
 4. **Inheritance control (fixture).** Vesicles start with a self-copying lineage (copying on, at #3709's copying constants), with division by shear.
-   - Content persists ≥ 3 generations (the L3 strict test) in at least 14 of 16 seeds.
-   - With k_t = 0 or the random-copy control, it persists in at most 1 of 16 seeds.
+   - The L3 strict inheritance test passes, including the paired random-copy condition, in at least 14 of 16 seeds.
+   - With k_t = 0 as the main run (paired with its own random-copy run), it passes in at most 1 of 16 seeds.
+   - The raw persistence share without the paired condition is reported for the main run, the k_t = 0 run and the random-copy run. It shows how much re-enclosure alone keeps.
 5. **False-positive rate at real points.** β = 0 runs at the 4 membrane-compatible 9a points and engine12538, 16 seeds each (80 runs). L3 loose and L4 pass in at most 4 of the 80 runs (5%).
 6. **L4 positive control (fixture).** Two vesicle types: a self-copying lineage, and non-copying chains of the same initial mass, with β = 5 and division. L4 passes in at least 14 of 16 seeds. With β = 0, it passes in at most 1 of 16.
 7. **Kill and resume** give bit-identical results, including the record.
@@ -126,6 +128,27 @@ Report L3 loose, L3 strict and L4 rates per point, the effect sizes, the evaluab
 - **L4 here is selection among vesicles on enclosed lineage load.** It is not the evolution of new functions: chains have no catalytic phenotype beyond the 4c-2 catalysis rules.
 - **The fixtures in tests 3, 4 and 6 are constructed.** They show that the detectors work, not that coupling arises. Only 5a and 5b say where it arises.
 - **The vesicle constants are layer C ranges.** Where L3 depends on β or the division constants, the result is "it depends on X", which is a pointer for experiments.
+
+## 6. Implementation choices and revision (28 October 2026, before any GPU result)
+
+**Revision of L3 strict and test 4 (23:00).** On a CPU smoke test of the test 4 fixture at #3709, content persisted over 3 generations even with k_t = 0. The cause is the cycle-averaged rehydration of 4c-4 (§8 row 14). When a daughter finds no free slot, its chains are released outside, and rehydration encloses them again. So the §2 assumption of dilution by about 1/8 does not hold in wet–dry environments. The fixed 0.5 threshold was therefore replaced by a comparison with the paired random-copy run (§2). This was done before any validation result on the GPU. L3 loose (growth against load) is not affected.
+
+The spec leaves some details open. The implementation (chem4c5.py) takes the simplest reading:
+
+| # | Open point | Choice |
+|---|---|---|
+| 1 | Membrane gained | per slot: the net change of a_j from uptake, exchange and dissolution; formation (a₀) and halving at division are excluded |
+| 2 | (vesicle, interval) pairs for L3 loose | slot lineage: alive at both checkpoints and never emptied or refilled by a newborn. The first daughter keeps the slot, so pairs survive divisions within an interval |
+| 3 | Lineage key | whole-sequence key of chains ≥ L_H. A sequence and its complement count as one lineage (the smaller key). The top 2 per vesicle by enclosed letters |
+| 4 | Trait z | letters of the 2 dominant enclosed lineages divided by the volume share φ_j |
+| 5 | Heritability pairs | parent at checkpoint k−1, each daughter at checkpoint k, for divisions in interval k |
+| 6 | Gate | E1, L2 loose, copy length ≥ L_H and E3 strict in the run; the runners then require L2 strict from the paired random-copy run, so the gate is L2_long ∩ E3 strict |
+| 7 | Ancestry table | at most 2,048 vesicle ids per site; an overflow is flagged per run |
+| 8 | End causes | washout, breakdown outside the window, dissolution below the CVC, division. A division without a free slot is recorded with no second daughter id |
+| 9 | Records on disk | only for runs with an L3 or L4 hit; the pre-flight measures the full size |
+| 10 | Fixtures (tests 3, 4, 6) | evaluated on the whole record from checkpoint 0, without the L2/E3 gate. Test 3: s_shear 0.02 (slow division, so pairs exist). Tests 4 and 6: #3709 environment and constants, s_shear = s_cycle = 0.01, a 6,000 h horizon, 63-letter templates, 4 starting vesicles with free slots. Test 6: 2 vesicles with copying 63-mers and 2 with non-copying chains of the same letters |
+| 11 | Test 5 membrane sets | the first window-compatible 9a set per point |
+| 12 | L4 sequence version | the 3 keys with the largest rise in frequency from the window start to the last checkpoint; no permutation test |
 
 ## References
 
