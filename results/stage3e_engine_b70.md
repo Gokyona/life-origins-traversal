@@ -87,7 +87,7 @@ The straddle score is high for points that are both uncertain and predicted near
 
 ## Reference
 
-Bryan, B., Schneider, J., Nichol, R. C., Miller, C. J., Genovese, C. R. & Wasserman, L. (2005). Active learning for identifying function threshold boundaries. *Advances in Neural Information Processing Systems 18 (NIPS 2005)*, 163–170. [proceedings](https://proceedings.neurips.cc/paper/2005/hash/8e930496927757aac0dbd2438cb3f4f6-Abstract.html) (straddle score as defined there: 1.96·σ̂ − |f̂ − t|).
+Bryan, B., Nichol, R. C., Genovese, C. R., Schneider, J., Miller, C. J. & Wasserman, L. (2005). Active learning for identifying function threshold boundaries. *Advances in Neural Information Processing Systems 18 (NIPS 2005)*, 163–170. [proceedings](https://proceedings.neurips.cc/paper/2005/hash/8e930496927757aac0dbd2438cb3f4f6-Abstract.html) (straddle score as defined there: 1.96·σ̂ − |f̂ − t|).
 
 ## Raw data
 

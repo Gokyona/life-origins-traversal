@@ -197,7 +197,7 @@ Code, analyses and text were developed with the help of an AI assistant (Claude,
 
 ## References
 
-- Bryan, B., Schneider, J., Nichol, R. C., Miller, C. J., Genovese, C. R. & Wasserman, L. (2005). Active learning for identifying function threshold boundaries. *Advances in Neural Information Processing Systems 18 (NIPS 2005)*, 163–170. <https://proceedings.neurips.cc/paper/2005/hash/8e930496927757aac0dbd2438cb3f4f6-Abstract.html>
+- Bryan, B., Nichol, R. C., Genovese, C. R., Schneider, J., Miller, C. J. & Wasserman, L. (2005). Active learning for identifying function threshold boundaries. *Advances in Neural Information Processing Systems 18 (NIPS 2005)*, 163–170. <https://proceedings.neurips.cc/paper/2005/hash/8e930496927757aac0dbd2438cb3f4f6-Abstract.html>
 - Eigen, M. (1971). Selforganization of matter and the evolution of biological macromolecules. *Die Naturwissenschaften* 58(10), 465–522.
 - Gánti, T. (1975). Organization of chemical reactions into dividing and metabolizing units: the chemotons. *BioSystems* 7(1), 15–21.
 - Gánti, T. (2003). *The Principles of Life*. Oxford University Press.
