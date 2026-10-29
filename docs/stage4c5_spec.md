@@ -150,6 +150,13 @@ These thresholds are fixed now, before any map. The dynamics and the other detec
 
 **Test 3 failed on its effect-size threshold (29 October, 02:34).** With β = 5, coupling was detected in all 16 runs (permutation p = 0.001 in every run), and with β = 0 in none. But ρ(g, Π) reached the pre-registered 0.3 in only 3 of 16 runs (median about 0.27). The threshold of 0.3 was a guess at the fixture's effect size, not a derived value; the map detector uses ρ ≥ 0.1. The test is recorded as **failed** and the criterion is not changed after the fact. The maps run anyway, if tests 4 to 7 pass, under this recorded deviation from the stop rule of §3; the owner decides whether the results are kept.
 
+**Test 6 failed (29 October, about 03:15).** In the L4 fixture with β = 5:
+- L3 strict and L3 loose held in all 16 runs;
+- L4 passed in only 3 of 16 (ρ(w, z) median about 0.21; criterion ≥ 14 of 16);
+- with β = 0, L4 passed in 0 of 16.
+
+Tests 4 (inheritance, 16/16 against 0/16 without copying) and 5 (0 of 80 false positives) passed. Two tests failed, so the stop rule of §3 applies and **no map was started**. L3 is validated except for test 3's effect-size threshold. The L4 detector has too little power in its own positive control. The next step is decided with the owner.
+
 The spec leaves some details open. The implementation (chem4c5.py) takes the simplest reading:
 
 | # | Open point | Choice |
