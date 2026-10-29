@@ -157,6 +157,15 @@ These thresholds are fixed now, before any map. The dynamics and the other detec
 
 Tests 4 (inheritance, 16/16 against 0/16 without copying) and 5 (0 of 80 false positives) passed. Two tests failed, so the stop rule of §3 applies and **no map was started**. L3 is validated except for test 3's effect-size threshold. The L4 detector has too little power in its own positive control. The next step is decided with the owner.
 
+**Diagnosis of test 6 and test 6b (29 October, 04:10, written before test 6b runs).** An exact replay of test 6 (bit-identical to the saved runs, with full details saved) shows the following:
+- Heritability passed in all 16 runs.
+- Every run had at least 17 ancestors.
+- Selection beyond drift failed in 13 of 16 runs.
+
+The reason is the fixture's window. The ancestors are the vesicles alive at checkpoint 0 (375 h of 6,000 h). By then the copying founders had already displaced the non-copying ones: 0–4 of 17–36 ancestors were non-copying, and 100% of the final descendants came from copying founders. So the window saw only variation within the copying lineage, where the permutation null is wide (99th percentile 0.37–0.58).
+
+The test asked the right question too late. Test 6 stays recorded as failed. **Test 6b** repeats it with the ancestors taken at t = 0, before the first checkpoint: the 4 founder vesicles' slot lineages, each a whole founder family, with z measured at t = 0. Everything else is as in test 6, including the criterion: L4 in ≥ 14 of 16 runs at β = 5 and ≤ 1 of 16 at β = 0. Only 4 ancestors exist, so the "≥ 10 ancestors" condition cannot hold. In test 6b, the selection statistic is therefore the share of final descendants from the copying founders. The test passes if this share is above the 99th percentile of the same share under 999 random relabellings of which founders are "copying" (2 of 4). The detector used in the maps is unchanged.
+
 The spec leaves some details open. The implementation (chem4c5.py) takes the simplest reading:
 
 | # | Open point | Choice |
