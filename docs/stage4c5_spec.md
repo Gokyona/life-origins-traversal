@@ -164,7 +164,13 @@ Tests 4 (inheritance, 16/16 against 0/16 without copying) and 5 (0 of 80 false p
 
 The reason is the fixture's window. The ancestors are the vesicles alive at checkpoint 0 (375 h of 6,000 h). By then the copying founders had already displaced the non-copying ones: 0–4 of 17–36 ancestors were non-copying, and 100% of the final descendants came from copying founders. So the window saw only variation within the copying lineage, where the permutation null is wide (99th percentile 0.37–0.58).
 
-The test asked the right question too late. Test 6 stays recorded as failed. **Test 6b** repeats it with the ancestors taken at t = 0, before the first checkpoint: the 4 founder vesicles' slot lineages, each a whole founder family, with z measured at t = 0. Everything else is as in test 6, including the criterion: L4 in ≥ 14 of 16 runs at β = 5 and ≤ 1 of 16 at β = 0. Only 4 ancestors exist, so the "≥ 10 ancestors" condition cannot hold. In test 6b, the selection statistic is therefore the share of final descendants from the copying founders. The test passes if this share is above the 99th percentile of the same share under 999 random relabellings of which founders are "copying" (2 of 4). The detector used in the maps is unchanged.
+The test asked the right question too late. Test 6 stays recorded as failed. **Test 6b** repeats it with the ancestors taken at t = 0, before the first checkpoint: the 4 founder vesicles' slot lineages, each a whole founder family, with z measured at t = 0. Everything else is as in test 6, including the criterion: L4 in ≥ 14 of 16 runs at β = 5 and ≤ 1 of 16 at β = 0. Only 4 ancestors exist. So the "≥ 10 ancestors" condition cannot hold, and a permutation over founder labels has only 6 arrangements. Test 6b therefore uses this design:
+- **Statistic:** the share of final descendants that come from the copying founders.
+- **Drift null:** the same share in 16 runs at β = 0 (seeds of test 6). With β = 0, no growth advantage exists, so founder type is neutral for w.
+- **Pass:** a β = 5 run passes if its share is above the maximum of the 16 null shares, together with the heritability condition of L4.
+- **Criterion:** at least 14 of 16 β = 5 runs pass. A second set of 16 β = 0 runs (new seeds) is scored against the same null, and at most 2 of 16 may pass. The expected false-positive rate against the maximum of 16 is about 1 in 17.
+
+The detector used in the maps is unchanged.
 
 The spec leaves some details open. The implementation (chem4c5.py) takes the simplest reading:
 
