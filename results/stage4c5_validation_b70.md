@@ -1,6 +1,6 @@
 # Stage 4c-5 validation: coupling, L3 and L4 detection (Intel Arc Pro B70)
 
-**Status:** validation done 29 October 2026, 04:00 Toronto time. **6 of 8 tests pass; tests 3 and 6 fail.** Under the stop rule (spec §3), no map was started. · **Specification:** [stage4c5_spec.md](../docs/stage4c5_spec.md), with the revisions and implementation choices in its §6 · **Code:** chem4c5.py (md5 c747dc68), validate4c5.py (4dc1d04f), kill_resume_4c5.sh (958ac576); kept on the benchmark machine and to be added to [stage4/](../stage4/README.md) · **Data:** validate4c5.json (md5 f80f6e5e)
+**Status:** validation done 29 October 2026, 04:00 Toronto time. **6 of 8 pre-registered tests pass; tests 3 and 6 fail.** Under the stop rule (spec §3), no map was started. Test 6b, pre-registered after the diagnosis of test 6, passes. · **Specification:** [stage4c5_spec.md](../docs/stage4c5_spec.md), with the revisions and implementation choices in its §6 · **Code:** chem4c5.py (md5 c747dc68), validate4c5.py (4dc1d04f), kill_resume_4c5.sh (958ac576); kept on the benchmark machine and to be added to [stage4/](../stage4/README.md) · **Data:** validate4c5.json (md5 f80f6e5e)
 
 ## Before the GPU validation
 
@@ -27,6 +27,25 @@ The spec was revised three times, and the test fixtures once, before any GPU res
 | 5. False positives at real points (β = 0, 80 runs) | pass | L3 loose or L4 in 0 of 80. Only 31 of the 80 runs passed the L2/E3 gate (none at #3709, C and engine12538) |
 | 6. L4 fixture (β = 5 against β = 0) | **fail** | β = 5: L4 in 3 of 16 (criterion ≥ 14), while L3 strict and L3 loose held in 16 of 16. ρ(w, z) median about 0.21. β = 0: 0 of 16 |
 | 7. Kill and resume | pass | runs, engine selections, results and accuracy curves identical. The short test run had no L3 or L4 hit, so stored records were not compared (0 of 0 files) |
+
+## Test 6 diagnosis and test 6b
+
+An exact replay of test 6, bit-identical to the saved runs (replay_test6.json, md5 95736855), shows the following:
+- heritability passed in 16 of 16 runs;
+- every run had at least 17 ancestors;
+- selection beyond drift failed in 13 of 16.
+
+The ancestors were the vesicles alive at checkpoint 0 (375 h). By then, the copying founders had already displaced the non-copying ones. All final descendants came from copying founders, so the window saw only variation within one lineage.
+
+Test 6b was written into the spec before it ran (§6). It takes the founders at t = 0. The statistic is the share of final descendants from the copying founders, compared with the maximum of the same share in 16 runs at β = 0 (validate4c5_6b.json, md5 abae6552).
+
+| | Share from copying founders | Pass |
+|---|---|---|
+| Null, β = 0 (16 runs) | 0.42–0.58, maximum 0.576 | – |
+| β = 5 (16 runs) | **1.0 in all 16** (heritability 16 of 16) | **16 of 16** (needed ≥ 14) |
+| Second β = 0 set (16 runs, new seeds) | 0.37–0.59 | 1 of 16 (allowed ≤ 2) |
+
+**Test 6b passes.** It shows that selection of a heritable, copied content among vesicle families is detectable when the observation starts before selection has run its course. It does not validate the power of the map's L4 statistic (ρ(w, z) among the vesicles at the window start). That statistic sees only variation within the population present at the window start. Its power there remains untested, and L4 results from it are reported with that caveat.
 
 ## Reading
 
