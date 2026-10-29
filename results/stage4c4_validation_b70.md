@@ -123,7 +123,30 @@ Result files (md5): validate4c4.json (v1) fe0bf451, validate4c4_v2.json a6a56fdf
 - engine8869 was a single-run fluke for heredity and is not confirmed.
 - Only 2.6% of the region is feasible under masking, so the ground truth is too thin for a map of the joint level. The conditional version (§9c) addresses this.
 
+## Focused map box3 v2 (spec §9c)
+
+28 October 2026, 17:40 to 22:55 Toronto time; confirmations until 23:19. Result md5 bd6d27f7, confirmations md5 dba35a53. Region as in box3, but the membrane constants are drawn inside the stability window, given the environment (§9c). Environments where no membrane can be stable stay masked. This is a map conditional on a stable membrane.
+
+| | Runs | Infeasible | E1 | E2 | L1 | L2 strict | L2_long | E3 loose | E3 strict | **E3 strict ∩ L2_long** |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Ground truth 500 × 16 | 8,000 | 73.4% | 1,756 | 626 | 0 | 4 | 0 | 240 | 208 | **0** |
+| COMPASS | 16,000 | 59.6% | 5,647 | 2,258 | 8 | 18 | 5 | 640 | 604 | **5** |
+
+**Confirmations (16 new runs each):**
+
+| Point | E3 strict | L2 strict | **Both** | Margin | Copy length | Enclosed share of L2 lineage |
+|---|---|---|---|---|---|---|
+| **engine11230** | 16 | 16 | **16** | 0.36 | 62.3 | 1.0 |
+| **engine15233** | 16 | 16 | **16** | 0.57 | 61.3 | 1.0 |
+| **engine15539** | 16 | 13 | **13** | 0.43 | 58–62 | 0.86 |
+| engine8083 | 16 | 7 | 7 | 0.28 | 59.4 | 0.998 |
+| engine4527 | 16 | 1 | 1 | – | 58–62 | – |
+
+- **The search found three more points where heredity and filled vesicles coexist in most or all runs** (engine11230 and engine15233 in 16 of 16, engine15539 in 13 of 16). Together with engine12538 from box3, that makes four search-found points. engine8083 is marginal, and engine4527 was a fluke.
+- At every confirmed point, E3 strict holds in all 16 runs, so the limit is heredity, not the membrane. Essentially all lineage mass is inside vesicles.
+- The ground truth again has no joint hit in 8,000 runs. The joint level is rare even when the membrane is guaranteed stable: COMPASS found 5 candidates among 6,460 feasible runs.
+
 ## Next
 
-1. Focused map with membrane constants drawn inside the window (box3 v2, spec §9c), with confirmations.
-2. The 4c-4 report.
+1. The 4c-4 report.
+2. Stage 4c-5 ([spec](../docs/stage4c5_spec.md)): coupling, L3 and L4 detection at these points and in the box3 v2 region.
