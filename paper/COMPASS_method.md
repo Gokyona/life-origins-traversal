@@ -53,11 +53,11 @@ For stage 4, environments outside a region's constraints are masked: they stay i
 
 ## 3. Benchmark protocol
 
-- **Ground truth.** 4,000–8,000 held-out conditions, each simulated 64–128 times by brute force (stage 4: 1,000–2,000 conditions with 16–32 seeds).
+- **Ground truth.** 4,000–8,000 held-out conditions, each simulated 64–128 times by brute force (stage 4: 500–2,000 conditions with 16–32 seeds).
 - **Methods.** Uniform random and Sobol sampling with one run per condition, and COMPASS variants.
 - **One map-maker for all.** Each method produces an ordered list of simulated conditions. At fixed budgets, the same map-maker (R4) is fitted to the prefix of each list and scored on the held-out set. Methods therefore differ only in which conditions they chose.
 - **Hard set.** Accuracy is also reported on conditions with 0.1 ≤ p ≤ 0.4 or 0.6 ≤ p ≤ 0.9: random, but still decidable.
-- **Repetitions.** 3–5 per method for the test models; 1 for the stage 4 maps.
+- **Repetitions.** 3–5 per method for the test models; 1 for the stage 4 maps (2 for one focused map in 4c-3).
 - **Hardware.** One Intel Arc Pro B70 (32 GB), PyTorch on the XPU backend, a 6-core desktop CPU.
 
 ## 4. Test models
@@ -66,8 +66,8 @@ For stage 4, environments outside a region's constraints are masked: they stay i
 |---|---|---|---|---|
 | Protocell chemostat | 10 | self-replication above background | Poisson tau-leaping; Eigen error threshold built in; 2 distractors | stage 1 |
 | Autocatalytic sets | 7 | a RAF set exists | binary polymer model (Hordijk & Steel 2004), exact maxRAF on the GPU; 2 distractors | stage 1e |
-| Stochastic corrector | 8 | heredity through division (L2) | 128 cells, after Szathmáry & Demeter (1987) | stage 2a |
-| Coupled protocell | 10 | protocell in homeostasis (L3) | self-made membrane triggers division, after Gánti (2003) | stage 2b |
+| Stochastic corrector | 8 | heredity through division (L2) | 128 cells, after Szathmáry & Demeter (1987); 2 distractors | stage 2a |
+| Coupled protocell | 10 | protocell in homeostasis (L3) | self-made membrane triggers division, after Gánti (2003); 2 distractors | stage 2b |
 | Coupled protocell, padded | 20 and 30 | L3 | extra dimensions either ignored (distractors) or each with a small real effect (weak) | stage 4a |
 | Bottom-up chemistry, layer 1 | 29 | activated feedstock (E1), persistent chains (E2) | 19 environmental and 10 unknown-constant dimensions | stage 4c-1 |
 
@@ -99,11 +99,11 @@ The saving depends on the boundary. It is largest where the boundary is thin and
 
 ### 5.2 Scaling with dimension
 
-Padding the coupled protocell model to 20 and 30 dimensions (3 repetitions each, budget 64k) kept COMPASS ahead of Sobol at every budget from 4k on. Accuracy at 64k on all conditions was 0.980 against 0.967 (D = 20, distractors) and 0.980 against 0.971 (D = 20, weak). On the hard set it was 0.707 against 0.617 and 0.722 against 0.652. The engine's cost stayed at about 75 s per 64,000-simulation run, independent of dimension, so no screening step was needed before the 37–54-dimensional stage 4 maps.
+Padding the coupled protocell model to 20 and 30 dimensions (3 repetitions each, budget 64k) kept COMPASS ahead of Sobol at every budget from 4k on. Accuracy at 64k on all conditions was 0.980 against 0.967 (D = 20, distractors) and 0.980 against 0.971 (D = 20, weak). On the hard set it was 0.707 against 0.617 and 0.722 against 0.652. The engine's cost stayed at about 75 s per 64,000-simulation run, independent of dimension, so no screening step was needed before the 29–54-dimensional stage 4 maps.
 
 ### 5.3 Maps agree with theory
 
-On autocatalytic sets, the GPU simulator first reproduced the published catalysis threshold for RAF sets (Hordijk, Kauffman & Steel 2011) to within 2% for maximum polymer length n = 7–10. The threshold read off a COMPASS map built from 32,000 simulations lay within 7% of the directly simulated value on average, across 15 slices of the condition space. In the bottom-up chemistry, the same threshold re-emerged from the catalysis layer: P(RAF) = 0.5 at 1.05 and 1.27 catalysed reactions per molecule, against 1.06 and 1.25 in the test model.
+On autocatalytic sets, the GPU simulator first reproduced the published catalysis threshold for RAF sets (Hordijk, Kauffman & Steel 2011) to within 2% for maximum polymer length n = 7–10. The threshold read off a COMPASS map built from 32,000 simulations lay within 7% of the directly simulated value on average, across 15 slices of the condition space. In the bottom-up chemistry, the same threshold re-emerged from the catalysis layer: P(RAF) = 0.5 at 1.05 (n = 6) and 1.27 (n = 8) catalysed reactions per molecule, close to the test model's direct values (about 1.05–1.1 and 1.25).
 
 ### 5.4 What matters in the engine
 
@@ -125,13 +125,13 @@ All four active rules reach at 16k what Sobol reaches at 64k. On the hard set no
 
 ### 5.5 Negative results
 
-- **The first engine lost to random search** (stage 1). It used repeated runs with a sequential test, a nearest-neighbour map and refinement by p̂(1 − p̂). At 128k runs, plain Sobol and random sampling with one run each were best (hard set 0.892 and 0.885). Two lessons shaped COMPASS: repeated runs waste budget, and p(1 − p) chases conditions that are random by nature.
-- **A first apparent win was an artefact.** With a map-maker trained for a fixed number of steps, COMPASS seemed to lead by 8–12 points at every budget. The baselines were underfitted. With early stopping every method improved (random at 256k: hard set 0.702 → 0.944), and the lead became a saving in simulations instead of a permanent gap.
+- **The first engine lost to random search** (stage 1). It used repeated runs with a sequential test, a nearest-neighbour map and refinement by p̂(1 − p̂). The refining engines were below plain Sobol sampling at almost every budget, with a dip to 0.68 on the hard set at 4k runs. One run per condition beat every multi-run method from 2k to 16k runs; repeated runs paid off only at the largest budget on the hard set (Sobol with 8 runs 0.907 against 0.892 with one, at 128k). Two lessons shaped COMPASS: spend the budget on more conditions rather than repeats, and do not score by p(1 − p), which chases conditions that are random by nature.
+- **A first apparent win was an artefact.** With a map-maker trained for a fixed number of steps, COMPASS seemed to lead by 8–12 points on the hard set at every budget from 4k on. The baselines were underfitted. With early stopping every method improved (random at 256k: hard set 0.702 → 0.944), and the lead became a saving in simulations instead of a permanent gap.
 - **Cheap screening helps little** (stage 2d). A simulator 7.8× cheaper agreed with the full one on 97.2% of conditions, but only 60% near the boundary, where it was optimistic. Screening with it helped only up to 8k runs (by up to 0.006); from 16k on, no variant beat COMPASS on full simulations alone.
 
 ## 6. Use on a 54-dimensional bottom-up model
 
-The companion paper uses COMPASS to map a bottom-up chemistry over 13 environmental variables and up to 35 unknown constants. There, the rarest levels (heredity with long copies, and heredity inside vesicles) never appeared in ground-truth samples of 8,000–16,000 runs. COMPASS found environments for both and confirmed each with 16 new seeds.
+The companion paper uses COMPASS to map a bottom-up chemistry over 13 environmental variables (19 dimensions) and up to 35 unknown constants. There, the rarest levels (heredity with long copies, and heredity inside vesicles) never appeared in ground-truth samples of 8,000–16,000 runs. COMPASS found environments for both and confirmed each with 16 new seeds.
 
 Is that a property of the search? We checked in two ways.
 
@@ -156,10 +156,10 @@ So COMPASS is a map-maker, not a hit-finder. When the goal is to find rare posit
 ## 7. Limits
 
 - **The saving depends on the problem.** It is 1.6–8× in our models and smallest in mostly negative spaces.
-- **Engine overhead.** Training costs about 75–78 s per 64,000-simulation run. When one simulation takes microseconds, this dominates; for stage 4, where a run takes about 2 s, it is negligible.
+- **Engine overhead.** Map training costs about 72–78 s per 64,000-simulation run in the current engine (stages 3e and 4a), and about 85–100 s in the earlier stage 1–2 versions. When one simulation takes microseconds, this dominates; for stage 4, where a run takes from 45 ms (4c-1) to about 2.6 s (worst case in 4c-4), it is small.
 - **Baselines.** We compare against random and Sobol sampling at full scale, and against straddle in one model. We have not compared with Gaussian-process level-set methods (Gotovos et al. 2013), which scale poorly to tens of thousands of points but may do well at small budgets.
-- **Repetitions.** Test models have 3–5 repetitions; the stage 4 maps have one, and one matched Sobol arm (stage 4c-1).
-- **Rare levels.** Accuracy curves cannot measure maps of levels that occur in under 3% of the space, because always predicting "no" is already that accurate. For those levels we rely on hit counts, which have the caveats of Section 6.
+- **Repetitions.** Test models have 3–5 repetitions; the stage 4 maps mostly have one, and only one has a matched Sobol arm (stage 4c-1).
+- **Rare levels.** Accuracy curves cannot measure maps of very rare levels: in stage 4, always predicting "no" was already 97–100% accurate for them at every budget. For those levels we rely on hit counts, which have the caveats of Section 6.
 
 ## 8. Code, data and use of AI
 
@@ -178,7 +178,7 @@ Each entry was checked against the publisher's page, the authors' copy or the pr
 
 - Bryan, B., Nichol, R. C., Genovese, C. R., Schneider, J., Miller, C. J. & Wasserman, L. (2005). Active learning for identifying function threshold boundaries. *Advances in Neural Information Processing Systems* 18, 163–170.
 - Gánti, T. (2003). *The Principles of Life.* Oxford University Press.
-- Gotovos, A., Casati, N., Hitz, G. & Krause, A. (2013). Active learning for level set estimation. In *Proceedings of the 23rd International Joint Conference on Artificial Intelligence (IJCAI)*, 1344–1350.
+- Gotovos, A., Casati, N., Hitz, G. & Krause, A. (2013). Active learning for level set estimation. In *Proceedings of the 23rd International Joint Conference on Artificial Intelligence (IJCAI)*, 1344–1349.
 - Hordijk, W. & Steel, M. (2004). Detecting autocatalytic, self-sustaining sets in chemical reaction systems. *Journal of Theoretical Biology* 227(4), 451–461.
 - Hordijk, W., Kauffman, S. A. & Steel, M. (2011). Required levels of catalysis for emergence of autocatalytic sets in models of chemical reaction systems. *International Journal of Molecular Sciences* 12(5), 3085–3101.
 - Houlsby, N., Huszár, F., Ghahramani, Z. & Lengyel, M. (2011). Bayesian active learning for classification and preference learning. arXiv:1112.5745.
