@@ -148,6 +148,8 @@ The reason is the criterion, not the chemistry. The ancestors were taken at the 
 
 These thresholds are fixed now, before any map. The dynamics and the other detectors are unchanged.
 
+**Test 3 failed on its effect-size threshold (29 October, 02:34).** With β = 5, coupling was detected in all 16 runs (permutation p = 0.001 in every run), and with β = 0 in none. But ρ(g, Π) reached the pre-registered 0.3 in only 3 of 16 runs (median about 0.27). The threshold of 0.3 was a guess at the fixture's effect size, not a derived value; the map detector uses ρ ≥ 0.1. The test is recorded as **failed** and the criterion is not changed after the fact. The maps run anyway, if tests 4 to 7 pass, under this recorded deviation from the stop rule of §3; the owner decides whether the results are kept.
+
 The spec leaves some details open. The implementation (chem4c5.py) takes the simplest reading:
 
 | # | Open point | Choice |
