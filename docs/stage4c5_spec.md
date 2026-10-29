@@ -167,6 +167,7 @@ The spec leaves some details open. The implementation (chem4c5.py) takes the sim
 | 13 | Ancestor without a recorded key | at the real points there are about 18 vesicle generations per checkpoint interval, so most great-grandparents live and divide between two checkpoints. The nearest ancestor further up that was alive at a checkpoint is used instead, and its depth (mean and maximum) is reported. In the CPU diagnostic the ancestor used was about 12 generations up on average (maximum 21). This makes the test stricter than the specified 3 generations, since more copy errors accumulate, so it is kept |
 | 14 | Chains for the identity test | a host snapshot of enclosed nucleotide-like chains ≥ L_H (site, slot, length, sequence, birth step) at each run's last checkpoint. Identity is measured over the shorter length from position 0; the complement is the bitwise inverse (2-letter alphabet) |
 | 15 | Saved records | records saved for 5b hits also hold the final chains and the parent table, so hits can be re-scored |
+| 16 | Detector speed | permutation nulls computed in one matrix product with the same random draws, detectors run in a pool of 4 processes with a fixed random stream per run, and paired reruns build only the record. Speed change only: all outputs were identical to the loop version on 22 test runs (detector time per run 2.0 s → 0.3 s) |
 
 ## References
 
