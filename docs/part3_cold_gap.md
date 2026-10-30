@@ -51,3 +51,25 @@ No direct measurement of the binding enthalpy of bridged dinucleotides or of the
 - **(d)** Temperature floor lowered to −10 °C; liquid only above the freezing point of the solution (about −3.7 °C per mole of dissolved salt per litre).
 
 **Acceptance test (replaces test 6):** with (a)–(d), the model must reproduce both metrics of Table 1 within their uncertainty, and the pre-activated control (cold slows copying), using one parameter set.
+
+## 5. Follow-up after the change (30 October 2026, evening)
+
+The owner approved (a)–(d). With the reagent pool in place (fit to the Aitken A\*A time courses: RMS 0.29 mM; the fit needs the activation step's own activation energy, about 44 kJ/mol, now a layer C dimension labelled as a one-experiment calibration), the acceptance test **failed**: at the best E_ext (10 kJ/mol), ≥+1 at 24 h, −3 °C was 0.67 (observed 0.87), ≥+7 at 5 days 0.54 (0.60), and the pre-activated control at +3 °C 0.29 (0.08). No E_ext within 0–20 fits all three. Nothing was forced.
+
+**Side-product inhibition, tested on Aitken's own data (owner's choice).**
+
+- *For:* with acetaldehyde or glycolaldehyde in place of the standard aldehyde, the A\*A level is as high or higher (peaks 4.0 and 3.3 against 2.9 mM) and side products are 4–7 times higher, yet copying falls (47% and 41% against 65%). Without inhibition the model predicts 1.19× and 0.87× the standard. The authors themselves suspect "inhibitory byproducts such as AppA". At −3 °C side products stay near zero.
+- *Against or neutral:* less reagent lowers yield (activation dominates); the 2-aminoimidazole and pH series reflect activation chemistry. No published measurement of AppA or Passerini-product inhibition of nonenzymatic copying was found.
+- *Minimal term:* extension rate divided by (1 + I/K_I), I = accumulated side products. Fitted on the three room-temperature aldehyde results: K_I = 4.0 mM (RMS 0.06).
+
+| E_ext (kJ/mol) | ≥+1, 24 h, −3 °C (obs 0.87) | ≥+7, 5 d, −3 °C (obs 0.60) | pre-activated, +3 °C (obs 0.08) |
+|---|---|---|---|
+| 0 | 0.87 | 0.98 | 0.56 |
+| 10 | 0.75 | 0.82 | 0.29 |
+| 15 | 0.68 | 0.65 | 0.19 |
+| 18.4 | 0.63 | 0.52 | 0.13 |
+| 20 | 0.61 | 0.46 | 0.11 |
+
+**Result.** With inhibition, the 5-day result and the pre-activated control fit together at E_ext ≈ 15–20 kJ/mol, the band measured in the pre-activated control itself. The 24-hour single-addition result at −3 °C remains about 2-fold per letter too low in the model (it was 2.55-fold without inhibition). It is recorded as **unexplained**. One possible cause is a calibration mismatch: all A\*A time courses come from the AMP system, while the 24-hour experiment copies with CMP and GMP and starts with C on G.
+
+**Direction of the remaining error.** The model gives the cold *less* benefit than the experiment. Results that favour cold settings are therefore conservative, not inflated.
