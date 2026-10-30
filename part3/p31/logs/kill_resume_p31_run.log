@@ -1,0 +1,4 @@
+2026-10-30 18:06:22 START bash kill_resume_p31.sh kill_test_p31
+killed after 2 batches
+batches 5 5 runs 640 IDENTICAL
+2026-10-30 18:16:20 END rc=0 bash kill_resume_p31.sh kill_test_p31

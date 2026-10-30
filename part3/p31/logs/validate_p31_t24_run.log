@@ -1,0 +1,4 @@
+2026-10-30 16:26:14 START /home/bern/ComfyUI/venv/bin/python3 -u validate_p31.py validate_p31.json 24
+test 2 pass (120s)
+test 4 pass (440s)
+2026-10-30 16:35:38 END rc=0 /home/bern/ComfyUI/venv/bin/python3 -u validate_p31.py validate_p31.json 24

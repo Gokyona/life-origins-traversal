@@ -1,0 +1,98 @@
+{
+ "no_inhibition_relative_integral": {
+  "MBA": 1.0,
+  "acetaldehyde": 1.1914022320369597,
+  "glycolaldehyde": 0.8708263191388238
+ },
+ "K_I_mM": 3.981071705534973,
+ "fit_yields": {
+  "MBA": 0.6500000000000001,
+  "acetaldehyde": 0.5359903474238972,
+  "glycolaldehyde": 0.3473516380004219
+ },
+ "observed": {
+  "MBA": 0.65,
+  "acetaldehyde": 0.47,
+  "glycolaldehyde": 0.41
+ },
+ "rms_points": 0.05253425299858127,
+ "scan": {
+  "0.0": {
+   "A_plus1_24h": {
+    "cold_model": 0.8646639571931984,
+    "cold_obs": 0.87
+   },
+   "B_plus7_5d": {
+    "cold_model": 0.9818200110994321,
+    "cold_obs": 0.6
+   },
+   "C_preactivated_from_cold_accept": 0.5597
+  },
+  "10.0": {
+   "A_plus1_24h": {
+    "cold_model": 0.7463146388979596,
+    "cold_obs": 0.87
+   },
+   "B_plus7_5d": {
+    "cold_model": 0.8211869795729951,
+    "cold_obs": 0.6
+   },
+   "C_preactivated_from_cold_accept": 0.2884
+  },
+  "15.0": {
+   "A_plus1_24h": {
+    "cold_model": 0.678880020325217,
+    "cold_obs": 0.87
+   },
+   "B_plus7_5d": {
+    "cold_model": 0.6515002020728868,
+    "cold_obs": 0.6
+   },
+   "C_preactivated_from_cold_accept": 0.1871
+  },
+  "18.4": {
+   "A_plus1_24h": {
+    "cold_model": 0.6318407195963631,
+    "cold_obs": 0.87
+   },
+   "B_plus7_5d": {
+    "cold_model": 0.5189627637186952,
+    "cold_obs": 0.6
+   },
+   "C_preactivated_from_cold_accept": 0.1344
+  },
+  "20.0": {
+   "A_plus1_24h": {
+    "cold_model": 0.6096567992900154,
+    "cold_obs": 0.87
+   },
+   "B_plus7_5d": {
+    "cold_model": 0.45686649508571486,
+    "cold_obs": 0.6
+   },
+   "C_preactivated_from_cold_accept": 0.114
+  }
+ },
+ "scan_KI_x0.5_x2_at_Eext_18.4": {
+  "0.5": {
+   "A_plus1_24h": {
+    "cold_model": 0.6898403705361451,
+    "cold_obs": 0.87
+   },
+   "B_plus7_5d": {
+    "cold_model": 0.7914011475224993,
+    "cold_obs": 0.6
+   }
+  },
+  "2.0": {
+   "A_plus1_24h": {
+    "cold_model": 0.5968820132339372,
+    "cold_obs": 0.87
+   },
+   "B_plus7_5d": {
+    "cold_model": 0.2766878162668937,
+    "cold_obs": 0.6
+   }
+  }
+ }
+}

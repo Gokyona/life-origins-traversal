@@ -1,0 +1,8 @@
+/run/media/bern/Data2T/myClaude/lot-p3/p31/run_p31.py:96: UserWarning: The balance properties of Sobol' points require n to be a power of 2.
+  X = qmc.Sobol(d=chem.DIM_P31, scramble=True, seed=3100 + PAIR_IX[a.pair]).random(a.n).astype(np.float32)
+batch 0 n=128 85.7s
+batch 1 n=128 52.1s
+batch 2 n=128 56.5s
+batch 3 n=128 42.4s
+batch 4 n=128 56.3s
+done kill_test_p31/ka/runs_AS2U.jsonl {'min_C': 62.0, 'mean_C': 63.6, 'max_C': 64.0, 'readings': 5, 'pauses': 0, 'source': '/sys/class/drm/card0/device/hwmon/hwmon6'}

@@ -1,0 +1,512 @@
+                                                                                                          pubs.acs.org/JACS                                                                                                                                  Article
+
+
+
+                                                                                                          Small-Molecule Organocatalysis Facilitates In Situ Nucleotide
+                                                                                                          Activation and RNA Copying
+                                                                                                          Harry R. M. Aitken, Tom H. Wright, Aleksandar Radakovic, and Jack W. Szostak*
+                                                                                                                Cite This: J. Am. Chem. Soc. 2023, 145, 16142−16149                            Read Online
+
+
+                                                                                                          ACCESS                       Metrics & More                             Article Recommendations               * Supporting Information
+                                                                                                                                                                                                                         sı
+
+
+
+
+               Downloaded via 98.46.104.228 on March 24, 2024 at 02:13:22 (UTC).
+
+
+
+                                                                                                          ABSTRACT: A key challenge in origin-of-life research is the identification of plausible conditions that facilitate multiple steps along
+                                                                                                          the pathway from chemistry to biology. The incompatibility of nucleotide activation chemistry and nonenzymatic template-directed
+                                                                                                          RNA copying has hindered attempts to define such a pathway. Here, we show that adding heteroaromatic small molecules to the
+                                                                                                          reaction network facilitates in situ nucleotide phosphate activation under conditions compatible with RNA copying, allowing both
+
+
+
+
+See https://pubs.acs.org/sharingguidelines for options on how to legitimately share published articles.
+                                                                                                          reactions to take place in the same mixture. This is achieved using Passerini-type phosphate activation in concert with nucleophilic
+                                                                                                          organocatalysts that intercept high-energy reactive intermediates; this sequence ultimately affords 5′,5′-imidazolium-bridged
+                                                                                                          dinucleotides�the active species in template-directed RNA polymerization. Our results suggest that mixtures of prebiotically
+                                                                                                          relevant heteroaromatic small molecules could have played a key role in the transition from chemistry to biology.
+
+
+                                                                                                          ■    INTRODUCTION
+                                                                                                          The RNA world is a prominent hypothesis for the advent of
+                                                                                                                                                                                          amine by ultraviolet irradiation in a ferrocyanide- and
+                                                                                                                                                                                          nitroprusside-rich environment. Although this work addresses
+                                                                                                          life on Earth. This model posits an early stage of life in which                a major challenge in mapping a pathway from prebiotic
+                                                                                                          RNA sequences acted as both genetic polymers and, when                          chemistry to the RNA world, the conditions employed were
+                                                                                                          folded appropriately, as ribozyme catalysts that enabled simple                 not directly compatible with RNA copying. When activation
+                                                                                                          metabolic pathways.1,2 Prior to the emergence of the first                      was performed with 2AI, it required a large excess of 2AI to
+                                                                                                                                                                                          intercept the hydrolytically labile imidoyl phosphate inter-
+                                                                                                          ribozymes, however, nucleotide activation and RNA replication
+                                                                                                                                                                                          mediate. However, excess 2AI drives the equilibrium between
+                                                                                                          must have depended on primitive chemical processes.3
+                                                                                                                                                                                          2AI-pN and imidazolium-bridged dinucleotide (N*N) toward
+                                                                                                          Experiments that mimic primordial nonenzymatic RNA
+                                                                                                                                                                                          the mononucleotide, preventing the accumulation of the active
+                                                                                                          oligomerization typically employ spontaneous templated
+                                                                                                                                                                                          species and suppressing copying.11 More recently, our
+                                                                                                          copying of nucleoside 5′-phosphorimidazolides, a process
+                                                                                                                                                                                          laboratory found that freeze−thaw cycles�in which reactants
+                                                                                                          first pioneered by Leslie Orgel in 1968.4−6 More recently,
+                                                                                                                                                                                          are concentrated in a eutectic phase�facilitate methyl
+                                                                                                          our laboratory has discovered enhanced copying of RNA
+                                                                                                                                                                                          isocyanide-initiated nucleotide activation with low 2AI
+                                                                                                          templates using 2-aminoimidazole (2AI) activated nucleotides
+                                                                                                                                                                                          concentrations.12,13 While this approach builds on Sutherland
+                                                                                                          (2AI-pN, or *N),7 which equilibrate in solution to form 5′,5′-
+                                                                                                                                                                                          et al.’s work to enable one-pot combined in situ activation and
+                                                                                                          imidazolium-bridged dinucleotides (N*N), the active species
+                                                                                                          in template-directed polymerization (Figure 1A).8,9
+                                                                                                             In 2018, the Sutherland lab reported the first prebiotically                 Received: May 4, 2023
+                                                                                                          plausible synthesis of 5′-phosphorimidazolides, by activating                   Published: July 11, 2023
+                                                                                                          nucleoside monophosphates (NMPs) with methyl isocyanide
+                                                                                                          and acetaldehyde following a Passerini-type mechanism
+                                                                                                          (Figure 1B).10 This chemistry is initiated by simple aldehydes
+                                                                                                          and methyl isocyanide, which may be derived from methyl-
+                                                                                                                                               © 2023 The Authors. Published by
+                                                                                                                                                     American Chemical Society                                                       https://doi.org/10.1021/jacs.3c04635
+                                                                                                                                                                                  16142                                       J. Am. Chem. Soc. 2023, 145, 16142−16149
+Journal of the American Chemical Society                                               pubs.acs.org/JACS                                          Article
+
+
+
+
+Figure 1. (A) Primer extension via an imidazolium-bridged dinucleotide. (B) Sutherland et al.’s Passerini-type nucleotide activation.10 (C) This
+work, combining organocatalyzed activation with in situ RNA copying. (B) is adapted from Mariani, A.; Russell, D. A.; Javelle, T.; Sutherland, J. D.
+A Light-Releasable Potentially Prebiotic Nucleotide Activating Agent. J. Am. Chem. Soc. 2018, 140 (28), 8657−8661. Copyright 2018 American
+Chemical Society.
+
+Scheme 1. 1-Methylimidazole-Catalyzed Synthesis of Imidazolium-Bridged Dinucleotide (N*N)
+
+
+
+
+RNA copying, it introduces new complications. Most                               The small molecules used in this chemistry are plausible
+pertinently, freeze−thaw cycles disrupt vesicle membranes                      components of the primordial milieu, many of which are
+and lead to the exchange of contents between vesicles.14,15 It is              readily formed from simple prebiotic precursor feedstocks
+unclear whether protocells could form and evolve under these                   through cyanosulfidic photoredox chemistry16−18 or even in
+conditions. In addition, the use of freeze−thaw cycles limits                  Miller−Urey spark discharge experiments.19−21 Notably, this
+the compatible geochemical scenarios.                                          use of nucleophilic organocatalysis is conceptually similar to a
+  Here, we report a new catalytic pathway that combines                        reaction network reported by Richert’s group, in which 1-
+prebiotically plausible nucleotide activation with in situ RNA                 ethylimidazole modulates carbodiimide-mediated phosphate
+copying, enabling simultaneous isocyanide-mediated activation                  activation and facilitates the synthesis of chimeric amino acid−
+and templated oligonucleotide polymerization in solution.                      nucleic acid conjugates, among other primitive biomolecules.22
+Specifically, we report that a variety of heteroaromatic small
+molecules act as organocatalysts by intercepting high-energy
+intermediates and forming semi-stabilized adducts with
+                                                                               ■    RESULTS AND DISCUSSION
+                                                                               Passerini-type isocyanide-mediated nucleotide activation
+moderated reactivity. This diverted reaction sequence                          chemistry likely proceeds via an imidoyl phosphate inter-
+suppresses hydrolysis and facilitates substitution with relatively             mediate. This highly reactive species reacts efficiently with
+low concentrations of 2AI, ultimately generating 5′,5′-                        stoichiometric imidazole, but a large excess of 2AI is necessary
+imidazolium-bridged dinucleotides under standard RNA copy-                     to compete with hydrolysis and provide a high yield of 2AI-
+ing conditions (Figure 1C).                                                    activated nucleotide.10,23 Given that 2AI (pKa = 8.5) is a
+                                                                       16143                                              https://doi.org/10.1021/jacs.3c04635
+                                                                                                                   J. Am. Chem. Soc. 2023, 145, 16142−16149
+Journal of the American Chemical Society                                             pubs.acs.org/JACS                                        Article
+
+
+
+
+Figure 2. 31P NMR time course charts for Passerini-type adenosine monophosphate activation. Standard conditions: AMP (20 mM), MgCl2 (30
+mM), HEPES (200 mM, pH = 8), initiated with MBA/MeNC (200 mM each). (A) With 1MeI (50 mM); (B) with 2AI (10 mM); (C) with 1MeI
+(50 mM) and 2AI (10 mM).
+
+
+
+
+Figure 3. 31P NMR time course charts for Passerini-type adenosine monophosphate activation. Standard conditions: AMP (20 mM), 2AI (10
+mM), organocatalyst (50 mM), MgCl2 (30 mM), HEPES (200 mM, pH = 8), initiated with MBA/MeNC (200 mM each). Nu-pA = adduct of
+nucleophilic organocatalyst and 5′-phosphate activated AMP.
+
+stronger nucleophile than imidazole (pKa = 7.0), we reasoned                 methylbutyraldehyde at room temperature in the presence of
+that the primary barrier to a high-yielding reaction with 2AI                50 mM of 1MeI and 10 mM of 2AI under typical RNA copying
+was its relative availability due to its competing protonation in            conditions (pH = 8; 30 mM of MgCl2). 2-Methylbutyralde-
+solution. Moreover, as the reaction proceeds cleanly with                    hyde was chosen in these initial experiments, as it has been
+imidazole, we wondered whether it might also be possible for                 shown to suppress Passerini byproduct formation in
+weaker nucleophiles to intercept the reactive imidoyl                        isocyanide-mediated activation, relative to simpler aldehydes.23
+phosphate moiety, forming a semi-stabilized adduct activated                 Under these conditions, we were gratified to observe the rapid
+at the 5′-phosphate that would be less prone to hydrolysis and               appearance of the imidazolium adduct 1MeI-pA, followed by
+byproduct formation (Scheme 1). We postulated that for some                  slow formation of both the 2AI-activated monomer *A and the
+nucleophiles, this species might still be readily substituted with           imidazolium-bridged dinucleotide A*A (Figure 2A). The
+2AI and therefore participate in an equilibrium with the 5′-                 dinucleotide A*A formed in concentrations up to 2.0 mM
+phosphorimidazolide-activated monomer (2AI-pN or *N) and                     after 2 h. In comparison, a control experiment without 1MeI
+the 5′,5′-imidazolium-bridged dinucleotide N*N. A range of                   resulted in minimal consumption of AMP, and the reaction
+small molecules could potentially catalyze this reaction                     afforded only trace levels of the activated monomer *A and the
+pathway, but we initially focused on the use of 1-                           5′,5′-diphosphate byproduct AppA (Figure 2B). Conversely,
+methylimidazole (1MeI) (pKa = 7.4) because it has a similar                  when activation was performed without 2AI, imidazolium
+nucleophilicity to imidazole but is a better leaving group at                adduct 1MeI-pA rapidly accumulated in solution up to 6.5 mM
+high pH due to the permanent positive charge on the                          but was then slowly hydrolyzed to AMP and also converted to
+imidazolium ring. Moreover, 1MeI has previously been                         the 5′,5′-diphosphate byproduct AppA (Figure 2C). Taken
+employed as a catalyst in prebiotic RNA ligation experiments24               together, these results support the proposed mechanism: first,
+and is a plausible constituent of the methylamine-rich                       1MeI rapidly intercepts a reactive imidoyl phosphate
+environment25 required to generate methyl isocyanide.                        intermediate to form an imidazolium-activated monomer,
+   We began by subjecting 20 mM adenosine monophosphate                      1MeI-pA. As 1MeI is a better leaving group than 2AI, this
+(AMP) to activation with methyl isocyanide and 2-                            species is slowly substituted, leading to an equilibrium
+                                                                     16144                                            https://doi.org/10.1021/jacs.3c04635
+                                                                                                               J. Am. Chem. Soc. 2023, 145, 16142−16149
+Journal of the American Chemical Society                                                       pubs.acs.org/JACS                                             Article
+
+population of 1MeI-pA, phosphorimidazolide 2AI-pA, and                            Similar copying with monomeric substrates has been
+bridged dinucleotide A*A. Among the undesired side products,                      associated with an error frequency higher than those of
+AppA was generated from 5′-phosphate attack on activated                          extension reactions with imidazolium-bridged dinucleotides.29
+nucleotide species and its rate of formation was correlated with                  No primer extension was observed when 1MeI was excluded
+the concentration of 1MeI in solution, suggesting that                            from the reaction mixture, while a positive control using
+substitution of 1MeI-pA was particularly efficient. The                           presynthesized and purified 2AI-activated monomers *C and
+Passerini byproduct was only observed in the control                              *G resulted in the most efficient copying, as expected.
+experiment without 1MeI. Addition of 1MeI effectively                                To further examine the substrate scope of this copying, we
+suppressed formation of this species, suggesting that rapid                       next turned to activation and copying with alternative
+nucleophilic attack of 1MeI outcompetes the intramolecular                        nucleophilic organocatalysts including DCI (2), 2AO (3),
+Passerini rearrangement.                                                          2AT (4), pyrimidines (5−7), and pyridines (8−13). In the
+  Next, we asked whether we could generalize the organo-                          presence of 2AI, these species all catalyzed in situ imidazolium-
+catalysis of isocyanide-mediated phosphate activation to other                    bridged dimer N*N formation and concurrent primer
+nucleophilic small molecules. For instance, 4,5-dicyanoimida-                     extension (Table 1). These results revealed a trend that
+zole (DCI) has been implicated in several roles in prebiotic
+chemistry, including as a catalyst in phosphate and amino acid                    Table 1. Results of In Situ Activation and RNA Copying
+activation26 and as an intermediate in purine nucleoside                          Catalyzed by Heteroaromatic Small Molecules
+synthesis.17,27 On the other hand, 2-aminothiazole (2AT) has
+been shown to play roles in primordial nucleoside synthesis
+and may have shared a common origin with 2AI.17,28 We chose
+to study these compounds, together with other simple
+heterocycles including 4-aminopyrimidine and pyridine
+(Figure 3). Gratifyingly, all of these nucleophiles efficiently
+catalyzed the formation of imidazolium-bridged dinucleotide
+A*A at concentrations of 2.7−3.3 mM (peak concentration)
+under Passerini-type activation conditions. Moreover, as these
+weak nucleophiles are all better leaving groups than 1MeI, the
+phosphate adducts of these species did not persist in solution.
+For example, when activation was catalyzed by DCI, the
+concentration of the intermediate adduct DCI-pA was 4.0 mM
+within the first minutes of the reaction but rapidly dropped to
+<0.1 mM after 2 h.
+                                                                                      number            organocatalysta              pKab          yield (%, ≥+1)c
+  Encouraged by these results, we sought to combine this
+mode of organocatalyzed nucleotide activation with in situ                              1           1-methylimidazole                 7.4                 58d
+RNA copying. To do so, we first tested template copying using                           2           4,5-dicyanoimidazole              5.2e                68
+a BODIPY dye-labeled primer base-paired to a model template                             3           2-aminooxazole                    4.6                 50
+sequence with an unpaired 5′-CCG-3′ overhang (Figure 4).                                4           2-aminothiazole                   5.3                 65
+                                                                                        5           2-aminopyrimidine                 3.5                 16
+                                                                                        6           4-aminopyrimidine                 5.7                 57
+                                                                                        7           2,4-diaminopyrimidine             7.3                 55
+                                                                                        8           isonicotinamide                   3.6                 34
+                                                                                        9           4-fluoropyridine                  4.6                 0f
+                                                                                        10          pyridine                          5.2                 42
+                                                                                        11          4-methylpyridine                  6.0                 35
+                                                                                        12          4-methoxypyridine                 6.6                 33
+                                                                                        13          4-dimethylaminopyridine           9.7                 19
+                                                                                  a
+                                                                                   Standard conditions: CMP (10 mM), GMP (10 mM), 2AI (10
+                                                                                  mM), organocatalyst (50 mM), MgCl2 (30 mM), HEPES (200 mM,
+Figure 4. Schematic of Passerini-type in situ nucleotide activation and           pH = 8), initiated with MBA/MeNC (200 mM each). bpKa of the
+RNA copying results for in situ organocalyzed imidazolium-bridged                 conjugate acid of the catalyst, unless noted. cYield reported for the
+dimer formation and control experiments. A: In situ activation with               proportion of primer that extends by one residue (or more) in the
+only 2AI; B: in situ activation and copying with only 1MeI; C: in situ            presence of 2AI, after 24 h. No copying was observed without 2AI in
+activation and copying with both 1MeI and 2AI; D: copying with                    solution, unless noted. dActivation and copying with 1MeI only (i.e.,
+presynthesized, purified *C and *G.                                               without 2AI) afforded 41% primer extension. epKa of 4,5-
+                                                                                  dicyanoimidazole. fReaction mixture precipitates.
+
+Using the same activation conditions reported in Figure 2C                        activation works best when the nucleophile has a pKa of ∼5−6.
+(i.e., in the presence of 1MeI and 2AI) with CMP and GMP                          Indeed, among the species tested 2AT (pKa = 5.3), DCI (pKa
+(10 mM each), the copying proceeded in up to 58% yield (+1                        = 5.2), and 4-aminopyrimidine (pKa = 5.7) facilitated the
+or higher primer extension) after 24 h. When in situ activation                   highest yield of primer extension. This trend was also borne
+and copying were conducted without 2AI in the reaction                            out when comparing copying with a range of 4-substituted
+mixture, primer extension was still observed in 29% yield (+1                     pyridines. The sole exception was with 4-fluoropyridine, which
+or higher) after 24 h. In this experiment, copying likely                         caused precipitation of the reaction mixture without affording
+proceeds via 3′-OH attack on a 1MeI-pN activated nucleotide.                      any primer extension product. Taken together, these results
+                                                                          16145                                                      https://doi.org/10.1021/jacs.3c04635
+                                                                                                                              J. Am. Chem. Soc. 2023, 145, 16142−16149
+Journal of the American Chemical Society                                            pubs.acs.org/JACS                                        Article
+
+suggest that nucleophilicity of the small molecule must be                  imidazolium-bridged dinucleotide (entry 4). Varying the
+balanced to optimize N*N formation and copying: the species                 starting concentration of NMP (10−30 mM) or 2AI (5−15
+must be sufficiently reactive to intercept the imidoyl phosphate            mM) had a modest effect on overall copying while the copying
+and outcompete hydrolysis, but not so reactive that it                      efficiency was significantly reduced at lower pH (entries 5 to
+decomposes the imidazolium-bridged dimer. In addition, no                   10). Next, we found that lowering the concentrations of methyl
+copying was observed in the absence of 2AI, suggesting that                 isocyanide and 2-methylbutyraldehyde (to 100 mM each)
+the nucleotide adducts of the nucleophilic organocatalysts                  moderately reduced the yield of primer extension, affording
+(Nu-pN) do not directly participate in copying. This is                     47% +1 and higher products (entry 11).
+particularly intriguing given that Ferris and co-workers have                  The above experiments, and earlier efforts to combine in situ
+shown that dimethylaminopyridinium (DMAP)-activated                         imidazolium-bridged dinucleotide synthesis and primer ex-
+adenosine 5′-phosphate�the same type of activated nucleo-                   tension, all employed methyl isocyanide and 2-methylbutyr-
+tide that we observe as an intermediate in activation catalyzed             aldehyde as the initial activating reagents. While a prebiotic
+by DMAP 13�can undergo surface-catalyzed oligomerization                    synthesis of methyl isocyanide is known, the choice of 2-
+on montmorillonite.30                                                       methylbutyraldehyde was largely driven by chemical optimiza-
+   Given our still limited understanding of the geochemical                 tion, whereby the use of electron-rich aldehydes was shown to
+constraints on the primordial Earth, a desirable feature of                 reduce the formation of Passerini rearrangement byproducts.23
+prebiotic chemistry is robustness to environmental fluctua-                 However, when activation is mediated by nucleophilic
+tions.17,31 Therefore, we sought to parametrize the activation/             catalysts, only trace amounts of this Passerini byproduct are
+copying conditions, by varying the concentration of nucleotide              observed. Therefore, we next tested activation and copying
+monophosphate, nucleophilic catalyst, and 2AI. Although the                 initiated by more prebiotically relevant aldehydes, such as
+                                                                            acetaldehyde32,33 and glycolaldehyde,32−34 and were gratified
+optimal concentration of each reaction component is depend-
+                                                                            to see that they afforded comparable yields of primer extension
+ent on the exact properties and structure of the organocatalyst
+                                                                            products (Table 2, entries 12 and 13). Subsequent 31P NMR
+used, we chose to avoid this complication by studying
+                                                                            time-course analysis indicated nearly identical levels of
+activation robustness in aggregate, employing a mixture of                  imidazolium-bridged dinucleotide A*A formation with acetal-
+2AT/DCI/4-aminopyrimidine (1:1:1) as the nucleophilic                       dehyde or glycolaldehyde activation, compared to activation
+organocatalyst. One benefit of this approach is that it mimics              with 2-methylbutyraldehyde, albeit with a significant increase
+a more realistic scenario where relatively low concentrations of            in Passerini byproduct formation (0.5 vs 4.5 and 7.0 mM for
+several related small molecules are present and react in concert.           acetaldehyde and glycolaldehyde, respectively; SI page S9,
+The results of these experiments are summarized in Table 2.                 Figure S3). The successful copying initiated with glycolalde-
+Although nucleophilic additives are a prerequisite for in situ              hyde is particularly pleasing as glycolaldehyde is a common
+activation, some erosion in primer extension yield was                      intermediate in the prebiotic syntheses of 2AI, 2AT, and 2AO,
+observed at higher concentrations, due to the propensity of                 the latter of which has been implicated as an intermediate in
+the nucleophiles to catalyze hydrolysis and decompose the                   prebiotic nucleoside synthesis.16,35 It is striking that a
+                                                                            combination of these related 2-aminoazoles and their
+Table 2. Conditions Screen for In Situ Activation and                       precursor, glycolaldehyde, may be sufficient to drive nucleotide
+Copying Catalyzed by 2AT/DCI/4-Aminopyrimidine                              activation and template copying upon the introduction of a
+(1:1:1)                                                                     single reagent: methyl isocyanide (Scheme 2). Although
+                                                                            beyond the scope of this work, future experiments will be
+                                                                            directed at recapitulating this more complex pathway.
+
+    entry        variation from standarda        yield (%, ≥+1)b
+                                                                            Scheme 2. A Mixture of 2AI, 2AO, and 2AT and Their
+                                                                            Precursor Glycolaldehyde Work in Tandem with Methyl
+     1       standard                                  65
+                                                                            Isocyanide to Activate Nucleoside Monophosphates
+     2       no nucleophilic catalyst                  0
+     3       less catalyst (25 mM)                     66
+     4       more catalyst (75 mM)                     50
+     5       less 2AI (5 mM)                           49
+     6       more 2AI (15 mM)                          50
+     7       less nucleotide (5 mM each)               33
+     8       more nucleotide (15 mM each)              56
+     9       pH = 7.5                                  40
+     10      pH = 7.0                                  13
+     11      less MeNC/MBA (100 mM)                    47
+     12      acetaldehyde instead of MBA               47
+     13      glycolaldehyde instead of MBA             41
+                                                                               When in situ activation was repeated at −3 °C, we observed
+     14      low temperature (−3 °C)                   87
+                                                                            a remarkable improvement in copying efficiency with either 2-
+     15      low temperature with acetaldehyde         85
+                                                                            methylbutyraldehyde or acetaldehyde (Table 2, entries 14 and
+a
+ Standard conditions: CMP (10 mM), GMP (10 mM), 2AI (10                     15). It is important to note that these experiments proceeded
+mM), 2AT/DCI/4-aminopyrimidine (1:1:1, 50 mM total), MgCl2                  in the solution phase, without any freezing or eutectic phase
+(30 mM), HEPES (200 mM, pH = 8), initiated with MBA/MeNC                    concentration; freezing was suppressed due to the high
+(200 mM each). bYield reported for the proportion of primer that            concentrations of salt and organic solutes. We speculated
+extends by one residue (or more) after 24 h.                                that the organocatalyzed activation pathway may be more
+                                                                    16146                                            https://doi.org/10.1021/jacs.3c04635
+                                                                                                              J. Am. Chem. Soc. 2023, 145, 16142−16149
+Journal of the American Chemical Society                                            pubs.acs.org/JACS                                           Article
+
+
+
+
+Figure 5. 31P NMR time-course charts for Passerini-type adenosine monophosphate activation catalyzed by 2AT/DCI/4-aminopyrimidine at room
+temperature and low temperature (−3 °C). Conditions: AMP (20 mM), 2AI (10 mM), 2AT/DCI/4-aminopyrimidine (1:1:1, 50 mM total),
+MgCl2 (30 mM), HEPES (200 mM, pH = 8), initiated with MBA/MeNC (200 mM each).
+
+selective as off-pathway reactions are suppressed at low                   copying experiments were conducted with preactivated,
+temperatures, which further facilitates the formation and                  purified 2AI-activated 5′-phosphorimidazolide monomers and
+stability of imidazolium-bridged dinucleotides. Consistent                 helper trimers (*N and *NNN at 10 mM and 500 μM each,
+with this hypothesis, side-by-side comparison of 31P NMR                   respectively) in the presence of 30 mM MgCl2 and annealed
+time-course experiments indicated that while overall con-                  primer−template complex, at either room temperature or 3 °C
+sumption of AMP was reduced at low temperature, the dimer
+                                                                           (Figure 7A,B). These experiments revealed that the efficiency
+A*A accumulated in similar overall concentration and was
+significantly more resistant to hydrolysis, persisting at >3 mM            of templated copying was reduced at low temperature,
+concentration over 10 h (Figure 5). Moreover, formation of                 suggesting that the stronger template binding of imidazo-
+the diphosphate AppA and Passerini impurities were sup-                    lium-bridged N*NNN species was not sufficient to offset an
+pressed at low temperature.                                                overall slowdown in RNA copying kinetics, affording only 8%
+   Finally, we sought to test the limits of nucleophilic                   extended primer (+7 nucleotides or higher) after 24 h at 3 °C.
+organocatalyst-modulated in situ activation through multiple
+rounds of activation and reactivation in order to maintain a
+high level of activation in the face of reactant hydrolysis.
+Accordingly, a mixture of AMP (40 mM), 2AI (30 mM), and
+2AT/DCI/4-aminopyrimidine (1:1:1) (60 mM total) was
+subjected to periodic addition of methyl isocyanide/aldehyde
+every 24 h at −3 °C, resulting in cycles of formation of bridged
+dinucleotide A*A, together with monomeric *A (Figure 6).
+
+
+
+
+Figure 6. Periodic reactivation of AMP (40 mM) with 2-
+methylbutyraldehyde/methyl isocyanide (200 mM each, every 24
+h) and 2AI (30 mM), catalyzed by 2AT/DCI/4-aminopyrimidine
+(1:1:1, 50 mM total) at low temperature (−3 °C).
+
+
+Following the addition of each aliquot of methyl isocyanide/
+aldehyde, AMP was converted to 2AI-pA, while the
+concentration of bridged dinucleotide A*A fluctuated between
+1.2 and 6.0 mM. Throughout the experiment, 5′,5′-
+diphosphate AppA accumulated as the sole byproduct,
+reaching a concentration of 1.3 mM after 96 h.
+   The cyclical reactivation experiments were then extended to             Figure 7. Helper trimer-assisted RNA copying with a template
+include RNA copying over a complex template sequence                       containing all four canonical nucleotides. (A) Positive copying control
+                                                                           with preactivated *N monomers and *NNN helper trimers at room
+incorporating all four canonical nucleotides. Previously, our              temperature. (B) positive copying control at 3 °C. (C) In situ
+laboratory has demonstrated that an RNA primer can be                      organocatalyzed activation and copying, driven by periodic
+extended by seven nucleotides over an unpaired 5′-                         reactivation of NMPs and trimers with 2-methylbutyraldehyde/
+GCGCCUCAU-3′ template sequence in the presence of six                      methyl isocyanide (200 mM each, every 24 h) at −3 °C. (D)
+activated helper trimers (pUGA, pGAG, pAGG, pGGC,                          Activation and copying driven by acetaldehyde/methyl isocyanide
+pGCG, pCGC).7,12 Employing this system, two control                        (200 mM each, every 24 h) at −3 °C.
+
+                                                                   16147                                                https://doi.org/10.1021/jacs.3c04635
+                                                                                                                 J. Am. Chem. Soc. 2023, 145, 16142−16149
+Journal of the American Chemical Society                                            pubs.acs.org/JACS                                         Article
+
+Conversely, when copying was combined with in situ
+organocatalyzed nucleotide activation, optimal results were                        experimental conditions for in situ activation and RNA
+obtained when the reaction was performed at an even lower                          copying; gel data for in situ activation and RNA copying
+temperature. In these experiments, the reaction mixtures were                      catalyzed by heteroaromatic small molecules; gel data for
+incubated at a colder temperature (i.e., −3 °C) than the                           conditions screen for in situ activation and copying
+positive control, without freezing due to the higher                               catalyzed by 2AT/DCI/4-aminopyrimidine (1:1:1); 31P
+concentration of organic solute. When methyl isocyanide and                        NMR time course charts for AMP activation with
+2-methylbutyraldehyde (200 mM each every 24 h) were added                          various aldehydes; gel data for helper trimer-assisted
+to a mixture of NMPs (N = A, C, G, U; 10 mM each),                                 RNA copying at room temperature, driven by periodic
+unactivated helper trimers (pNNN, 500 μM each), 2AI (30                            reactivation of NMPs and trimers; additional helper
+mM), and a mixture of nucleophilic organocatalysts 2AT/                            trimer assisted RNA copying experiments, driven by
+DCI/4-aminopyrimidine (1:1:1) (60 mM total), up to 60% of                          periodic reactivation of NMPs and trimers at −3 °C
+the primer was extended by seven nucleotides or more (Figure                       (PDF)
+7C) after 5 days at −3 °C, at which point the whole system
+appears to stall. The same experiment conducted at room
+temperature afforded only 7% of fully extended product
+(Figure S4). Although further experiments are required to
+                                                                           ■   AUTHOR INFORMATION
+                                                                           Corresponding Author
+determine the precise mechanism of stalling, it is possible that
+the slowdown in copying was caused by a buildup of                           Jack W. Szostak − Howard Hughes Medical Institute,
+denaturing organic solutes and inhibitory byproducts such as                   Massachusetts General Hospital, Boston, Massachusetts
+AppA. When the organocatalyst-modulated in situ activation                     02114, United States; Department of Molecular Biology and
+was initiated with acetaldehyde�instead of methyl butyr-                       Center for Computational and Integrative Biology,
+aldehyde�copying proceeded more rapidly over the first 72h                     Massachusetts General Hospital, Boston, Massachusetts
+before stalling at 40% yield (+7 nucleotides or higher; Figure                 02114, United States; Department of Genetics, Harvard
+7D). An exploration of modified conditions showed that                         Medical School, Boston, Massachusetts 02115, United States;
+copying was quite robust, and similar results were obtained at                 Department of Chemistry and Chemical Biology, Harvard
+(i) lower concentrations of methyl isocyanide/2-methylbutyr-                   University, Cambridge, Massachusetts 02138, United States;
+aldehyde (100 mM each every 24 h), (ii) lower concentrations                   Department of Chemistry, Howard Hughes Medical Institute,
+of nucleotides and 2AI (5 mM each and 15 mM, respectively),                    University of Chicago, Chicago, Illinois 60637, United
+or (iii) when only 2AT (60 mM) was used as the nucleophilic                    States; orcid.org/0000-0003-4131-1203;
+organocatalyst (Figure S5). Overall, these results show that                   Email: jwszostak@uchicago.edu
+comparable amounts of fully extended primer can be obtained
+by template copying under a wide range of conditions. We                   Authors
+suggest that a greater extent of template copying might be                   Harry R. M. Aitken − Howard Hughes Medical Institute,
+achieved in a flow system that would allow for the continuous                  Massachusetts General Hospital, Boston, Massachusetts
+addition of fresh activation reagents together with the removal                02114, United States; Department of Molecular Biology and
+of inhibitory side products.                                                   Center for Computational and Integrative Biology,
+
+■   CONCLUSIONS
+Our results demonstrate that a number of prebiotically relevant
+                                                                               Massachusetts General Hospital, Boston, Massachusetts
+                                                                               02114, United States; Department of Genetics, Harvard
+                                                                               Medical School, Boston, Massachusetts 02115, United States;
+heteroaromatic small molecules catalyze Passerini-type activa-                 Department of Chemistry and Chemical Biology, Harvard
+tion chemistry of NMPs. Mechanistically, we suggest that these                 University, Cambridge, Massachusetts 02138, United States
+molecules act as weak nucleophiles, intercepting highly labile               Tom H. Wright − Howard Hughes Medical Institute,
+intermediates to facilitate a pathway that enables the synthesis               Massachusetts General Hospital, Boston, Massachusetts
+of imidazolium-bridged dinucleotides and the subsequent                        02114, United States; Department of Molecular Biology and
+template-directed RNA primer extension. Although the present                   Center for Computational and Integrative Biology,
+work employed aldehydes and methyl isocyanide as the initial                   Massachusetts General Hospital, Boston, Massachusetts
+chemical fuel, the organocatalysis reported herein is not                      02114, United States; Department of Genetics, Harvard
+necessarily dependent on any particular activation chemistry                   Medical School, Boston, Massachusetts 02115, United States
+and may facilitate imidazolium-bridged dinucleotide formation                Aleksandar Radakovic − Howard Hughes Medical Institute,
+and RNA copying with alternative energy sources that generate                  Massachusetts General Hospital, Boston, Massachusetts
+high energy but labile phosphate derivatives. Finally, we note                 02114, United States; Department of Molecular Biology and
+that the chemistry we have explored exploits a variety of                      Center for Computational and Integrative Biology,
+different but prebiotically relevant compounds, suggesting                     Massachusetts General Hospital, Boston, Massachusetts
+broad compatibility with competing geochemical scenarios.                      02114, United States; Department of Genetics, Harvard
+                                                                               Medical School, Boston, Massachusetts 02115, United States;
+■
+*
+    ASSOCIATED CONTENT
+sı Supporting Information
+                                                                                 orcid.org/0000-0003-3794-3822
+                                                                           Complete contact information is available at:
+The Supporting Information is available free of charge at                  https://pubs.acs.org/10.1021/jacs.3c04635
+https://pubs.acs.org/doi/10.1021/jacs.3c04635.
+      Experimental conditions for 31P NMR time course;                     Notes
+      primer labeling experimental conditions; standard                    The authors declare no competing financial interest.
+                                                                   16148                                              https://doi.org/10.1021/jacs.3c04635
+                                                                                                               J. Am. Chem. Soc. 2023, 145, 16142−16149
+Journal of the American Chemical Society                                                          pubs.acs.org/JACS                                             Article
+
+
+■    ACKNOWLEDGMENTS
+J.W.S. is an investigator at the Howard Hughes Medical
+                                                                                           (21) Miller, S. L. The atmosphere of the primitive Earth and the
+                                                                                         prebiotic synthesis of amino acids. Orig. Life Evol. Biosph. 1974, 5,
+                                                                                         139−151.
+Institute. This work was supported in part by grants from the                              (22) Tremmel, P.; Griesser, H.; Steiner, U. E.; Richert, C. How
+Simons Foundation (290363) and the National Science                                      Small Heterocycles Make a Reaction Network of Amino Acids and
+Foundation (2104708) to J.W.S. The authors thank Dr. Daniel                              Nucleotides Efficient in Water. Angew. Chem., Int. Ed. 2019, 58,
+Duzdevich for helpful comments on the manuscript.                                        13087−13092.
+                                                                                           (23) Zhang, S. J.; Duzdevich, D.; Szostak, J. W. Potentially Prebiotic
+
+■    REFERENCES
+  (1) Orgel, L. E. Evolution of the genetic apparatus. J. Mol. Biol. 1968,
+                                                                                         Activation Chemistry Compatible with Nonenzymatic RNA Copying.
+                                                                                         J. Am. Chem. Soc. 2020, 142, 14810−14813.
+                                                                                           (24) Wu, L.-F.; Liu, Z.; Roberts, S. J.; Su, M.; Szostak, J. W.;
+38, 381−393.                                                                             Sutherland, J. D. Template-Free Assembly of Functional RNAs by
+  (2) Gilbert, W. Origin of life: The RNA world. Nature 1986, 319,                       Loop-Closing Ligation. J. Am. Chem. Soc. 2022, 144, 13920−13927.
+618−618.                                                                                   (25) Arduengo, A. J., III; Gentry, F. P., Jr.; Taverkere, P. K.;
+  (3) Zhou, L.; Ding, D.; Szostak, J. W. The virtual circular genome                     Simmons, H. E., III Process for manufacture of imidazoles; United
+model for primordial RNA replication. RNA 2021, 27, 1−11.                                States, US-6177575-B1, 2001.
+  (4) Weimann, B. J.; Lohrmann, R.; Orgel, L. E.; Schneider-                               (26) Liu, Z.; Wu, L.-F.; Xu, J.; Bonfio, C.; Russell, D. A.; Sutherland,
+Bernloehr, H.; Sulston, J. E. Template-Directed Synthesis with                           J. D. Harnessing chemical energy for the activation and joining of
+Adenosine-5′-phosphorimidazolide. Science 1968, 161, 387−387.                            prebiotic building blocks. Nat. Chem. 2020, 12, 1023−1028.
+  (5) Ferris, J. P.; Hill, A. R., Jr.; Liu, R.; Orgel, L. E. Synthesis of long             (27) Hudson, J. S.; Eberle, J. F.; Vachhani, R. H.; Rogers, L. C.;
+prebiotic oligomers on mineral surfaces. Nature 1996, 381, 59−61.                        Wade, J. H.; Krishnamurthy, R.; Springsteen, G. A Unified
+  (6) Ferris, J. P.; Ertem, G. Oligomerization of Ribonucleotides on                     Mechanism for Abiotic Adenine and Purine Synthesis in Formamide.
+Montmorillonite: Reaction of the 5′-Phosphorimidazolide of                               Angew. Chem., Int. Ed. 2012, 51, 5134−5137.
+Adenosine. Science 1992, 257, 1387−1389.                                                   (28) Islam, S.; Bučar, D.-K.; Powner, M. W. Prebiotic selection and
+  (7) Li, L.; Prywes, N.; Tam, C. P.; O’Flaherty, D. K.; Lelyveld, V. S.;                assembly of proteinogenic amino acids and natural nucleotides from
+Izgu, E. C.; Pal, A.; Szostak, J. W. Enhanced Nonenzymatic RNA                           complex mixtures. Nat. Chem. 2017, 9, 584−589.
+Copying with 2-Aminoimidazole Activated Nucleotides. J. Am. Chem.                          (29) Duzdevich, D.; Carr, C. E.; Ding, D.; Zhang, S. J.; Walton, T.
+Soc. 2017, 139, 1810−1813.                                                               S.; Szostak, J. W. Competition between bridged dinucleotides and
+  (8) Walton, T.; Zhang, W.; Li, L.; Tam, C. P.; Szostak, J. W. The                      activated mononucleotides determines the error frequency of
+Mechanism of Nonenzymatic Template Copying with Imidazole-                               nonenzymatic RNA primer extension. Nucleic Acids Res. 2021, 49,
+Activated Nucleotides. Angew. Chem., Int. Ed. 2019, 58, 10812−                           3681−3691.
+10819.                                                                                     (30) Prabahar, K. J.; Cole, T. D.; Ferris, J. P. Effect of Phosphate
+  (9) Walton, T.; Szostak, J. W. A Highly Reactive Imidazolium-                          Activating Group on Oligonucleotide Formation on Montmorillonite:
+Bridged Dinucleotide Intermediate in Nonenzymatic RNA Primer                             The Regioselective Formation of 3′,5′-Linked Oligoadenylates. J. Am.
+Extension. J. Am. Chem. Soc. 2016, 138, 11996−12002.                                     Chem. Soc. 1994, 116, 10914−10920.
+  (10) Mariani, A.; Russell, D. A.; Javelle, T.; Sutherland, J. D. A Light-                (31) Walton, C. R.; Rimmer, P.; Shorttle, O. Can prebiotic systems
+Releasable Potentially Prebiotic Nucleotide Activating Agent. J. Am.                     survive in the wild? An interference chemistry approach. Front. Earth
+Chem. Soc. 2018, 140, 8657−8661.                                                         Sci. 2022, 10, No. 1011717.
+  (11) Walton, T.; Szostak, J. W. A Kinetic Model of Nonenzymatic                          (32) Ritson, D. J.; Sutherland, J. D. Synthesis of Aldehydic
+RNA Polymerization by Cytidine-5′-phosphoro-2-aminoimidazolide.                          Ribonucleotide and Amino Acid Precursors by Photoredox
+Biochemistry 2017, 56, 5739−5747.                                                        Chemistry. Angew. Chem., Int. Ed. 2013, 52, 5845−5847.
+  (12) Zhang, S. J.; Duzdevich, D.; Ding, D.; Szostak, J. W. Freeze-                       (33) de Marcellus, P.; Meinert, C.; Myrgorodska, I.; Nahon, L.;
+thaw cycles enable a prebiotically plausible and continuous pathway                      Buhse, T.; d’Hendecourt, L. L. S.; Meierhenrich, U. J. Aldehydes and
+from nucleotide activation to nonenzymatic RNA copying. Proc. Natl.                      sugars from evolved precometary ice analogs: Importance of ices in
+Acad. Sci. U. S. A. 2022, 119, No. e2116429119.                                          astrochemical and prebiotic evolution. Proc. Natl. Acad. Sci. U. S. A.
+  (13) Ding, D.; Zhang, S. J.; Szostak, J. W. Enhanced nonenzymatic                      2015, 112, 965−970.
+RNA copying with in-situ activation of short oligonucleotides. Nucleic                     (34) Ritson, D. J.; Battilocchio, C.; Ley, S. V.; Sutherland, J. D.
+Acids Res. 2023, No. gkad439.                                                            Mimicking the surface and prebiotic chemistry of early Earth using
+  (14) Litschel, T.; Ganzinger, K. A.; Movinkel, T.; Heymann, M.;                        flow chemistry. Nat. Commun. 2018, 9, 1821.
+Robinson, T.; Mutschler, H.; Schwille, P. Freeze-thaw cycles induce                        (35) Whitaker, D.; Powner, M. W. Prebiotic nucleic acids need space
+content exchange between cell-sized lipid vesicles. New J. Phys. 2018,                   to grow. Nat. Commun. 2018, 9, 5172.
+20, No. 055008.
+  (15) Costa, A. P.; Xu, X.; Burgess, D. J. Freeze-Anneal-Thaw Cycling
+of Unilamellar Liposomes: Effect on Encapsulation Efficiency. Pharm.
+Res. 2014, 31, 97−103.
+  (16) Liu, Z.; Wu, L.-F.; Bond, A. D.; Sutherland, J. D. Photoredox
+chemistry in the synthesis of 2-aminoazoles implicated in prebiotic
+nucleic acid synthesis. Chem. Commun. 2020, 56, 13563−13566.
+  (17) Ritson, D. J.; Poplawski, M. W.; Bond, A. D.; Sutherland, J. D.
+Azoles as Auxiliaries and Intermediates in Prebiotic Nucleoside
+Synthesis. J. Am. Chem. Soc. 2022, 144, 19447−19455.
+  (18) Austin, S. M.; Waddell, T. G. Prebiotic Synthesis of Vitamin
+B6-type Compounds. Orig. Life Evol. Biosph. 1999, 29, 287−296.
+  (19) Rodriguez, L. E.; House, C. H.; Smith, K. E.; Roberts, M. R.;
+Callahan, M. P. Nitrogen heterocycles form peptide nucleic acid
+precursors in complex prebiotic mixtures. Sci. Rep. 2019, 9, 9281.
+  (20) Criado-Reyes, J.; Bizzarri, B. M.; García-Ruiz, J. M.; Saladino,
+R.; Di Mauro, E. The role of borosilicate glass in Miller−Urey
+experiment. Sci. Rep. 2021, 11, 21009.
+
+                                                                                 16149                                                  https://doi.org/10.1021/jacs.3c04635
+                                                                                                                                 J. Am. Chem. Soc. 2023, 145, 16142−16149
+

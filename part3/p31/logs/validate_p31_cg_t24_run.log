@@ -1,0 +1,4 @@
+2026-10-30 17:07:06 START /home/bern/ComfyUI/venv/bin/python3 -u validate_p31.py validate_p31_coldgap.json 24
+test 2 pass (117s)
+test 4 pass (218s)
+2026-10-30 17:12:45 END rc=0 /home/bern/ComfyUI/venv/bin/python3 -u validate_p31.py validate_p31_coldgap.json 24

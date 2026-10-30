@@ -1,0 +1,2 @@
+2026-10-30 17:12:45 START /home/bern/ComfyUI/venv/bin/python3 -u validate_p31.py validate_p31_coldgap.json 78
+test 7 {'x': 0.15, 'eps': 0.013636363636363636, 'L2_strict': 16, 'L2_loose': 16, 'S_mean': 0.8449581250000001, 'copy_len_mean': 15.999218749999999, 'copy_err_mean': 0.013663749999999997, 'R_mean': 1.162715, 'seconds': 398.6}

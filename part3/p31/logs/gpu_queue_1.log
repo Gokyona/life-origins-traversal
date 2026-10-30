@@ -1,0 +1,2 @@
+./gpu_queue.sh: line 16: syntax error near unexpected token `;;'
+./gpu_queue.sh: line 16: `alidate_p31_t4_emptycache_run.log 2>&1 ;;'

@@ -1,0 +1,11 @@
+2026-10-30 17:29:34 START /home/bern/ComfyUI/venv/bin/python3 -u validate_p31.py validate_p31_final.json 78
+test 7 {'x': 0.15, 'eps': 0.013636363636363636, 'L2_strict': 16, 'L2_loose': 16, 'S_mean': 0.8603518749999999, 'copy_len_mean': 15.998646874999999, 'copy_err_mean': 0.013633124999999998, 'R_mean': 1.1602843749999998, 'seconds': 401.5}
+test 7 {'x': 0.3, 'eps': 0.02727272727272727, 'L2_strict': 16, 'L2_loose': 16, 'S_mean': 0.6509881249999998, 'copy_len_mean': 15.99855625, 'copy_err_mean': 0.027273749999999996, 'R_mean': 1.1619131249999999, 'seconds': 399.7}
+test 7 {'x': 0.5, 'eps': 0.045454545454545456, 'L2_strict': 16, 'L2_loose': 16, 'S_mean': 0.438423125, 'copy_len_mean': 15.99850125, 'copy_err_mean': 0.045410625, 'R_mean': 1.16140375, 'seconds': 399.8}
+test 7 {'x': 0.7, 'eps': 0.06363636363636363, 'L2_strict': 16, 'L2_loose': 16, 'S_mean': 0.284019375, 'copy_len_mean': 15.998478125, 'copy_err_mean': 0.06367937499999998, 'R_mean': 1.1618368749999999, 'seconds': 398.0}
+test 7 {'x': 1.0, 'eps': 0.09090909090909091, 'L2_strict': 0, 'L2_loose': 1, 'S_mean': 0.1798575, 'copy_len_mean': 15.99843375, 'copy_err_mean': 0.09087562500000002, 'R_mean': 1.1613362500000002, 'seconds': 263.2}
+test 7 {'x': 1.5, 'eps': 0.13636363636363635, 'L2_strict': 0, 'L2_loose': 0, 'S_mean': 0.10905562499999999, 'copy_len_mean': 15.998433125000002, 'copy_err_mean': 0.136368125, 'R_mean': 1.1597624999999998, 'seconds': 100.4}
+test 7 {'x': 3.0, 'eps': 0.2727272727272727, 'L2_strict': 0, 'L2_loose': 0, 'S_mean': 0.07706062499999998, 'copy_len_mean': 15.998441249999999, 'copy_err_mean': 0.27270875, 'R_mean': 1.1591649999999998, 'seconds': 101.9}
+test 7 pass (2065s)
+test 8 pass (140s)
+2026-10-30 18:06:22 END rc=0 /home/bern/ComfyUI/venv/bin/python3 -u validate_p31.py validate_p31_final.json 78

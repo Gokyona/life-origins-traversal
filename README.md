@@ -4,7 +4,7 @@
 
 > Status: **complete.** Part I (stages 0–3) built and validated the COMPASS engine on test models; Part II (stage 4) searched 13 environmental variables with a fully bottom-up chemistry. Results are written up in two papers ([COMPASS method](paper/COMPASS_method.md), [Stage 4 environment search](paper/COMPASS_stage4.md)). A side product, the [Gokyona Environment platform](platform/), lets anyone run the Stage-4 chemistry locally. All code, results and negative results are published here.
 
-> **Next: Part III (design).** Where, when and how did life begin on the early Earth (4.5–3.5 Ga)? Copying at measured rates, sequence-determined function up to Darwinian evolution, and a time-resolved model of early-Earth sites. See the [Part III design](docs/part3_design.md).
+> **Next: Part III (design).** Where, when and how did life begin on the early Earth (4.5–3.5 Ga)? Copying at measured rates, sequence-determined function up to Darwinian evolution, and a time-resolved model of early-Earth sites. See the [Part III design](docs/part3_design.md). First step P3-1 (copying at measured rates with a named base pair, explicit activation chemistry and hot pulses) is implemented and validated: [validation files](part3/p31/).
 
 
 ## The idea
