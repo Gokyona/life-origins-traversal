@@ -117,7 +117,9 @@ Existing run rules apply: memory pre-flight at worst case before every long run,
 2. **"How" goes to Level 4** (Darwinian evolution), through protocells (L3), within the same Earth history.
 3. **Time window: 4.5–3.5 Ga.**
 
-## 10. Candidate references (not yet checked against the originals)
+## 10. Candidate references
+
+Checked sources and values are in [part3_p30_sources.md](part3_p30_sources.md). The list below is the starting list.
 
 To be verified before use, as for all earlier stages:
 
