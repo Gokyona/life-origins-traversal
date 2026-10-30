@@ -55,9 +55,18 @@ So the Stage 4 heredity result rests on a combination of constants that no measu
    *First numbers for D·U (added the same day):* replacing A by 2,6-diaminopurine stabilises a duplex by 0.4–1.2 kcal/mol per substitution at 37 °C (2′-O-methyl RNA/RNA, 0.1 M NaCl; Pasternak et al. 2007, *Nucleic Acids Research* 35, 4055–4063, doi:10.1093/nar/gkm421). Applying this crudely to every pair of an A/U 8-mer gives an equivalent T_m8 of about 28–44 °C at 0.4 kcal/mol, 55–70 °C at 0.9 and 72–86 °C at 1.2. Only the weakest stabilisation reaches the Stage 4 window (12–30 °C), so D·U is not an obvious fit either. Its copying speed and fidelity are not yet known to us. A 2-thiouridine study (Ding et al. 2024, *JACS*, doi:10.1021/jacs.3c11158) reports that s2U pairs with A and also with itself, the latter about as strongly as a native A·U pair, with little cost in copying fidelity; numbers not yet read. Fang, Jia, Xing & Szostak (2025), *PNAS* 122, e2505720122, doi:10.1073/pnas.2505720122 (abstract read; full text not yet): in an alphabet of s2U, s2C, inosine and A, the I:s2C pair is isomorphic and isoenergetic with A:s2U; A:s2U is stronger than A:U and I:s2C weaker than G:C, so all pairs have similar energies, between A·U and G·C. Either of these pairs is therefore a candidate "intermediate" 2-letter chemistry, with 2-thiopyrimidines proposed as plausible precursors of the canonical pyrimidines. Their numbers (ΔG, rates, fidelity) are in the full text, which is the next source to obtain.
 
 
-## 5. Next checks
+## 5. What the Stage 4 maps already say about G/C-like pairing
 
-- Stage 4 map data (on the B360, CPU only, no new simulations): did any run with high T_m8 (above 60 °C) and high ΔH_bp come close to heredity? This shows what the existing maps already say about a G/C-like alphabet.
+A CPU-only re-analysis of the existing Stage 4 results on the B360 (30 October 2026, 13:05–13:3x Toronto time; no new simulations; summary, tables, script and MD5 sums in `lot-p3/alphabet_check/` on the B360, to be uploaded with the Part III data):
+
+- In about 30,700 simulated runs with T_m8 between 70 and 90 °C, **no run reached lasting heredity (L2_long)**. At the hit rate seen at T_m8 10–30 °C, about 9 would have been expected. The region was searched, so the absence is a result, not a gap in sampling (Poisson chance of 0 when 9 are expected: about 10⁻⁴).
+- The cause is hydrolysis: duplexes that melt only near 70–90 °C need hot phases at which chains break down faster than they are copied.
+- ΔH_bp of 53–56 kJ/mol, the G/C value, was never sampled (the range stopped at 45), so this covers a G/C-like melting temperature, not the full G/C chemistry.
+
+**Reading.** Within the Stage 4 model, a G/C-like alphabet does not give heredity, and an A/U-like one gives it only with copying accuracy and speed that A/U does not have. The intermediate pairs (A:s2U, I:s2C, D·U) are the remaining candidates for a 2-letter chemistry, and they become the main line of the alphabet question.
+
+## 6. Next checks
+
 - Nearest-neighbour or melting data for 2,6-diaminopurine·U and 2-thio-U·A pairs, and any copying rates for them.
 - Primary source for the G/C-only copying fidelity, and any A/U-only fidelity data.
 - Salt and Mg²⁺ correction of the duplex values (the NNDB parameters are for standard conditions; the salt condition is not stated on the pages read).
