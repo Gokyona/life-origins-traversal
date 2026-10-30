@@ -65,9 +65,53 @@ A CPU-only re-analysis of the existing Stage 4 results on the B360 (30 October 2
 
 **Reading.** Within the Stage 4 model, a G/C-like alphabet does not give heredity, and an A/U-like one gives it only with copying accuracy and speed that A/U does not have. The intermediate pairs (A:s2U, I:s2C, D·U) are the remaining candidates for a 2-letter chemistry, and they become the main line of the alphabet question.
 
+## 5b. Measured values for the intermediate pairs (Fang et al. 2025)
+
+Full text and supporting information read on 30 October 2026 (PDFs from the University of Chicago repository; MD5 sums match the repository's; copies on the B360 in `lot-p3/literature/`).
+
+**Duplex stability** (Table 1): a 9-pair RNA duplex 5′-CUGA X GUAG-3′ with one varied central pair; 1 M NaCl, pH 8, 5 µM total strands; ΔG at 25 °C.
+
+| Central pair | Tm (°C) | ΔG°25 (kcal/mol) | Difference from A:U |
+|---|---|---|---|
+| G:C | 55.6 | −15.2 | −1.6 |
+| A:s2U | 53.1 | −14.7 | −1.1 |
+| I:s2C | 52.0 | −14.6 | −1.0 |
+| G:s2C | 50.1 | −13.7 | −0.1 |
+| A:U | 46.8 | −13.6 | 0 |
+| I:C | 46.2 | −13.0 | +0.6 |
+
+**Copying** (Fig. 3, values read from the figure): bridged homo-dinucleotides filling a 2-letter gap; room temperature, 100 mM MgCl₂, pH 8.
+
+| Substrate on template | K_m (mM) | k_obs,max (h⁻¹) |
+|---|---|---|
+| U\*U on AA | 34 | 0.92 |
+| s2U\*s2U on AA | 28 | 26 |
+| A\*A on UU | 0.38 | 10 |
+| A\*A on s2U s2U | 0.071 | 16 |
+| C\*C on GG | 0.39 | 39 |
+| G\*G on CC | 0.0060 | 24 |
+| s2C\*s2C on II | about 6.9 | 74 |
+| I\*I on s2C s2C | 0.14 | 24 |
+
+No fidelity data, no data on 2- or 3-letter alphabets, no deamination rates.
+
+**What this means.**
+
+1. **Replacing U by 2-thio-U turns the slowest pair into a fast one.** s2U\*s2U is copied about 28 times faster than U\*U, and A\*A binds 5 times more tightly on an s2U template. A 2-letter A/s2U alphabet would copy at 16–26 h⁻¹, close to the G/C pair.
+2. **The intermediate pairs are much closer to G:C than to A:U.** Per substituted pair, A:s2U gains about 1.1 kcal/mol over A:U, about 70% of the G:C gain. Applied crudely to all eight pairs of an 8-mer (as for D·U above), this puts an A/s2U or I/s2C alphabet at an equivalent T_m8 of roughly 65–90 °C. That is the G/C-like regime in which the Stage 4 maps found no heredity.
+3. **So the fast pairs need hot strand separation, and in Stage 4 hot phases destroyed the chains.** The Stage 4 hydrolysis law is the measured one (Li & Breaker 1999), so the failure is not an artefact of the rate law. It may be an artefact of the cycle shape. Stage 4 used square-wave cycles with periods of 1–1,000 h and equal hot and cool halves, so chains spent at least half an hour, and half of all time, at the hot temperature. A G/C-like 8-mer duplex at T_m8 comes apart in milliseconds (k₀ = 10⁶ h⁻¹). At 85 °C and pH 7, the measured law gives roughly 0.02 breaks per bond per hour. Short, rare hot pulses (seconds to minutes, a few % of the time), as in thermal convection in rock pores, would separate strands at almost no hydrolysis cost. **Stage 4 did not sample this kind of cycle.**
+
+## 5c. Conclusion so far
+
+- A 2-letter chemistry that is fast and accurate enough exists on paper: **A/s2U** (or I/s2C, or G/C). Its duplexes need hot strand separation.
+- Whether heredity can start with it depends on an environment Stage 4 did not test: **brief, rare hot pulses** in an otherwise cool setting.
+- That is the first concrete simulation of Part III: the Stage 4c-3 copying chemistry with A/s2U-like pairing, the measured rates above, and asymmetric hot pulses (duty fraction and pulse length as new environmental variables), with G/C and A/U as controls.
+
 ## 6. Next checks
 
-- Nearest-neighbour or melting data for 2,6-diaminopurine·U and 2-thio-U·A pairs, and any copying rates for them.
+- Stacking (nearest-neighbour) data for all-A/s2U duplexes; the 65–90 °C estimate assumes single-pair gains add up.
+- Fidelity of A/s2U copying (the s2U:s2U self-pair is outcompeted by A:s2U; Ding et al. 2024).
+- Pulse-heating environments on the early Earth (thermal gradients in porous rock, geyser and hot-spring margins): pulse length and frequency, from the literature.
 - Primary source for the G/C-only copying fidelity, and any A/U-only fidelity data.
 - Salt and Mg²⁺ correction of the duplex values (the NNDB parameters are for standard conditions; the salt condition is not stated on the pages read).
 
