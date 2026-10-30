@@ -2,7 +2,7 @@
 
 **Mapping the conditions under which life can emerge — by ordered, non-repeating traversal of condition space instead of waiting for chance.**
 
-> Status: **Part I (stages 0–3): building and validating the COMPASS engine on test models**, complete ([stage 3 paper](paper/COMPASS_stage3.md)). **Part II (stage 4 on): the search over environmental conditions.** Code, results and write-ups are published here as they are produced, including negative results.
+> Status: **complete.** Part I (stages 0–3) built and validated the COMPASS engine on test models; Part II (stage 4) searched 13 environmental variables with a fully bottom-up chemistry. Results are written up in two papers ([COMPASS method](paper/COMPASS_method.md), [Stage 4 environment search](paper/COMPASS_stage4.md)). A side product, the [Gokyona Environment platform](platform/), lets anyone run the Stage-4 chemistry locally. All code, results and negative results are published here.
 
 
 ## The idea
@@ -71,14 +71,23 @@ Stages 0–3 build COMPASS and test it on a series of increasingly hard model sy
   - [x] 3e engine: joint nested map, comparison with a standard active-learning method (see results)
   - [x] 3f stage 3 paper, closing Part I and stating its limits
 
-### Part II: the environment search (stage 4 on)
+### Part II: the environment search (stage 4)
 
 - [x] [Review of the condition list](docs/condition_review.md): the original 12 conditions were neither sufficient nor independent; replaced by 13 primary environmental variables (approved 25 October 2026)
-- [ ] Stage 4 — fully bottom-up artificial chemistry (monomers → polymers → catalysts and templates → vesicles → protocells, nothing living put in) driven only by the 13 environmental variables, rate laws calibrated against experiments, then COMPASS maps ([plan](docs/stage4_plan.md), [sketch](docs/stage4_sketch.md))
-- [ ] Stage 5 — beyond the stage 4 scope: other solvents and planetary or cosmic environments, possibly life not based on carbon
-- [ ] Volunteer computing — hand out non-overlapping Sobol index ranges as work units so anyone can contribute GPU time
+- [x] Stage 4 — fully bottom-up artificial chemistry (monomers → polymers → catalysts and templates → vesicles → protocells, nothing living put in) driven only by the 13 environmental variables, then COMPASS maps ([plan](docs/stage4_plan.md), [sketch](docs/stage4_sketch.md))
+  - [x] 4a engine at 20–30 dimensions · [x] 4c-1 polymers · [x] 4c-2 catalysis · [x] 4c-3 heredity · [x] 4c-4 vesicles · [x] 4c-5 coupled protocells and the L4 ceiling · [x] 4d sequence of levels · [x] 4e real settings
+  - [x] [Stage 4 paper](paper/COMPASS_stage4.md)
+- [x] [COMPASS method paper](paper/COMPASS_method.md)
+- [x] Side product: [Gokyona Environment 1.0](platform/), a local simulation platform built on the Stage-4 engine ([release](https://github.com/Gokyona/life-origins-traversal/releases/tag/platform-v1.0))
 
 ## Paper
+
+**Final papers (drafts for review, 2026):**
+
+- **[COMPASS: mapping where life-like behaviour appears in stochastic models, with an ordered, non-repeating active search](paper/COMPASS_method.md)**. The method paper: engine, benchmarks on six models, scaling to 54 dimensions.
+- **[How far up the ladder of life can environments carry a bottom-up chemistry? An ordered search over 13 environmental variables](paper/COMPASS_stage4.md)**. The Stage 4 results: which environments carry the chemistry to coupled protocells, and why the ladder stops before Darwinian evolution.
+
+**Stage reports:**
 
 **[COMPASS: ordered, non-repeating mapping of the conditions for life in stochastic origin-of-life models](paper/COMPASS_stage1.md)** (stage 1 report, 25 October 2026). The engine design, the stage 1 benchmarks, and a check against the known threshold for autocatalytic sets.
 
@@ -114,7 +123,7 @@ Stages 0–3 build COMPASS and test it on a series of increasingly hard model sy
 
 ## Contributing
 
-Ideas, critiques and compute are welcome. Open an issue to discuss the model, the testing logic or the life detector. A volunteer-computing client is planned; until then, running `bench.py` with different seeds and posting the output in an issue already helps.
+Ideas, critiques and compute are welcome. Open an issue to discuss the model, the testing logic or the life detector.
 
 ## License
 
