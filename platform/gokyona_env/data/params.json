@@ -1,0 +1,164 @@
+[
+ {
+  "name": "T",
+  "label": "Temperature",
+  "unit": "\u00b0C",
+  "min": 0.0,
+  "max": 150.0,
+  "log": false,
+  "step": null
+ },
+ {
+  "name": "P",
+  "label": "Pressure",
+  "unit": "bar",
+  "min": 1.0,
+  "max": 1100.0,
+  "log": true,
+  "step": null
+ },
+ {
+  "name": "pH",
+  "label": "pH",
+  "unit": "",
+  "min": 2.0,
+  "max": 12.0,
+  "log": false,
+  "step": null
+ },
+ {
+  "name": "H2",
+  "label": "Redox (H2 availability)",
+  "unit": "rel.",
+  "min": 1e-06,
+  "max": 1.0,
+  "log": true,
+  "step": null
+ },
+ {
+  "name": "UV",
+  "label": "UV flux",
+  "unit": "rel.",
+  "min": 0.0001,
+  "max": 1.0,
+  "log": true,
+  "step": null
+ },
+ {
+  "name": "salinity",
+  "label": "Salinity",
+  "unit": "M",
+  "min": 0.0,
+  "max": 1.2,
+  "log": false,
+  "step": null
+ },
+ {
+  "name": "Mg",
+  "label": "Mg2+",
+  "unit": "M",
+  "min": 0.0001,
+  "max": 0.1,
+  "log": true,
+  "step": null
+ },
+ {
+  "name": "feed",
+  "label": "Feedstock supply (above 10 = beyond the study's range)",
+  "unit": "rel./h",
+  "min": 0.001,
+  "max": 40.0,
+  "log": true,
+  "step": null
+ },
+ {
+  "name": "x_nuc",
+  "label": "Nucleotide-like share of feed",
+  "unit": "",
+  "min": 0.0,
+  "max": 1.0,
+  "log": false,
+  "step": null
+ },
+ {
+  "name": "amph",
+  "label": "Amphiphile share of feed",
+  "unit": "",
+  "min": 0.0,
+  "max": 0.5,
+  "log": false,
+  "step": null
+ },
+ {
+  "name": "tau",
+  "label": "Residence time (dilution)",
+  "unit": "h",
+  "min": 1.0,
+  "max": 100000.0,
+  "log": true,
+  "step": null
+ },
+ {
+  "name": "mix",
+  "label": "Mixing between sites",
+  "unit": "1/h",
+  "min": 0.0001,
+  "max": 10.0,
+  "log": true,
+  "step": null
+ },
+ {
+  "name": "evap",
+  "label": "Evaporation concentration",
+  "unit": "x",
+  "min": 1.0,
+  "max": 1000.0,
+  "log": true,
+  "step": null
+ },
+ {
+  "name": "thermo",
+  "label": "Thermal-gradient concentration",
+  "unit": "x",
+  "min": 1.0,
+  "max": 100000000.0,
+  "log": true,
+  "step": null
+ },
+ {
+  "name": "depth",
+  "label": "Wet-dry cycle depth",
+  "unit": "",
+  "min": 0.0,
+  "max": 1.0,
+  "log": false,
+  "step": null
+ },
+ {
+  "name": "period",
+  "label": "Cycle period",
+  "unit": "h",
+  "min": 1.0,
+  "max": 1000.0,
+  "log": true,
+  "step": null
+ },
+ {
+  "name": "mineral",
+  "label": "Mineral surface",
+  "unit": "rel.",
+  "min": 0.001,
+  "max": 1.0,
+  "log": true,
+  "step": null
+ },
+ {
+  "name": "mineral_type",
+  "label": "Mineral type (0 none,1 clay,2 sulphide)",
+  "unit": "",
+  "min": 0.0,
+  "max": 2.0,
+  "log": false,
+  "step": 1
+ }
+]

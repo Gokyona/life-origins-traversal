@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About · Gokyona Environment</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .about { max-width: 860px; margin: 0 auto; padding: 16px 20px 48px; line-height: 1.6; }
+  .about h1 { font-size: 1.5em; } .about h2 { margin-top: 1.6em; } .about li { margin: 0.3em 0; }
+  .about a { color: inherit; text-decoration: underline; }
+  .backlink { display: inline-block; margin: 12px 20px 0; }
+</style>
+</head>
+<body>
+<a class="backlink" href="index.html">← Gokyona Environment</a>
+<main class="about">
+<h1>About Gokyona Environment</h1>
+<p><b>Version 1.0 · 2026 · Author: Gokyona Wahiro (pen name), independent researcher, Toronto</b></p>
+<ul>
+<li>GitHub: <a href="https://github.com/Gokyona/life-origins-traversal" target="_blank" rel="noopener">https://github.com/Gokyona/life-origins-traversal</a></li>
+<li>Homepage: <a href="https://gokyona.github.io" target="_blank" rel="noopener">https://gokyona.github.io</a></li>
+<li>License: code MIT · text CC BY 4.0</li>
+</ul>
+<hr>
+<h3>What it is</h3>
+<p>Gokyona Environment is an origin-of-life simulation platform that runs on your own computer. Starting from simple feedstock, it simulates a whole chemical chain:</p>
+<p>environment → feedstock and activated monomers → chains (polymerisation, breakage) → template copying (with copy errors) → amphiphiles self-assembling into vesicles (enclosing, growing, dividing, washing out) → optional selection on a sequence "trait".</p>
+<p>The page shows the run live, with the simulated time and a Darwin panel (real half vs control half, lineage and clade spread, ρ(w,z), the L4 signal and more).</p>
+<p>The platform's engine is the Stage-4 engine of paper 2: with one 64-bit word per chain it is bit-identical to the paper's code. The platform extends it to long sequences.</p>
+<h3>If you use this platform, please cite</h3>
+<ol>
+<li><b>COMPASS: mapping where life-like behaviour appears in stochastic models, with an ordered, non-repeating active search.</b> Gokyona Wahiro, 2026 (draft; preprint link to follow).<br>COMPASS is an ordered, never-repeating active-learning engine that maps where levels of life-like behaviour appear in the condition space of stochastic models. On six models of up to 29 dimensions it needed 1.6–8× fewer simulations than Sobol or random sampling for the same map accuracy; on a 54-dimensional model it found environments a ground-truth sample never hit.</li>
+<li><b>How far up the ladder of life can environments carry a bottom-up chemistry? An ordered search over 13 environmental variables.</b> Gokyona Wahiro, 2026 (draft; preprint link to follow).<br>A fully bottom-up artificial chemistry, searched layer by layer over 13 environmental variables. It climbs to coupled protocells only in cool, slowly flushed, enclosed water bodies with temperature cycles of days to weeks, and the ladder stops before Darwinian evolution. The engine of this platform is the Stage-4 engine of this paper.</li>
+</ol>
+<h3>Limitations (please read)</h3>
+<ul>
+<li>This is a model, not life.</li>
+<li>Heredity relies on very fast copying. In the model, template-copy extension is about 10⁹–10¹¹× faster than measured non-enzymatic chemistry. At measured rates, heredity in the model cannot start from scratch.</li>
+<li>The selection "trait" is an imposed score table, not derived from the chemistry.</li>
+<li>No single lineage took over from the others in any test.</li>
+<li>The time scale follows the model's rate constants; it is not a calibrated Earth clock. Lengths beyond 64 letters are unvalidated.</li>
+<li>The new "experimental options" are all off by default and have only been smoke-tested and screened.</li>
+</ul>
+<h3>AI disclosure</h3>
+<p>This platform was built with the AI assistant Claude (Anthropic), which wrote code and ran tests under the author's direction.</p>
+</main>
+</body>
+</html>

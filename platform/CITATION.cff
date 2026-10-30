@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this platform, please cite the two papers below."
+title: "Gokyona Environment"
+version: "1.0.0"
+date-released: "2026-10-30"
+license: MIT
+authors:
+  - name: "Gokyona Wahiro"
+repository-code: "https://github.com/Gokyona/life-origins-traversal"
+url: "https://gokyona.github.io"
+references:
+  - type: article
+    title: "COMPASS: mapping where life-like behaviour appears in stochastic models, with an ordered, non-repeating active search"
+    authors:
+      - name: "Gokyona Wahiro"
+    year: 2026
+    status: preprint
+    notes: "Draft; preprint link to follow."
+  - type: article
+    title: "How far up the ladder of life can environments carry a bottom-up chemistry? An ordered search over 13 environmental variables"
+    authors:
+      - name: "Gokyona Wahiro"
+    year: 2026
+    status: preprint
+    notes: "Draft; preprint link to follow. The platform's engine is the Stage-4 engine of this paper."

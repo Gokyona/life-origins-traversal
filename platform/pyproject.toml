@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gokyona-env"
+version = "1.0.0"
+description = "Gokyona Environment: local web UI and engine for an origin-of-life simulation (a model, not life)"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [{name = "Gokyona Wahiro"}]
+keywords = ["origin of life", "artificial chemistry", "protocells", "simulation"]
+requires-python = ">=3.10"
+dependencies = ["numpy", "torch"]
+
+[project.urls]
+Homepage = "https://gokyona.github.io"
+Source = "https://github.com/Gokyona/life-origins-traversal"
+
+[project.scripts]
+gokyona-env = "gokyona_env.server:main"
+
+[tool.setuptools.packages.find]
+include = ["gokyona_env*"]
+
+[tool.setuptools.package-data]
+gokyona_env = ["web/*", "data/*.json"]

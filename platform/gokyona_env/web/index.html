@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gokyona Environment</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header id="top">
+  <div class="titlebar">
+    <h1>Gokyona Environment</h1>
+    <a class="aboutlink" href="about.html" title="About">About</a>
+    <label class="runsel">Run
+      <select id="run-select"><option value="">(no runs)</option></select>
+    </label>
+    <span id="run-state" class="pill">—</span>
+    <span id="conn" class="conn">connecting…</span>
+  </div>
+  <div id="banner" class="banner">No run yet. Model, not life. Everything shown here comes from a simulation model, not from living systems. Length beyond 64 is unvalidated.</div>
+  <div id="time-note" class="time-note">Time scale follows the model's rate constants; it is not a calibrated Earth clock.</div>
+  <div id="hw-line" class="hw-line">Hardware: —</div>
+</header>
+
+<main class="grid">
+  <!-- (2) Run control -->
+  <section class="panel wide" id="p-control">
+    <h2>Run control</h2>
+    <div class="ctl-row">
+      <label>Preset <select id="preset"></select></label>
+      <label>Run name <input id="run-name" maxlength="40" pattern="[A-Za-z0-9_-]{1,40}" placeholder="e.g. run1"></label>
+      <label>L_MAX <input id="lmax" type="number" min="8" max="16384" step="1" value="1024"></label>
+      <label>Sites <input id="sites" type="number" min="2" max="4096" step="2" value="64"></label>
+      <label>Slots <input id="slots" type="number" min="1" step="1" value="512"></label>
+      <label>Vesicle slots/site <input id="vslots" type="number" min="1" max="127" step="1" value="64"></label>
+      <label>Migration m/step <input id="mig-m" type="number" min="0" max="1" step="0.0001" value="0"></label>
+      <label>Migration <select id="mig-mode"><option value="random">random site in half</option><option value="ring">ring neighbour</option></select></label>
+      <label class="chk"><input id="half-mix" type="checkbox"> pools mix within each half only</label>
+      <button id="reset-env" class="ghost" title="Set all sliders back to the preset values">Reset to preset</button>
+    </div>
+    <details open>
+      <summary>Environment (layer A) — <span id="env-changed">0</span> changed from preset</summary>
+      <div id="sliders" class="sliders"></div>
+    </details>
+    <details open>
+      <summary>Sequence trait</summary>
+      <div class="ctl-row">
+        <label class="chk"><input id="t-enabled" type="checkbox"> enabled</label>
+        <label>Mode <select id="t-mode"><option value="retention">retention (assumption: enclosed score lowers vesicle washout)</option><option value="division">division (assumption: enclosed score raises vesicle division)</option><option value="membrane">membrane (enclosed score raises membrane uptake)</option><option value="stability">stability (score lowers bond breaking)</option><option value="self">self (copy rate)</option><option value="shared">shared replicase (copy rate)</option></select></label>
+        <label class="chk"><input id="t-pair" type="checkbox" checked> pair score (strand + complement; inherited every generation)</label>
+        <label class="chk"><input id="multi-start" type="checkbox"> multi-start copying (Poisson starts per step; off = paper model)</label>
+        <label>Monomer rationing <select id="ration"><option value="random" selected>fair: random order (default)</option><option value="vesicle">fair: round-robin over vesicles</option><option value="slot">legacy (chem4c4): slot order</option></select></label>
+        <label>Founder-tag census every <input id="census-y" type="number" value="100" min="1" step="1" style="width:6em"> simulated years</label>
+        <label>Landscape <select id="t-land"><option value="domain">functional domain (first 24 letters, z-scored)</option><option value="additive-mean">additive mean over the whole chain (reference)</option></select></label>
+        <label class="chk"><input id="t-epi" type="checkbox"> epistatic (position-specific, rugged)</label>
+        <label>s (SD units) <input id="t-s" type="range" min="0" max="4" step="0.01" value="1"> <span id="t-s-val" class="val">0.50</span></label>
+        <label>L_rep <input id="t-lrep" type="number" min="1" max="8192" step="1" value="24"></label>
+        <label>k <input id="t-k" type="number" value="6" readonly></label>
+        <label>Seed <input id="t-seed" type="number" min="0" step="1" value="2026"></label>
+        <label class="chk"><input id="t-fid" type="checkbox"> fidelity link</label>
+        <label>s_f <input id="t-sf" type="number" min="0" max="10" step="0.01" value="0"></label>
+      </div>
+    </details>
+    <div class="ctl-row buttons">
+      <button id="btn-create">Create</button>
+      <button id="btn-start" class="go">Start</button>
+      <button id="btn-pause">Pause</button>
+      <button id="btn-resume">Resume</button>
+      <button id="btn-stop" class="danger">Stop</button>
+    </div>
+    <div id="check-line" class="check">Start check: —</div>
+    <div id="msg" class="msg"></div>
+  </section>
+
+  <!-- (1) Time -->
+  <section class="panel" id="p-time">
+    <h2>Time</h2>
+    <div id="time-kv" class="kv"></div>
+  </section>
+
+  <!-- (9) Darwin -->
+  <section class="panel wide" id="p-darwin">
+    <h2>Darwin: real vs control</h2>
+    <div class="darwin-top">
+      <div class="light-box">
+        <div id="d-light" class="light off"></div>
+        <div>
+          <div id="d-status" class="d-status">—</div>
+          <div class="lights-legend"><span class="lamp-s red"></span>no selection <span class="lamp-s amber"></span>one sweep <span class="lamp-s green"></span>sustained evolution</div>
+          <div id="d-note" class="note">—</div>
+        </div>
+      </div>
+      <div id="d-halves" class="halves"></div>
+    </div>
+    <div class="two">
+      <div><h3>Score over time (solid real, dashed control) + sweeps</h3><canvas id="c-darwin-score" height="220"></canvas><div id="leg-darwin-score" class="legend"></div></div>
+      <div><h3>ρ(w,z) vs null99, both halves</h3><canvas id="c-darwin-rho" height="220"></canvas><div id="leg-darwin-rho" class="legend"></div></div>
+    </div>
+    <h3>Lineage tree (x = born, colour = score, size = share)</h3>
+    <canvas id="c-tree" height="260"></canvas>
+    <div id="d-sweeps" class="note"></div>
+    <h3>Clades by descent (founder tags): top clade share, both halves</h3>
+    <canvas id="c-clades" height="180"></canvas><div id="leg-clades" class="legend"></div>
+    <div id="d-clades" class="note"></div>
+    <div class="note">Clade sweep: every chain gets a founder tag at each census (default every 100 simulated years); copies and
+      fragments inherit it. A clade = all chains carrying one tag. An event is logged when one tag first reaches ≥ 30 % of its
+      half's tagged chains (both halves). A real-half event <b>counts</b> only if (1) share ≥ 30 %, (2) share &gt; the 95th
+      percentile of the control half's top-clade share over all reports so far (≥ 20 control reports, else "pending"), and
+      (3) the clade's mean z &gt; the real half's mean z at its census (a fitter clade, not drift). Sustained evolution also
+      = ≥ 2 counted clade sweeps.</div>
+  </section>
+
+  <!-- (3) Chain length -->
+  <section class="panel" id="p-chains">
+    <h2>Chain length</h2>
+    <div id="chain-kv" class="kv"></div>
+    <h3>Mean / max over time (log y)</h3>
+    <canvas id="c-len" height="180"></canvas><div id="leg-len" class="legend"></div>
+    <h3>Current length histogram</h3>
+    <canvas id="c-hist" height="150"></canvas>
+  </section>
+
+  <!-- (4) Lineages -->
+  <section class="panel" id="p-lineages">
+    <h2>Lineages</h2>
+    <div id="lin-kv" class="kv"></div>
+    <h3>Distinct sequences over time</h3>
+    <canvas id="c-distinct" height="150"></canvas>
+    <h3>Top sequences (0/1 strips, first 128 letters)</h3>
+    <div id="top-seqs" class="seqs"></div>
+  </section>
+
+  <!-- (5) Vesicles -->
+  <section class="panel" id="p-vesicles">
+    <h2>Vesicles</h2>
+    <div id="ves-kv" class="kv"></div>
+    <h3>Vesicles &amp; max generation over time</h3>
+    <canvas id="c-ves" height="160"></canvas><div id="leg-ves" class="legend"></div>
+  </section>
+
+  <!-- (6) Ladder -->
+  <section class="panel" id="p-levels">
+    <h2>Ladder levels</h2>
+    <div id="lamps" class="lamps"></div>
+    <div class="note">Green = reached, dim = not reached, grey = unknown.</div>
+  </section>
+
+  <!-- (7) Trait / selection -->
+  <section class="panel" id="p-trait">
+    <h2>Trait / selection</h2>
+    <div id="trait-kv" class="kv"></div>
+    <h3>Score mean / max / dominant</h3>
+    <canvas id="c-score" height="150"></canvas><div id="leg-score" class="legend"></div>
+    <h3>ρ(w,z) vs null99</h3>
+    <canvas id="c-rho" height="150"></canvas><div id="leg-rho" class="legend"></div>
+  </section>
+
+  <!-- (8) Machine -->
+  <section class="panel" id="p-machine">
+    <h2>Machine</h2>
+    <div id="mach-kv" class="kv"></div>
+    <div class="bar"><div id="vram-bar"></div></div>
+    <h3>Step time over wall time</h3>
+    <canvas id="c-step" height="130"></canvas>
+  </section>
+</main>
+<footer>Gokyona Environment · local UI · polls every 2 s · nothing starts unless you press Start</footer>
+<script src="app.js"></script>
+</body>
+</html>
