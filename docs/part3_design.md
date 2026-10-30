@@ -113,7 +113,7 @@ Existing run rules apply: memory pre-flight at worst case before every long run,
 
 ## 9. Decisions (owner, 30 October 2026, 12:23 Toronto time)
 
-1. **Alphabet: 2 letters (0/1)**, as in Stage 4. Measured rates exist only for 4-letter RNA, so they are borrowed for the 2-letter chemistry. This is an explicit assumption and every report states it.
+1. **Alphabet: 2 letters (0/1)**, as in Stage 4. Measured rates exist only for 4-letter RNA, so they are borrowed for the 2-letter chemistry. This is an explicit assumption and every report states it. *Revised 30 October 2026:* averaged 4-letter rates do not transfer; each run names the base pair the two letters stand for and uses that pair's measurements. See [part3_alphabet_transfer.md](part3_alphabet_transfer.md).
 2. **"How" goes to Level 4** (Darwinian evolution), through protocells (L3), within the same Earth history.
 3. **Time window: 4.5–3.5 Ga.**
 
