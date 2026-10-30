@@ -7,6 +7,8 @@ copying → vesicles → optional selection, shown live in a web page with a Dar
 
 Author: Gokyona Wahiro (pen name) · <https://github.com/Gokyona/life-origins-traversal> · <https://gokyona.github.io>
 
+**Download:** [release platform-v1.0](https://github.com/Gokyona/life-origins-traversal/releases/tag/platform-v1.0): source zip and wheel.
+
 ## Screenshots
 
 Taken on the author's computer during a short run of the **Darwin demo** preset (about 95 simulated years).
