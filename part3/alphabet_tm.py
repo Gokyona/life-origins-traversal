@@ -40,3 +40,14 @@ for name,al in [('G/C','GC'),('A/U','AU'),('4-letter','ACGU')]:
             v.append(h/(S+R*math.log(1e6/kon))-273.15)
         v.sort(); out.append(f"kon={kon:.1e}/M/h: mean {st.mean(v):6.1f} 5-95% [{v[len(v)//20]:6.1f},{v[-len(v)//20-1]:6.1f}]")
     print(name, ' | '.join(out))
+
+# Rough D/U estimate: A/U alphabet with each A replaced by 2,6-diaminopurine, stabilisation ddG37 per D (Pasternak et al. 2007:
+# 0.4-1.2 kcal/mol in 2'-O-methyl RNA/RNA) applied to every pair, entropy kept, enthalpy shifted. Crude bracket only.
+print("D/U rough bracket (ddG per pair -0.4 / -0.9 / -1.2 kcal/mol, kon 1e6..1e7 /M/s):")
+for dd in (-0.4,-0.9,-1.2):
+    v=[]
+    for kon in (3.6e9,3.6e10):
+        for s in itertools.product('AU',repeat=8):
+            s=''.join(s); g,h,S=duplex(s); h2=h+8*dd
+            v.append(h2/(S+R*math.log(1e6/kon))-273.15)
+    v.sort(); print(f"  ddG {dd}: equivalent T_m8 5-95% [{v[len(v)//20]:6.1f},{v[-len(v)//20-1]:6.1f}]")

@@ -5,3 +5,7 @@ effective Stage-4 T_m8: T where real k_off(8-mer) = k0 = 1e6/h, k_on 1e6..1e7 /M
 G/C kon=3.6e+09/M/h: mean   88.7 5-95% [  85.0,  91.5] | kon=3.6e+10/M/h: mean   82.0 5-95% [  78.3,  84.7]
 A/U kon=3.6e+09/M/h: mean   18.5 5-95% [  11.6,  24.7] | kon=3.6e+10/M/h: mean    9.6 5-95% [   2.1,  16.3]
 4-letter kon=3.6e+09/M/h: mean   62.6 5-95% [  42.1,  79.9] | kon=3.6e+10/M/h: mean   55.1 5-95% [  34.1,  72.8]
+D/U rough bracket (ddG per pair -0.4 / -0.9 / -1.2 kcal/mol, kon 1e6..1e7 /M/s):
+  ddG -0.4: equivalent T_m8 5-95% [  27.6,  44.1]
+  ddG -0.9: equivalent T_m8 5-95% [  55.4,  70.3]
+  ddG -1.2: equivalent T_m8 5-95% [  71.6,  85.7]
