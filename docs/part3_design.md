@@ -1,6 +1,6 @@
 # Part III (design draft): where, when and how did life begin on the early Earth?
 
-**Status:** draft for discussion, 30 October 2026, Toronto time. Nothing here has been run.
+**Status:** design, 30 October 2026, Toronto time; scope decisions in Section 9. Nothing here has been run yet.
 **Builds on:** the completed Stage 4 environment search ([paper](../paper/COMPASS_stage4.md)) and its main limitation (Section 7 of that paper).
 
 ## 1. The question
@@ -111,11 +111,11 @@ If the model puts the first origin far later than the evidence, either the chemi
 
 Existing run rules apply: memory pre-flight at worst case before every long run, checkpoints and resume, one GPU job at a time, VRAM cap 28 GB.
 
-## 9. Open decisions for the owner
+## 9. Decisions (owner, 30 October 2026, 12:23 Toronto time)
 
-1. **Alphabet.** The owner's main question has used a 2-letter (0/1) alphabet. Measured rates exist for 4-letter RNA. Options: keep 2 letters and borrow RNA rates (flagged as an assumption), or run 4 letters where rates are measured and 2 letters as a comparison.
-2. **How far "how" goes:** stop at heredity (L2), or continue to protocells (L3) and evolution (L4) in the same history.
-3. **Time window:** 4.5–3.5 Ga as proposed, or wider.
+1. **Alphabet: 2 letters (0/1)**, as in Stage 4. Measured rates exist only for 4-letter RNA, so they are borrowed for the 2-letter chemistry. This is an explicit assumption and every report states it.
+2. **"How" goes to Level 4** (Darwinian evolution), through protocells (L3), within the same Earth history.
+3. **Time window: 4.5–3.5 Ga.**
 
 ## 10. Candidate references (not yet checked against the originals)
 
