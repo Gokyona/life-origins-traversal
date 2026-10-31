@@ -1,0 +1,4 @@
+2026-10-31 02:08:43 START /home/bern/ComfyUI/venv/bin/python3 -u run_s3_l2.py --out-dir s3_l2 --variants A0_r6,A2_r6 --resume
+A0_r6 chunk 0 n=112 340s L2_strict {'p1558': 16, 'p3709': 16, 'engine435': 15, 'engine5704': 11, 'engine10653': 16, 'engine_rep1_1926': 16, 'engine_rep1_9823': 16}
+A2_r6 chunk 0 n=112 401s L2_strict {'p1558': 0, 'p3709': 0, 'engine435': 0, 'engine5704': 0, 'engine10653': 0, 'engine_rep1_1926': 0, 'engine_rep1_9823': 0}
+done s3_l2/runs.jsonl {'min_C': 63.0, 'mean_C': 64.5, 'max_C': 66.0, 'readings': 2, 'pauses': 0, 'source': '/sys/class/drm/card0/device/hwmon/hwmon6'}

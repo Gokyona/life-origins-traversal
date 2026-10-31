@@ -1,0 +1,8 @@
+2026-10-31 02:29:37 START /home/bern/ComfyUI/venv/bin/python3 -u run_s3_l2.py --out-dir s3_l2 --variants base_rec,A2_rec,A2b,A2c,A2d --resume
+base_rec chunk 0 n=112 289s L2_strict {'p1558': 15, 'p3709': 15, 'engine435': 14, 'engine5704': 9, 'engine10653': 16, 'engine_rep1_1926': 16, 'engine_rep1_9823': 16}
+A2_rec chunk 0 n=112 399s L2_strict {'p1558': 0, 'p3709': 0, 'engine435': 0, 'engine5704': 0, 'engine10653': 0, 'engine_rep1_1926': 0, 'engine_rep1_9823': 0}
+A2b chunk 0 n=112 283s L2_strict {'p1558': 1, 'p3709': 16, 'engine435': 14, 'engine5704': 0, 'engine10653': 16, 'engine_rep1_1926': 16, 'engine_rep1_9823': 16}
+A2c chunk 0 n=112 449s L2_strict {'p1558': 1, 'p3709': 0, 'engine435': 0, 'engine5704': 0, 'engine10653': 0, 'engine_rep1_1926': 16, 'engine_rep1_9823': 5}
+A2d chunk 0 n=112 403s L2_strict {'p1558': 0, 'p3709': 0, 'engine435': 0, 'engine5704': 0, 'engine10653': 0, 'engine_rep1_1926': 0, 'engine_rep1_9823': 0}
+done s3_l2/runs.jsonl {'min_C': 63.0, 'mean_C': 64.6, 'max_C': 68.0, 'readings': 5, 'pauses': 0, 'source': '/sys/class/drm/card0/device/hwmon/hwmon6'}
+2026-10-31 03:00:03 END rc=0 /home/bern/ComfyUI/venv/bin/python3 -u run_s3_l2.py --out-dir s3_l2 --variants base_rec,A2_rec,A2b,A2c,A2d --resume

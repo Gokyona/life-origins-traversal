@@ -1,0 +1,9 @@
+2026-10-31 01:00:06 START /home/bern/ComfyUI/venv/bin/python3 -u run_s3_l2.py --out-dir s3_l2 --variants base,A0,A2,A2a,A4,A6,A1
+base chunk 0 n=112 288s L2_strict {'p1558': 15, 'p3709': 15, 'engine435': 14, 'engine5704': 9, 'engine10653': 16, 'engine_rep1_1926': 16, 'engine_rep1_9823': 16}
+A0 chunk 0 n=112 1121s L2_strict {'p1558': 16, 'p3709': 16, 'engine435': 15, 'engine5704': 11, 'engine10653': 16, 'engine_rep1_1926': 16, 'engine_rep1_9823': 16}
+A2 chunk 0 n=112 1021s L2_strict {'p1558': 0, 'p3709': 0, 'engine435': 0, 'engine5704': 0, 'engine10653': 0, 'engine_rep1_1926': 0, 'engine_rep1_9823': 0}
+A2a chunk 0 n=112 285s L2_strict {'p1558': 15, 'p3709': 15, 'engine435': 14, 'engine5704': 9, 'engine10653': 16, 'engine_rep1_1926': 16, 'engine_rep1_9823': 16}
+A4 chunk 0 n=112 285s L2_strict {'p1558': 15, 'p3709': 15, 'engine435': 14, 'engine5704': 9, 'engine10653': 16, 'engine_rep1_1926': 16, 'engine_rep1_9823': 16}
+A6 chunk 0 n=112 286s L2_strict {'p1558': 16, 'p3709': 16, 'engine435': 16, 'engine5704': 16, 'engine10653': 16, 'engine_rep1_1926': 16, 'engine_rep1_9823': 16}
+A1 chunk 0 n=112 289s L2_strict {'p1558': 15, 'p3709': 16, 'engine435': 15, 'engine5704': 11, 'engine10653': 16, 'engine_rep1_1926': 16, 'engine_rep1_9823': 16}
+done s3_l2/runs.jsonl {'min_C': 62.0, 'mean_C': 65.28571428571429, 'max_C': 68.0, 'readings': 7, 'pauses': 0, 'source': '/sys/class/drm/card0/device/hwmon/hwmon6'}

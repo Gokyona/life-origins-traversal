@@ -1,0 +1,4 @@
+batch 2 n=32 221.9s
+batch 3 n=32 228.0s
+batch 4 n=32 539.6s
+done kill_test_p31b/kb/runs.jsonl {'min_C': 62.0, 'mean_C': 62.666666666666664, 'max_C': 63.0, 'readings': 3, 'pauses': 0, 'source': '/sys/class/drm/card0/device/hwmon/hwmon6'}

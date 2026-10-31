@@ -1,0 +1,3 @@
+2026-10-31 05:20:47 START /home/bern/ComfyUI/venv/bin/python3 -u validate_4c5b.py validate_4c5b.json ac
+a p3709 101 {'tensors': 104, 'mismatch': [], 'state_equal': True, 'L3_details_equal': True}
+a p3709 102 {'tensors': 104, 'mismatch': [], 'state_equal': True, 'L3_details_equal': True}

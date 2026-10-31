@@ -1,0 +1,10 @@
+2026-10-30 23:13:03 START /home/bern/ComfyUI/venv/bin/python3 -u preflight_p31b.py --pair none --multi 1 --sizes 256 --fid screen --sets coex,box2,coex,coex,coex,coex --out preflight_p31b_256.json --job p31b-t6-256
+256 {'set': 'coex', 'points': 256, 'seconds': 1204.0, 's_per_run': 4.703, 'peak_xpu_alloc_GiB': 9.871, 'peak_xpu_reserved_GiB': 14.426, 'xpu_reserved_after_GiB': 0.0, 'rss_after_GiB': 4.933, 'cgroup_current_GiB': 4.374, 'cgroup_peak_GiB': 4.763}
+256 {'set': 'box2', 'points': 256, 'seconds': 955.0, 's_per_run': 3.7306, 'peak_xpu_alloc_GiB': 3.294, 'peak_xpu_reserved_GiB': 5.344, 'xpu_reserved_after_GiB': 0.0, 'rss_after_GiB': 4.941, 'cgroup_current_GiB': 4.382, 'cgroup_peak_GiB': 4.763}
+256 {'set': 'coex', 'points': 256, 'seconds': 538.7, 's_per_run': 2.1044, 'peak_xpu_alloc_GiB': 9.872, 'peak_xpu_reserved_GiB': 14.244, 'xpu_reserved_after_GiB': 0.0, 'rss_after_GiB': 4.915, 'cgroup_current_GiB': 4.357, 'cgroup_peak_GiB': 4.791}
+256 {'set': 'coex', 'points': 256, 'seconds': 1042.8, 's_per_run': 4.0733, 'peak_xpu_alloc_GiB': 9.87, 'peak_xpu_reserved_GiB': 13.84, 'xpu_reserved_after_GiB': 0.0, 'rss_after_GiB': 4.935, 'cgroup_current_GiB': 4.376, 'cgroup_peak_GiB': 4.806}
+256 {'set': 'coex', 'points': 256, 'seconds': 1102.5, 's_per_run': 4.3066, 'peak_xpu_alloc_GiB': 9.868, 'peak_xpu_reserved_GiB': 13.889, 'xpu_reserved_after_GiB': 0.0, 'rss_after_GiB': 4.929, 'cgroup_current_GiB': 4.37, 'cgroup_peak_GiB': 4.82}
+256 {'set': 'coex', 'points': 256, 'seconds': 1085.1, 's_per_run': 4.2385, 'peak_xpu_alloc_GiB': 9.869, 'peak_xpu_reserved_GiB': 13.838, 'xpu_reserved_after_GiB': 0.0, 'rss_after_GiB': 4.955, 'cgroup_current_GiB': 4.397, 'cgroup_peak_GiB': 4.82}
+SIZE 256 {'worst_peak_xpu_reserved_GiB': 14.426, 'worst_host_peak_GiB': 4.82, 's_per_run_random': None, 's_per_run_worst': 4.703, 'host_growth_random': 0.005258344764517808, 'pass': True}
+PREFLIGHT PASS chosen batch 256
+2026-10-31 00:51:56 END rc=0 /home/bern/ComfyUI/venv/bin/python3 -u preflight_p31b.py --pair none --multi 1 --sizes 256 --fid screen --sets coex,box2,coex,coex,coex,coex --out preflight_p31b_256.json --job p31b-t6-256

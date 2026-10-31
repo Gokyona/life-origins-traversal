@@ -1,0 +1,4 @@
+1522a1523,1525
+>             # never below the copies actually made: without a slot shortage every copy keeps its slot (fix after the
+>             # first test-2 run, md5 21085a25: the expected demand alone cut realised copies above it)
+>             w_c = torch.maximum(w_c, nc.float())

@@ -1,0 +1,3 @@
+2026-10-31 03:00:03 START /home/bern/ComfyUI/venv/bin/python3 -u run_s3_l2.py --out-dir s3_l2 --variants A5_part1 --points p3709,engine_rep1_9823,engine10653 --resume
+A5_part1 chunk 0 n=48 1987s L2_strict {'p3709': 16, 'engine10653': 16, 'engine_rep1_9823': 16}
+done s3_l2/runs.jsonl {'min_C': 64.0, 'mean_C': 64.0, 'max_C': 64.0, 'readings': 1, 'pauses': 0, 'source': '/sys/class/drm/card0/device/hwmon/hwmon6'}
