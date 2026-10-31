@@ -6,6 +6,8 @@
 
 > **Stage 4 supplementary study (30–31 October 2026, phase completed).** After Stage 4 I checked how far its heredity results depend on the model's assumptions: measured copying rates and an [alphabet check](docs/part3_alphabet_transfer.md), a [copying model at measured rates](part3/p31/) for a named base pair (built and validated), and [robustness tests](stage4/supplement_robustness/) at the confirmed heredity environments. Paper 2 now carries the resulting limits. The study is concluded here; files keep their original "part3" names from the [Part III design](docs/part3_design.md) in which it began.
 
+> **Methodology handoff (31 October 2026).** [METHODOLOGY_HANDOFF.md](METHODOLOGY_HANDOFF.md) summarises the methods, validation rules, findings, limits, data layout and open questions in one self-contained document, for anyone (human or AI) who wants to continue this work.
+
 **Author:** Gokyona Wahiro, independent researcher, Toronto · ORCID [0009-0008-1514-8856](https://orcid.org/0009-0008-1514-8856) · Preprints on Zenodo: [Paper 1](https://doi.org/10.5281/zenodo.23825371), [Paper 2](https://doi.org/10.5281/zenodo.23825838) · Homepage: [gokyona.github.io](https://gokyona.github.io)
 
 ## The idea
