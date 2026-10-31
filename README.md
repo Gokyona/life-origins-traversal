@@ -6,6 +6,7 @@
 
 > **Next: Part III (design).** Where, when and how did life begin on the early Earth (4.5–3.5 Ga)? Copying at measured rates, sequence-determined function up to Darwinian evolution, and a time-resolved model of early-Earth sites. See the [Part III design](docs/part3_design.md). First step P3-1 (copying at measured rates with a named base pair, explicit activation chemistry and hot pulses) is implemented and validated: [validation files](part3/p31/).
 
+**Author:** Gokyona Wahiro, independent researcher, Toronto · ORCID [0009-0008-1514-8856](https://orcid.org/0009-0008-1514-8856) · Preprints on Zenodo: [Paper 1](https://doi.org/10.5281/zenodo.23825371), [Paper 2](https://doi.org/10.5281/zenodo.23825838) · Homepage: [gokyona.github.io](https://gokyona.github.io)
 
 ## The idea
 
