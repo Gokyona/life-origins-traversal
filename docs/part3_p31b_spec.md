@@ -2,6 +2,8 @@
 
 **Status:** specification, 30 October 2026, Toronto time · **Builds on:** [part3_p31_spec.md](part3_p31_spec.md) and the validated code `part3/p31/code/chem_p31.py` (md5 cfc1e3db…) · **Why:** an external review of the assumption list (owner's request, 30 October) and our own flags in [Paper 2](../paper/COMPASS_stage4.md), Sections 7–8
 
+> **Outcome (31 October 2026).** This step was planned as part of Part III, but only the Stage 4 ablations (§1 and part of §3) were run before the owner stopped it. Its results are published as a [Stage 4 supplementary study](../stage4/supplement_robustness/). §2 was read but not implemented; the coexistence part of §3 was not run.
+
 No map is run in this step. P3-1b changes the model in three places and then measures how much the Stage 4 results depend on each built-in assumption. Item 4 of the review plan, alternative ways to start copying, gets its own specification after this step.
 
 ## 1. Remove the cap of one copy start per template and step
