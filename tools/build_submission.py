@@ -17,7 +17,7 @@ PAPERS = [
     ("COMPASS_method.md", "Paper1_COMPASS_method",
      f"Companion paper: *{TITLE2}* ({REPO}/blob/main/paper/COMPASS_stage4.md)"),
     ("COMPASS_stage4.md", "Paper2_Stage4_environments",
-     f"Method paper: *{TITLE1}* ({REPO}/blob/main/paper/COMPASS_method.md)"),
+     f"Method paper: *{TITLE1}*, Zenodo preprint, doi:[10.5281/zenodo.23825371](https://doi.org/10.5281/zenodo.23825371)"),
 ]
 
 def absolutise(text):

@@ -4,7 +4,7 @@
 
 Code, raw data and detailed stage reports: <https://github.com/Gokyona/life-origins-traversal> · Text: CC BY 4.0 · Code: MIT
 
-Method paper: *COMPASS: mapping where life-like behaviour appears in stochastic models, with an ordered, non-repeating active search* (https://github.com/Gokyona/life-origins-traversal/blob/main/paper/COMPASS_method.md)
+Method paper: *COMPASS: mapping where life-like behaviour appears in stochastic models, with an ordered, non-repeating active search*, Zenodo preprint, doi:[10.5281/zenodo.23825371](https://doi.org/10.5281/zenodo.23825371)
 
 ---
 
