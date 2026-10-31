@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+type: software
+title: "COMPASS: an ordered, non-repeating active search for where life-like behaviour appears in origin-of-life models (code, data and papers)"
+version: "1.0"
+date-released: "2026-10-30"
+license: MIT
+authors:
+  - name: "Gokyona Wahiro"
+repository-code: "https://github.com/Gokyona/life-origins-traversal"
+url: "https://gokyona.github.io"
+keywords:
+  - origin of life
+  - active learning
+  - stochastic simulation
+  - protocells
+  - artificial life
+abstract: "Code, raw data and papers of the COMPASS project: an active-learning engine that maps where in condition space levels of life-like behaviour appear in stochastic origin-of-life models (Paper 1), its application to a bottom-up chemistry over environmental variables (Paper 2), and the Gokyona Environment platform. Code is MIT; documents and figures are CC BY 4.0."
