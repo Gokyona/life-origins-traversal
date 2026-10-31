@@ -15,7 +15,7 @@ TITLE2 = "How far up the ladder of life can environments carry a bottom-up chemi
 
 PAPERS = [
     ("COMPASS_method.md", "Paper1_COMPASS_method",
-     f"Companion paper: *{TITLE2}* ({REPO}/blob/main/paper/COMPASS_stage4.md)"),
+     f"Companion paper: *{TITLE2}*, Zenodo preprint, doi:[10.5281/zenodo.23825838](https://doi.org/10.5281/zenodo.23825838)"),
     ("COMPASS_stage4.md", "Paper2_Stage4_environments",
      f"Method paper: *{TITLE1}*, Zenodo preprint, doi:[10.5281/zenodo.23825371](https://doi.org/10.5281/zenodo.23825371)"),
 ]

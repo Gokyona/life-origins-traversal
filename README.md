@@ -87,7 +87,7 @@ Stages 0–3 build COMPASS and test it on a series of increasingly hard model sy
 **Final papers (2026; PDFs in [paper/pdf](paper/pdf)):**
 
 - **[COMPASS: mapping where life-like behaviour appears in stochastic models, with an ordered, non-repeating active search](paper/COMPASS_method.md)**. The method paper: engine, benchmarks on six models, scaling to 54 dimensions. Preprint: [doi:10.5281/zenodo.23825371](https://doi.org/10.5281/zenodo.23825371) ([PDF](paper/pdf/Paper1_COMPASS_method.pdf)).
-- **[How far up the ladder of life can environments carry a bottom-up chemistry? An ordered search over 13 environmental variables](paper/COMPASS_stage4.md)**. The Stage 4 results: which environments carry the chemistry to coupled protocells, and why the ladder stops before Darwinian evolution. *Revised 30 October 2026:* a second limit on the heredity results (no real base pair fits the heredity constants) and a corrected comparison with cold copying experiments.
+- **[How far up the ladder of life can environments carry a bottom-up chemistry? An ordered search over 13 environmental variables](paper/COMPASS_stage4.md)**. The Stage 4 results: which environments carry the chemistry to coupled protocells, and why the ladder stops before Darwinian evolution. *Revised 30 October 2026:* a second limit on the heredity results (no real base pair fits the heredity constants) and a corrected comparison with cold copying experiments. Preprint: [doi:10.5281/zenodo.23825838](https://doi.org/10.5281/zenodo.23825838) ([PDF](paper/pdf/Paper2_Stage4_environments.pdf)).
 
 **Stage reports:**
 

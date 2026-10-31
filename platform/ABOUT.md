@@ -18,10 +18,10 @@ The platform's engine is the Stage-4 engine of paper 2: with one 64-bit word per
 
 ### If you use this platform, please cite
 
-1. **COMPASS: mapping where life-like behaviour appears in stochastic models, with an ordered, non-repeating active search.** Gokyona Wahiro, 2026 (draft; preprint link to follow).
+1. **COMPASS: mapping where life-like behaviour appears in stochastic models, with an ordered, non-repeating active search.** Gokyona Wahiro, 2026 Zenodo preprint, doi:[10.5281/zenodo.23825371](https://doi.org/10.5281/zenodo.23825371).
    COMPASS is an ordered, never-repeating active-learning engine that maps where levels of life-like behaviour appear in the condition space of stochastic models. On six models of up to 29 dimensions it needed 1.6–8× fewer simulations than Sobol or random sampling for the same map accuracy; on a 54-dimensional model it found environments a ground-truth sample never hit.
 
-2. **How far up the ladder of life can environments carry a bottom-up chemistry? An ordered search over 13 environmental variables.** Gokyona Wahiro, 2026 (draft; preprint link to follow).
+2. **How far up the ladder of life can environments carry a bottom-up chemistry? An ordered search over 13 environmental variables.** Gokyona Wahiro, 2026 Zenodo preprint, doi:[10.5281/zenodo.23825838](https://doi.org/10.5281/zenodo.23825838).
    A fully bottom-up artificial chemistry, searched layer by layer over 13 environmental variables. It climbs to coupled protocells only in cool, slowly flushed, enclosed water bodies with temperature cycles of days to weeks, and the ladder stops before Darwinian evolution. The engine of this platform is the Stage-4 engine of this paper.
 
 ### Limitations (please read)

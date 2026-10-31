@@ -17,3 +17,16 @@ keywords:
   - protocells
   - artificial life
 abstract: "Code, raw data and papers of the COMPASS project: an active-learning engine that maps where in condition space levels of life-like behaviour appear in stochastic origin-of-life models (Paper 1), its application to a bottom-up chemistry over environmental variables (Paper 2), and the Gokyona Environment platform. Code is MIT; documents and figures are CC BY 4.0."
+references:
+  - type: article
+    title: "COMPASS: mapping where life-like behaviour appears in stochastic models, with an ordered, non-repeating active search"
+    authors:
+      - name: "Gokyona Wahiro"
+    year: 2026
+    doi: "10.5281/zenodo.23825371"
+  - type: article
+    title: "How far up the ladder of life can environments carry a bottom-up chemistry? An ordered search over 13 environmental variables"
+    authors:
+      - name: "Gokyona Wahiro"
+    year: 2026
+    doi: "10.5281/zenodo.23825838"

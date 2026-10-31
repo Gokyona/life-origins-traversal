@@ -4,7 +4,7 @@
 
 Code, raw data and detailed stage reports: <https://github.com/Gokyona/life-origins-traversal> · Text: CC BY 4.0 · Code: MIT
 
-Companion paper: *How far up the ladder of life can environments carry a bottom-up chemistry? An ordered search over 13 environmental variables* (https://github.com/Gokyona/life-origins-traversal/blob/main/paper/COMPASS_stage4.md)
+Companion paper: *How far up the ladder of life can environments carry a bottom-up chemistry? An ordered search over 13 environmental variables*, Zenodo preprint, doi:[10.5281/zenodo.23825838](https://doi.org/10.5281/zenodo.23825838)
 
 ---
 
