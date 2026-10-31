@@ -1,6 +1,6 @@
 # How far up the ladder of life can environments carry a bottom-up chemistry? An ordered search over 13 environmental variables
 
-**Gokyona Wahiro** · Independent researcher, Toronto, Canada · 30 October 2026
+**Gokyona Wahiro** (ORCID [0009-0008-1514-8856](https://orcid.org/0009-0008-1514-8856)) · Independent researcher, Toronto, Canada · 30 October 2026
 
 Code, raw data and detailed stage reports: <https://github.com/Gokyona/life-origins-traversal> · Text: CC BY 4.0 · Code: MIT
 

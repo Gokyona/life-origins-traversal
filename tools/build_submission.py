@@ -38,7 +38,7 @@ def transform(src, companion):
     while i < len(lines) and lines[i].strip() != "---":
         i += 1
     out += [
-        f"**Gokyona Wahiro** · Independent researcher, Toronto, Canada · {DATE}",
+        f"**Gokyona Wahiro** (ORCID [0009-0008-1514-8856](https://orcid.org/0009-0008-1514-8856)) · Independent researcher, Toronto, Canada · {DATE}",
         "",
         f"Code, raw data and detailed stage reports: <{REPO}> · Text: CC BY 4.0 · Code: MIT",
         "",

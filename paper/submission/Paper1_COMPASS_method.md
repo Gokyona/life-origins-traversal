@@ -1,6 +1,6 @@
 # COMPASS: mapping where life-like behaviour appears in stochastic models, with an ordered, non-repeating active search
 
-**Gokyona Wahiro** · Independent researcher, Toronto, Canada · 30 October 2026
+**Gokyona Wahiro** (ORCID [0009-0008-1514-8856](https://orcid.org/0009-0008-1514-8856)) · Independent researcher, Toronto, Canada · 30 October 2026
 
 Code, raw data and detailed stage reports: <https://github.com/Gokyona/life-origins-traversal> · Text: CC BY 4.0 · Code: MIT
 
